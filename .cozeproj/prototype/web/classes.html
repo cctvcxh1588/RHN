@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classes & Entry · 15th Round Hainan Regatta 2026</title>
+
+  <link href="https://lf-code-agent.coze.cn/obj/x-ai-cn/fonts/google/google-all-fonts.css" rel="stylesheet"/>
+
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/jquery/jquery-3.7.1.min.js"></script>
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/lucide/lucide-1.11.0.min.js"></script>
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/tailwindcss/tailwindcss-browser-4.2.4.min.js"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      /* === Brand Colors (from Round Hainan Regatta VI) === */
+      --color-primary:              #005BAB;
+      --color-primary-container:    #E6F0FA;
+      --color-on-primary:           #ffffff;
+      /* === Background / Surface === */
+      --color-background:                 #FFFFFF;
+      --color-surface-container-lowest:   #FFFFFF;
+      --color-surface:                    #FFFFFF;
+      --color-surface-container:          #EEF2F7;
+      --color-surface-container-high:     #E5EBF2;
+      --color-surface-container-highest:  #DBE3EC;
+      /* === Text === */
+      --color-on-surface:           #1A2332;
+      --color-on-surface-variant:   #5B6472;
+      /* === Functional === */
+      --color-success:  #22c55e;
+      --color-error:    #ef4444;
+      --color-warning:  #f59e0b;
+      /* === Border === */
+      --color-outline:          #C8D2DE;
+      --color-outline-variant:  #DDE4EC;
+      /* === Extended Brand === */
+      --color-primary-deep:     #003C7E;
+      --color-primary-bright:   #0096DF;
+      --color-accent-gold:      #F6AA00;
+      --color-accent-coral:     #DD0078;
+      --color-accent-yellow:    #FFE100;
+      /* === Radius === */
+      --radius-sm:   0.25rem;
+      --radius-md:   0.5rem;
+      --radius-lg:   0.75rem;
+      --radius-xl:   1rem;
+      --radius-2xl:  1.5rem;
+      --radius-full: 9999px;
+      /* === Shadow (Brand Blue tinted) === */
+      --shadow-card:   0 4px 20px rgba(0, 60, 126, 0.08);
+      --shadow-float:  0 10px 30px rgba(0, 60, 126, 0.12);
+      --shadow-dialog: 0 25px 50px rgba(0, 60, 126, 0.15);
+      /* === Font === */
+      --font-sans: "Inter", "Noto Sans SC", system-ui, sans-serif;
+      --font-display: "Playfair Display", "Noto Serif SC", Georgia, serif;
+    }
+  </style>
+
+  <!-- Image fallback -->
+  <script>
+    document.addEventListener('error', function (e) {
+      const img = e.target;
+      if (img.tagName !== 'IMG' || img.dataset.fallback) return;
+      img.dataset.fallback = '1';
+      const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const cat = img.getAttribute('data-category') || '其他';
+      const alt = img.getAttribute('alt') || '';
+      const label = esc(alt.length > 8 ? alt.slice(0, 8) + '…' : alt);
+      const icons = { '人物': '👤', '自然风景': '🏞', '动物': '🐾', '建筑城市': '🏙', '运动体育': '⚽', '交通工具': '🚗', '食物': '🍽', '服饰时尚': '👗', '商业科技': '💼', '游戏娱乐': '🎮', '艺术': '🎨', '其他': '🖼' };
+      const icon = icons[cat] || '🖼';
+      const w = img.width || 400, h = img.height || 300;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="100%" height="100%" fill="%23f3f4f6"/><text x="50%" y="45%" text-anchor="middle" font-size="${Math.min(w, h) * 0.18}" dominant-baseline="central">${icon}</text><text x="50%" y="68%" text-anchor="middle" font-size="${Math.min(w, h) * 0.07}" fill="%239ca3af" font-family="system-ui,sans-serif" dominant-baseline="central">${label}</text></svg>`;
+      img.src = 'data:image/svg+xml,' + svg;
+    }, true);
+  </script>
+</head>
+
+<body class="bg-background text-on-surface font-sans">
+
+  <!-- @nav:start Navigation, remove this section if not needed -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-primary-deep/95 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="home.html" class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-9 h-9 object-contain bg-white rounded-full p-1" />
+        <div class="leading-tight">
+          <div class="text-white font-bold text-sm tracking-wide">ROUND HAINAN REGATTA</div>
+          <div class="text-white/60 text-[10px] tracking-widest uppercase">15th Edition · 2026</div>
+        </div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="home.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Home</a>
+        <a href="about.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">The Race</a>
+        <a href="course.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Course</a>
+        <a href="schedule.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Schedule</a>
+        <a href="classes.html" class="px-3 py-2 text-sm font-medium text-white bg-white/10 rounded-md" aria-current="page">Classes</a>
+        <a href="news.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">News</a>
+        <a href="contact.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Contact</a>
+      </nav>
+      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 bg-accent-gold text-primary-deep px-4 py-2 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity">
+        Enter the Race
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+      <button id="btn-mobile-menu" class="lg:hidden text-white p-2" aria-label="Toggle menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </header>
+  <!-- @nav:end Navigation, remove this section if not needed -->
+
+  <!-- @main-content:start -->
+  <main class="pt-16">
+
+    <!-- ============ 1) PAGE HERO (50vh) ============ -->
+    <section id="section-hero" class="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-primary-deep">
+      <img src="https://images.unsplash.com/photo-1500930540546-25b715225467?w=1920&q=80"
+           alt="帆船船体特写破浪前行"
+           data-category="运动体育"
+           class="absolute inset-0 w-full h-full object-cover opacity-40" />
+      <div class="absolute inset-0 bg-gradient-to-b from-primary-deep/70 via-primary-deep/50 to-primary-deep/90"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+        <div class="inline-flex items-center gap-2 mb-4">
+          <span class="w-8 h-px bg-accent-gold"></span>
+          <span class="text-accent-gold text-xs font-semibold tracking-[0.3em] uppercase">The Fleet</span>
+          <span class="w-8 h-px bg-accent-gold"></span>
+        </div>
+        <h1 class="font-display text-white text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4">
+          Four Racing Classes
+        </h1>
+        <p class="text-white/80 text-lg md:text-xl max-w-2xl mx-auto">
+          From high-performance one-design to offshore ORC divisions
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ 2) CLASS CARDS GRID (2x2) ============ -->
+    <section id="section-classes" class="max-w-7xl mx-auto px-6 py-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- 列表-Class 1: Dubois 50 (deep blue) -->
+        <article id="card-class-dubois50" class="bg-surface rounded-xl shadow-card overflow-hidden hover:shadow-float transition-shadow duration-300 group">
+          <div class="h-2 bg-primary-deep"></div>
+          <div class="p-8">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h2 class="font-display text-[40px] leading-tight font-bold text-on-surface">Dubois 50</h2>
+                <span class="inline-flex items-center mt-2 px-2.5 py-0.5 rounded-sm text-xs font-semibold tracking-wide uppercase bg-primary-deep/10 text-primary-deep">One-design Class</span>
+              </div>
+              <div class="w-14 h-14 rounded-full bg-primary-deep/10 flex items-center justify-center shrink-0">
+                <i data-lucide="sailboat" class="w-7 h-7 text-primary-deep"></i>
+              </div>
+            </div>
+            <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+              High-performance one-design cruiser-racer. Standardized fleet ensures pure boat-for-boat competition on the full offshore round-Hainan course.
+            </p>
+            <div class="grid grid-cols-2 gap-4 py-5 border-t border-outline-variant/30">
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="flag" class="w-4 h-4 text-primary-deep mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Race Format</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">Offshore</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="route" class="w-4 h-4 text-primary-deep mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Distance</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">Full Round · 650 nm</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="users" class="w-4 h-4 text-primary-deep mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Crew Size</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">8–10 crew</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="shield-check" class="w-4 h-4 text-primary-deep mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Requirements</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">Dubois 50 hull</div>
+                </div>
+              </div>
+            </div>
+            <a href="#section-eligibility" id="link-req-dubois50" class="inline-flex items-center gap-1.5 mt-2 text-sm font-semibold text-primary-deep hover:gap-2.5 transition-all">
+              View Requirements
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- 列表-Class 2: ORC Full Round (brand blue) -->
+        <article id="card-class-orc-full" class="bg-surface rounded-xl shadow-card overflow-hidden hover:shadow-float transition-shadow duration-300 group">
+          <div class="h-2 bg-primary"></div>
+          <div class="p-8">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h2 class="font-display text-[40px] leading-tight font-bold text-on-surface">ORC Full Round</h2>
+                <span class="inline-flex items-center mt-2 px-2.5 py-0.5 rounded-sm text-xs font-semibold tracking-wide uppercase bg-primary/10 text-primary">Rated Offshore</span>
+              </div>
+              <div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <i data-lucide="compass" class="w-7 h-7 text-primary"></i>
+              </div>
+            </div>
+            <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+              ORC-rated offshore fleet for a wide range of hulls. Handicap scoring ensures fair competition across diverse designs on the complete round-Hainan course.
+            </p>
+            <div class="grid grid-cols-2 gap-4 py-5 border-t border-outline-variant/30">
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="flag" class="w-4 h-4 text-primary mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Race Format</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">Offshore · Handicap</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="route" class="w-4 h-4 text-primary mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Distance</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">Full Round · 650 nm</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="users" class="w-4 h-4 text-primary mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Crew Size</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">6–12 crew</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="shield-check" class="w-4 h-4 text-primary mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Requirements</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">Valid ORC certificate</div>
+                </div>
+              </div>
+            </div>
+            <a href="#section-eligibility" id="link-req-orc-full" class="inline-flex items-center gap-1.5 mt-2 text-sm font-semibold text-primary hover:gap-2.5 transition-all">
+              View Requirements
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- 列表-Class 3: ORC Half Round (sky blue) -->
+        <article id="card-class-orc-half" class="bg-surface rounded-xl shadow-card overflow-hidden hover:shadow-float transition-shadow duration-300 group">
+          <div class="h-2 bg-primary-bright"></div>
+          <div class="p-8">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h2 class="font-display text-[40px] leading-tight font-bold text-on-surface">ORC Half Round</h2>
+                <span class="inline-flex items-center mt-2 px-2.5 py-0.5 rounded-sm text-xs font-semibold tracking-wide uppercase bg-primary-bright/10 text-primary-bright">Rated Offshore</span>
+              </div>
+              <div class="w-14 h-14 rounded-full bg-primary-bright/10 flex items-center justify-center shrink-0">
+                <i data-lucide="waves" class="w-7 h-7 text-primary-bright"></i>
+              </div>
+            </div>
+            <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+              ORC-rated division on a shortened Sanya–Lingshui–Sanya loop. Ideal for smaller crews or local teams seeking offshore experience without committing to the full circumnavigation.
+            </p>
+            <div class="grid grid-cols-2 gap-4 py-5 border-t border-outline-variant/30">
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="flag" class="w-4 h-4 text-primary-bright mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Race Format</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">Coastal · Handicap</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="route" class="w-4 h-4 text-primary-bright mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Distance</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">Half Round · ~120 nm</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="users" class="w-4 h-4 text-primary-bright mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Crew Size</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">4–8 crew</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="shield-check" class="w-4 h-4 text-primary-bright mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Requirements</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">Valid ORC certificate</div>
+                </div>
+              </div>
+            </div>
+            <a href="#section-eligibility" id="link-req-orc-half" class="inline-flex items-center gap-1.5 mt-2 text-sm font-semibold text-primary-bright hover:gap-2.5 transition-all">
+              View Requirements
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- 列表-Class 4: Fareast 28R (gold) -->
+        <article id="card-class-fareast28r" class="bg-surface rounded-xl shadow-card overflow-hidden hover:shadow-float transition-shadow duration-300 group">
+          <div class="h-2 bg-accent-gold"></div>
+          <div class="p-8">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h2 class="font-display text-[40px] leading-tight font-bold text-on-surface">Fareast 28R</h2>
+                <span class="inline-flex items-center mt-2 px-2.5 py-0.5 rounded-sm text-xs font-semibold tracking-wide uppercase bg-accent-gold/15 text-accent-gold">Sport Boat</span>
+              </div>
+              <div class="w-14 h-14 rounded-full bg-accent-gold/15 flex items-center justify-center shrink-0">
+                <i data-lucide="zap" class="w-7 h-7 text-accent-gold"></i>
+              </div>
+            </div>
+            <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+              Fast, agile sportboat one-design fleet. Focused on inshore windward-leeward buoy racing with tight fleet action and short, high-intensity duels.
+            </p>
+            <div class="grid grid-cols-2 gap-4 py-5 border-t border-outline-variant/30">
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="flag" class="w-4 h-4 text-accent-gold mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Race Format</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">Inshore · Buoy Races</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="route" class="w-4 h-4 text-accent-gold mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Distance</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">Windward-Leeward</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="users" class="w-4 h-4 text-accent-gold mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Crew Size</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">4–5 crew</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <i data-lucide="shield-check" class="w-4 h-4 text-accent-gold mt-0.5 shrink-0"></i>
+                <div>
+                  <div class="text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Requirements</div>
+                  <div class="text-sm font-medium text-on-surface mt-0.5">Fareast 28R hull</div>
+                </div>
+              </div>
+            </div>
+            <a href="#section-eligibility" id="link-req-fareast28r" class="inline-flex items-center gap-1.5 mt-2 text-sm font-semibold text-accent-gold hover:gap-2.5 transition-all">
+              View Requirements
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ 3) ELIGIBILITY & REQUIREMENTS ============ -->
+    <section id="section-eligibility" class="bg-surface-container py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-14">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-px bg-primary"></span>
+            <span class="text-primary text-xs font-semibold tracking-[0.3em] uppercase">Eligibility</span>
+            <span class="w-6 h-px bg-primary"></span>
+          </div>
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-on-surface">How to Qualify</h2>
+          <p class="text-on-surface-variant text-base mt-4 max-w-2xl mx-auto">
+            Every entered boat must satisfy the following three pillars before crossing the start line.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- 列表-要求1: Vessel -->
+          <div id="card-req-vessel" class="bg-surface rounded-xl shadow-card p-7">
+            <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
+              <i data-lucide="anchor" class="w-6 h-6 text-primary"></i>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-on-surface mb-4">Vessel Requirements</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-success mt-0.5 shrink-0"></i>
+                <span class="text-sm text-on-surface-variant leading-relaxed">Valid measurement certificate (ORC or class-issued)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-success mt-0.5 shrink-0"></i>
+                <span class="text-sm text-on-surface-variant leading-relaxed">Safety equipment per World Sailing Cat 2 or Cat 3</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-success mt-0.5 shrink-0"></i>
+                <span class="text-sm text-on-surface-variant leading-relaxed">Third-party insurance coverage (min. ¥5M)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 列表-要求2: Crew -->
+          <div id="card-req-crew" class="bg-surface rounded-xl shadow-card p-7">
+            <div class="w-12 h-12 rounded-lg bg-primary-bright/10 flex items-center justify-center mb-5">
+              <i data-lucide="users" class="w-6 h-6 text-primary-bright"></i>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-on-surface mb-4">Crew Requirements</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-success mt-0.5 shrink-0"></i>
+                <span class="text-sm text-on-surface-variant leading-relaxed">Minimum 4 crew members on board at all times</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-success mt-0.5 shrink-0"></i>
+                <span class="text-sm text-on-surface-variant leading-relaxed">Certified skipper with offshore experience</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-success mt-0.5 shrink-0"></i>
+                <span class="text-sm text-on-surface-variant leading-relaxed">Documented safety-at-sea training (30% of crew)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 列表-要求3: Documentation -->
+          <div id="card-req-docs" class="bg-surface rounded-xl shadow-card p-7">
+            <div class="w-12 h-12 rounded-lg bg-accent-gold/15 flex items-center justify-center mb-5">
+              <i data-lucide="file-text" class="w-6 h-6 text-accent-gold"></i>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-on-surface mb-4">Documentation</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-success mt-0.5 shrink-0"></i>
+                <span class="text-sm text-on-surface-variant leading-relaxed">Signed and complete official Entry Form</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-success mt-0.5 shrink-0"></i>
+                <span class="text-sm text-on-surface-variant leading-relaxed">Entry fee payment confirmation receipt</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-success mt-0.5 shrink-0"></i>
+                <span class="text-sm text-on-surface-variant leading-relaxed">Race declaration & liability acknowledgement</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4) ENTRY PROCESS (4 STEPS) ============ -->
+    <section id="section-entry-process" class="max-w-7xl mx-auto px-6 py-20">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 mb-3">
+          <span class="w-6 h-px bg-accent-coral"></span>
+          <span class="text-accent-coral text-xs font-semibold tracking-[0.3em] uppercase">Entry Process</span>
+          <span class="w-6 h-px bg-accent-coral"></span>
+        </div>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-on-surface">Register in 4 Steps</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 列表-步骤1 -->
+        <div id="step-1" class="relative bg-surface rounded-xl shadow-card p-6">
+          <div class="absolute -top-3 -left-2 w-9 h-9 rounded-full bg-primary-deep text-white flex items-center justify-center font-bold text-sm shadow-card">01</div>
+          <div class="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-4 mt-2">
+            <i data-lucide="file-text" class="w-5 h-5 text-primary"></i>
+          </div>
+          <h3 class="text-base font-semibold text-on-surface mb-2">Submit Entry Form</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Download the official entry form, complete all sections, and send it to the Organizing Committee.</p>
+        </div>
+
+        <!-- 列表-步骤2 -->
+        <div id="step-2" class="relative bg-surface rounded-xl shadow-card p-6">
+          <div class="absolute -top-3 -left-2 w-9 h-9 rounded-full bg-primary-deep text-white flex items-center justify-center font-bold text-sm shadow-card">02</div>
+          <div class="w-11 h-11 rounded-lg bg-primary-bright/10 flex items-center justify-center mb-4 mt-2">
+            <i data-lucide="credit-card" class="w-5 h-5 text-primary-bright"></i>
+          </div>
+          <h3 class="text-base font-semibold text-on-surface mb-2">Payment</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Remit the applicable entry fee via bank transfer and share the payment confirmation with the committee.</p>
+        </div>
+
+        <!-- 列表-步骤3 -->
+        <div id="step-3" class="relative bg-surface rounded-xl shadow-card p-6">
+          <div class="absolute -top-3 -left-2 w-9 h-9 rounded-full bg-primary-deep text-white flex items-center justify-center font-bold text-sm shadow-card">03</div>
+          <div class="w-11 h-11 rounded-lg bg-success/10 flex items-center justify-center mb-4 mt-2">
+            <i data-lucide="check-circle" class="w-5 h-5 text-success"></i>
+          </div>
+          <h3 class="text-base font-semibold text-on-surface mb-2">Boat Inspection</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Attend on-site measurement and safety equipment check-in at Sanya Serenity Marina.</p>
+        </div>
+
+        <!-- 列表-步骤4 -->
+        <div id="step-4" class="relative bg-surface rounded-xl shadow-card p-6">
+          <div class="absolute -top-3 -left-2 w-9 h-9 rounded-full bg-primary-deep text-white flex items-center justify-center font-bold text-sm shadow-card">04</div>
+          <div class="w-11 h-11 rounded-lg bg-accent-gold/15 flex items-center justify-center mb-4 mt-2">
+            <i data-lucide="users" class="w-5 h-5 text-accent-gold"></i>
+          </div>
+          <h3 class="text-base font-semibold text-on-surface mb-2">Skipper Briefing</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Attend the mandatory pre-race skipper briefing to review course, rules and weather.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5) FEES & DEADLINES TABLE ============ -->
+    <section id="section-fees" class="bg-surface-container py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-6 h-px bg-primary"></span>
+            <span class="text-primary text-xs font-semibold tracking-[0.3em] uppercase">Fees & Deadlines</span>
+            <span class="w-6 h-px bg-primary"></span>
+          </div>
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-on-surface">Entry Fees by Class</h2>
+        </div>
+
+        <div class="bg-surface rounded-xl shadow-card overflow-hidden">
+          <!-- Table Header -->
+          <div class="grid grid-cols-4 px-6 py-4 bg-primary-deep text-white text-xs font-semibold uppercase tracking-wider">
+            <span>Class</span>
+            <span class="text-right">Early Bird<br><span class="text-white/60 text-[10px] normal-case font-normal tracking-wide">before Sep 30</span></span>
+            <span class="text-right">Standard<br><span class="text-white/60 text-[10px] normal-case font-normal tracking-wide">Oct 1 – Oct 31</span></span>
+            <span class="text-right">Late Entry<br><span class="text-white/60 text-[10px] normal-case font-normal tracking-wide">after Nov 1</span></span>
+          </div>
+          <!-- Table Rows (zebra) -->
+          <div class="divide-y divide-outline-variant/40">
+            <!-- 列表-费用行1: Dubois 50 -->
+            <div class="grid grid-cols-4 px-6 py-4 items-center hover:bg-surface-container/40 transition-colors">
+              <div>
+                <div class="text-sm font-semibold text-on-surface">Dubois 50</div>
+                <div class="text-xs text-on-surface-variant mt-0.5">One-design · Offshore</div>
+              </div>
+              <span class="text-sm font-semibold text-success text-right">¥15,000</span>
+              <span class="text-sm text-on-surface text-right">¥18,000</span>
+              <span class="text-sm text-on-surface-variant text-right">¥21,000</span>
+            </div>
+            <!-- 列表-费用行2: ORC Full -->
+            <div class="grid grid-cols-4 px-6 py-4 items-center bg-surface-container/50 hover:bg-surface-container transition-colors">
+              <div>
+                <div class="text-sm font-semibold text-on-surface">ORC Full Round</div>
+                <div class="text-xs text-on-surface-variant mt-0.5">Rated Offshore · Full course</div>
+              </div>
+              <span class="text-sm font-semibold text-success text-right">¥12,000</span>
+              <span class="text-sm text-on-surface text-right">¥15,000</span>
+              <span class="text-sm text-on-surface-variant text-right">¥18,000</span>
+            </div>
+            <!-- 列表-费用行3: ORC Half -->
+            <div class="grid grid-cols-4 px-6 py-4 items-center hover:bg-surface-container/40 transition-colors">
+              <div>
+                <div class="text-sm font-semibold text-on-surface">ORC Half Round</div>
+                <div class="text-xs text-on-surface-variant mt-0.5">Rated Offshore · Half course</div>
+              </div>
+              <span class="text-sm font-semibold text-success text-right">¥8,000</span>
+              <span class="text-sm text-on-surface text-right">¥10,000</span>
+              <span class="text-sm text-on-surface-variant text-right">¥12,000</span>
+            </div>
+            <!-- 列表-费用行4: Fareast 28R -->
+            <div class="grid grid-cols-4 px-6 py-4 items-center bg-surface-container/50 hover:bg-surface-container transition-colors">
+              <div>
+                <div class="text-sm font-semibold text-on-surface">Fareast 28R</div>
+                <div class="text-xs text-on-surface-variant mt-0.5">Sport Boat · Inshore</div>
+              </div>
+              <span class="text-sm font-semibold text-success text-right">¥5,000</span>
+              <span class="text-sm text-on-surface text-right">¥7,000</span>
+              <span class="text-sm text-on-surface-variant text-right">¥9,000</span>
+            </div>
+          </div>
+        </div>
+        <p class="text-xs text-on-surface-variant text-center mt-4 flex items-center justify-center gap-2">
+          <i data-lucide="info" class="w-3.5 h-3.5"></i>
+          All fees include insurance, welcome dinner, and awards gala.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ 6) DOWNLOADS PANEL ============ -->
+    <section id="section-downloads" class="max-w-7xl mx-auto px-6 py-20">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 mb-3">
+          <span class="w-6 h-px bg-primary-bright"></span>
+          <span class="text-primary-bright text-xs font-semibold tracking-[0.3em] uppercase">Documents</span>
+          <span class="w-6 h-px bg-primary-bright"></span>
+        </div>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-on-surface">Downloads</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 列表-下载1: Notice of Race -->
+        <a href="#" id="btn-download-nor" class="bg-surface rounded-xl shadow-card p-6 hover:shadow-float transition-all group flex items-start gap-4">
+          <div class="w-14 h-14 rounded-lg bg-primary-deep/10 flex items-center justify-center shrink-0 group-hover:bg-primary-deep/15 transition-colors">
+            <i data-lucide="file-text" class="w-7 h-7 text-primary-deep"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="text-base font-semibold text-on-surface group-hover:text-primary-deep transition-colors">Notice of Race</h3>
+            <p class="text-xs text-on-surface-variant mt-1">Official 2026 NoR with all rules & schedule</p>
+            <div class="flex items-center gap-3 mt-3">
+              <span class="text-xs text-on-surface-variant">PDF · 2.4 MB</span>
+              <span class="inline-flex items-center gap-1 text-xs font-semibold text-primary-deep">
+                Download <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 列表-下载2: Entry Form -->
+        <a href="#" id="btn-download-entry-form" class="bg-surface rounded-xl shadow-card p-6 hover:shadow-float transition-all group flex items-start gap-4">
+          <div class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 transition-colors">
+            <i data-lucide="clipboard-list" class="w-7 h-7 text-primary"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="text-base font-semibold text-on-surface group-hover:text-primary transition-colors">Entry Form</h3>
+            <p class="text-xs text-on-surface-variant mt-1">Fillable form for boat & crew registration</p>
+            <div class="flex items-center gap-3 mt-3">
+              <span class="text-xs text-on-surface-variant">PDF · 480 KB</span>
+              <span class="inline-flex items-center gap-1 text-xs font-semibold text-primary">
+                Download <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 列表-下载3: Measurement Certificate Template -->
+        <a href="#" id="btn-download-measurement" class="bg-surface rounded-xl shadow-card p-6 hover:shadow-float transition-all group flex items-start gap-4">
+          <div class="w-14 h-14 rounded-lg bg-accent-gold/15 flex items-center justify-center shrink-0 group-hover:bg-accent-gold/20 transition-colors">
+            <i data-lucide="ruler" class="w-7 h-7 text-accent-gold"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="text-base font-semibold text-on-surface group-hover:text-accent-gold transition-colors">Measurement Certificate</h3>
+            <p class="text-xs text-on-surface-variant mt-1">Template for ORC / class measurement forms</p>
+            <div class="flex items-center gap-3 mt-3">
+              <span class="text-xs text-on-surface-variant">PDF · 320 KB</span>
+              <span class="inline-flex items-center gap-1 text-xs font-semibold text-accent-gold">
+                Download <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ 7) CONTACT FOR ENTRY CTA ============ -->
+    <section id="section-cta" class="relative overflow-hidden bg-primary-deep">
+      <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1920&q=80"
+           alt="日落时分海上帆船剪影"
+           data-category="运动体育"
+           class="absolute inset-0 w-full h-full object-cover opacity-20" />
+      <div class="absolute inset-0 bg-gradient-to-b from-primary-deep/80 to-primary-deep"></div>
+      <div class="relative z-10 max-w-4xl mx-auto px-6 py-20 text-center">
+        <div class="inline-flex items-center gap-2 mb-3">
+          <span class="w-6 h-px bg-accent-gold"></span>
+          <span class="text-accent-gold text-xs font-semibold tracking-[0.3em] uppercase">Ready to Enter?</span>
+          <span class="w-6 h-px bg-accent-gold"></span>
+        </div>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-6">Contact the Race Committee</h2>
+
+        <a href="mailto:roundhainanregatta@foxmail.com" id="link-email" class="inline-flex items-center gap-3 group">
+          <i data-lucide="mail" class="w-7 h-7 text-accent-gold"></i>
+          <span class="font-display text-2xl md:text-3xl text-white group-hover:text-accent-gold transition-colors">roundhainanregatta@foxmail.com</span>
+        </a>
+
+        <p class="text-white/70 text-sm mt-4 flex items-center justify-center gap-2">
+          <i data-lucide="clock" class="w-4 h-4"></i>
+          Response within 48 hours during business days
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
+          <button id="btn-send-inquiry" class="bg-accent-gold text-primary-deep px-6 py-3 rounded-md text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all inline-flex items-center gap-2">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            Send Inquiry
+          </button>
+          <button id="btn-download-entry-form-cta" class="bg-white/10 backdrop-blur border border-white/20 text-white px-6 py-3 rounded-md text-sm font-semibold hover:bg-white/20 active:scale-[0.98] transition-all inline-flex items-center gap-2">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            Download Entry Form
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer id="site-footer" class="bg-primary-deep border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-6 py-14">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
+          <div class="md:col-span-1">
+            <div class="flex items-center gap-3 mb-4">
+              <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-10 h-10 object-contain bg-white rounded-full p-1" />
+              <div class="leading-tight">
+                <div class="text-white font-bold text-sm tracking-wide">ROUND HAINAN</div>
+                <div class="text-white/60 text-[10px] tracking-widest uppercase">Regatta · 2026</div>
+              </div>
+            </div>
+            <p class="text-white/60 text-xs leading-relaxed">The 15th edition of Asia's premier offshore regatta, circumnavigating Hainan Island.</p>
+          </div>
+          <div>
+            <h4 class="text-white text-xs font-semibold uppercase tracking-widest mb-4">The Race</h4>
+            <ul class="space-y-2.5">
+              <li><a href="about.html" class="text-white/60 hover:text-white text-sm transition-colors">About</a></li>
+              <li><a href="course.html" class="text-white/60 hover:text-white text-sm transition-colors">Course</a></li>
+              <li><a href="schedule.html" class="text-white/60 hover:text-white text-sm transition-colors">Schedule</a></li>
+              <li><a href="classes.html" class="text-white/60 hover:text-white text-sm transition-colors">Classes</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white text-xs font-semibold uppercase tracking-widest mb-4">Info</h4>
+            <ul class="space-y-2.5">
+              <li><a href="news.html" class="text-white/60 hover:text-white text-sm transition-colors">News</a></li>
+              <li><a href="contact.html" class="text-white/60 hover:text-white text-sm transition-colors">Contact</a></li>
+              <li><a href="#section-downloads" class="text-white/60 hover:text-white text-sm transition-colors">Downloads</a></li>
+              <li><a href="#section-fees" class="text-white/60 hover:text-white text-sm transition-colors">Entry Fees</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white text-xs font-semibold uppercase tracking-widest mb-4">Contact</h4>
+            <ul class="space-y-2.5">
+              <li class="flex items-center gap-2 text-white/60 text-sm">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                roundhainanregatta@foxmail.com
+              </li>
+              <li class="flex items-center gap-2 text-white/60 text-sm">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                Sanya, Hainan, China
+              </li>
+              <li class="flex items-center gap-3 mt-3">
+                <a href="#" class="text-white/60 hover:text-white transition-colors" aria-label="WeChat"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+                <a href="#" class="text-white/60 hover:text-white transition-colors" aria-label="Weibo"><i data-lucide="globe" class="w-4 h-4"></i></a>
+                <a href="#" class="text-white/60 hover:text-white transition-colors" aria-label="Instagram"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3">
+          <p class="text-white/50 text-xs">© 2026 Round Hainan Regatta. All rights reserved.</p>
+          <p class="text-white/50 text-xs">Sanctioned by Chinese Yachting Association · World Sailing member</p>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+  <!-- @main-content:end -->
+
+  <script>lucide.createIcons();</script>
+  <script>
+    $(function () {
+      // Send Inquiry 按钮 - 打开默认邮件客户端撰写咨询邮件
+      // 后续应实现: 弹出咨询表单模态框，包含姓名/邮箱/组别选择/留言字段，
+      // 提交后调用邮件发送接口并展示成功提示
+      $('#btn-send-inquiry').on('click', function () {
+        console.log('Send Inquiry clicked - opening mailto to race committee');
+        window.location.href = 'mailto:roundhainanregatta@foxmail.com?subject=Entry Inquiry - 15th Round Hainan Regatta 2026';
+      });
+
+      // 下载 Entry Form (CTA区域和顶部下载区共用)
+      // 后续应实现: 调用后端接口获取最新版 Entry Form PDF 的 signed URL 并触发浏览器下载
+      $('#btn-download-entry-form-cta, #btn-download-entry-form').on('click', function (e) {
+        e.preventDefault();
+        console.log('需要调用第三方接口获取 Entry Form PDF 下载链接');
+      });
+
+      // 下载 Notice of Race
+      // 后续应实现: 获取 NoR 2026 PDF 的下载链接并触发下载，记录下载事件到分析平台
+      $('#btn-download-nor').on('click', function (e) {
+        e.preventDefault();
+        console.log('需要调用第三方接口获取 Notice of Race 2026 PDF 下载链接');
+      });
+
+      // 下载 Measurement Certificate Template
+      // 后续应实现: 获取测量证书模板 PDF 的下载链接并触发下载
+      $('#btn-download-measurement').on('click', function (e) {
+        e.preventDefault();
+        console.log('需要调用第三方接口获取 Measurement Certificate Template PDF 下载链接');
+      });
+
+      // 移动端菜单按钮
+      // 后续应实现: 展开/收起移动端全屏菜单抽屉，
+      // 1. 点击时切换菜单显示状态（fade in/out）；2. 打开时禁止 body 滚动；
+      // 3. 菜单内包含所有主导航链接的大字号版本；4. 点击链接后自动关闭菜单
+      $('#btn-mobile-menu').on('click', function () {
+        console.log('移动端菜单切换 - 需实现抽屉式导航菜单展开/收起');
+      });
+
+      // Class 卡片 "View Requirements" 链接 - 平滑滚动到 Eligibility 区域
+      $('#link-req-dubois50, #link-req-orc-full, #link-req-orc-half, #link-req-fareast28r').on('click', function (e) {
+        e.preventDefault();
+        const target = $('#section-eligibility');
+        if (target.length) {
+          $('html, body').animate({ scrollTop: target.offset().top - 64 }, 500);
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

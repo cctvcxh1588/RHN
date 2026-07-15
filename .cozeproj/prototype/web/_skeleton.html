@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>15th Round Hainan Regatta 2026</title>
+
+  <link href="https://lf-code-agent.coze.cn/obj/x-ai-cn/fonts/google/google-all-fonts.css" rel="stylesheet"/>
+
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/jquery/jquery-3.7.1.min.js"></script>
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/lucide/lucide-1.11.0.min.js"></script>
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/tailwindcss/tailwindcss-browser-4.2.4.min.js"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      /* === Brand Colors (from Round Hainan Regatta VI) === */
+      --color-primary:              #005BAB;
+      --color-primary-container:    #E6F0FA;
+      --color-on-primary:           #ffffff;
+      /* === Background / Surface === */
+      --color-background:                 #FFFFFF;
+      --color-surface-container-lowest:   #FFFFFF;
+      --color-surface:                    #FFFFFF;
+      --color-surface-container:          #EEF2F7;
+      --color-surface-container-high:     #E5EBF2;
+      --color-surface-container-highest:  #DBE3EC;
+      /* === Text === */
+      --color-on-surface:           #1A2332;
+      --color-on-surface-variant:   #5B6472;
+      /* === Functional === */
+      --color-success:  #22c55e;
+      --color-error:    #ef4444;
+      --color-warning:  #f59e0b;
+      /* === Border === */
+      --color-outline:          #C8D2DE;
+      --color-outline-variant:  #DDE4EC;
+      /* === Extended Brand === */
+      --color-primary-deep:     #003C7E;
+      --color-primary-bright:   #0096DF;
+      --color-accent-gold:      #F6AA00;
+      --color-accent-coral:     #DD0078;
+      --color-accent-yellow:    #FFE100;
+      /* === Radius === */
+      --radius-sm:   0.25rem;
+      --radius-md:   0.5rem;
+      --radius-lg:   0.75rem;
+      --radius-xl:   1rem;
+      --radius-2xl:  1.5rem;
+      --radius-full: 9999px;
+      /* === Shadow (Brand Blue tinted) === */
+      --shadow-card:   0 4px 20px rgba(0, 60, 126, 0.08);
+      --shadow-float:  0 10px 30px rgba(0, 60, 126, 0.12);
+      --shadow-dialog: 0 25px 50px rgba(0, 60, 126, 0.15);
+      /* === Font === */
+      --font-sans: "Inter", "Noto Sans SC", system-ui, sans-serif;
+      --font-display: "Playfair Display", "Noto Serif SC", Georgia, serif;
+    }
+  </style>
+
+  <!-- Image fallback -->
+  <script>
+    document.addEventListener('error', function (e) {
+      const img = e.target;
+      if (img.tagName !== 'IMG' || img.dataset.fallback) return;
+      img.dataset.fallback = '1';
+      const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const cat = img.getAttribute('data-category') || '其他';
+      const alt = img.getAttribute('alt') || '';
+      const label = esc(alt.length > 8 ? alt.slice(0, 8) + '…' : alt);
+      const icons = { '人物': '👤', '自然风景': '🏞', '动物': '🐾', '建筑城市': '🏙', '运动体育': '⚽', '交通工具': '🚗', '食物': '🍽', '服饰时尚': '👗', '商业科技': '💼', '游戏娱乐': '🎮', '艺术': '🎨', '其他': '🖼' };
+      const icon = icons[cat] || '🖼';
+      const w = img.width || 400, h = img.height || 300;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="100%" height="100%" fill="%23f3f4f6"/><text x="50%" y="45%" text-anchor="middle" font-size="${Math.min(w, h) * 0.18}" dominant-baseline="central">${icon}</text><text x="50%" y="68%" text-anchor="middle" font-size="${Math.min(w, h) * 0.07}" fill="%239ca3af" font-family="system-ui,sans-serif" dominant-baseline="central">${label}</text></svg>`;
+      img.src = 'data:image/svg+xml,' + svg;
+    }, true);
+  </script>
+</head>
+
+<body class="bg-background text-on-surface font-sans">
+
+  <!-- @nav:start Navigation, remove this section if not needed -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-primary-deep/95 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="home.html" class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-9 h-9 object-contain bg-white rounded-full p-1" />
+        <div class="leading-tight">
+          <div class="text-white font-bold text-sm tracking-wide">ROUND HAINAN REGATTA</div>
+          <div class="text-white/60 text-[10px] tracking-widest uppercase">15th Edition · 2026</div>
+        </div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="home.html" class="px-3 py-2 text-sm font-medium text-white bg-white/10 rounded-md" aria-current="page">Home</a>
+        <a href="about.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">The Race</a>
+        <a href="course.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Course</a>
+        <a href="schedule.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Schedule</a>
+        <a href="classes.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Classes</a>
+        <a href="news.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">News</a>
+        <a href="contact.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Contact</a>
+      </nav>
+      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 bg-accent-gold text-primary-deep px-4 py-2 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity">
+        Enter the Race
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+      <button class="lg:hidden text-white p-2" aria-label="Toggle menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </header>
+  <!-- @nav:end Navigation, remove this section if not needed -->
+
+  <!-- @main-content:start -->
+  <main class="max-w-7xl mx-auto">
+    <!-- Page content will be inserted here by sub-agents -->
+  </main>
+  <!-- @main-content:end -->
+
+  <script>lucide.createIcons();</script>
+</body>
+
+</html>

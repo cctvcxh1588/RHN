@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Race · 15th Round Hainan Regatta 2026</title>
+
+  <link href="https://lf-code-agent.coze.cn/obj/x-ai-cn/fonts/google/google-all-fonts.css" rel="stylesheet"/>
+
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/jquery/jquery-3.7.1.min.js"></script>
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/lucide/lucide-1.11.0.min.js"></script>
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/tailwindcss/tailwindcss-browser-4.2.4.min.js"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      /* === Brand Colors (from Round Hainan Regatta VI) === */
+      --color-primary:              #005BAB;
+      --color-primary-container:    #E6F0FA;
+      --color-on-primary:           #ffffff;
+      /* === Background / Surface === */
+      --color-background:                 #FFFFFF;
+      --color-surface-container-lowest:   #FFFFFF;
+      --color-surface:                    #FFFFFF;
+      --color-surface-container:          #EEF2F7;
+      --color-surface-container-high:     #E5EBF2;
+      --color-surface-container-highest:  #DBE3EC;
+      /* === Text === */
+      --color-on-surface:           #1A2332;
+      --color-on-surface-variant:   #5B6472;
+      /* === Functional === */
+      --color-success:  #22c55e;
+      --color-error:    #ef4444;
+      --color-warning:  #f59e0b;
+      /* === Border === */
+      --color-outline:          #C8D2DE;
+      --color-outline-variant:  #DDE4EC;
+      /* === Extended Brand === */
+      --color-primary-deep:     #003C7E;
+      --color-primary-bright:   #0096DF;
+      --color-accent-gold:      #F6AA00;
+      --color-accent-coral:     #DD0078;
+      --color-accent-yellow:    #FFE100;
+      /* === Radius === */
+      --radius-sm:   0.25rem;
+      --radius-md:   0.5rem;
+      --radius-lg:   0.75rem;
+      --radius-xl:   1rem;
+      --radius-2xl:  1.5rem;
+      --radius-full: 9999px;
+      /* === Shadow (Brand Blue tinted) === */
+      --shadow-card:   0 4px 20px rgba(0, 60, 126, 0.08);
+      --shadow-float:  0 10px 30px rgba(0, 60, 126, 0.12);
+      --shadow-dialog: 0 25px 50px rgba(0, 60, 126, 0.15);
+      /* === Font === */
+      --font-sans: "Inter", "Noto Sans SC", system-ui, sans-serif;
+      --font-display: "Playfair Display", "Noto Serif SC", Georgia, serif;
+    }
+  </style>
+
+  <!-- Image fallback -->
+  <script>
+    document.addEventListener('error', function (e) {
+      const img = e.target;
+      if (img.tagName !== 'IMG' || img.dataset.fallback) return;
+      img.dataset.fallback = '1';
+      const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const cat = img.getAttribute('data-category') || '其他';
+      const alt = img.getAttribute('alt') || '';
+      const label = esc(alt.length > 8 ? alt.slice(0, 8) + '…' : alt);
+      const icons = { '人物': '👤', '自然风景': '🏞', '动物': '🐾', '建筑城市': '🏙', '运动体育': '⚽', '交通工具': '🚗', '食物': '🍽', '服饰时尚': '👗', '商业科技': '💼', '游戏娱乐': '🎮', '艺术': '🎨', '其他': '🖼' };
+      const icon = icons[cat] || '🖼';
+      const w = img.width || 400, h = img.height || 300;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="100%" height="100%" fill="%23f3f4f6"/><text x="50%" y="45%" text-anchor="middle" font-size="${Math.min(w, h) * 0.18}" dominant-baseline="central">${icon}</text><text x="50%" y="68%" text-anchor="middle" font-size="${Math.min(w, h) * 0.07}" fill="%239ca3af" font-family="system-ui,sans-serif" dominant-baseline="central">${label}</text></svg>`;
+      img.src = 'data:image/svg+xml,' + svg;
+    }, true);
+  </script>
+</head>
+
+<body class="bg-background text-on-surface font-sans">
+
+  <!-- @nav:start Navigation, remove this section if not needed -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-primary-deep/95 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="home.html" class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-9 h-9 object-contain bg-white rounded-full p-1" />
+        <div class="leading-tight">
+          <div class="text-white font-bold text-sm tracking-wide">ROUND HAINAN REGATTA</div>
+          <div class="text-white/60 text-[10px] tracking-widest uppercase">15th Edition · 2026</div>
+        </div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="home.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Home</a>
+        <a href="about.html" class="px-3 py-2 text-sm font-medium text-white bg-white/10 rounded-md" aria-current="page">The Race</a>
+        <a href="course.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Course</a>
+        <a href="schedule.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Schedule</a>
+        <a href="classes.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Classes</a>
+        <a href="news.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">News</a>
+        <a href="contact.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Contact</a>
+      </nav>
+      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 bg-accent-gold text-primary-deep px-4 py-2 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity">
+        Enter the Race
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+      <button id="btn-mobile-menu" class="lg:hidden text-white p-2" aria-label="Toggle menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </header>
+  <!-- @nav:end Navigation, remove this section if not needed -->
+
+  <!-- @main-content:start -->
+  <main class="pt-16">
+
+    <!-- ============================================================ -->
+    <!-- 1) PAGE HERO (60vh) — Deep blue gradient + sail poster texture -->
+    <!-- ============================================================ -->
+    <section class="relative overflow-hidden text-white" style="height: 60vh; min-height: 480px;">
+      <!-- Background gradient -->
+      <div class="absolute inset-0 bg-gradient-to-br from-primary-deep via-primary to-primary-deep"></div>
+      <!-- Sail/ocean texture image, faded -->
+      <img src="https://images.unsplash.com/photo-1508615039623-a25605d2b022?w=1600&q=80"
+           alt="海面上迎风航行的帆船海报纹理" data-category="运动体育"
+           class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity" />
+      <!-- Dark vignette overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-primary-deep/80 via-transparent to-transparent"></div>
+      <!-- Decorative diagonal lines -->
+      <div class="absolute top-8 right-8 flex items-center gap-2 text-white/40 text-xs tracking-[0.3em] uppercase">
+        <span class="w-8 h-px bg-white/40"></span>
+        <span>Est. 2010</span>
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-6 h-full flex flex-col justify-center">
+        <div class="max-w-4xl">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-10 h-px bg-accent-gold"></span>
+            <span class="text-accent-gold text-xs font-semibold tracking-[0.3em] uppercase">About the Regatta</span>
+          </div>
+          <h1 class="font-display font-bold leading-[1.05] mb-6" style="font-size: clamp(3rem, 6vw, 4.5rem);">
+            China's Offshore<br/>
+            <span class="italic text-accent-gold">Sailing Legacy</span>
+          </h1>
+          <p class="text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed">
+            Fifteen years of ocean, wind, and glory around Hainan Island.
+          </p>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/60">
+          <span class="text-[10px] tracking-widest uppercase">Scroll</span>
+          <i data-lucide="chevron-down" class="w-4 h-4 animate-bounce"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 2) STORY SECTION — Two column: text + stacked images          -->
+    <!-- ============================================================ -->
+    <section class="py-32 bg-background">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+          <!-- Left column: Story text -->
+          <div class="lg:col-span-7">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-10 h-px bg-primary"></span>
+              <span class="text-primary text-xs font-semibold tracking-[0.3em] uppercase">Our Story</span>
+            </div>
+            <h2 class="font-display font-bold text-on-surface leading-[1.1] mb-10" style="font-size: clamp(2.25rem, 4vw, 3.5rem);">
+              From a national initiative to a <span class="italic text-primary">world-class regatta</span>.
+            </h2>
+
+            <p class="text-xl md:text-2xl font-semibold text-on-surface leading-relaxed mb-8">
+              Born from a nation's rediscovery of the sea, the Round Hainan Regatta has grown from a domestic sailing initiative into the defining offshore event of the South China coast.
+            </p>
+
+            <div class="space-y-6 text-base leading-relaxed text-on-surface-variant">
+              <p>
+                <strong class="text-on-surface font-semibold">Founded in 2010</strong> as a domestic sailing initiative under the vision of building Hainan into an international tourism island, the inaugural edition brought together twenty-three yachts and a handful of visionary skippers. What began as an experiment in offshore racing would soon become a national tradition.
+              </p>
+              <p>
+                By 2013, the regatta had earned its place on the <strong class="text-on-surface font-semibold">World Sailing calendar</strong>, drawing IRC and ORC-rated fleets from Hong Kong, Southeast Asia, Australia and Europe. International recognition came alongside rising domestic ambition — Chinese skippers and crews began sharpening their offshore craft against seasoned bluewater competitors.
+              </p>
+              <p>
+                The signature <strong class="text-on-surface font-semibold">680-nautical-mile course</strong> that circumnavigates Hainan Island has become the regatta's soul: eight days at sea, tradewind reaches along the eastern coast, tactical shifts through the Qiongzhou Strait, and long night watches under a canopy of stars over the Beibu Gulf.
+              </p>
+              <p>
+                Today, the Round Hainan Regatta is recognised as <strong class="text-on-surface font-semibold">China's premier offshore regatta</strong> — a proving ground for domestic talent, a magnet for international crews, and a fifteen-year celebration of the wind that has always shaped the fate of islands.
+              </p>
+            </div>
+
+            <div class="mt-12 flex flex-wrap gap-4">
+              <a id="btn-story-course" href="course.html" class="inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity">
+                Explore the Course
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+              <a id="btn-story-classes" href="classes.html" class="inline-flex items-center gap-2 bg-surface-container text-on-surface px-6 py-3 rounded-md text-sm font-semibold hover:bg-surface-container-high transition-colors">
+                View Race Classes
+              </a>
+            </div>
+          </div>
+
+          <!-- Right column: Stacked images + decorative year -->
+          <div class="lg:col-span-5 relative">
+            <!-- Decorative big year number behind image -->
+            <div class="absolute -top-8 -right-4 font-display font-bold text-primary/5 leading-none pointer-events-none select-none" style="font-size: clamp(9rem, 14vw, 16rem);">
+              2010
+            </div>
+
+            <!-- Top image -->
+            <div class="relative z-10">
+              <img src="https://images.unsplash.com/photo-1534854638093-bada1813ca19?w=800&q=80"
+                   alt="蓝色海面上倾斜航行的帆船特写" data-category="运动体育"
+                   class="w-full h-96 object-cover rounded-lg shadow-float" />
+              <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-md">
+                <span class="text-[10px] font-semibold tracking-widest uppercase text-primary-deep">Inaugural · 2010</span>
+              </div>
+            </div>
+
+            <!-- Bottom image, offset -->
+            <div class="relative z-10 mt-6 ml-12">
+              <img src="https://images.unsplash.com/photo-1520637836862-4d197d17c93a?w=800&q=80"
+                   alt="停泊在港口内的多艘白色帆船" data-category="交通工具"
+                   class="w-full h-80 object-cover rounded-lg shadow-float" />
+              <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-md">
+                <span class="text-[10px] font-semibold tracking-widest uppercase text-primary-deep">Sanya Harbour</span>
+              </div>
+            </div>
+
+            <!-- Small caption card -->
+            <div class="relative z-10 mt-6 ml-12 bg-primary-deep text-white p-6 rounded-lg shadow-card">
+              <div class="flex items-start gap-3">
+                <i data-lucide="quote" class="w-6 h-6 text-accent-gold shrink-0"></i>
+                <p class="text-sm leading-relaxed italic">
+                  "An island, a fleet, a horizon — the shape of Chinese offshore sailing was drawn here."
+                </p>
+              </div>
+              <div class="mt-4 text-[10px] tracking-widest uppercase text-white/60">— Regatta Journal, 2020</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 3) TIMELINE OF EDITIONS — Horizontal, py-20                    -->
+    <!-- ============================================================ -->
+    <section class="py-20 bg-surface-container">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="text-center mb-16 max-w-3xl mx-auto">
+          <div class="flex items-center justify-center gap-3 mb-6">
+            <span class="w-10 h-px bg-accent-gold"></span>
+            <span class="text-primary text-xs font-semibold tracking-[0.3em] uppercase">Milestones</span>
+            <span class="w-10 h-px bg-accent-gold"></span>
+          </div>
+          <h2 class="font-display font-bold text-on-surface leading-[1.1]" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+            A Journey Through <span class="italic text-primary">15 Editions</span>
+          </h2>
+        </div>
+
+        <!-- Horizontal timeline -->
+        <div class="relative">
+          <!-- The line -->
+          <div class="hidden md:block absolute top-6 left-0 right-0 h-px bg-outline-variant"></div>
+          <!-- Gold progress overlay -->
+          <div class="hidden md:block absolute top-6 left-0 h-px bg-accent-gold" style="width: 100%;"></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-6 relative">
+
+            <!-- 时间线-节点1 2010 -->
+            <div class="text-center">
+              <div class="flex justify-center mb-6">
+                <div class="w-4 h-4 rounded-full bg-accent-gold ring-4 ring-surface-container shadow-md relative z-10"></div>
+              </div>
+              <div class="font-display font-bold text-primary-deep leading-none mb-3" style="font-size: 3rem;">2010</div>
+              <div class="text-sm font-semibold text-on-surface mb-1">Inaugural Edition</div>
+              <p class="text-xs text-on-surface-variant leading-relaxed">23 yachts launched from Sanya — the first domestic offshore regatta of its kind.</p>
+            </div>
+
+            <!-- 时间线-节点2 2013 -->
+            <div class="text-center">
+              <div class="flex justify-center mb-6">
+                <div class="w-4 h-4 rounded-full bg-accent-gold ring-4 ring-surface-container shadow-md relative z-10"></div>
+              </div>
+              <div class="font-display font-bold text-primary-deep leading-none mb-3" style="font-size: 3rem;">2013</div>
+              <div class="text-sm font-semibold text-on-surface mb-1">World Sailing Calendar</div>
+              <p class="text-xs text-on-surface-variant leading-relaxed">Officially recognised by World Sailing and joined the international offshore circuit.</p>
+            </div>
+
+            <!-- 时间线-节点3 2016 -->
+            <div class="text-center">
+              <div class="flex justify-center mb-6">
+                <div class="w-4 h-4 rounded-full bg-accent-gold ring-4 ring-surface-container shadow-md relative z-10"></div>
+              </div>
+              <div class="font-display font-bold text-primary-deep leading-none mb-3" style="font-size: 3rem;">2016</div>
+              <div class="text-sm font-semibold text-on-surface mb-1">International Fleet</div>
+              <p class="text-xs text-on-surface-variant leading-relaxed">Crews from 15 nations converged — a milestone for cross-border participation.</p>
+            </div>
+
+            <!-- 时间线-节点4 2020 -->
+            <div class="text-center">
+              <div class="flex justify-center mb-6">
+                <div class="w-4 h-4 rounded-full bg-accent-gold ring-4 ring-surface-container shadow-md relative z-10"></div>
+              </div>
+              <div class="font-display font-bold text-primary-deep leading-none mb-3" style="font-size: 3rem;">2020</div>
+              <div class="text-sm font-semibold text-on-surface mb-1">10th Anniversary</div>
+              <p class="text-xs text-on-surface-variant leading-relaxed">A decade celebrated at sea — reflecting on ten years of Chinese offshore heritage.</p>
+            </div>
+
+            <!-- 时间线-节点5 2026 (highlighted) -->
+            <div class="text-center relative">
+              <!-- Highlighted glow card -->
+              <div class="absolute inset-0 -mx-3 -my-4 bg-gradient-to-b from-accent-gold/15 to-transparent rounded-xl -z-0"></div>
+              <div class="relative">
+                <div class="flex justify-center mb-6">
+                  <div class="w-6 h-6 rounded-full bg-accent-gold ring-4 ring-surface-container shadow-lg relative z-10 flex items-center justify-center">
+                    <i data-lucide="star" class="w-3 h-3 text-primary-deep"></i>
+                  </div>
+                </div>
+                <div class="font-display font-bold text-accent-gold leading-none mb-3" style="font-size: 3.25rem;">2026</div>
+                <div class="text-sm font-bold text-primary-deep mb-1">15th Edition</div>
+                <p class="text-xs text-on-surface leading-relaxed">A landmark edition — bigger fleet, expanded international presence, live global broadcast.</p>
+                <span class="inline-flex items-center gap-1 mt-3 px-2 py-0.5 rounded-sm text-[10px] font-semibold bg-accent-gold text-primary-deep">
+                  <i data-lucide="sparkles" class="w-3 h-3"></i> UPCOMING
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 4) STATISTICS GRID — 2x3, oversized numbers                    -->
+    <!-- ============================================================ -->
+    <section class="py-32 bg-background">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="mb-16 max-w-3xl">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-10 h-px bg-primary"></span>
+            <span class="text-primary text-xs font-semibold tracking-[0.3em] uppercase">By the Numbers</span>
+          </div>
+          <h2 class="font-display font-bold text-on-surface leading-[1.1]" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+            Fifteen years, measured in <span class="italic text-primary">wind and water</span>.
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-outline-variant/30 rounded-2xl overflow-hidden">
+
+          <!-- 统计-1 Editions -->
+          <div class="bg-background p-10 lg:p-12 flex flex-col justify-between min-h-[220px] hover:bg-surface-container/40 transition-colors">
+            <div class="flex items-start justify-between">
+              <div>
+                <div class="font-display font-bold text-primary-deep leading-none" style="font-size: clamp(4rem, 7vw, 6rem);">15</div>
+                <div class="text-sm font-semibold text-on-surface mt-3">Editions</div>
+              </div>
+              <i data-lucide="trophy" class="w-6 h-6 text-accent-gold"></i>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed mt-6">Consecutive years of offshore racing since 2010.</p>
+          </div>
+
+          <!-- 统计-2 NM Course -->
+          <div class="bg-background p-10 lg:p-12 flex flex-col justify-between min-h-[220px] hover:bg-surface-container/40 transition-colors">
+            <div class="flex items-start justify-between">
+              <div>
+                <div class="font-display font-bold text-primary-deep leading-none" style="font-size: clamp(4rem, 7vw, 6rem);">680</div>
+                <div class="text-sm font-semibold text-on-surface mt-3">NM Course</div>
+              </div>
+              <i data-lucide="compass" class="w-6 h-6 text-accent-gold"></i>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed mt-6">Nautical miles circumnavigating Hainan Island.</p>
+          </div>
+
+          <!-- 统计-3 Countries -->
+          <div class="bg-background p-10 lg:p-12 flex flex-col justify-between min-h-[220px] hover:bg-surface-container/40 transition-colors">
+            <div class="flex items-start justify-between">
+              <div>
+                <div class="font-display font-bold text-primary-deep leading-none" style="font-size: clamp(4rem, 7vw, 6rem);">20<span class="text-primary-bright">+</span></div>
+                <div class="text-sm font-semibold text-on-surface mt-3">Countries</div>
+              </div>
+              <i data-lucide="globe-2" class="w-6 h-6 text-accent-gold"></i>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed mt-6">Nations represented by sailors across editions.</p>
+          </div>
+
+          <!-- 统计-4 Yachts -->
+          <div class="bg-background p-10 lg:p-12 flex flex-col justify-between min-h-[220px] hover:bg-surface-container/40 transition-colors">
+            <div class="flex items-start justify-between">
+              <div>
+                <div class="font-display font-bold text-primary-deep leading-none" style="font-size: clamp(4rem, 7vw, 6rem);">100<span class="text-primary-bright">+</span></div>
+                <div class="text-sm font-semibold text-on-surface mt-3">Yachts (all-time)</div>
+              </div>
+              <i data-lucide="sailboat" class="w-6 h-6 text-accent-gold"></i>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed mt-6">Cumulative yachts entered since the inaugural edition.</p>
+          </div>
+
+          <!-- 统计-5 Race Days -->
+          <div class="bg-background p-10 lg:p-12 flex flex-col justify-between min-h-[220px] hover:bg-surface-container/40 transition-colors">
+            <div class="flex items-start justify-between">
+              <div>
+                <div class="font-display font-bold text-primary-deep leading-none" style="font-size: clamp(4rem, 7vw, 6rem);">8</div>
+                <div class="text-sm font-semibold text-on-surface mt-3">Race Days</div>
+              </div>
+              <i data-lucide="calendar-days" class="w-6 h-6 text-accent-gold"></i>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed mt-6">From start gun in Sanya to prize-giving ceremony.</p>
+          </div>
+
+          <!-- 统计-6 Sailors -->
+          <div class="bg-background p-10 lg:p-12 flex flex-col justify-between min-h-[220px] hover:bg-surface-container/40 transition-colors">
+            <div class="flex items-start justify-between">
+              <div>
+                <div class="font-display font-bold text-primary-deep leading-none" style="font-size: clamp(4rem, 7vw, 6rem);">1000<span class="text-primary-bright">+</span></div>
+                <div class="text-sm font-semibold text-on-surface mt-3">Sailors (cumulative)</div>
+              </div>
+              <i data-lucide="users" class="w-6 h-6 text-accent-gold"></i>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed mt-6">Total crew who have raced these waters since 2010.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 5) RACE SIGNIFICANCE — 3-column value props                   -->
+    <!-- ============================================================ -->
+    <section class="py-32 bg-primary-deep text-white relative overflow-hidden">
+      <!-- Faint texture -->
+      <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1600&q=80"
+           alt="夜幕下深蓝海面的抽象纹理" data-category="自然风景"
+           class="absolute inset-0 w-full h-full object-cover opacity-10 mix-blend-luminosity" />
+      <div class="absolute inset-0 bg-gradient-to-b from-primary-deep/80 via-primary-deep to-primary-deep"></div>
+
+      <div class="relative max-w-7xl mx-auto px-6">
+
+        <div class="text-center mb-20 max-w-3xl mx-auto">
+          <div class="flex items-center justify-center gap-3 mb-6">
+            <span class="w-10 h-px bg-accent-gold"></span>
+            <span class="text-accent-gold text-xs font-semibold tracking-[0.3em] uppercase">Why It Matters</span>
+            <span class="w-10 h-px bg-accent-gold"></span>
+          </div>
+          <h2 class="font-display font-bold leading-[1.1]" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+            More than a race — <span class="italic text-accent-gold">a legacy in motion</span>.
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+
+          <!-- 价值-1 Competitive Excellence -->
+          <div class="group">
+            <div class="w-16 h-16 rounded-2xl bg-accent-gold/15 text-accent-gold flex items-center justify-center mb-8 group-hover:bg-accent-gold group-hover:text-primary-deep transition-colors">
+              <i data-lucide="trophy" class="w-8 h-8"></i>
+            </div>
+            <div class="text-[10px] font-semibold tracking-widest uppercase text-accent-gold mb-3">01 — Sport</div>
+            <h3 class="font-display font-bold text-2xl md:text-3xl mb-4 leading-tight">Competitive Excellence</h3>
+            <p class="text-sm text-white/70 leading-relaxed">
+              Elite offshore racing under IRC and ORC ratings, benchmarking Chinese crews against the world's most seasoned bluewater sailors. Every mile counts, every tack tested.
+            </p>
+          </div>
+
+          <!-- 价值-2 Cultural Celebration -->
+          <div class="group">
+            <div class="w-16 h-16 rounded-2xl bg-accent-gold/15 text-accent-gold flex items-center justify-center mb-8 group-hover:bg-accent-gold group-hover:text-primary-deep transition-colors">
+              <i data-lucide="landmark" class="w-8 h-8"></i>
+            </div>
+            <div class="text-[10px] font-semibold tracking-widest uppercase text-accent-gold mb-3">02 — Heritage</div>
+            <h3 class="font-display font-bold text-2xl md:text-3xl mb-4 leading-tight">Cultural Celebration</h3>
+            <p class="text-sm text-white/70 leading-relaxed">
+              A showcase of Hainan's maritime heritage — from centuries-old fishing traditions to the modern rise of China's tropical yachting capital. Every port of call tells a story.
+            </p>
+          </div>
+
+          <!-- 价值-3 International Community -->
+          <div class="group">
+            <div class="w-16 h-16 rounded-2xl bg-accent-gold/15 text-accent-gold flex items-center justify-center mb-8 group-hover:bg-accent-gold group-hover:text-primary-deep transition-colors">
+              <i data-lucide="globe" class="w-8 h-8"></i>
+            </div>
+            <div class="text-[10px] font-semibold tracking-widest uppercase text-accent-gold mb-3">03 — Community</div>
+            <h3 class="font-display font-bold text-2xl md:text-3xl mb-4 leading-tight">International Community</h3>
+            <p class="text-sm text-white/70 leading-relaxed">
+              Sailors from around the world converge on Sanya each spring — a diverse fleet united by wind, salt and a shared devotion to offshore racing at its most demanding.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 6) TESTIMONIAL — Large italic pull quote                       -->
+    <!-- ============================================================ -->
+    <section class="py-32 bg-background">
+      <div class="max-w-5xl mx-auto px-6 text-center">
+
+        <i data-lucide="quote" class="w-14 h-14 text-accent-gold mx-auto mb-10"></i>
+
+        <blockquote class="font-display italic text-on-surface leading-[1.25]" style="font-size: clamp(1.75rem, 3.5vw, 3rem);">
+          "Round Hainan is not just a race — it's a communion with an ocean you thought you knew."
+        </blockquote>
+
+        <div class="mt-12 flex flex-col items-center gap-3">
+          <div class="w-12 h-px bg-accent-gold"></div>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-primary-deep text-white flex items-center justify-center font-display font-bold text-lg">
+              JM
+            </div>
+            <div class="text-left">
+              <div class="text-sm font-semibold text-on-surface">A Veteran Skipper</div>
+              <div class="text-xs text-on-surface-variant tracking-wide">Six-time Round Hainan competitor · Class IRC-A</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 7) CTA — Join the 15th Edition                                 -->
+    <!-- ============================================================ -->
+    <section class="py-24 bg-surface-container">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="bg-gradient-to-br from-primary-deep via-primary to-primary-deep rounded-2xl p-12 lg:p-16 text-white relative overflow-hidden shadow-float">
+
+          <!-- Decorative rings -->
+          <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full border border-white/10"></div>
+          <div class="absolute -top-16 -right-16 w-56 h-56 rounded-full border border-white/10"></div>
+
+          <div class="relative grid grid-cols-1 md:grid-cols-5 gap-10 items-center">
+            <div class="md:col-span-3">
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-10 h-px bg-accent-gold"></span>
+                <span class="text-accent-gold text-xs font-semibold tracking-[0.3em] uppercase">2026 · Sanya</span>
+              </div>
+              <h2 class="font-display font-bold leading-[1.1] mb-5" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+                Join the <span class="italic text-accent-gold">15th Edition</span>.
+              </h2>
+              <p class="text-base md:text-lg text-white/80 leading-relaxed max-w-xl">
+                Registration for the 2026 Round Hainan Regatta is now open. Take your place in the fleet that has defined Chinese offshore sailing for fifteen years.
+              </p>
+            </div>
+            <div class="md:col-span-2 flex flex-col gap-3">
+              <a id="btn-cta-register" href="contact.html?intent=register" class="inline-flex items-center justify-center gap-2 bg-accent-gold text-primary-deep px-6 py-4 rounded-md text-sm font-bold hover:opacity-90 transition-opacity">
+                Register Your Yacht
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+              <a id="btn-cta-contact" href="contact.html" class="inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/20 px-6 py-4 rounded-md text-sm font-semibold hover:bg-white/20 transition-colors">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                Contact Race Office
+              </a>
+              <a id="btn-cta-schedule" href="schedule.html" class="text-center text-xs text-white/60 hover:text-white transition-colors mt-1">
+                View full schedule →
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER — Consistent with home page                             -->
+    <!-- ============================================================ -->
+    <footer class="bg-primary-deep text-white pt-20 pb-8">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+
+          <!-- Brand -->
+          <div class="md:col-span-4">
+            <div class="flex items-center gap-3 mb-5">
+              <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-10 h-10 object-contain bg-white rounded-full p-1" />
+              <div>
+                <div class="font-bold text-sm tracking-wide">ROUND HAINAN REGATTA</div>
+                <div class="text-white/50 text-[10px] tracking-widest uppercase">15th Edition · 2026</div>
+              </div>
+            </div>
+            <p class="text-sm text-white/60 leading-relaxed max-w-sm">
+              China's premier offshore sailing event — 680 nautical miles, eight race days, one legendary island.
+            </p>
+            <div class="flex items-center gap-3 mt-6">
+              <a id="link-social-instagram" href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors">
+                <i data-lucide="instagram" class="w-4 h-4"></i>
+              </a>
+              <a id="link-social-facebook" href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors">
+                <i data-lucide="facebook" class="w-4 h-4"></i>
+              </a>
+              <a id="link-social-youtube" href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors">
+                <i data-lucide="youtube" class="w-4 h-4"></i>
+              </a>
+              <a id="link-social-weibo" href="#" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors">
+                <i data-lucide="globe" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Race links -->
+          <div class="md:col-span-2">
+            <h4 class="text-[10px] font-semibold tracking-widest uppercase text-accent-gold mb-5">The Race</h4>
+            <ul class="space-y-3 text-sm text-white/70">
+              <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+              <li><a href="course.html" class="hover:text-white transition-colors">Course</a></li>
+              <li><a href="schedule.html" class="hover:text-white transition-colors">Schedule</a></li>
+              <li><a href="classes.html" class="hover:text-white transition-colors">Classes</a></li>
+            </ul>
+          </div>
+
+          <div class="md:col-span-2">
+            <h4 class="text-[10px] font-semibold tracking-widest uppercase text-accent-gold mb-5">Newsroom</h4>
+            <ul class="space-y-3 text-sm text-white/70">
+              <li><a href="news.html" class="hover:text-white transition-colors">Latest News</a></li>
+              <li><a href="news.html" class="hover:text-white transition-colors">Press Kit</a></li>
+              <li><a href="news.html" class="hover:text-white transition-colors">Media Enquiries</a></li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="md:col-span-4">
+            <h4 class="text-[10px] font-semibold tracking-widest uppercase text-accent-gold mb-5">Race Bulletins</h4>
+            <p class="text-sm text-white/60 leading-relaxed mb-4">
+              Get the official newsletter — course updates, weather briefings, and stories from the fleet.
+            </p>
+            <form id="form-newsletter" class="flex gap-2">
+              <input id="input-newsletter-email" type="email" placeholder="your@email.com"
+                     class="flex-1 bg-white/10 border-none rounded-md px-3 py-2.5 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-accent-gold/50 transition-colors" />
+              <button id="btn-newsletter-submit" type="submit" class="bg-accent-gold text-primary-deep px-4 py-2.5 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity">
+                Subscribe
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+        <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/50">
+          <div>© 2026 Round Hainan International Regatta. All rights reserved.</div>
+          <div class="flex items-center gap-6">
+            <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition-colors">Terms of Use</a>
+            <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+  </main>
+  <!-- @main-content:end -->
+
+  <script>
+    lucide.createIcons();
+
+    $(function () {
+
+      // Mobile menu toggle - 移动端菜单按钮
+      // 点击后应实现：
+      // 1. 从右侧滑入一个覆盖屏幕的抽屉菜单，包含 Home / The Race / Course / Schedule / Classes / News / Contact 完整菜单
+      // 2. 抽屉内部提供关闭按钮（X 图标），点击关闭抽屉
+      // 3. 点击菜单项后自动关闭抽屉并跳转到目标页面
+      // 4. 抽屉展开时，body 添加 overflow-hidden 防止背景滚动
+      $('#btn-mobile-menu').on('click', function () {
+        console.log('需要实现：打开移动端导航抽屉');
+      });
+
+      // Newsletter subscribe form - 邮件订阅表单
+      // 点击后应实现：
+      // 1. 校验邮箱格式，若不合法显示红色错误提示
+      // 2. 提交到后端订阅 API（此处为原型，仅打印日志）
+      // 3. 成功后将 input 替换为绿色 "✓ Subscribed" 提示卡片
+      // 4. 3 秒后恢复表单
+      $('#form-newsletter').on('submit', function (e) {
+        e.preventDefault();
+        var email = $('#input-newsletter-email').val();
+        console.log('需要调用第三方接口实现邮件订阅功能，邮箱:', email);
+      });
+
+      // CTA schedule link (already handled by href, but log for demo)
+      $('#btn-cta-schedule').on('click', function () {
+        console.log('跳转到赛程页面');
+      });
+
+    });
+  </script>
+</body>
+
+</html>

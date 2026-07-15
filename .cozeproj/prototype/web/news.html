@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News & Media · 15th Round Hainan Regatta 2026</title>
+
+  <link href="https://lf-code-agent.coze.cn/obj/x-ai-cn/fonts/google/google-all-fonts.css" rel="stylesheet"/>
+
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/jquery/jquery-3.7.1.min.js"></script>
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/lucide/lucide-1.11.0.min.js"></script>
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/tailwindcss/tailwindcss-browser-4.2.4.min.js"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      /* === Brand Colors (from Round Hainan Regatta VI) === */
+      --color-primary:              #005BAB;
+      --color-primary-container:    #E6F0FA;
+      --color-on-primary:           #ffffff;
+      /* === Background / Surface === */
+      --color-background:                 #FFFFFF;
+      --color-surface-container-lowest:   #FFFFFF;
+      --color-surface:                    #FFFFFF;
+      --color-surface-container:          #EEF2F7;
+      --color-surface-container-high:     #E5EBF2;
+      --color-surface-container-highest:  #DBE3EC;
+      /* === Text === */
+      --color-on-surface:           #1A2332;
+      --color-on-surface-variant:   #5B6472;
+      /* === Functional === */
+      --color-success:  #22c55e;
+      --color-error:    #ef4444;
+      --color-warning:  #f59e0b;
+      /* === Border === */
+      --color-outline:          #C8D2DE;
+      --color-outline-variant:  #DDE4EC;
+      /* === Extended Brand === */
+      --color-primary-deep:     #003C7E;
+      --color-primary-bright:   #0096DF;
+      --color-accent-gold:      #F6AA00;
+      --color-accent-coral:     #DD0078;
+      --color-accent-yellow:    #FFE100;
+      /* === Radius === */
+      --radius-sm:   0.25rem;
+      --radius-md:   0.5rem;
+      --radius-lg:   0.75rem;
+      --radius-xl:   1rem;
+      --radius-2xl:  1.5rem;
+      --radius-full: 9999px;
+      /* === Shadow (Brand Blue tinted) === */
+      --shadow-card:   0 4px 20px rgba(0, 60, 126, 0.08);
+      --shadow-float:  0 10px 30px rgba(0, 60, 126, 0.12);
+      --shadow-dialog: 0 25px 50px rgba(0, 60, 126, 0.15);
+      /* === Font === */
+      --font-sans: "Inter", "Noto Sans SC", system-ui, sans-serif;
+      --font-display: "Playfair Display", "Noto Serif SC", Georgia, serif;
+    }
+  </style>
+
+  <!-- Image fallback -->
+  <script>
+    document.addEventListener('error', function (e) {
+      const img = e.target;
+      if (img.tagName !== 'IMG' || img.dataset.fallback) return;
+      img.dataset.fallback = '1';
+      const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const cat = img.getAttribute('data-category') || '其他';
+      const alt = img.getAttribute('alt') || '';
+      const label = esc(alt.length > 8 ? alt.slice(0, 8) + '…' : alt);
+      const icons = { '人物': '👤', '自然风景': '🏞', '动物': '🐾', '建筑城市': '🏙', '运动体育': '⚽', '交通工具': '🚗', '食物': '🍽', '服饰时尚': '👗', '商业科技': '💼', '游戏娱乐': '🎮', '艺术': '🎨', '其他': '🖼' };
+      const icon = icons[cat] || '🖼';
+      const w = img.width || 400, h = img.height || 300;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="100%" height="100%" fill="%23f3f4f6"/><text x="50%" y="45%" text-anchor="middle" font-size="${Math.min(w, h) * 0.18}" dominant-baseline="central">${icon}</text><text x="50%" y="68%" text-anchor="middle" font-size="${Math.min(w, h) * 0.07}" fill="%239ca3af" font-family="system-ui,sans-serif" dominant-baseline="central">${label}</text></svg>`;
+      img.src = 'data:image/svg+xml,' + svg;
+    }, true);
+  </script>
+</head>
+
+<body class="bg-background text-on-surface font-sans">
+
+  <!-- @nav:start Navigation, remove this section if not needed -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-primary-deep/95 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="home.html" class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-9 h-9 object-contain bg-white rounded-full p-1" />
+        <div class="leading-tight">
+          <div class="text-white font-bold text-sm tracking-wide">ROUND HAINAN REGATTA</div>
+          <div class="text-white/60 text-[10px] tracking-widest uppercase">15th Edition · 2026</div>
+        </div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="home.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Home</a>
+        <a href="about.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">The Race</a>
+        <a href="course.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Course</a>
+        <a href="schedule.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Schedule</a>
+        <a href="classes.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Classes</a>
+        <a href="news.html" class="px-3 py-2 text-sm font-medium text-white bg-white/10 rounded-md" aria-current="page">News</a>
+        <a href="contact.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Contact</a>
+      </nav>
+      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 bg-accent-gold text-primary-deep px-4 py-2 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity">
+        Enter the Race
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+      <button id="btn-mobile-menu" class="lg:hidden text-white p-2" aria-label="Toggle menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </header>
+  <!-- @nav:end Navigation, remove this section if not needed -->
+
+  <!-- @main-content:start -->
+  <main class="max-w-7xl mx-auto pt-16">
+    <!-- ============ SECTION 1: Page Hero (40vh) ============ -->
+    <section class="relative -mx-[max(0px,calc((100vw-80rem)/2))] h-[40vh] min-h-[320px] overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=1920&q=80"
+           alt="帆船比赛远景蔚蓝海面"
+           data-category="运动体育"
+           class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary-deep/90 via-primary-deep/70 to-primary-deep/40"></div>
+      <div class="relative max-w-7xl mx-auto h-full px-6 flex flex-col justify-center">
+        <div class="inline-flex items-center gap-2 mb-3">
+          <span class="w-8 h-px bg-accent-gold"></span>
+          <span class="text-accent-gold text-xs font-semibold tracking-[0.25em] uppercase">News & Media</span>
+        </div>
+        <h1 class="font-display text-white text-5xl md:text-6xl font-bold leading-[1.05] max-w-3xl">
+          Stories from the Water
+        </h1>
+        <p class="mt-4 text-white/80 text-lg max-w-2xl leading-relaxed">
+          Latest updates, race reports, and photography from the Round Hainan Regatta.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ SECTION 2: Featured Article ============ -->
+    <section class="px-6 pt-16 pb-8">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-8 h-px bg-accent-gold"></span>
+            <span class="text-primary text-xs font-semibold tracking-[0.25em] uppercase">Featured Story</span>
+          </div>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-on-surface">Editor's Pick</h2>
+        </div>
+        <a href="news.html" class="hidden md:inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-deep transition-colors">
+          View All Stories <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <article class="grid grid-cols-1 md:grid-cols-3 gap-0 bg-surface rounded-xl shadow-card overflow-hidden">
+        <!-- 2/3 图片 -->
+        <div class="md:col-span-2 relative aspect-[16/10] md:aspect-auto md:min-h-[420px]">
+          <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1600&q=80"
+               alt="国际帆船船队在海南海域集结备赛"
+               data-category="运动体育"
+               class="absolute inset-0 w-full h-full object-cover" />
+          <div class="absolute top-4 left-4">
+            <span class="inline-flex items-center px-3 py-1 rounded-sm text-[11px] font-bold tracking-widest uppercase bg-accent-gold text-primary-deep">Race Preview</span>
+          </div>
+        </div>
+        <!-- 1/3 文字 -->
+        <div class="md:col-span-1 p-8 flex flex-col justify-between">
+          <div>
+            <h3 class="font-display text-[28px] md:text-[32px] leading-tight font-bold text-on-surface">
+              15th Round Hainan Regatta Draws International Fleet
+            </h3>
+            <p class="mt-4 text-sm text-on-surface-variant leading-relaxed">
+              With entries from 18 countries confirmed and the fleet approaching 80 boats, the November 2026 edition is on pace to become the largest and most competitive Round Hainan Regatta in the event's history.
+            </p>
+            <p class="mt-3 text-sm text-on-surface-variant leading-relaxed">
+              Notable arrivals include defending IRC champions from Hong Kong, a strong Filipino contingent in the ORC division, and first-time entries from Australia and New Zealand crossing the equator for tropical racing.
+            </p>
+          </div>
+          <div class="mt-6 pt-5 border-t border-outline-variant/40">
+            <div class="flex items-center gap-3 text-xs text-on-surface-variant mb-4">
+              <span class="inline-flex items-center gap-1.5"><i data-lucide="calendar" class="w-3.5 h-3.5"></i>Oct 12, 2026</span>
+              <span class="text-outline">·</span>
+              <span class="inline-flex items-center gap-1.5"><i data-lucide="user" class="w-3.5 h-3.5"></i>Marina Chen</span>
+              <span class="text-outline">·</span>
+              <span class="inline-flex items-center gap-1.5"><i data-lucide="clock" class="w-3.5 h-3.5"></i>6 min</span>
+            </div>
+            <a href="#" id="news-featured-link" data-id="featured-01" class="inline-flex items-center gap-2 text-primary text-sm font-semibold hover:gap-3 transition-all">
+              Read Full Story <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ SECTION 3: News Grid ============ -->
+    <section class="px-6 py-12">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-8 h-px bg-accent-gold"></span>
+            <span class="text-primary text-xs font-semibold tracking-[0.25em] uppercase">Latest News</span>
+          </div>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-on-surface">All Stories</h2>
+        </div>
+        <!-- 分类筛选 -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="filter-btn px-3 py-1.5 rounded-md text-xs font-medium bg-primary text-white transition-colors" data-filter="all">All</button>
+          <button class="filter-btn px-3 py-1.5 rounded-md text-xs font-medium bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" data-filter="race-report">Race Report</button>
+          <button class="filter-btn px-3 py-1.5 rounded-md text-xs font-medium bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" data-filter="preview">Preview</button>
+          <button class="filter-btn px-3 py-1.5 rounded-md text-xs font-medium bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" data-filter="interview">Interview</button>
+          <button class="filter-btn px-3 py-1.5 rounded-md text-xs font-medium bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" data-filter="media">Media Release</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- 列表-新闻卡片 1: Interview -->
+        <article class="group bg-surface rounded-lg shadow-card overflow-hidden hover:shadow-float transition-shadow">
+          <a href="#" class="news-card-link block" data-id="news-01">
+            <div class="relative aspect-[16/10] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800&q=80"
+                   alt="女性帆船运动员在甲板上准备"
+                   data-category="人物"
+                   class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-3 left-3 inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-widest uppercase bg-accent-coral text-white">Interview</span>
+            </div>
+            <div class="p-5">
+              <div class="text-xs text-on-surface-variant mb-2">Oct 08, 2026</div>
+              <h3 class="font-semibold text-base text-on-surface leading-snug line-clamp-3 min-h-[3.75rem]">
+                Champion Skipper Yang Xiaoli Returns to Sanya for Title Defense
+              </h3>
+              <p class="mt-2 text-sm text-on-surface-variant leading-relaxed line-clamp-2">
+                Reigning IRC champion Yang Xiaoli talks preparation, crew chemistry, and why the Round Hainan course remains the ultimate test in Asian offshore racing.
+              </p>
+              <span class="mt-3 inline-flex items-center gap-1 text-primary text-sm font-semibold group-hover:gap-2 transition-all">
+                Read More <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </span>
+            </div>
+          </a>
+        </article>
+
+        <!-- 列表-新闻卡片 2: Media Release -->
+        <article class="group bg-surface rounded-lg shadow-card overflow-hidden hover:shadow-float transition-shadow">
+          <a href="#" class="news-card-link block" data-id="news-02">
+            <div class="relative aspect-[16/10] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1520637836862-4d197d17c55a?w=800&q=80"
+                   alt="海面上多艘帆船正在竞速"
+                   data-category="运动体育"
+                   class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-3 left-3 inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-widest uppercase bg-primary text-white">Media Release</span>
+            </div>
+            <div class="p-5">
+              <div class="text-xs text-on-surface-variant mb-2">Oct 05, 2026</div>
+              <h3 class="font-semibold text-base text-on-surface leading-snug line-clamp-3 min-h-[3.75rem]">
+                Notice of Race Officially Released for 2026 Edition
+              </h3>
+              <p class="mt-2 text-sm text-on-surface-variant leading-relaxed line-clamp-2">
+                The official Notice of Race document is now available, outlining eligibility, class divisions, rating rules, and the amended offshore safety category requirements.
+              </p>
+              <span class="mt-3 inline-flex items-center gap-1 text-primary text-sm font-semibold group-hover:gap-2 transition-all">
+                Read More <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </span>
+            </div>
+          </a>
+        </article>
+
+        <!-- 列表-新闻卡片 3: Race Report -->
+        <article class="group bg-surface rounded-lg shadow-card overflow-hidden hover:shadow-float transition-shadow">
+          <a href="#" class="news-card-link block" data-id="news-03">
+            <div class="relative aspect-[16/10] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1540946485063-a40da27545f8?w=800&q=80"
+                   alt="帆船在开阔海域高速航行"
+                   data-category="运动体育"
+                   class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-3 left-3 inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-widest uppercase bg-success text-white">Race Report</span>
+            </div>
+            <div class="p-5">
+              <div class="text-xs text-on-surface-variant mb-2">Sep 28, 2026</div>
+              <h3 class="font-semibold text-base text-on-surface leading-snug line-clamp-3 min-h-[3.75rem]">
+                New Records Set at Last Year's Round Hainan Regatta
+              </h3>
+              <p class="mt-2 text-sm text-on-surface-variant leading-relaxed line-clamp-2">
+                Looking back at the 14th edition: two course records fell, a monohull line honors record was shattered, and the ORC fleet posted the fastest fleet average in event history.
+              </p>
+              <span class="mt-3 inline-flex items-center gap-1 text-primary text-sm font-semibold group-hover:gap-2 transition-all">
+                Read More <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </span>
+            </div>
+          </a>
+        </article>
+
+        <!-- 列表-新闻卡片 4: Course Guide -->
+        <article class="group bg-surface rounded-lg shadow-card overflow-hidden hover:shadow-float transition-shadow">
+          <a href="#" class="news-card-link block" data-id="news-04">
+            <div class="relative aspect-[16/10] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1473186505569-9c61870c11f9?w=800&q=80"
+                   alt="海面上一艘帆船在夕阳下航行"
+                   data-category="自然风景"
+                   class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-3 left-3 inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-widest uppercase bg-primary-bright text-white">Course Guide</span>
+            </div>
+            <div class="p-5">
+              <div class="text-xs text-on-surface-variant mb-2">Sep 22, 2026</div>
+              <h3 class="font-semibold text-base text-on-surface leading-snug line-clamp-3 min-h-[3.75rem]">
+                Sailing the Full Round: A Complete Course Guide from Sanya to Haikou
+              </h3>
+              <p class="mt-2 text-sm text-on-surface-variant leading-relaxed line-clamp-2">
+                A leg-by-leg breakdown of the 650nm course — from the Sanya start, around Hainan's rugged east coast, to the strategic finish in Haikou Bay.
+              </p>
+              <span class="mt-3 inline-flex items-center gap-1 text-primary text-sm font-semibold group-hover:gap-2 transition-all">
+                Read More <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </span>
+            </div>
+          </a>
+        </article>
+
+        <!-- 列表-新闻卡片 5: Sailor Story -->
+        <article class="group bg-surface rounded-lg shadow-card overflow-hidden hover:shadow-float transition-shadow">
+          <a href="#" class="news-card-link block" data-id="news-05">
+            <div class="relative aspect-[16/10] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1516466723877-e4ec1d736c8a?w=800&q=80"
+                   alt="船员们在赛前进行装备检查"
+                   data-category="人物"
+                   class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-3 left-3 inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-widest uppercase bg-accent-gold text-primary-deep">Sailor Story</span>
+            </div>
+            <div class="p-5">
+              <div class="text-xs text-on-surface-variant mb-2">Sep 15, 2026</div>
+              <h3 class="font-semibold text-base text-on-surface leading-snug line-clamp-3 min-h-[3.75rem]">
+                Behind the Scenes: How the Race Committee Prepares for 80 Boats
+              </h3>
+              <p class="mt-2 text-sm text-on-surface-variant leading-relaxed line-clamp-2">
+                Eighteen months of planning, three chase boats, a 40-person race management team, and a dedicated weather router — inside the logistics of running Asia's toughest coastal race.
+              </p>
+              <span class="mt-3 inline-flex items-center gap-1 text-primary text-sm font-semibold group-hover:gap-2 transition-all">
+                Read More <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </span>
+            </div>
+          </a>
+        </article>
+
+        <!-- 列表-新闻卡片 6: Preview -->
+        <article class="group bg-surface rounded-lg shadow-card overflow-hidden hover:shadow-float transition-shadow">
+          <a href="#" class="news-card-link block" data-id="news-06">
+            <div class="relative aspect-[16/10] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=800&q=80"
+                   alt="海面上翻涌的浪花与远处帆船"
+                   data-category="自然风景"
+                   class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-3 left-3 inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-bold tracking-widest uppercase bg-accent-coral text-white">Preview</span>
+            </div>
+            <div class="p-5">
+              <div class="text-xs text-on-surface-variant mb-2">Sep 08, 2026</div>
+              <h3 class="font-semibold text-base text-on-surface leading-snug line-clamp-3 min-h-[3.75rem]">
+                Weather Patterns for November 2026: What Sailors Can Expect
+              </h3>
+              <p class="mt-2 text-sm text-on-surface-variant leading-relaxed line-clamp-2">
+                Meteorologist Dr. Zhang Wei analyzes 15 years of November data — expect NE monsoon 15-25 knots, occasional 30kt squalls, and warm 24-27°C seas around the island.
+              </p>
+              <span class="mt-3 inline-flex items-center gap-1 text-primary text-sm font-semibold group-hover:gap-2 transition-all">
+                Read More <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </span>
+            </div>
+          </a>
+        </article>
+
+      </div>
+
+      <div class="flex justify-center mt-10">
+        <button id="btn-load-more-news" class="bg-surface-container text-on-surface px-6 py-2.5 rounded-md text-sm font-medium hover:bg-surface-container-high active:scale-[0.98] transition-all inline-flex items-center gap-2">
+          Load More Stories <i data-lucide="chevron-down" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============ SECTION 4: Photo Gallery (Masonry) ============ -->
+    <section class="bg-surface-container/60 -mx-[max(0px,calc((100vw-80rem)/2))] px-[max(24px,calc((100vw-80rem)/2+24px))] py-16">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-10">
+          <div class="inline-flex items-center gap-2 mb-2">
+            <span class="w-8 h-px bg-accent-gold"></span>
+            <span class="text-primary text-xs font-semibold tracking-[0.25em] uppercase">Photo Gallery</span>
+            <span class="w-8 h-px bg-accent-gold"></span>
+          </div>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-on-surface">Moments from Past Editions</h2>
+          <p class="mt-3 text-sm text-on-surface-variant max-w-xl mx-auto">A visual record of storms, sunsets, victories, and quiet moments at sea — captured by our team of on-water photographers.</p>
+        </div>
+
+        <!-- CSS Grid Masonry-style asymmetric layout -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+
+          <!-- 列表-画廊图片 1 (tall) -->
+          <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer row-span-2" data-idx="1">
+            <img src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?w=800&q=80"
+                 alt="夕阳下的帆船剪影"
+                 data-category="自然风景"
+                 class="w-full h-full object-cover aspect-[3/5] group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-deep/90 via-primary-deep/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <div>
+                <div class="text-accent-gold text-[10px] font-bold tracking-widest uppercase mb-1">Golden Hour</div>
+                <div class="text-white text-sm font-semibold">Sunset finish approach off Wenchang</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 列表-画廊图片 2 -->
+          <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer" data-idx="2">
+            <img src="https://images.unsplash.com/photo-1520763185298-1b434c919102?w=600&q=80"
+                 alt="帆船船员操控绳索"
+                 data-category="运动体育"
+                 class="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-deep/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+              <div class="text-white text-xs font-semibold">Trimmer in action, upwind leg</div>
+            </div>
+          </div>
+
+          <!-- 列表-画廊图片 3 -->
+          <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer" data-idx="3">
+            <img src="https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=600&q=80"
+                 alt="蔚蓝海面上的白色帆船"
+                 data-category="运动体育"
+                 class="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-deep/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+              <div class="text-white text-xs font-semibold">Fleet start line, Sanya Bay</div>
+            </div>
+          </div>
+
+          <!-- 列表-画廊图片 4 (wide) -->
+          <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer md:col-span-2" data-idx="4">
+            <img src="https://images.unsplash.com/photo-1500930540546-25cd8f0e49a6?w=1200&q=80"
+                 alt="多艘帆船排列在起航线"
+                 data-category="运动体育"
+                 class="w-full h-full object-cover aspect-[16/9] group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-deep/90 via-primary-deep/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <div>
+                <div class="text-accent-gold text-[10px] font-bold tracking-widest uppercase mb-1">Race Start</div>
+                <div class="text-white text-sm font-semibold">The fleet crosses the line — Day 1, 14th edition</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 列表-画廊图片 5 -->
+          <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer" data-idx="5">
+            <img src="https://images.unsplash.com/photo-1502933691298-84fc14542831?w=600&q=80"
+                 alt="帆船船头劈开海浪"
+                 data-category="运动体育"
+                 class="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-deep/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+              <div class="text-white text-xs font-semibold">Bow wave off Boundary Island</div>
+            </div>
+          </div>
+
+          <!-- 列表-画廊图片 6 -->
+          <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer" data-idx="6">
+            <img src="https://images.unsplash.com/photo-1495197359483-d092478c170a?w=600&q=80"
+                 alt="风浪中的帆船斜倚航行"
+                 data-category="运动体育"
+                 class="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-deep/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+              <div class="text-white text-xs font-semibold">Heeling hard in 22 knots</div>
+            </div>
+          </div>
+
+          <!-- 列表-画廊图片 7 -->
+          <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer" data-idx="7">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80"
+                 alt="海港夜景与停泊的帆船"
+                 data-category="建筑城市"
+                 class="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-deep/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+              <div class="text-white text-xs font-semibold">Haikou marina, prize-giving eve</div>
+            </div>
+          </div>
+
+          <!-- 列表-画廊图片 8 (wide) -->
+          <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer md:col-span-2" data-idx="8">
+            <img src="https://images.unsplash.com/photo-1465693065642-3e6c9f6f6b0f?w=1200&q=80"
+                 alt="航拍角度下的开阔海面与帆船"
+                 data-category="自然风景"
+                 class="w-full h-full object-cover aspect-[16/9] group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-deep/90 via-primary-deep/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <div>
+                <div class="text-accent-gold text-[10px] font-bold tracking-widest uppercase mb-1">Aerial View</div>
+                <div class="text-white text-sm font-semibold">Drone shot over the fleet, offshore leg 2</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 列表-画廊图片 9 -->
+          <div class="gallery-item group relative overflow-hidden rounded-lg cursor-pointer" data-idx="9">
+            <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=600&q=80"
+                 alt="船员领奖颁奖典礼场景"
+                 data-category="人物"
+                 class="w-full h-full object-cover aspect-square group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-deep/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+              <div class="text-white text-xs font-semibold">IRC overall winners, 14th edition</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="flex justify-center mt-8">
+          <a href="#" class="inline-flex items-center gap-2 text-primary text-sm font-semibold hover:gap-3 transition-all">
+            View Full Archive (240+ Photos) <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECTION 5: Video Highlights ============ -->
+    <section class="px-6 py-16">
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 mb-2">
+          <span class="w-8 h-px bg-accent-gold"></span>
+          <span class="text-primary text-xs font-semibold tracking-[0.25em] uppercase">Video</span>
+          <span class="w-8 h-px bg-accent-gold"></span>
+        </div>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-on-surface">Race Highlights</h2>
+        <p class="mt-3 text-sm text-on-surface-variant max-w-xl mx-auto">Multi-angle race films, aerial cinematography, and post-race interviews from past editions.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- 列表-视频卡片 1 -->
+        <div class="video-card group cursor-pointer" data-video-id="video-highlights-14th">
+          <div class="relative aspect-[16/10] rounded-lg overflow-hidden shadow-card">
+            <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&q=80"
+                 alt="帆船比赛精彩瞬间集锦画面"
+                 data-category="运动体育"
+                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-primary-deep/30 group-hover:bg-primary-deep/50 transition-colors"></div>
+            <!-- Play icon overlay -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-16 h-16 rounded-full bg-white/95 flex items-center justify-center shadow-float group-hover:scale-110 transition-transform">
+                <i data-lucide="play" class="w-7 h-7 text-primary-deep fill-primary-deep ml-1"></i>
+              </div>
+            </div>
+            <!-- Duration -->
+            <div class="absolute bottom-3 right-3 bg-black/70 text-white text-xs font-medium px-2 py-1 rounded">
+              4:32
+            </div>
+          </div>
+          <div class="mt-3">
+            <h3 class="font-semibold text-base text-on-surface leading-snug">14th Regatta Highlights</h3>
+            <p class="mt-1 text-xs text-on-surface-variant">Race film · Full course coverage</p>
+          </div>
+        </div>
+
+        <!-- 列表-视频卡片 2 -->
+        <div class="video-card group cursor-pointer" data-video-id="video-aerial-round-hainan">
+          <div class="relative aspect-[16/10] rounded-lg overflow-hidden shadow-card">
+            <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&q=80"
+                 alt="航拍视角下的帆船与热带海滨"
+                 data-category="自然风景"
+                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-primary-deep/30 group-hover:bg-primary-deep/50 transition-colors"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-16 h-16 rounded-full bg-white/95 flex items-center justify-center shadow-float group-hover:scale-110 transition-transform">
+                <i data-lucide="play" class="w-7 h-7 text-primary-deep fill-primary-deep ml-1"></i>
+              </div>
+            </div>
+            <div class="absolute bottom-3 right-3 bg-black/70 text-white text-xs font-medium px-2 py-1 rounded">
+              3:15
+            </div>
+          </div>
+          <div class="mt-3">
+            <h3 class="font-semibold text-base text-on-surface leading-snug">Aerial Views: Round Hainan</h3>
+            <p class="mt-1 text-xs text-on-surface-variant">Cinematography · Drone footage</p>
+          </div>
+        </div>
+
+        <!-- 列表-视频卡片 3 -->
+        <div class="video-card group cursor-pointer" data-video-id="video-interview-champion">
+          <div class="relative aspect-[16/10] rounded-lg overflow-hidden shadow-card">
+            <img src="https://images.unsplash.com/photo-1531594896955-320c9c65cef1?w=800&q=80"
+                 alt="冠军船队集体庆祝领奖"
+                 data-category="人物"
+                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-primary-deep/30 group-hover:bg-primary-deep/50 transition-colors"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-16 h-16 rounded-full bg-white/95 flex items-center justify-center shadow-float group-hover:scale-110 transition-transform">
+                <i data-lucide="play" class="w-7 h-7 text-primary-deep fill-primary-deep ml-1"></i>
+              </div>
+            </div>
+            <div class="absolute bottom-3 right-3 bg-black/70 text-white text-xs font-medium px-2 py-1 rounded">
+              6:48
+            </div>
+          </div>
+          <div class="mt-3">
+            <h3 class="font-semibold text-base text-on-surface leading-snug">Interview: Champion Team</h3>
+            <p class="mt-1 text-xs text-on-surface-variant">Feature · Post-race conversation</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ SECTION 6: Media Resources Panel ============ -->
+    <section class="px-6 pb-16">
+      <div class="bg-surface-container/60 rounded-2xl p-8 md:p-12">
+        <div class="text-center mb-10">
+          <div class="inline-flex items-center gap-2 mb-2">
+            <span class="w-8 h-px bg-accent-gold"></span>
+            <span class="text-primary text-xs font-semibold tracking-[0.25em] uppercase">For Media</span>
+            <span class="w-8 h-px bg-accent-gold"></span>
+          </div>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-on-surface">Media Resources</h2>
+          <p class="mt-3 text-sm text-on-surface-variant max-w-xl mx-auto">Everything journalists, broadcasters, and content partners need to cover the 15th Round Hainan Regatta.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+          <!-- 列表-媒体资源 1: Press Kit -->
+          <div class="bg-surface rounded-lg shadow-card p-6 flex flex-col">
+            <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <i data-lucide="package" class="w-6 h-6 text-primary"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-on-surface">Press Kit</h3>
+            <p class="mt-2 text-sm text-on-surface-variant leading-relaxed flex-1">
+              Logos in multiple formats, brand guidelines, high-res photography, and event key visuals for editorial use.
+            </p>
+            <div class="mt-4 flex items-center justify-between text-xs text-on-surface-variant">
+              <span class="inline-flex items-center gap-1"><i data-lucide="file-archive" class="w-3.5 h-3.5"></i>ZIP · 128 MB</span>
+              <span>Updated Oct 2026</span>
+            </div>
+            <button class="media-download-btn mt-5 bg-primary text-on-primary px-4 py-2.5 rounded-md text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all inline-flex items-center justify-center gap-2" data-resource="press-kit">
+              <i data-lucide="download" class="w-4 h-4"></i>Download Press Kit
+            </button>
+          </div>
+
+          <!-- 列表-媒体资源 2: Fact Sheet -->
+          <div class="bg-surface rounded-lg shadow-card p-6 flex flex-col">
+            <div class="w-12 h-12 rounded-lg bg-accent-gold/15 flex items-center justify-center mb-4">
+              <i data-lucide="file-text" class="w-6 h-6 text-accent-gold"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-on-surface">Fact Sheet</h3>
+            <p class="mt-2 text-sm text-on-surface-variant leading-relaxed flex-1">
+              Race format, course details, division rules, historical statistics, past champions, and event milestones.
+            </p>
+            <div class="mt-4 flex items-center justify-between text-xs text-on-surface-variant">
+              <span class="inline-flex items-center gap-1"><i data-lucide="file" class="w-3.5 h-3.5"></i>PDF · 4.2 MB</span>
+              <span>Updated Sep 2026</span>
+            </div>
+            <button class="media-download-btn mt-5 bg-primary text-on-primary px-4 py-2.5 rounded-md text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all inline-flex items-center justify-center gap-2" data-resource="fact-sheet">
+              <i data-lucide="download" class="w-4 h-4"></i>Download Fact Sheet
+            </button>
+          </div>
+
+          <!-- 列表-媒体资源 3: Media Accreditation -->
+          <div class="bg-surface rounded-lg shadow-card p-6 flex flex-col">
+            <div class="w-12 h-12 rounded-lg bg-accent-coral/15 flex items-center justify-center mb-4">
+              <i data-lucide="id-card" class="w-6 h-6 text-accent-coral"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-on-surface">Media Accreditation</h3>
+            <p class="mt-2 text-sm text-on-surface-variant leading-relaxed flex-1">
+              Apply for your official press pass — access to the race village, media center, chase boats, and daily briefings.
+            </p>
+            <div class="mt-4 flex items-center justify-between text-xs text-on-surface-variant">
+              <span class="inline-flex items-center gap-1"><i data-lucide="calendar-clock" class="w-3.5 h-3.5"></i>Deadline: Oct 31</span>
+              <span>Online form</span>
+            </div>
+            <button class="media-download-btn mt-5 bg-primary text-on-primary px-4 py-2.5 rounded-md text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all inline-flex items-center justify-center gap-2" data-resource="accreditation">
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>Apply Now
+            </button>
+          </div>
+
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-outline-variant/40 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
+          <div class="text-on-surface-variant">
+            Media enquiries: <a href="contact.html" class="text-primary font-medium hover:underline">media@roundhainanregatta.com</a>
+          </div>
+          <a href="contact.html" class="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
+            Contact the Press Office <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECTION 7: Newsletter Subscribe ============ -->
+    <section class="-mx-[max(0px,calc((100vw-80rem)/2))] px-6 bg-primary-deep">
+      <div class="max-w-7xl mx-auto py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-left">
+          <div class="inline-flex items-center gap-2 mb-1.5">
+            <i data-lucide="mail" class="w-4 h-4 text-accent-gold"></i>
+            <span class="text-accent-gold text-[11px] font-semibold tracking-[0.25em] uppercase">Newsletter</span>
+          </div>
+          <h3 class="font-display text-2xl md:text-3xl font-bold text-white">Stay Informed</h3>
+          <p class="mt-1 text-sm text-white/70">Race updates, entry openings, and behind-the-scenes stories — direct to your inbox.</p>
+        </div>
+        <div class="w-full md:w-auto md:min-w-[440px]">
+          <div class="flex gap-2">
+            <input id="input-newsletter-email"
+                   type="email"
+                   placeholder="you@example.com"
+                   class="flex-1 bg-white/10 border-none rounded-md px-4 py-2.5 text-sm text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-accent-gold/50 transition-colors" />
+            <button id="btn-newsletter-subscribe"
+                    class="bg-accent-gold text-primary-deep px-5 py-2.5 rounded-md text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all inline-flex items-center gap-2 whitespace-nowrap">
+              Subscribe <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <div id="newsletter-success" class="hidden mt-2 text-xs text-accent-gold flex items-center gap-1.5">
+            <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>Thanks for subscribing! Check your inbox to confirm.
+          </div>
+          <p class="mt-2 text-[11px] text-white/50">We respect your privacy. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="-mx-[max(0px,calc((100vw-80rem)/2))] px-6 bg-[#001F42] text-white/70">
+      <div class="max-w-7xl mx-auto py-14">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="col-span-2">
+            <div class="flex items-center gap-3">
+              <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-10 h-10 object-contain bg-white rounded-full p-1" />
+              <div class="leading-tight">
+                <div class="text-white font-bold text-sm tracking-wide">ROUND HAINAN REGATTA</div>
+                <div class="text-white/50 text-[10px] tracking-widest uppercase">15th Edition · November 2026</div>
+              </div>
+            </div>
+            <p class="mt-4 text-sm text-white/60 leading-relaxed max-w-md">
+              Asia's premier offshore sailing race. 650 nautical miles around Hainan Island, starting and finishing in Sanya, since 2012.
+            </p>
+            <div class="mt-5 flex items-center gap-2">
+              <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors" aria-label="Instagram">
+                <i data-lucide="instagram" class="w-4 h-4"></i>
+              </a>
+              <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors" aria-label="Facebook">
+                <i data-lucide="facebook" class="w-4 h-4"></i>
+              </a>
+              <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors" aria-label="YouTube">
+                <i data-lucide="youtube" class="w-4 h-4"></i>
+              </a>
+              <a href="#" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors" aria-label="WeChat">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-white text-sm font-semibold mb-4">The Race</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+              <li><a href="course.html" class="hover:text-white transition-colors">Course</a></li>
+              <li><a href="schedule.html" class="hover:text-white transition-colors">Schedule</a></li>
+              <li><a href="classes.html" class="hover:text-white transition-colors">Classes</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white text-sm font-semibold mb-4">Follow</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="news.html" class="hover:text-white transition-colors">News & Media</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Photo Gallery</a></li>
+              <li><a href="#" class="hover:text-white transition-colors">Race Tracker</a></li>
+              <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/50">
+          <div>© 2026 Round Hainan Regatta Organizing Committee · Sanya, Hainan, China</div>
+          <div class="flex items-center gap-4">
+            <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition-colors">Terms of Use</a>
+            <a href="#" class="hover:text-white transition-colors">Sponsors</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+  <!-- @main-content:end -->
+
+  <script>
+    $(function () {
+      // 页面链接跳转 - 详情占位链接
+      $('#news-featured-link, .news-card-link').on('click', function (e) {
+        e.preventDefault();
+        const articleId = $(this).data('id') || 'featured';
+        console.log('打开新闻详情:', articleId);
+        // 完整实现应：跳转到 news-detail.html?id=xxx，展示新闻正文/图集/相关推荐
+      });
+
+      // 视频播放按钮 - 点击后应实现：
+      // 1. 弹出 modal 播放对应视频（iframe embed / video 标签）
+      // 2. modal 关闭时暂停播放
+      // 3. 支持键盘 ESC 关闭
+      $('.video-card').on('click', function () {
+        const videoId = $(this).data('video-id');
+        console.log('播放视频:', videoId);
+      });
+
+      // Gallery 图片点击 - 点击后应实现：
+      // 1. 打开 lightbox 全屏预览大图
+      // 2. 支持左右切换（键盘方向键 / 按钮）
+      // 3. 显示 caption 与序号 (n / total)
+      // 4. 点击背景或 ESC 关闭
+      $('.gallery-item').on('click', function () {
+        const idx = $(this).data('idx');
+        console.log('打开画廊图片:', idx);
+      });
+
+      // Media 资源下载
+      $('.media-download-btn').on('click', function (e) {
+        e.preventDefault();
+        const resource = $(this).data('resource');
+        console.log('下载媒体资源:', resource);
+        // 完整实现应：触发对应 zip/pdf 文件下载
+      });
+
+      // Newsletter 订阅
+      $('#btn-newsletter-subscribe').on('click', function (e) {
+        e.preventDefault();
+        const email = $('#input-newsletter-email').val().trim();
+        if (!email) {
+          alert('Please enter your email address.');
+          return;
+        }
+        // 简单邮箱校验
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          alert('Please enter a valid email address.');
+          return;
+        }
+        console.log('订阅邮箱:', email);
+        $('#input-newsletter-email').val('');
+        $('#newsletter-success').removeClass('hidden');
+        setTimeout(() => $('#newsletter-success').addClass('hidden'), 3000);
+      });
+
+      // 分类筛选按钮 - 点击后应实现：
+      // 1. 高亮当前选中的分类按钮
+      // 2. 根据 data-category 过滤 news grid 卡片（show/hide）
+      // 3. "All" 显示全部卡片
+      $('.filter-btn').on('click', function () {
+        $('.filter-btn').removeClass('bg-primary text-white').addClass('bg-surface-container text-on-surface');
+        $(this).removeClass('bg-surface-container text-on-surface').addClass('bg-primary text-white');
+        const cat = $(this).data('filter');
+        console.log('筛选分类:', cat);
+      });
+
+      lucide.createIcons();
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schedule · 15th Round Hainan Regatta 2026</title>
+
+  <link href="https://lf-code-agent.coze.cn/obj/x-ai-cn/fonts/google/google-all-fonts.css" rel="stylesheet"/>
+
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/jquery/jquery-3.7.1.min.js"></script>
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/lucide/lucide-1.11.0.min.js"></script>
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/tailwindcss/tailwindcss-browser-4.2.4.min.js"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      /* === Brand Colors (from Round Hainan Regatta VI) === */
+      --color-primary:              #005BAB;
+      --color-primary-container:    #E6F0FA;
+      --color-on-primary:           #ffffff;
+      /* === Background / Surface === */
+      --color-background:                 #FFFFFF;
+      --color-surface-container-lowest:   #FFFFFF;
+      --color-surface:                    #FFFFFF;
+      --color-surface-container:          #EEF2F7;
+      --color-surface-container-high:     #E5EBF2;
+      --color-surface-container-highest:  #DBE3EC;
+      /* === Text === */
+      --color-on-surface:           #1A2332;
+      --color-on-surface-variant:   #5B6472;
+      /* === Functional === */
+      --color-success:  #22c55e;
+      --color-error:    #ef4444;
+      --color-warning:  #f59e0b;
+      /* === Border === */
+      --color-outline:          #C8D2DE;
+      --color-outline-variant:  #DDE4EC;
+      /* === Extended Brand === */
+      --color-primary-deep:     #003C7E;
+      --color-primary-bright:   #0096DF;
+      --color-accent-gold:      #F6AA00;
+      --color-accent-coral:     #DD0078;
+      --color-accent-yellow:    #FFE100;
+      /* === Radius === */
+      --radius-sm:   0.25rem;
+      --radius-md:   0.5rem;
+      --radius-lg:   0.75rem;
+      --radius-xl:   1rem;
+      --radius-2xl:  1.5rem;
+      --radius-full: 9999px;
+      /* === Shadow (Brand Blue tinted) === */
+      --shadow-card:   0 4px 20px rgba(0, 60, 126, 0.08);
+      --shadow-float:  0 10px 30px rgba(0, 60, 126, 0.12);
+      --shadow-dialog: 0 25px 50px rgba(0, 60, 126, 0.15);
+      /* === Font === */
+      --font-sans: "Inter", "Noto Sans SC", system-ui, sans-serif;
+      --font-display: "Playfair Display", "Noto Serif SC", Georgia, serif;
+    }
+  </style>
+
+  <!-- Image fallback -->
+  <script>
+    document.addEventListener('error', function (e) {
+      const img = e.target;
+      if (img.tagName !== 'IMG' || img.dataset.fallback) return;
+      img.dataset.fallback = '1';
+      const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const cat = img.getAttribute('data-category') || '其他';
+      const alt = img.getAttribute('alt') || '';
+      const label = esc(alt.length > 8 ? alt.slice(0, 8) + '…' : alt);
+      const icons = { '人物': '👤', '自然风景': '🏞', '动物': '🐾', '建筑城市': '🏙', '运动体育': '⚽', '交通工具': '🚗', '食物': '🍽', '服饰时尚': '👗', '商业科技': '💼', '游戏娱乐': '🎮', '艺术': '🎨', '其他': '🖼' };
+      const icon = icons[cat] || '🖼';
+      const w = img.width || 400, h = img.height || 300;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="100%" height="100%" fill="%23f3f4f6"/><text x="50%" y="45%" text-anchor="middle" font-size="${Math.min(w, h) * 0.18}" dominant-baseline="central">${icon}</text><text x="50%" y="68%" text-anchor="middle" font-size="${Math.min(w, h) * 0.07}" fill="%239ca3af" font-family="system-ui,sans-serif" dominant-baseline="central">${label}</text></svg>`;
+      img.src = 'data:image/svg+xml,' + svg;
+    }, true);
+  </script>
+</head>
+
+<body class="bg-background text-on-surface font-sans">
+
+  <!-- @nav:start Navigation, remove this section if not needed -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-primary-deep/95 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="home.html" class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-9 h-9 object-contain bg-white rounded-full p-1" />
+        <div class="leading-tight">
+          <div class="text-white font-bold text-sm tracking-wide">ROUND HAINAN REGATTA</div>
+          <div class="text-white/60 text-[10px] tracking-widest uppercase">15th Edition · 2026</div>
+        </div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="home.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Home</a>
+        <a href="about.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">The Race</a>
+        <a href="course.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Course</a>
+        <a href="schedule.html" class="px-3 py-2 text-sm font-medium text-white bg-white/10 rounded-md" aria-current="page">Schedule</a>
+        <a href="classes.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Classes</a>
+        <a href="news.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">News</a>
+        <a href="contact.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Contact</a>
+      </nav>
+      <a href="contact.html" class="hidden md:inline-flex items-center gap-2 bg-accent-gold text-primary-deep px-4 py-2 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity">
+        Enter the Race
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+      <button id="btn-mobile-menu" class="lg:hidden text-white p-2" aria-label="Toggle menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </header>
+  <!-- @nav:end Navigation, remove this section if not needed -->
+
+  <!-- @main-content:start -->
+  <main class="pt-16">
+
+    <!-- ============ 1) PAGE HERO (40vh, compact) ============ -->
+    <section class="relative overflow-hidden bg-primary-deep text-white" style="min-height: 40vh;">
+      <!-- 微妙的浪花纹理 -->
+      <div class="absolute inset-0 opacity-20 pointer-events-none"
+           style="background-image: radial-gradient(circle at 20% 30%, rgba(0,150,223,0.4) 0, transparent 40%), radial-gradient(circle at 80% 70%, rgba(246,170,0,0.15) 0, transparent 45%);"></div>
+      <svg class="absolute bottom-0 left-0 right-0 w-full opacity-10 pointer-events-none" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,64 C240,96 480,32 720,48 C960,64 1200,112 1440,80 L1440,120 L0,120 Z" fill="#ffffff"></path>
+        <path d="M0,80 C240,48 480,96 720,80 C960,64 1200,32 1440,64 L1440,120 L0,120 Z" fill="#ffffff" opacity="0.5"></path>
+      </svg>
+      <div class="max-w-7xl mx-auto px-6 py-20 relative">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 text-accent-gold text-xs font-semibold tracking-[0.3em] uppercase mb-4">
+            <span class="w-8 h-px bg-accent-gold"></span>
+            The Timeline
+          </div>
+          <h1 class="font-display text-5xl md:text-6xl font-bold leading-tight mb-4">
+            8 Days of Racing
+          </h1>
+          <p class="text-white/75 text-base md:text-lg leading-relaxed max-w-2xl">
+            October 31 – November 7, 2026 · Sanya, Hainan. From the Skipper Briefing to the Prize Giving,
+            here's every moment of the 15th edition.
+          </p>
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-6 text-sm text-white/70">
+            <span class="inline-flex items-center gap-2">
+              <i data-lucide="calendar" class="w-4 h-4 text-accent-gold"></i>
+              Oct 31 – Nov 7, 2026
+            </span>
+            <span class="inline-flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-accent-gold"></i>
+              Sanya Bay, Hainan
+            </span>
+            <span class="inline-flex items-center gap-2">
+              <i data-lucide="flag" class="w-4 h-4 text-accent-gold"></i>
+              15th Edition
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2) AT-A-GLANCE (3 columns, compact) ============ -->
+    <section class="bg-background py-16">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Stat 1 -->
+          <div class="bg-surface shadow-card rounded-lg p-6 flex items-center gap-4 border border-outline-variant/20">
+            <div class="w-14 h-14 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+              <i data-lucide="calendar-days" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <div class="font-display text-3xl font-bold text-primary-deep leading-none">8 Days</div>
+              <div class="text-xs text-on-surface-variant uppercase tracking-wider mt-1.5 font-semibold">Total Duration</div>
+            </div>
+          </div>
+          <!-- Stat 2 -->
+          <div class="bg-surface shadow-card rounded-lg p-6 flex items-center gap-4 border border-outline-variant/20">
+            <div class="w-14 h-14 rounded-lg bg-accent-gold/15 text-accent-gold flex items-center justify-center shrink-0">
+              <i data-lucide="trophy" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <div class="font-display text-3xl font-bold text-primary-deep leading-none">10+ Races</div>
+              <div class="text-xs text-on-surface-variant uppercase tracking-wider mt-1.5 font-semibold">Combined Inshore &amp; Offshore</div>
+            </div>
+          </div>
+          <!-- Stat 3 -->
+          <div class="bg-surface shadow-card rounded-lg p-6 flex items-center gap-4 border border-outline-variant/20">
+            <div class="w-14 h-14 rounded-lg bg-primary-bright/15 text-primary-bright flex items-center justify-center shrink-0">
+              <i data-lucide="clock" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <div class="font-display text-3xl font-bold text-primary-deep leading-none">24/7 Racing</div>
+              <div class="text-xs text-on-surface-variant uppercase tracking-wider mt-1.5 font-semibold">Once Offshore Race Begins</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3) COMPACT VERTICAL TIMELINE ============ -->
+    <section class="bg-surface-container/60 py-16">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="mb-10">
+          <div class="text-xs font-semibold text-primary tracking-[0.3em] uppercase mb-2">Day By Day</div>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-primary-deep">Regatta Timeline</h2>
+        </div>
+
+        <!-- Timeline container with left gold vertical line -->
+        <div class="relative pl-4">
+          <!-- 左侧金色竖线 -->
+          <div class="absolute left-[45px] top-2 bottom-2 w-0.5 bg-accent-gold/40" aria-hidden="true"></div>
+
+          <div class="flex flex-col gap-4">
+
+            <!-- 时间线-Day 1 -->
+            <div id="day-1" class="day-card relative flex items-stretch gap-5 cursor-pointer" data-day="1">
+              <div class="relative shrink-0 w-[90px] bg-accent-gold text-white rounded-md shadow-card flex flex-col items-center justify-center py-3 z-10">
+                <div class="text-[10px] font-semibold tracking-widest uppercase opacity-90">Oct</div>
+                <div class="font-display text-3xl font-bold leading-none mt-0.5">31</div>
+                <div class="text-[11px] font-medium uppercase tracking-wide opacity-90 mt-1">Sat</div>
+              </div>
+              <div class="flex-1 bg-surface shadow-card rounded-lg p-5 border border-outline-variant/15">
+                <div class="flex items-center justify-between gap-3 mb-3">
+                  <h3 class="font-semibold text-lg text-primary-deep">Day 1 · Arrivals &amp; Registration</h3>
+                  <span class="text-[10px] font-semibold text-on-surface-variant uppercase tracking-wider bg-surface-container px-2 py-1 rounded">Prep Day</span>
+                </div>
+                <ul class="space-y-1.5 text-sm text-on-surface-variant">
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="clipboard-check" class="w-4 h-4 text-primary shrink-0"></i>
+                    Registration Opens · Sanya Yacht Club
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="file-text" class="w-4 h-4 text-primary shrink-0"></i>
+                    Skipper Meeting Preparation
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="ship" class="w-4 h-4 text-primary shrink-0"></i>
+                    Boat Inspection &amp; Measurement
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 时间线-Day 2 -->
+            <div id="day-2" class="day-card relative flex items-stretch gap-5 cursor-pointer" data-day="2">
+              <div class="relative shrink-0 w-[90px] bg-accent-gold text-white rounded-md shadow-card flex flex-col items-center justify-center py-3 z-10">
+                <div class="text-[10px] font-semibold tracking-widest uppercase opacity-90">Nov</div>
+                <div class="font-display text-3xl font-bold leading-none mt-0.5">01</div>
+                <div class="text-[11px] font-medium uppercase tracking-wide opacity-90 mt-1">Sun</div>
+              </div>
+              <div class="flex-1 bg-surface shadow-card rounded-lg p-5 border border-outline-variant/15">
+                <div class="flex items-center justify-between gap-3 mb-3">
+                  <h3 class="font-semibold text-lg text-primary-deep">Day 2 · Opening Ceremony</h3>
+                  <span class="text-[10px] font-semibold text-primary uppercase tracking-wider bg-primary/10 px-2 py-1 rounded">Ceremonies</span>
+                </div>
+                <ul class="space-y-1.5 text-sm text-on-surface-variant">
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="users" class="w-4 h-4 text-primary shrink-0"></i>
+                    Official Skipper Briefing · <span class="text-on-surface font-medium">09:00</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-primary shrink-0"></i>
+                    Opening Ceremony · <span class="text-on-surface font-medium">18:00</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="utensils" class="w-4 h-4 text-primary shrink-0"></i>
+                    Welcome Dinner · Sanya Marina Terrace
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 时间线-Day 3 -->
+            <div id="day-3" class="day-card relative flex items-stretch gap-5 cursor-pointer" data-day="3">
+              <div class="relative shrink-0 w-[90px] bg-accent-gold text-white rounded-md shadow-card flex flex-col items-center justify-center py-3 z-10">
+                <div class="text-[10px] font-semibold tracking-widest uppercase opacity-90">Nov</div>
+                <div class="font-display text-3xl font-bold leading-none mt-0.5">02</div>
+                <div class="text-[11px] font-medium uppercase tracking-wide opacity-90 mt-1">Mon</div>
+              </div>
+              <div class="flex-1 bg-surface shadow-card rounded-lg p-5 border border-outline-variant/15">
+                <div class="flex items-center justify-between gap-3 mb-3">
+                  <h3 class="font-semibold text-lg text-primary-deep">Day 3 · Inshore Racing Begins</h3>
+                  <span class="text-[10px] font-semibold text-primary-bright uppercase tracking-wider bg-primary-bright/10 px-2 py-1 rounded">Inshore</span>
+                </div>
+                <ul class="space-y-1.5 text-sm text-on-surface-variant">
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="sailboat" class="w-4 h-4 text-primary shrink-0"></i>
+                    Inshore Race Day 1
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="waves" class="w-4 h-4 text-primary shrink-0"></i>
+                    3 Fleet Races in Sanya Bay
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="wind" class="w-4 h-4 text-primary shrink-0"></i>
+                    Forecast: NE 12-15 knots
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 时间线-Day 4 -->
+            <div id="day-4" class="day-card relative flex items-stretch gap-5 cursor-pointer" data-day="4">
+              <div class="relative shrink-0 w-[90px] bg-accent-coral text-white rounded-md shadow-card flex flex-col items-center justify-center py-3 z-10">
+                <div class="text-[10px] font-semibold tracking-widest uppercase opacity-90">Nov</div>
+                <div class="font-display text-3xl font-bold leading-none mt-0.5">03</div>
+                <div class="text-[11px] font-medium uppercase tracking-wide opacity-90 mt-1">Tue</div>
+              </div>
+              <div class="flex-1 bg-surface shadow-card rounded-lg p-5 border-2 border-accent-coral/30">
+                <div class="flex items-center justify-between gap-3 mb-3">
+                  <h3 class="font-semibold text-lg text-primary-deep flex items-center gap-2">
+                    Day 4 · Offshore Start
+                    <span class="text-accent-coral">⚑</span>
+                  </h3>
+                  <span class="text-[10px] font-semibold text-accent-coral uppercase tracking-wider bg-accent-coral/10 px-2 py-1 rounded">Key Day</span>
+                </div>
+                <ul class="space-y-1.5 text-sm text-on-surface-variant">
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="flag" class="w-4 h-4 text-accent-coral shrink-0"></i>
+                    Offshore Race Start · <span class="text-on-surface font-semibold">10:00</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="navigation" class="w-4 h-4 text-accent-coral shrink-0"></i>
+                    Fleet departs for Round Hainan
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="anchor" class="w-4 h-4 text-accent-coral shrink-0"></i>
+                    Dubois 50 &amp; ORC Full Round classes begin
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 时间线-Day 5 -->
+            <div id="day-5" class="day-card relative flex items-stretch gap-5 cursor-pointer" data-day="5">
+              <div class="relative shrink-0 w-[90px] bg-accent-gold text-white rounded-md shadow-card flex flex-col items-center justify-center py-3 z-10">
+                <div class="text-[10px] font-semibold tracking-widest uppercase opacity-90">Nov</div>
+                <div class="font-display text-3xl font-bold leading-none mt-0.5">04</div>
+                <div class="text-[11px] font-medium uppercase tracking-wide opacity-90 mt-1">Wed</div>
+              </div>
+              <div class="flex-1 bg-surface shadow-card rounded-lg p-5 border border-outline-variant/15">
+                <div class="flex items-center justify-between gap-3 mb-3">
+                  <h3 class="font-semibold text-lg text-primary-deep">Day 5 · Offshore Continues</h3>
+                  <span class="text-[10px] font-semibold text-primary-bright uppercase tracking-wider bg-primary-bright/10 px-2 py-1 rounded">Offshore</span>
+                </div>
+                <ul class="space-y-1.5 text-sm text-on-surface-variant">
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="sailboat" class="w-4 h-4 text-primary shrink-0"></i>
+                    Offshore Racing Continues
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="rotate-cw" class="w-4 h-4 text-primary shrink-0"></i>
+                    ORC Half Round classes race to Lingshui and return
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="radio" class="w-4 h-4 text-primary shrink-0"></i>
+                    Media Center Live Tracking
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 时间线-Day 6 -->
+            <div id="day-6" class="day-card relative flex items-stretch gap-5 cursor-pointer" data-day="6">
+              <div class="relative shrink-0 w-[90px] bg-accent-gold text-white rounded-md shadow-card flex flex-col items-center justify-center py-3 z-10">
+                <div class="text-[10px] font-semibold tracking-widest uppercase opacity-90">Nov</div>
+                <div class="font-display text-3xl font-bold leading-none mt-0.5">05</div>
+                <div class="text-[11px] font-medium uppercase tracking-wide opacity-90 mt-1">Thu</div>
+              </div>
+              <div class="flex-1 bg-surface shadow-card rounded-lg p-5 border border-outline-variant/15">
+                <div class="flex items-center justify-between gap-3 mb-3">
+                  <h3 class="font-semibold text-lg text-primary-deep">Day 6 · First Finishers</h3>
+                  <span class="text-[10px] font-semibold text-accent-gold uppercase tracking-wider bg-accent-gold/15 px-2 py-1 rounded">Finish</span>
+                </div>
+                <ul class="space-y-1.5 text-sm text-on-surface-variant">
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="flag-triangle-right" class="w-4 h-4 text-primary shrink-0"></i>
+                    First Fleet Expected to Finish
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="video" class="w-4 h-4 text-primary shrink-0"></i>
+                    Live Finish Line Coverage in Sanya
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="mic" class="w-4 h-4 text-primary shrink-0"></i>
+                    Post-race Interviews at Media Center
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 时间线-Day 7 -->
+            <div id="day-7" class="day-card relative flex items-stretch gap-5 cursor-pointer" data-day="7">
+              <div class="relative shrink-0 w-[90px] bg-accent-gold text-white rounded-md shadow-card flex flex-col items-center justify-center py-3 z-10">
+                <div class="text-[10px] font-semibold tracking-widest uppercase opacity-90">Nov</div>
+                <div class="font-display text-3xl font-bold leading-none mt-0.5">06</div>
+                <div class="text-[11px] font-medium uppercase tracking-wide opacity-90 mt-1">Fri</div>
+              </div>
+              <div class="flex-1 bg-surface shadow-card rounded-lg p-5 border border-outline-variant/15">
+                <div class="flex items-center justify-between gap-3 mb-3">
+                  <h3 class="font-semibold text-lg text-primary-deep">Day 7 · Final Finishers &amp; Inshore</h3>
+                  <span class="text-[10px] font-semibold text-primary uppercase tracking-wider bg-primary/10 px-2 py-1 rounded">Dual Program</span>
+                </div>
+                <ul class="space-y-1.5 text-sm text-on-surface-variant">
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="flag-off" class="w-4 h-4 text-primary shrink-0"></i>
+                    Final Offshore Finishers
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="sailboat" class="w-4 h-4 text-primary shrink-0"></i>
+                    Inshore Race Day 2 · Fareast 28R
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="party-popper" class="w-4 h-4 text-primary shrink-0"></i>
+                    Sailors' Welcome Drinks (evening)
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 时间线-Day 8 -->
+            <div id="day-8" class="day-card relative flex items-stretch gap-5 cursor-pointer" data-day="8">
+              <div class="relative shrink-0 w-[90px] bg-primary-deep text-white rounded-md shadow-card flex flex-col items-center justify-center py-3 z-10">
+                <div class="text-[10px] font-semibold tracking-widest uppercase opacity-90 text-accent-gold">Nov</div>
+                <div class="font-display text-3xl font-bold leading-none mt-0.5">07</div>
+                <div class="text-[11px] font-medium uppercase tracking-wide opacity-90 mt-1">Sat</div>
+              </div>
+              <div class="flex-1 bg-surface shadow-card rounded-lg p-5 border-2 border-accent-gold/40">
+                <div class="flex items-center justify-between gap-3 mb-3">
+                  <h3 class="font-semibold text-lg text-primary-deep flex items-center gap-2">
+                    Day 8 · Prize Giving &amp; Gala
+                    <i data-lucide="trophy" class="w-5 h-5 text-accent-gold"></i>
+                  </h3>
+                  <span class="text-[10px] font-semibold text-accent-gold uppercase tracking-wider bg-accent-gold/15 px-2 py-1 rounded">Finale</span>
+                </div>
+                <ul class="space-y-1.5 text-sm text-on-surface-variant">
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="award" class="w-4 h-4 text-accent-gold shrink-0"></i>
+                    Prize Giving Ceremony · <span class="text-on-surface font-semibold">18:00</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="wine" class="w-4 h-4 text-accent-gold shrink-0"></i>
+                    Gala Dinner · Grand Ballroom
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <i data-lucide="music" class="w-4 h-4 text-accent-gold shrink-0"></i>
+                    Closing Party · Live band &amp; DJ
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4) SHORE ACTIVITIES ============ -->
+    <section class="bg-background py-16">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-8">
+          <div class="text-xs font-semibold text-primary tracking-[0.3em] uppercase mb-2">Shore Program</div>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-primary-deep">Beyond the Water</h2>
+          <p class="text-on-surface-variant text-sm mt-2 max-w-2xl">The Regatta is more than just racing. Enjoy the full onshore program of ceremonies, briefings and celebrations.</p>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- 岸上活动-1 -->
+          <div class="bg-surface shadow-card rounded-lg p-5 border border-outline-variant/15 hover:shadow-float transition-shadow">
+            <div class="w-11 h-11 rounded-md bg-primary/10 text-primary flex items-center justify-center mb-3">
+              <i data-lucide="flag" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-semibold text-base text-primary-deep">Opening Ceremony</h3>
+            <p class="text-xs text-on-surface-variant mt-1.5 leading-relaxed">Nov 1 · Waterfront Plaza · Fireworks and Dragon Dance</p>
+          </div>
+          <!-- 岸上活动-2 -->
+          <div class="bg-surface shadow-card rounded-lg p-5 border border-outline-variant/15 hover:shadow-float transition-shadow">
+            <div class="w-11 h-11 rounded-md bg-primary-bright/10 text-primary-bright flex items-center justify-center mb-3">
+              <i data-lucide="users" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-semibold text-base text-primary-deep">Skipper Briefings</h3>
+            <p class="text-xs text-on-surface-variant mt-1.5 leading-relaxed">Daily · Race Office · Weather, safety and course details</p>
+          </div>
+          <!-- 岸上活动-3 -->
+          <div class="bg-surface shadow-card rounded-lg p-5 border border-outline-variant/15 hover:shadow-float transition-shadow">
+            <div class="w-11 h-11 rounded-md bg-accent-gold/15 text-accent-gold flex items-center justify-center mb-3">
+              <i data-lucide="trophy" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-semibold text-base text-primary-deep">Awards Gala</h3>
+            <p class="text-xs text-on-surface-variant mt-1.5 leading-relaxed">Nov 7 · Grand Ballroom · Prize giving and gala dinner</p>
+          </div>
+          <!-- 岸上活动-4 -->
+          <div class="bg-surface shadow-card rounded-lg p-5 border border-outline-variant/15 hover:shadow-float transition-shadow">
+            <div class="w-11 h-11 rounded-md bg-accent-coral/10 text-accent-coral flex items-center justify-center mb-3">
+              <i data-lucide="video" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-semibold text-base text-primary-deep">Media Events</h3>
+            <p class="text-xs text-on-surface-variant mt-1.5 leading-relaxed">Press conferences, interviews and live tracking sessions</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5) DOWNLOADS PANEL ============ -->
+    <section class="bg-surface-container/60 py-16">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-8">
+          <div class="text-xs font-semibold text-primary tracking-[0.3em] uppercase mb-2">Documents</div>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-primary-deep">Official Downloads</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          <!-- 下载-1 -->
+          <div class="bg-surface shadow-card rounded-lg p-6 border border-outline-variant/15 flex flex-col">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded-md bg-primary/10 text-primary flex items-center justify-center">
+                <i data-lucide="file-text" class="w-6 h-6"></i>
+              </div>
+              <span class="text-xs font-mono text-on-surface-variant bg-surface-container px-2 py-1 rounded">PDF · 2.4 MB</span>
+            </div>
+            <h3 class="font-semibold text-base text-primary-deep mb-1">Notice of Race</h3>
+            <p class="text-xs text-on-surface-variant leading-relaxed mb-4 flex-1">The official Notice of Race including entry rules, eligibility and class regulations.</p>
+            <button id="btn-download-nor" class="btn-download w-full bg-primary text-on-primary px-4 py-2.5 rounded-md text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all inline-flex items-center justify-center gap-2" data-file="notice-of-race.pdf">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              Download
+            </button>
+          </div>
+          <!-- 下载-2 -->
+          <div class="bg-surface shadow-card rounded-lg p-6 border border-outline-variant/15 flex flex-col">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded-md bg-primary-bright/10 text-primary-bright flex items-center justify-center">
+                <i data-lucide="file-text" class="w-6 h-6"></i>
+              </div>
+              <span class="text-xs font-mono text-on-surface-variant bg-surface-container px-2 py-1 rounded">PDF · 3.1 MB</span>
+            </div>
+            <h3 class="font-semibold text-base text-primary-deep mb-1">Sailing Instructions</h3>
+            <p class="text-xs text-on-surface-variant leading-relaxed mb-4 flex-1">Detailed sailing instructions, race signals, courses and scoring system for competitors.</p>
+            <button id="btn-download-si" class="btn-download w-full bg-primary text-on-primary px-4 py-2.5 rounded-md text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all inline-flex items-center justify-center gap-2" data-file="sailing-instructions.pdf">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              Download
+            </button>
+          </div>
+          <!-- 下载-3 -->
+          <div class="bg-surface shadow-card rounded-lg p-6 border border-outline-variant/15 flex flex-col">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded-md bg-accent-gold/15 text-accent-gold flex items-center justify-center">
+                <i data-lucide="file-text" class="w-6 h-6"></i>
+              </div>
+              <span class="text-xs font-mono text-on-surface-variant bg-surface-container px-2 py-1 rounded">PDF · 5.7 MB</span>
+            </div>
+            <h3 class="font-semibold text-base text-primary-deep mb-1">Course Chart</h3>
+            <p class="text-xs text-on-surface-variant leading-relaxed mb-4 flex-1">High-resolution nautical charts of the Round Hainan and Inshore courses with waypoints.</p>
+            <button id="btn-download-chart" class="btn-download w-full bg-primary text-on-primary px-4 py-2.5 rounded-md text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all inline-flex items-center justify-center gap-2" data-file="course-chart.pdf">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              Download
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6) CTA ============ -->
+    <section class="bg-primary-deep text-white py-16 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10 pointer-events-none"
+           style="background-image: radial-gradient(circle at 15% 50%, rgba(246,170,0,0.5) 0, transparent 40%), radial-gradient(circle at 85% 50%, rgba(0,150,223,0.5) 0, transparent 40%);"></div>
+      <div class="max-w-4xl mx-auto px-6 text-center relative">
+        <div class="inline-flex items-center gap-2 text-accent-gold text-xs font-semibold tracking-[0.3em] uppercase mb-3">
+          <i data-lucide="calendar-check" class="w-4 h-4"></i>
+          Save the Dates
+        </div>
+        <h2 class="font-display text-3xl md:text-4xl font-bold mb-3">Ready to be part of it?</h2>
+        <p class="text-white/70 text-base max-w-xl mx-auto mb-6">
+          Mark October 31 – November 7, 2026 in your calendar. Register your boat now and join the 15th edition of the Round Hainan Regatta.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href="contact.html" id="link-register" class="inline-flex items-center gap-2 bg-accent-gold text-primary-deep px-6 py-3 rounded-md text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all">
+            <i data-lucide="edit-3" class="w-4 h-4"></i>
+            Register your boat
+          </a>
+          <button id="btn-add-calendar" class="inline-flex items-center gap-2 bg-white/10 text-white border border-white/20 px-6 py-3 rounded-md text-sm font-semibold hover:bg-white/15 active:scale-[0.98] transition-all">
+            <i data-lucide="calendar-plus" class="w-4 h-4"></i>
+            Add to Calendar
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-primary-deep text-white border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-6 py-12">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div class="md:col-span-1">
+            <div class="flex items-center gap-3 mb-4">
+              <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-10 h-10 object-contain bg-white rounded-full p-1" />
+              <div class="leading-tight">
+                <div class="font-bold text-sm tracking-wide">ROUND HAINAN</div>
+                <div class="text-white/60 text-[10px] tracking-widest uppercase">Regatta · 15th Edition</div>
+              </div>
+            </div>
+            <p class="text-white/60 text-sm leading-relaxed">The premier offshore sailing event of the South China Sea.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-sm mb-3 text-accent-gold uppercase tracking-wider">Race</h4>
+            <ul class="space-y-2 text-sm text-white/70">
+              <li><a href="about.html" class="hover:text-white transition-colors">About</a></li>
+              <li><a href="course.html" class="hover:text-white transition-colors">Course</a></li>
+              <li><a href="schedule.html" class="hover:text-white transition-colors">Schedule</a></li>
+              <li><a href="classes.html" class="hover:text-white transition-colors">Classes</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-sm mb-3 text-accent-gold uppercase tracking-wider">Media</h4>
+            <ul class="space-y-2 text-sm text-white/70">
+              <li><a href="news.html" class="hover:text-white transition-colors">News</a></li>
+              <li><a href="news.html" class="hover:text-white transition-colors">Press Kit</a></li>
+              <li><a href="news.html" class="hover:text-white transition-colors">Photo Gallery</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-sm mb-3 text-accent-gold uppercase tracking-wider">Contact</h4>
+            <ul class="space-y-2 text-sm text-white/70">
+              <li class="flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5"></i> info@roundhainan.org</li>
+              <li class="flex items-center gap-2"><i data-lucide="phone" class="w-3.5 h-3.5"></i> +86 898 8888 8888</li>
+              <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Sanya, Hainan, China</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="text-xs text-white/50">© 2026 Round Hainan Regatta Organizing Committee. All rights reserved.</div>
+          <div class="flex items-center gap-4 text-white/50">
+            <a href="#" class="hover:text-accent-gold transition-colors" aria-label="Facebook"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+            <a href="#" class="hover:text-accent-gold transition-colors" aria-label="Instagram"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+            <a href="#" class="hover:text-accent-gold transition-colors" aria-label="YouTube"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+            <a href="#" class="hover:text-accent-gold transition-colors" aria-label="X/Twitter"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+  <!-- @main-content:end -->
+
+  <script>
+    lucide.createIcons();
+    $(function () {
+      // 移动端菜单切换 - 点击后应实现：
+      // 1. 弹出全屏抽屉菜单，包含所有导航链接和 CTA
+      // 2. 支持从右侧滑入动画
+      // 3. 点击遮罩或关闭按钮收起
+      $('#btn-mobile-menu').on('click', function () {
+        console.log('移动端菜单切换 - 待实现完整抽屉交互');
+      });
+
+      // Add to Calendar - 点击后应实现：
+      // 1. 弹出选择菜单：Google Calendar / Apple Calendar / Outlook / 下载 .ics 文件
+      // 2. 对应生成日历事件链接或 .ics 文件供下载
+      // 3. 关闭菜单后重置状态
+      $('#btn-add-calendar').on('click', function () {
+        console.log('添加至日历 - 待实现日历服务选择弹窗');
+      });
+
+      // Download 按钮 - 点击后应实现：
+      // 1. 触发 PDF/文档实际下载（fetch blob → 触发浏览器保存）
+      // 2. 下载完成后显示轻量 toast 提示
+      // 3. 失败时展示重试按钮
+      $('.btn-download').on('click', function () {
+        const fileName = $(this).data('file');
+        console.log('下载文档:', fileName);
+      });
+
+      // Day 卡片点击展开 - 点击后应实现：
+      // 1. 展开该日期的详细活动信息（时间表 / 地点 / 参与者）
+      // 2. 同一时刻只允许一个 day 展开，切换时收起其他
+      // 3. 展开态显示更多详情如天气预报、潮汐信息
+      $('.day-card').on('click', function () {
+        const day = $(this).data('day');
+        console.log('展开 Day 详情:', day);
+      });
+    });
+  </script>
+</body>
+
+</html>

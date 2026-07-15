@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact · 15th Round Hainan Regatta 2026</title>
+
+  <link href="https://lf-code-agent.coze.cn/obj/x-ai-cn/fonts/google/google-all-fonts.css" rel="stylesheet"/>
+
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/jquery/jquery-3.7.1.min.js"></script>
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/lucide/lucide-1.11.0.min.js"></script>
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/tailwindcss/tailwindcss-browser-4.2.4.min.js"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      /* === Brand Colors (from Round Hainan Regatta VI) === */
+      --color-primary:              #005BAB;
+      --color-primary-container:    #E6F0FA;
+      --color-on-primary:           #ffffff;
+      /* === Background / Surface === */
+      --color-background:                 #FFFFFF;
+      --color-surface-container-lowest:   #FFFFFF;
+      --color-surface:                    #FFFFFF;
+      --color-surface-container:          #EEF2F7;
+      --color-surface-container-high:     #E5EBF2;
+      --color-surface-container-highest:  #DBE3EC;
+      /* === Text === */
+      --color-on-surface:           #1A2332;
+      --color-on-surface-variant:   #5B6472;
+      /* === Functional === */
+      --color-success:  #22c55e;
+      --color-error:    #ef4444;
+      --color-warning:  #f59e0b;
+      /* === Border === */
+      --color-outline:          #C8D2DE;
+      --color-outline-variant:  #DDE4EC;
+      /* === Extended Brand === */
+      --color-primary-deep:     #003C7E;
+      --color-primary-bright:   #0096DF;
+      --color-accent-gold:      #F6AA00;
+      --color-accent-coral:     #DD0078;
+      --color-accent-yellow:    #FFE100;
+      /* === Radius === */
+      --radius-sm:   0.25rem;
+      --radius-md:   0.5rem;
+      --radius-lg:   0.75rem;
+      --radius-xl:   1rem;
+      --radius-2xl:  1.5rem;
+      --radius-full: 9999px;
+      /* === Shadow (Brand Blue tinted) === */
+      --shadow-card:   0 4px 20px rgba(0, 60, 126, 0.08);
+      --shadow-float:  0 10px 30px rgba(0, 60, 126, 0.12);
+      --shadow-dialog: 0 25px 50px rgba(0, 60, 126, 0.15);
+      /* === Font === */
+      --font-sans: "Inter", "Noto Sans SC", system-ui, sans-serif;
+      --font-display: "Playfair Display", "Noto Serif SC", Georgia, serif;
+    }
+  </style>
+
+  <!-- Image fallback -->
+  <script>
+    document.addEventListener('error', function (e) {
+      const img = e.target;
+      if (img.tagName !== 'IMG' || img.dataset.fallback) return;
+      img.dataset.fallback = '1';
+      const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const cat = img.getAttribute('data-category') || '其他';
+      const alt = img.getAttribute('alt') || '';
+      const label = esc(alt.length > 8 ? alt.slice(0, 8) + '…' : alt);
+      const icons = { '人物': '👤', '自然风景': '🏞', '动物': '🐾', '建筑城市': '🏙', '运动体育': '⚽', '交通工具': '🚗', '食物': '🍽', '服饰时尚': '👗', '商业科技': '💼', '游戏娱乐': '🎮', '艺术': '🎨', '其他': '🖼' };
+      const icon = icons[cat] || '🖼';
+      const w = img.width || 400, h = img.height || 300;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="100%" height="100%" fill="%23f3f4f6"/><text x="50%" y="45%" text-anchor="middle" font-size="${Math.min(w, h) * 0.18}" dominant-baseline="central">${icon}</text><text x="50%" y="68%" text-anchor="middle" font-size="${Math.min(w, h) * 0.07}" fill="%239ca3af" font-family="system-ui,sans-serif" dominant-baseline="central">${label}</text></svg>`;
+      img.src = 'data:image/svg+xml,' + svg;
+    }, true);
+  </script>
+</head>
+
+<body class="bg-background text-on-surface font-sans">
+
+  <!-- @nav:start Navigation, remove this section if not needed -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-primary-deep/95 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="home.html" class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-9 h-9 object-contain bg-white rounded-full p-1" />
+        <div class="leading-tight">
+          <div class="text-white font-bold text-sm tracking-wide">ROUND HAINAN REGATTA</div>
+          <div class="text-white/60 text-[10px] tracking-widest uppercase">15th Edition · 2026</div>
+        </div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="home.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Home</a>
+        <a href="about.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">The Race</a>
+        <a href="course.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Course</a>
+        <a href="schedule.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Schedule</a>
+        <a href="classes.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Classes</a>
+        <a href="news.html" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">News</a>
+        <a href="contact.html" class="px-3 py-2 text-sm font-medium text-white bg-white/10 rounded-md" aria-current="page">Contact</a>
+      </nav>
+      <a href="#contact-form" id="header-cta" class="hidden md:inline-flex items-center gap-2 bg-accent-gold text-primary-deep px-4 py-2 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity">
+        Enter the Race
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+      <button class="lg:hidden text-white p-2" aria-label="Toggle menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </header>
+  <!-- @nav:end Navigation, remove this section if not needed -->
+
+  <!-- @main-content:start -->
+  <main>
+
+    <!-- ============================================ -->
+    <!-- 1) PAGE HERO (40vh)                           -->
+    <!-- ============================================ -->
+    <section id="section-hero" class="relative w-full overflow-hidden" style="min-height:40vh;">
+      <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1920&q=80" alt="三亚湾游艇码头俯瞰" data-category="建筑城市" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-b from-primary-deep/85 via-primary-deep/75 to-primary-deep/90"></div>
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-16 flex flex-col justify-center" style="min-height:40vh;">
+        <span class="text-accent-gold text-xs md:text-sm font-semibold tracking-[0.35em] uppercase mb-4">
+          Get in Touch
+        </span>
+        <h1 class="font-display text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 max-w-3xl">
+          Contact the Race Committee
+        </h1>
+        <p class="text-white/75 text-base md:text-lg max-w-2xl leading-relaxed">
+          We're here to answer your questions about entry, sponsorship, and media.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-6 text-white/60 text-xs tracking-widest uppercase">
+          <span class="inline-flex items-center gap-2">
+            <i data-lucide="mail" class="w-4 h-4 text-accent-gold"></i>
+            roundhainanregatta@foxmail.com
+          </span>
+          <span class="inline-flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-accent-gold"></i>
+            Sanya, Hainan, China
+          </span>
+          <span class="inline-flex items-center gap-2">
+            <i data-lucide="clock" class="w-4 h-4 text-accent-gold"></i>
+            Mon–Fri · 09:00–18:00 CST
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 2) CONTACT CARDS GRID (3 columns)             -->
+    <!-- ============================================ -->
+    <section id="section-cards" class="bg-background py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <span class="text-primary text-xs font-semibold tracking-[0.35em] uppercase">Choose a Channel</span>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-on-surface mt-3">Who would you like to reach?</h2>
+          <p class="text-on-surface-variant text-sm mt-3">Select the department that best matches your inquiry for the fastest response.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+
+          <!-- 列表-联系卡片1 · Race Entry -->
+          <article id="card-entry" class="group bg-surface rounded-xl shadow-card p-8 flex flex-col hover:shadow-float transition-all duration-300">
+            <div class="w-14 h-14 rounded-full bg-accent-gold/15 text-accent-gold flex items-center justify-center mb-5 group-hover:bg-accent-gold group-hover:text-primary-deep transition-colors">
+              <i data-lucide="sailboat" class="w-7 h-7"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold text-on-surface mb-2">Race Entry &amp; Registration</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+              Questions about entry, class eligibility, and race documents (NoR, SI, entry forms).
+            </p>
+            <div class="mt-auto pt-5 border-t border-outline-variant/40">
+              <div class="text-[11px] font-semibold tracking-widest uppercase text-on-surface-variant/70 mb-1.5">Email</div>
+              <a href="mailto:roundhainanregatta@foxmail.com" class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:text-primary-deep transition-colors break-all">
+                <i data-lucide="mail" class="w-4 h-4 shrink-0"></i>
+                roundhainanregatta@foxmail.com
+              </a>
+              <div class="mt-4 inline-flex items-center gap-2 text-xs text-on-surface-variant">
+                <i data-lucide="clock-3" class="w-3.5 h-3.5 text-accent-gold"></i>
+                Response within 48 hours
+              </div>
+            </div>
+          </article>
+
+          <!-- 列表-联系卡片2 · Media & Press -->
+          <article id="card-media" class="group bg-surface rounded-xl shadow-card p-8 flex flex-col hover:shadow-float transition-all duration-300">
+            <div class="w-14 h-14 rounded-full bg-accent-gold/15 text-accent-gold flex items-center justify-center mb-5 group-hover:bg-accent-gold group-hover:text-primary-deep transition-colors">
+              <i data-lucide="newspaper" class="w-7 h-7"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold text-on-surface mb-2">Media &amp; Press</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+              Press accreditation, media resources, interviews with sailors and organizers.
+            </p>
+            <div class="mt-auto pt-5 border-t border-outline-variant/40">
+              <div class="text-[11px] font-semibold tracking-widest uppercase text-on-surface-variant/70 mb-1.5">Email</div>
+              <a href="mailto:media@roundhainanregatta.cn" class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:text-primary-deep transition-colors break-all">
+                <i data-lucide="mail" class="w-4 h-4 shrink-0"></i>
+                media@roundhainanregatta.cn
+              </a>
+              <div class="mt-4 inline-flex items-center gap-2 text-xs text-on-surface-variant">
+                <i data-lucide="folder-down" class="w-3.5 h-3.5 text-accent-gold"></i>
+                Press kit available on request
+              </div>
+            </div>
+          </article>
+
+          <!-- 列表-联系卡片3 · Sponsorship -->
+          <article id="card-sponsor" class="group bg-surface rounded-xl shadow-card p-8 flex flex-col hover:shadow-float transition-all duration-300">
+            <div class="w-14 h-14 rounded-full bg-accent-gold/15 text-accent-gold flex items-center justify-center mb-5 group-hover:bg-accent-gold group-hover:text-primary-deep transition-colors">
+              <i data-lucide="handshake" class="w-7 h-7"></i>
+            </div>
+            <h3 class="font-display text-xl font-bold text-on-surface mb-2">Sponsorship &amp; Partnerships</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+              Partnership opportunities, sponsorship inquiries and hospitality packages.
+            </p>
+            <div class="mt-auto pt-5 border-t border-outline-variant/40">
+              <div class="text-[11px] font-semibold tracking-widest uppercase text-on-surface-variant/70 mb-1.5">Email</div>
+              <a href="mailto:partners@roundhainanregatta.cn" class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:text-primary-deep transition-colors break-all">
+                <i data-lucide="mail" class="w-4 h-4 shrink-0"></i>
+                partners@roundhainanregatta.cn
+              </a>
+              <div class="mt-4 inline-flex items-center gap-2 text-xs text-on-surface-variant">
+                <i data-lucide="file-badge" class="w-3.5 h-3.5 text-accent-gold"></i>
+                See our sponsor package
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 3) MAIN CONTACT SECTION (2 columns)           -->
+    <!-- ============================================ -->
+    <section id="section-contact" class="bg-surface-container/60 py-24">
+      <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
+
+        <!-- Left · Organizing Committee Info -->
+        <div>
+          <span class="text-primary text-xs font-semibold tracking-[0.35em] uppercase">Official</span>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-on-surface mt-3 mb-4 leading-tight">
+            Round Hainan Regatta<br/>Organizing Committee
+          </h2>
+          <p class="text-on-surface-variant text-sm leading-relaxed mb-10 max-w-lg">
+            Sanctioned by World Sailing and organized in partnership with the Hainan Sailing Association and Sanya Municipal Sports Bureau.
+          </p>
+
+          <ul class="space-y-6 mb-10">
+            <li class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-[11px] font-semibold tracking-widest uppercase text-on-surface-variant/70 mb-1">Address</div>
+                <p class="text-sm text-on-surface leading-relaxed">
+                  Sanya Yacht Club, Sanya Bay,<br/>Hainan 572000, China
+                </p>
+              </div>
+            </li>
+
+            <li class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                <i data-lucide="phone" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-[11px] font-semibold tracking-widest uppercase text-on-surface-variant/70 mb-1">Phone</div>
+                <a href="tel:+8689812345678" class="text-sm text-on-surface hover:text-primary transition-colors">
+                  +86 898 xxxx xxxx
+                </a>
+              </div>
+            </li>
+
+            <li class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-[11px] font-semibold tracking-widest uppercase text-on-surface-variant/70 mb-1">Email</div>
+                <a href="mailto:roundhainanregatta@foxmail.com" class="text-sm text-on-surface hover:text-primary transition-colors break-all">
+                  roundhainanregatta@foxmail.com
+                </a>
+              </div>
+            </li>
+
+            <li class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                <i data-lucide="clock" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-[11px] font-semibold tracking-widest uppercase text-on-surface-variant/70 mb-1">Office Hours</div>
+                <p class="text-sm text-on-surface">Mon–Fri, 09:00–18:00 (CST)</p>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Social media row -->
+          <div>
+            <div class="text-[11px] font-semibold tracking-widest uppercase text-on-surface-variant/70 mb-4">Follow the Race</div>
+            <div class="flex items-center gap-3 flex-wrap">
+              <a href="#" id="social-instagram" class="w-11 h-11 rounded-full bg-accent-gold/15 text-accent-gold hover:bg-accent-gold hover:text-primary-deep flex items-center justify-center transition-colors" aria-label="Instagram">
+                <i data-lucide="instagram" class="w-5 h-5"></i>
+              </a>
+              <a href="#" id="social-facebook" class="w-11 h-11 rounded-full bg-accent-gold/15 text-accent-gold hover:bg-accent-gold hover:text-primary-deep flex items-center justify-center transition-colors" aria-label="Facebook">
+                <i data-lucide="facebook" class="w-5 h-5"></i>
+              </a>
+              <a href="#" id="social-youtube" class="w-11 h-11 rounded-full bg-accent-gold/15 text-accent-gold hover:bg-accent-gold hover:text-primary-deep flex items-center justify-center transition-colors" aria-label="YouTube">
+                <i data-lucide="youtube" class="w-5 h-5"></i>
+              </a>
+              <a href="#" id="social-twitter" class="w-11 h-11 rounded-full bg-accent-gold/15 text-accent-gold hover:bg-accent-gold hover:text-primary-deep flex items-center justify-center transition-colors" aria-label="Twitter / X">
+                <i data-lucide="twitter" class="w-5 h-5"></i>
+              </a>
+              <a href="#" id="social-wechat" class="w-11 h-11 rounded-full bg-accent-gold/15 text-accent-gold hover:bg-accent-gold hover:text-primary-deep flex items-center justify-center transition-colors" aria-label="WeChat">
+                <i data-lucide="message-circle" class="w-5 h-5"></i>
+              </a>
+              <a href="#" id="social-weibo" class="w-11 h-11 rounded-full bg-accent-gold/15 text-accent-gold hover:bg-accent-gold hover:text-primary-deep flex items-center justify-center transition-colors" aria-label="Weibo">
+                <i data-lucide="hash" class="w-5 h-5"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right · Contact Form -->
+        <div>
+          <div id="contact-form" class="bg-surface shadow-card rounded-lg p-8 md:p-10">
+            <div class="mb-8">
+              <span class="text-primary text-xs font-semibold tracking-[0.35em] uppercase">Send a Message</span>
+              <h3 class="font-display text-2xl md:text-3xl font-bold text-on-surface mt-3">Drop us a line</h3>
+              <p class="text-sm text-on-surface-variant mt-2">We usually reply within 2 business days.</p>
+            </div>
+
+            <form id="form-contact" class="space-y-5" novalidate>
+
+              <div class="grid md:grid-cols-2 gap-5">
+                <div>
+                  <label for="input-name" class="block text-xs font-semibold tracking-widest uppercase text-on-surface-variant mb-2">Full Name</label>
+                  <input id="input-name" type="text" placeholder="Your name"
+                         class="w-full border-none bg-surface-container rounded-md px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors" />
+                </div>
+                <div>
+                  <label for="input-email" class="block text-xs font-semibold tracking-widest uppercase text-on-surface-variant mb-2">Email</label>
+                  <input id="input-email" type="email" placeholder="you@example.com"
+                         class="w-full border-none bg-surface-container rounded-md px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors" />
+                </div>
+              </div>
+
+              <div>
+                <label for="select-subject" class="block text-xs font-semibold tracking-widest uppercase text-on-surface-variant mb-2">Subject</label>
+                <div class="relative">
+                  <select id="select-subject"
+                          class="w-full border-none bg-surface-container rounded-md pl-4 pr-10 py-3 text-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors appearance-none">
+                    <option value="entry">Race Entry &amp; Registration</option>
+                    <option value="media">Media &amp; Press Inquiry</option>
+                    <option value="sponsor">Sponsorship &amp; Partnerships</option>
+                    <option value="general">General Question</option>
+                  </select>
+                  <i data-lucide="chevron-down" class="w-4 h-4 text-on-surface-variant absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                </div>
+              </div>
+
+              <div>
+                <label for="input-message" class="block text-xs font-semibold tracking-widest uppercase text-on-surface-variant mb-2">Message</label>
+                <textarea id="input-message" rows="5" placeholder="Tell us about your inquiry, boat, or organization…"
+                          class="w-full border-none bg-surface-container rounded-md px-4 py-3 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors resize-none"></textarea>
+              </div>
+
+              <label for="check-privacy" class="flex items-start gap-3 cursor-pointer select-none">
+                <input id="check-privacy" type="checkbox" class="mt-0.5 w-4 h-4 accent-primary shrink-0" />
+                <span class="text-xs text-on-surface-variant leading-relaxed">
+                  I agree that the Race Committee may store and process my information in accordance with the
+                  <a href="#" class="text-primary hover:underline">Privacy Policy</a> for the purpose of responding to my inquiry.
+                </span>
+              </label>
+
+              <button id="btn-send-message" type="submit"
+                      class="w-full bg-primary text-on-primary px-4 py-3.5 rounded-md text-sm font-semibold hover:opacity-90 active:scale-[0.99] transition-all inline-flex items-center justify-center gap-2">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                Send Message
+              </button>
+
+              <p id="form-status" class="hidden text-sm text-success text-center pt-1">
+                ✓ Message sent — we'll get back to you shortly.
+              </p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 4) LOCATION MAP SECTION                       -->
+    <!-- ============================================ -->
+    <section id="section-location" class="bg-background py-24">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-10 max-w-2xl">
+          <span class="text-primary text-xs font-semibold tracking-[0.35em] uppercase">Find Us</span>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-on-surface mt-3">Sanya Yacht Club</h2>
+          <p class="text-on-surface-variant text-sm mt-3">
+            Race HQ is located on the western shore of Sanya Bay, a 20-minute drive from Sanya Phoenix International Airport.
+          </p>
+        </div>
+
+        <!-- Map placeholder (SVG stylized map of Sanya Bay area) -->
+        <div class="relative w-full rounded-xl overflow-hidden shadow-card" style="height:400px;">
+          <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 w-full h-full">
+            <defs>
+              <linearGradient id="sea" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#003C7E" />
+                <stop offset="50%" stop-color="#005BAB" />
+                <stop offset="100%" stop-color="#0096DF" />
+              </linearGradient>
+              <linearGradient id="land" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#EEF2F7" />
+                <stop offset="100%" stop-color="#DBE3EC" />
+              </linearGradient>
+              <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+                <path d="M60 0H0V60" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              </pattern>
+            </defs>
+
+            <!-- Sea background -->
+            <rect width="1200" height="400" fill="url(#sea)" />
+            <rect width="1200" height="400" fill="url(#grid)" />
+
+            <!-- Land / Hainan coastline (stylized) -->
+            <path d="M0,120 Q120,90 260,110 T520,140 Q640,150 780,120 Q920,90 1080,110 L1200,100 L1200,0 L0,0 Z" fill="url(#land)" opacity="0.95"/>
+            <!-- Coastal detail -->
+            <path d="M0,120 Q120,90 260,110 T520,140 Q640,150 780,120 Q920,90 1080,110 L1200,100" stroke="#C8D2DE" stroke-width="1.5" fill="none"/>
+
+            <!-- Small islands -->
+            <ellipse cx="300" cy="260" rx="26" ry="10" fill="url(#land)" opacity="0.85"/>
+            <ellipse cx="880" cy="290" rx="34" ry="12" fill="url(#land)" opacity="0.85"/>
+
+            <!-- Roads (dashed) -->
+            <path d="M60,80 L400,140 L640,120 L900,140 L1150,105" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-dasharray="6 6" fill="none"/>
+            <path d="M600,55 L620,120 L600,190" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-dasharray="6 6" fill="none"/>
+
+            <!-- Labels -->
+            <text x="150" y="60" fill="#5B6472" font-size="14" font-family="Inter, sans-serif" font-weight="600" letter-spacing="2">HAINAN ISLAND</text>
+            <text x="900" y="220" fill="rgba(255,255,255,0.6)" font-size="12" font-family="Inter, sans-serif" letter-spacing="4">SOUTH CHINA SEA</text>
+            <text x="880" y="315" fill="#5B6472" font-size="10" font-family="Inter, sans-serif">Xidao</text>
+            <text x="300" y="285" fill="#5B6472" font-size="10" font-family="Inter, sans-serif">Dongdao</text>
+
+            <!-- Airport marker -->
+            <g transform="translate(80,90)">
+              <circle r="6" fill="#5B6472" opacity="0.6"/>
+              <text x="12" y="4" fill="#5B6472" font-size="11" font-family="Inter, sans-serif" font-weight="600">Phoenix Airport</text>
+            </g>
+            <!-- Train station marker -->
+            <g transform="translate(1080,110)">
+              <circle r="6" fill="#5B6472" opacity="0.6"/>
+              <text x="-90" y="-8" fill="#5B6472" font-size="11" font-family="Inter, sans-serif" font-weight="600">Sanya Railway Stn</text>
+            </g>
+
+            <!-- Compass -->
+            <g transform="translate(1130,340)" opacity="0.7">
+              <circle r="22" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+              <path d="M0,-16 L4,0 L0,16 L-4,0 Z" fill="#F6AA00"/>
+              <text x="0" y="-26" fill="#ffffff" font-size="10" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700">N</text>
+            </g>
+
+            <!-- Yacht club pin -->
+            <g transform="translate(600,240)" id="map-pin-yacht">
+              <!-- Pulse ring -->
+              <circle r="34" fill="#F6AA00" opacity="0.15">
+                <animate attributeName="r" values="24;44;24" dur="2.4s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.3;0;0.3" dur="2.4s" repeatCount="indefinite"/>
+              </circle>
+              <circle r="22" fill="#F6AA00" opacity="0.25"/>
+              <!-- Pin body -->
+              <path d="M0,-28 C-14,-28 -22,-18 -22,-6 C-22,10 0,28 0,28 C0,28 22,10 22,-6 C22,-18 14,-28 0,-28 Z" fill="#F6AA00"/>
+              <circle cy="-8" r="7" fill="#003C7E"/>
+              <!-- Label -->
+              <rect x="-70" y="34" width="140" height="30" rx="15" fill="#003C7E"/>
+              <text x="0" y="53" fill="#ffffff" font-size="12" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" letter-spacing="1">SANYA YACHT CLUB</text>
+            </g>
+          </svg>
+
+          <!-- Map overlay controls -->
+          <div class="absolute top-4 right-4 flex flex-col gap-2">
+            <button id="map-zoom-in" class="w-9 h-9 bg-surface/95 backdrop-blur rounded-md shadow-card text-on-surface hover:text-primary flex items-center justify-center transition-colors" aria-label="Zoom in">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+            </button>
+            <button id="map-zoom-out" class="w-9 h-9 bg-surface/95 backdrop-blur rounded-md shadow-card text-on-surface hover:text-primary flex items-center justify-center transition-colors" aria-label="Zoom out">
+              <i data-lucide="minus" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <div class="absolute bottom-4 left-4 bg-surface/95 backdrop-blur rounded-md shadow-card px-4 py-2.5 text-xs">
+            <div class="font-semibold text-on-surface">18.2529°N, 109.5119°E</div>
+            <div class="text-on-surface-variant mt-0.5">Sanya Bay · Hainan</div>
+          </div>
+        </div>
+
+        <!-- Getting-here row (4 columns) -->
+        <div class="grid md:grid-cols-4 gap-6 mt-10">
+
+          <!-- 列表-交通1 · Airport -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+              <i data-lucide="plane" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-on-surface">From Sanya Phoenix Airport</div>
+              <div class="text-xs text-on-surface-variant mt-1">≈ 20 min drive · 18 km</div>
+            </div>
+          </div>
+
+          <!-- 列表-交通2 · Railway -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+              <i data-lucide="train-front" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-on-surface">From Sanya Railway Station</div>
+              <div class="text-xs text-on-surface-variant mt-1">≈ 15 min drive · 12 km</div>
+            </div>
+          </div>
+
+          <!-- 列表-交通3 · Public Transit -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+              <i data-lucide="bus" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-on-surface">Public Transit</div>
+              <div class="text-xs text-on-surface-variant mt-1">Bus 8 · 25 · 40 stop nearby</div>
+            </div>
+          </div>
+
+          <!-- 列表-交通4 · Parking -->
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+              <i data-lucide="car" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-on-surface">Free Parking Available</div>
+              <div class="text-xs text-on-surface-variant mt-1">200+ spaces at Race HQ</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 5) FAQ PREVIEW                                -->
+    <!-- ============================================ -->
+    <section id="section-faq" class="bg-surface-container/60 py-24">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="text-center mb-12">
+          <span class="text-primary text-xs font-semibold tracking-[0.35em] uppercase">Common Questions</span>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-on-surface mt-3">Quick Answers</h2>
+          <p class="text-on-surface-variant text-sm mt-3 max-w-xl mx-auto">
+            Can't find what you're looking for? Send us a message using the form above.
+          </p>
+        </div>
+
+        <div id="faq-list" class="space-y-3">
+
+          <!-- 列表-FAQ1 (default open) -->
+          <details class="faq-item bg-surface rounded-lg shadow-card group" open>
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
+              <span class="flex items-center gap-4">
+                <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center shrink-0">01</span>
+                <span class="text-sm md:text-base font-semibold text-on-surface">How do I enter the race?</span>
+              </span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-on-surface-variant shrink-0 transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="px-5 pb-5 pl-[4.25rem] text-sm text-on-surface-variant leading-relaxed">
+              Download the Notice of Race and entry form from the Documents section, complete all required fields (skipper details, boat specs, IRC/ORC certificate), and email the signed PDF to <a href="mailto:roundhainanregatta@foxmail.com" class="text-primary hover:underline">roundhainanregatta@foxmail.com</a>. Early-bird entry closes 60 days before race start.
+            </div>
+          </details>
+
+          <!-- 列表-FAQ2 -->
+          <details class="faq-item bg-surface rounded-lg shadow-card group">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
+              <span class="flex items-center gap-4">
+                <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center shrink-0">02</span>
+                <span class="text-sm md:text-base font-semibold text-on-surface">Who is eligible to compete?</span>
+              </span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-on-surface-variant shrink-0 transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="px-5 pb-5 pl-[4.25rem] text-sm text-on-surface-variant leading-relaxed">
+              The regatta welcomes IRC, ORC, Multihull and One-Design class yachts with a valid rating certificate. Skippers must hold a recognized offshore skipper qualification, and at least 30% of the crew must have completed a Category-2 offshore safety course.
+            </div>
+          </details>
+
+          <!-- 列表-FAQ3 -->
+          <details class="faq-item bg-surface rounded-lg shadow-card group">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
+              <span class="flex items-center gap-4">
+                <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center shrink-0">03</span>
+                <span class="text-sm md:text-base font-semibold text-on-surface">What insurance is required?</span>
+              </span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-on-surface-variant shrink-0 transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="px-5 pb-5 pl-[4.25rem] text-sm text-on-surface-variant leading-relaxed">
+              Each entered yacht must carry Third-Party Liability insurance with a minimum cover of USD 500,000, valid for the entire race period including delivery legs. A certificate copy must be submitted to the Committee before scrutineering.
+            </div>
+          </details>
+
+          <!-- 列表-FAQ4 -->
+          <details class="faq-item bg-surface rounded-lg shadow-card group">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
+              <span class="flex items-center gap-4">
+                <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center shrink-0">04</span>
+                <span class="text-sm md:text-base font-semibold text-on-surface">Where is the race village located?</span>
+              </span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-on-surface-variant shrink-0 transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="px-5 pb-5 pl-[4.25rem] text-sm text-on-surface-variant leading-relaxed">
+              The Race Village is set up at Sanya Yacht Club on Sanya Bay, hosting registration, scrutineering, skipper briefings, sponsor exhibits and daily prize giving. It's open to the public throughout the event with free entry.
+            </div>
+          </details>
+
+          <!-- 列表-FAQ5 -->
+          <details class="faq-item bg-surface rounded-lg shadow-card group">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
+              <span class="flex items-center gap-4">
+                <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center shrink-0">05</span>
+                <span class="text-sm md:text-base font-semibold text-on-surface">Can spectators watch the race?</span>
+              </span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-on-surface-variant shrink-0 transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="px-5 pb-5 pl-[4.25rem] text-sm text-on-surface-variant leading-relaxed">
+              Yes — the Race Start on Sanya Bay is a spectacular public viewing event. We also stream live tracker data, drone footage and on-boat cameras on our website and social channels. Grandstand seats near the start line can be reserved in advance.
+            </div>
+          </details>
+
+          <!-- 列表-FAQ6 -->
+          <details class="faq-item bg-surface rounded-lg shadow-card group">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
+              <span class="flex items-center gap-4">
+                <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center shrink-0">06</span>
+                <span class="text-sm md:text-base font-semibold text-on-surface">How can I volunteer for the event?</span>
+              </span>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-on-surface-variant shrink-0 transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="px-5 pb-5 pl-[4.25rem] text-sm text-on-surface-variant leading-relaxed">
+              We recruit 200+ volunteers each edition for race committee support, hospitality, media, and shore logistics. Applications open 90 days before race start — email <a href="mailto:volunteer@roundhainanregatta.cn" class="text-primary hover:underline">volunteer@roundhainanregatta.cn</a> with your CV and preferred role.
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================ -->
+    <!-- 6) CTA SECTION                                -->
+    <!-- ============================================ -->
+    <section id="section-cta" class="relative overflow-hidden bg-primary-deep py-24">
+      <!-- Decorative wave -->
+      <div class="absolute inset-0 opacity-15 pointer-events-none">
+        <svg viewBox="0 0 1200 400" preserveAspectRatio="none" class="w-full h-full">
+          <path d="M0,220 C240,300 480,140 720,220 C960,300 1200,180 1200,220 L1200,400 L0,400 Z" fill="#0096DF"/>
+          <path d="M0,260 C240,340 480,200 720,260 C960,340 1200,220 1200,260 L1200,400 L0,400 Z" fill="#F6AA00" opacity="0.5"/>
+        </svg>
+      </div>
+
+      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <span class="text-accent-gold text-xs font-semibold tracking-[0.35em] uppercase">Sanya · 2026</span>
+        <h2 class="font-display text-white text-4xl md:text-5xl lg:text-6xl font-bold mt-4 leading-tight">
+          Ready to Set Sail?
+        </h2>
+        <p class="text-white/70 text-base md:text-lg mt-5 max-w-2xl mx-auto">
+          Join sailors from around the world at the 15th Round Hainan Regatta — 680 nautical miles of blue-water competition around China's tropical island.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-4 justify-center">
+          <button id="btn-cta-entry" class="bg-accent-gold text-primary-deep px-8 py-3.5 rounded-md text-sm font-semibold hover:opacity-90 active:scale-[0.98] transition-all inline-flex items-center gap-2">
+            <i data-lucide="edit-3" class="w-4 h-4"></i>
+            Submit Entry Form
+          </button>
+          <button id="btn-cta-nor" class="bg-white/10 text-white border border-white/20 px-8 py-3.5 rounded-md text-sm font-semibold hover:bg-white/20 transition-colors inline-flex items-center gap-2">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            Download Notice of Race
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================ -->
+    <!-- 7) FOOTER                                     -->
+    <!-- ============================================ -->
+    <footer id="section-footer" class="bg-primary-deep border-t border-white/10 pt-16 pb-8">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+          <!-- Column 1: Brand -->
+          <div class="col-span-2 md:col-span-1">
+            <a href="home.html" class="flex items-center gap-3 mb-5">
+              <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-11 h-11 object-contain bg-white rounded-full p-1.5" />
+              <div class="leading-tight">
+                <div class="font-display font-bold text-white text-base">Round Hainan</div>
+                <div class="font-display font-bold text-accent-gold text-base">Regatta</div>
+              </div>
+            </a>
+            <p class="text-white/60 text-sm leading-relaxed">
+              China's premier offshore sailing classic. 680 nautical miles around Hainan Island, welcoming international competitors since 2010.
+            </p>
+          </div>
+
+          <!-- Column 2: Quick Links -->
+          <div>
+            <h4 class="text-white font-semibold text-sm tracking-widest uppercase mb-5">Quick Links</h4>
+            <ul class="space-y-3">
+              <li><a href="home.html" class="text-white/60 hover:text-accent-gold text-sm transition-colors">Home</a></li>
+              <li><a href="about.html" class="text-white/60 hover:text-accent-gold text-sm transition-colors">About the Race</a></li>
+              <li><a href="course.html" class="text-white/60 hover:text-accent-gold text-sm transition-colors">Race Course</a></li>
+              <li><a href="schedule.html" class="text-white/60 hover:text-accent-gold text-sm transition-colors">Schedule</a></li>
+              <li><a href="classes.html" class="text-white/60 hover:text-accent-gold text-sm transition-colors">Classes</a></li>
+              <li><a href="news.html" class="text-white/60 hover:text-accent-gold text-sm transition-colors">News</a></li>
+              <li><a href="contact.html" class="text-white/60 hover:text-accent-gold text-sm transition-colors">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Resources -->
+          <div>
+            <h4 class="text-white font-semibold text-sm tracking-widest uppercase mb-5">Resources</h4>
+            <ul class="space-y-3">
+              <li><a href="about.html#nor" id="link-footer-nor" class="text-white/60 hover:text-accent-gold text-sm transition-colors inline-flex items-center gap-2">
+                <i data-lucide="file-text" class="w-3.5 h-3.5"></i>Notice of Race
+              </a></li>
+              <li><a href="about.html#si" id="link-footer-si" class="text-white/60 hover:text-accent-gold text-sm transition-colors inline-flex items-center gap-2">
+                <i data-lucide="book-open" class="w-3.5 h-3.5"></i>Sailing Instructions
+              </a></li>
+              <li><a href="contact.html#entry" id="link-footer-entry" class="text-white/60 hover:text-accent-gold text-sm transition-colors inline-flex items-center gap-2">
+                <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>Entry Form
+              </a></li>
+              <li><a href="news.html#gallery" id="link-footer-gallery" class="text-white/60 hover:text-accent-gold text-sm transition-colors inline-flex items-center gap-2">
+                <i data-lucide="image" class="w-3.5 h-3.5"></i>Photo Gallery
+              </a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Contact & Social -->
+          <div>
+            <h4 class="text-white font-semibold text-sm tracking-widest uppercase mb-5">Organizing Committee</h4>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start gap-2.5 text-white/60 text-sm">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 mt-1 shrink-0 text-accent-gold"></i>
+                <span>Sanya Yacht Club<br/>Sanya, Hainan, China</span>
+              </li>
+              <li class="flex items-center gap-2.5 text-white/60 text-sm">
+                <i data-lucide="mail" class="w-3.5 h-3.5 shrink-0 text-accent-gold"></i>
+                <a href="mailto:roundhainanregatta@foxmail.com" class="hover:text-accent-gold transition-colors">roundhainanregatta@foxmail.com</a>
+              </li>
+            </ul>
+            <div class="flex items-center gap-2">
+              <a href="#" id="footer-social-facebook" class="w-9 h-9 rounded-full bg-white/10 hover:bg-accent-gold hover:text-primary-deep text-white flex items-center justify-center transition-colors" aria-label="Facebook">
+                <i data-lucide="facebook" class="w-4 h-4"></i>
+              </a>
+              <a href="#" id="footer-social-instagram" class="w-9 h-9 rounded-full bg-white/10 hover:bg-accent-gold hover:text-primary-deep text-white flex items-center justify-center transition-colors" aria-label="Instagram">
+                <i data-lucide="instagram" class="w-4 h-4"></i>
+              </a>
+              <a href="#" id="footer-social-youtube" class="w-9 h-9 rounded-full bg-white/10 hover:bg-accent-gold hover:text-primary-deep text-white flex items-center justify-center transition-colors" aria-label="YouTube">
+                <i data-lucide="youtube" class="w-4 h-4"></i>
+              </a>
+              <a href="#" id="footer-social-twitter" class="w-9 h-9 rounded-full bg-white/10 hover:bg-accent-gold hover:text-primary-deep text-white flex items-center justify-center transition-colors" aria-label="Twitter">
+                <i data-lucide="twitter" class="w-4 h-4"></i>
+              </a>
+              <a href="#" id="footer-social-weibo" class="w-9 h-9 rounded-full bg-white/10 hover:bg-accent-gold hover:text-primary-deep text-white flex items-center justify-center transition-colors" aria-label="Weibo">
+                <i data-lucide="hash" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-14 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+          <p class="text-white/50 text-xs">
+            © 2026 Round Hainan Regatta Organizing Committee. All rights reserved.
+          </p>
+          <p class="text-white/50 text-xs tracking-wide">
+            World Sailing Sanctioned · Since 2010
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+  <!-- @main-content:end -->
+
+  <script>
+    lucide.createIcons();
+
+    $(function () {
+
+      // ============================================
+      // Contact form submission
+      // Simple demo: validate presence of core fields, then show a success message.
+      // A production implementation should:
+      // 1. Validate email format with a proper regex, name length ≥ 2 chars, message ≥ 10 chars
+      // 2. POST the form data to the committee backend via fetch(), showing a loading spinner
+      // 3. Handle server-side errors (rate-limit, spam-flag) with inline error messages under each field
+      // 4. Reset form and show success toast on 2xx response; keep values on failure
+      // 5. Store submission in localStorage as a draft in case of accidental navigation
+      // ============================================
+      $('#form-contact').on('submit', function (e) {
+        e.preventDefault();
+        const name    = $('#input-name').val().trim();
+        const email   = $('#input-email').val().trim();
+        const subject = $('#select-subject').val();
+        const message = $('#input-message').val().trim();
+        const privacy = $('#check-privacy').is(':checked');
+
+        console.log('Contact form submit:', { name, email, subject, message, privacy });
+
+        if (!name || !email || !message) {
+          $('#form-status')
+            .removeClass('hidden text-success')
+            .addClass('text-error')
+            .text('⚠ Please fill in your name, email and message before sending.');
+          return;
+        }
+        if (!privacy) {
+          $('#form-status')
+            .removeClass('hidden text-success')
+            .addClass('text-error')
+            .text('⚠ Please accept the Privacy Policy to continue.');
+          return;
+        }
+
+        $('#form-status')
+          .removeClass('hidden text-error')
+          .addClass('text-success')
+          .text('✓ Message sent — we\'ll get back to you within 48 hours.');
+        $('#form-contact')[0].reset();
+      });
+
+      // ============================================
+      // Contact card CTA → focus form and pre-select subject
+      // ============================================
+      $('#card-entry').on('click', function () {
+        $('#select-subject').val('entry');
+        $('#contact-form')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(function(){ $('#input-name').trigger('focus'); }, 400);
+      });
+      $('#card-media').on('click', function () {
+        $('#select-subject').val('media');
+        $('#contact-form')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(function(){ $('#input-name').trigger('focus'); }, 400);
+      });
+      $('#card-sponsor').on('click', function () {
+        $('#select-subject').val('sponsor');
+        $('#contact-form')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(function(){ $('#input-name').trigger('focus'); }, 400);
+      });
+
+      // ============================================
+      // FAQ accordion — <details> is native, but we ensure only one is open at a time
+      // (accordion behavior). Remove the collapse-others line if independent toggling
+      // is preferred.
+      // ============================================
+      $('#faq-list').on('toggle', 'details.faq-item', function () {
+        if (this.open) {
+          $('#faq-list details.faq-item').not(this).prop('open', false);
+        }
+      });
+
+      // ============================================
+      // Map zoom controls — placeholder buttons.
+      // Should be replaced with a real map library integration (Mapbox / Amap):
+      // 1. Zoom-in increments map.zoom by 1 (max 18)
+      // 2. Zoom-out decrements map.zoom by 1 (min 4)
+      // 3. Smooth-animate transitions using flyTo() with 400ms duration
+      // ============================================
+      $('#map-zoom-in').on('click', function () {
+        console.log('Map zoom in — should call mapInstance.zoomIn()');
+      });
+      $('#map-zoom-out').on('click', function () {
+        console.log('Map zoom out — should call mapInstance.zoomOut()');
+      });
+
+      // ============================================
+      // CTA buttons
+      // ============================================
+      $('#btn-cta-entry').on('click', function () {
+        $('#select-subject').val('entry');
+        $('#contact-form')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(function(){ $('#input-name').trigger('focus'); }, 400);
+      });
+      $('#btn-cta-nor').on('click', function () {
+        console.log('Download NoR — should trigger download of /docs/notice-of-race-2026.pdf');
+      });
+      $('#header-cta').on('click', function () {
+        $('#select-subject').val('entry');
+      });
+
+      // ============================================
+      // Social channels — placeholder handlers.
+      // Should open the corresponding official page (Instagram, Facebook, etc.)
+      // in a new tab, tracked with an analytics event.
+      // ============================================
+      $('[id^="social-"], [id^="footer-social-"]').on('click', function (e) {
+        e.preventDefault();
+        console.log('Open social channel:', $(this).attr('id'));
+      });
+
+      // ============================================
+      // Footer resource links — should open PDF/PDF viewers in a new tab.
+      // 1. Notice of Race / Sailing Instructions open corresponding PDFs
+      // 2. Entry Form opens multi-step form workflow
+      // 3. Photo Gallery opens lightbox
+      // ============================================
+      $('#link-footer-nor, #link-footer-si, #link-footer-entry, #link-footer-gallery').on('click', function () {
+        console.log('Footer resource clicked:', $(this).attr('id'));
+      });
+    });
+  </script>
+</body>
+
+</html>

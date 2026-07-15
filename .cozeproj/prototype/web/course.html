@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Race Course · 15th Round Hainan Regatta 2026</title>
+
+  <link href="https://lf-code-agent.coze.cn/obj/x-ai-cn/fonts/google/google-all-fonts.css" rel="stylesheet"/>
+
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/jquery/jquery-3.7.1.min.js"></script>
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/lucide/lucide-1.11.0.min.js"></script>
+  <script src="https://lf-code-agent.coze.cn/obj/x-ai-cn/cdn/tailwindcss/tailwindcss-browser-4.2.4.min.js"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      /* === Brand Colors (from Round Hainan Regatta VI) === */
+      --color-primary:              #005BAB;
+      --color-primary-container:    #E6F0FA;
+      --color-on-primary:           #ffffff;
+      /* === Background / Surface === */
+      --color-background:                 #FFFFFF;
+      --color-surface-container-lowest:   #FFFFFF;
+      --color-surface:                    #FFFFFF;
+      --color-surface-container:          #EEF2F7;
+      --color-surface-container-high:     #E5EBF2;
+      --color-surface-container-highest:  #DBE3EC;
+      /* === Text === */
+      --color-on-surface:           #1A2332;
+      --color-on-surface-variant:   #5B6472;
+      /* === Functional === */
+      --color-success:  #22c55e;
+      --color-error:    #ef4444;
+      --color-warning:  #f59e0b;
+      /* === Border === */
+      --color-outline:          #C8D2DE;
+      --color-outline-variant:  #DDE4EC;
+      /* === Extended Brand === */
+      --color-primary-deep:     #003C7E;
+      --color-primary-bright:   #0096DF;
+      --color-accent-gold:      #F6AA00;
+      --color-accent-coral:     #DD0078;
+      --color-accent-yellow:    #FFE100;
+      /* === Radius === */
+      --radius-sm:   0.25rem;
+      --radius-md:   0.5rem;
+      --radius-lg:   0.75rem;
+      --radius-xl:   1rem;
+      --radius-2xl:  1.5rem;
+      --radius-full: 9999px;
+      /* === Shadow (Brand Blue tinted) === */
+      --shadow-card:   0 4px 20px rgba(0, 60, 126, 0.08);
+      --shadow-float:  0 10px 30px rgba(0, 60, 126, 0.12);
+      --shadow-dialog: 0 25px 50px rgba(0, 60, 126, 0.15);
+      /* === Font === */
+      --font-sans: "Inter", "Noto Sans SC", system-ui, sans-serif;
+      --font-display: "Playfair Display", "Noto Serif SC", Georgia, serif;
+    }
+
+    @keyframes dash-flow {
+      to { stroke-dashoffset: -60; }
+    }
+    .route-dash-full {
+      stroke-dasharray: 8 6;
+      animation: dash-flow 3s linear infinite;
+    }
+    .route-dash-half {
+      stroke-dasharray: 6 8;
+      animation: dash-flow 4s linear infinite reverse;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.6; r: 12; }
+      50% { opacity: 0.2; r: 18; }
+    }
+    .waypoint-glow {
+      animation: pulse-glow 2.5s ease-in-out infinite;
+    }
+  </style>
+
+  <!-- Image fallback -->
+  <script>
+    document.addEventListener('error', function (e) {
+      const img = e.target;
+      if (img.tagName !== 'IMG' || img.dataset.fallback) return;
+      img.dataset.fallback = '1';
+      const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const cat = img.getAttribute('data-category') || '其他';
+      const alt = img.getAttribute('alt') || '';
+      const label = esc(alt.length > 8 ? alt.slice(0, 8) + '…' : alt);
+      const icons = { '人物': '👤', '自然风景': '🏞', '动物': '🐾', '建筑城市': '🏙', '运动体育': '⚽', '交通工具': '🚗', '食物': '🍽', '服饰时尚': '👗', '商业科技': '💼', '游戏娱乐': '🎮', '艺术': '🎨', '其他': '🖼' };
+      const icon = icons[cat] || '🖼';
+      const w = img.width || 400, h = img.height || 300;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="100%" height="100%" fill="%23f3f4f6"/><text x="50%" y="45%" text-anchor="middle" font-size="${Math.min(w, h) * 0.18}" dominant-baseline="central">${icon}</text><text x="50%" y="68%" text-anchor="middle" font-size="${Math.min(w, h) * 0.07}" fill="%239ca3af" font-family="system-ui,sans-serif" dominant-baseline="central">${label}</text></svg>`;
+      img.src = 'data:image/svg+xml,' + svg;
+    }, true);
+  </script>
+</head>
+
+<body class="bg-background text-on-surface font-sans">
+
+  <!-- @nav:start Navigation, remove this section if not needed -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-primary-deep/95 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="home.html" id="nav-logo" class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-9 h-9 object-contain bg-white rounded-full p-1" />
+        <div class="leading-tight">
+          <div class="text-white font-bold text-sm tracking-wide">ROUND HAINAN REGATTA</div>
+          <div class="text-white/60 text-[10px] tracking-widest uppercase">15th Edition · 2026</div>
+        </div>
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="home.html" id="nav-home" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Home</a>
+        <a href="about.html" id="nav-about" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">The Race</a>
+        <a href="course.html" id="nav-course" class="px-3 py-2 text-sm font-medium text-white bg-white/10 rounded-md" aria-current="page">Course</a>
+        <a href="schedule.html" id="nav-schedule" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Schedule</a>
+        <a href="classes.html" id="nav-classes" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Classes</a>
+        <a href="news.html" id="nav-news" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">News</a>
+        <a href="contact.html" id="nav-contact" class="px-3 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 rounded-md transition-colors">Contact</a>
+      </nav>
+      <a href="contact.html" id="btn-enter-race" class="hidden md:inline-flex items-center gap-2 bg-accent-gold text-primary-deep px-4 py-2 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity">
+        Enter the Race
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+      <button id="btn-mobile-menu" class="lg:hidden text-white p-2" aria-label="Toggle menu">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+  </header>
+  <!-- @nav:end Navigation, remove this section if not needed -->
+
+  <!-- @main-content:start -->
+  <main class="pt-16">
+
+    <!-- ============================================================ -->
+    <!-- Section 1: Page Hero (50vh)                                  -->
+    <!-- ============================================================ -->
+    <section id="section-hero" class="relative h-[50vh] min-h-[420px] w-full overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1500930540546-25cd8f0bd188?w=1920&auto=format&fit=crop"
+        alt="航拍蔚蓝海洋和帆船"
+        data-category="自然风景"
+        class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-b from-primary-deep/70 via-primary-deep/60 to-primary-deep/85"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-6 h-full flex flex-col justify-center">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-10 h-px bg-accent-gold"></span>
+          <span class="text-accent-gold text-xs font-semibold tracking-[0.3em] uppercase">The Course</span>
+        </div>
+        <h1 class="font-display text-white text-5xl md:text-6xl lg:text-7xl font-bold leading-tight max-w-4xl">
+          680 Miles<br/>Around Hainan
+        </h1>
+        <p class="mt-6 text-white/80 text-lg md:text-xl max-w-2xl font-light">
+          One island. Two routes. Endless open water.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-6 text-white/70 text-sm">
+          <div class="flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 text-accent-gold"></i>
+            <span>Sanya · Haikou · Lingshui</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="compass" class="w-4 h-4 text-accent-gold"></i>
+            <span>Offshore + Inshore Racing</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i data-lucide="calendar" class="w-4 h-4 text-accent-gold"></i>
+            <span>Late Oct – Early Nov 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Section 2: Interactive Course Map (Large SVG)                -->
+    <!-- ============================================================ -->
+    <section id="section-map" class="relative bg-primary-deep py-20 md:py-28 overflow-hidden">
+      <!-- Decorative wave pattern -->
+      <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(circle at 20% 30%, #F6AA00 0%, transparent 40%), radial-gradient(circle at 80% 70%, #0096DF 0%, transparent 40%);"></div>
+
+      <div class="relative max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <div class="flex items-center justify-center gap-3 mb-4">
+            <span class="w-8 h-px bg-accent-gold"></span>
+            <span class="text-accent-gold text-xs font-semibold tracking-[0.3em] uppercase">Course Map</span>
+            <span class="w-8 h-px bg-accent-gold"></span>
+          </div>
+          <h2 class="font-display text-white text-4xl md:text-5xl font-bold leading-tight">
+            The Route Around the Island
+          </h2>
+          <p class="mt-4 text-white/70 text-base md:text-lg">
+            Two offshore configurations sharing a single start and finish at Sanya, tracing the coastline of China's tropical southernmost province.
+          </p>
+        </div>
+
+        <!-- Legend + Map Container -->
+        <div class="bg-white/[0.04] backdrop-blur-sm rounded-2xl border border-white/10 p-6 md:p-10 shadow-float">
+
+          <!-- Legend -->
+          <div id="map-legend" class="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-8">
+            <button id="legend-full" data-route="full" class="group flex items-center gap-2.5 px-4 py-2 rounded-full bg-accent-gold/15 border border-accent-gold/40 hover:bg-accent-gold/25 transition-all">
+              <span class="w-6 h-0.5 bg-accent-gold" style="background-image: linear-gradient(to right, #F6AA00 60%, transparent 60%); background-size: 10px 2px;"></span>
+              <span class="text-white text-sm font-semibold">Full Round · 680 nm</span>
+            </button>
+            <button id="legend-half" data-route="half" class="group flex items-center gap-2.5 px-4 py-2 rounded-full bg-primary-bright/15 border border-primary-bright/40 hover:bg-primary-bright/25 transition-all">
+              <span class="w-6 h-0.5 bg-primary-bright" style="background-image: linear-gradient(to right, #0096DF 60%, transparent 60%); background-size: 10px 2px;"></span>
+              <span class="text-white text-sm font-semibold">Half Round · ~340 nm</span>
+            </button>
+            <button id="legend-inshore" data-route="inshore" class="group flex items-center gap-2.5 px-4 py-2 rounded-full bg-accent-coral/15 border border-accent-coral/40 hover:bg-accent-coral/25 transition-all">
+              <span class="w-2.5 h-2.5 rounded-full bg-accent-coral"></span>
+              <span class="text-white text-sm font-semibold">Inshore · Sanya Bay</span>
+            </button>
+          </div>
+
+          <!-- The SVG Map -->
+          <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-gradient-to-br from-primary-deep via-[#001d4a] to-primary-deep">
+            <svg id="course-svg" viewBox="0 0 800 500" class="w-full h-full" preserveAspectRatio="xMidYMid meet">
+
+              <!-- Ocean grid (subtle) -->
+              <defs>
+                <pattern id="oceanGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                </pattern>
+                <radialGradient id="waypointGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#F6AA00" stop-opacity="0.6"/>
+                  <stop offset="100%" stop-color="#F6AA00" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="islandGrad" cx="50%" cy="40%" r="60%">
+                  <stop offset="0%" stop-color="#E5D5A8"/>
+                  <stop offset="100%" stop-color="#B89968"/>
+                </radialGradient>
+              </defs>
+
+              <rect width="800" height="500" fill="url(#oceanGrid)"/>
+
+              <!-- Compass rose (top-left) -->
+              <g transform="translate(70,70)" opacity="0.5">
+                <circle r="30" fill="none" stroke="#F6AA00" stroke-width="1"/>
+                <circle r="22" fill="none" stroke="#F6AA00" stroke-width="0.5" stroke-dasharray="2 3"/>
+                <path d="M 0,-28 L 4,0 L 0,28 L -4,0 Z" fill="#F6AA00" opacity="0.9"/>
+                <path d="M -28,0 L 0,4 L 28,0 L 0,-4 Z" fill="#F6AA00" opacity="0.4"/>
+                <text x="0" y="-34" text-anchor="middle" fill="#F6AA00" font-size="10" font-weight="bold">N</text>
+              </g>
+
+              <!-- Scale bar -->
+              <g transform="translate(650,440)" opacity="0.6">
+                <line x1="0" y1="0" x2="100" y2="0" stroke="white" stroke-width="1"/>
+                <line x1="0" y1="-4" x2="0" y2="4" stroke="white" stroke-width="1"/>
+                <line x1="50" y1="-3" x2="50" y2="3" stroke="white" stroke-width="1"/>
+                <line x1="100" y1="-4" x2="100" y2="4" stroke="white" stroke-width="1"/>
+                <text x="50" y="18" text-anchor="middle" fill="white" font-size="10">100 nm</text>
+              </g>
+
+              <!-- Hainan Island (simplified teardrop shape) -->
+              <!-- Approximate coordinates: Haikou top-north (~x=400,y=130), Sanya south (~x=340,y=400), Lingshui east-south (~x=490,y=370) -->
+              <path
+                d="M 400,130
+                   C 500,135 570,175 590,240
+                   C 605,290 580,340 520,370
+                   C 470,395 400,410 340,400
+                   C 270,388 220,340 215,275
+                   C 212,220 240,175 300,145
+                   C 330,132 365,128 400,130 Z"
+                fill="url(#islandGrad)"
+                stroke="#F6AA00"
+                stroke-width="1.5"
+                opacity="0.85"/>
+
+              <!-- Island label -->
+              <text x="400" y="270" text-anchor="middle" fill="#003C7E" font-size="18" font-weight="bold" font-family="Playfair Display, serif" opacity="0.55">HAINAN</text>
+              <text x="400" y="290" text-anchor="middle" fill="#003C7E" font-size="10" letter-spacing="4" opacity="0.5">海南岛</text>
+
+              <!-- Interior geography hints -->
+              <path d="M 350,220 Q 400,240 450,220 Q 470,260 440,290 Q 400,280 360,290 Q 340,260 350,220 Z"
+                    fill="#9C7F4E" opacity="0.25"/>
+              <text x="400" y="255" text-anchor="middle" fill="#4A3A1F" font-size="8" opacity="0.6">Wuzhi Mtn.</text>
+
+              <!-- ============ ROUTES ============ -->
+
+              <!-- Full Round route: Sanya -> West coast -> Haikou -> East coast -> Sanya (Clockwise offshore, in the ocean) -->
+              <path id="route-full"
+                    d="M 340,415
+                       C 260,430 190,400 165,340
+                       C 145,270 165,200 220,145
+                       C 280,90 355,80 400,95
+                       C 470,105 555,135 600,190
+                       C 640,240 640,300 615,355
+                       C 585,410 510,435 430,425"
+                    fill="none"
+                    stroke="#F6AA00"
+                    stroke-width="3"
+                    class="route-dash-full"
+                    opacity="0.95"/>
+
+              <!-- Full Round direction arrows -->
+              <g id="arrows-full" fill="#F6AA00">
+                <polygon points="0,-5 10,0 0,5" transform="translate(175,240) rotate(-80)"/>
+                <polygon points="0,-5 10,0 0,5" transform="translate(310,90) rotate(-10)"/>
+                <polygon points="0,-5 10,0 0,5" transform="translate(625,255) rotate(100)"/>
+                <polygon points="0,-5 10,0 0,5" transform="translate(490,430) rotate(175)"/>
+              </g>
+
+              <!-- Half Round route: Sanya -> south/east to Lingshui -> back to Sanya -->
+              <path id="route-half"
+                    d="M 340,415
+                       C 380,445 440,445 490,420
+                       C 520,405 515,385 495,375
+                       C 470,390 425,410 380,420
+                       C 360,425 345,420 340,415 Z"
+                    fill="none"
+                    stroke="#0096DF"
+                    stroke-width="3"
+                    class="route-dash-half"
+                    opacity="0.9"/>
+
+              <!-- Inshore Sanya Bay races (windward-leeward) -->
+              <g id="route-inshore" opacity="0.85">
+                <ellipse cx="310" cy="450" rx="45" ry="18" fill="none" stroke="#DD0078" stroke-width="1.5" stroke-dasharray="3 3"/>
+                <polygon points="290,443 285,458 295,458" fill="#DD0078"/>
+                <polygon points="330,443 325,458 335,458" fill="#DD0078"/>
+              </g>
+
+              <!-- ============ WAYPOINTS ============ -->
+
+              <!-- SANYA (Start/Finish) -->
+              <g id="waypoint-sanya" class="cursor-pointer">
+                <circle cx="340" cy="415" r="18" fill="url(#waypointGlow)" class="waypoint-glow"/>
+                <circle cx="340" cy="415" r="8" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
+                <circle cx="340" cy="415" r="3" fill="white"/>
+                <g transform="translate(340,445)">
+                  <rect x="-52" y="0" width="104" height="42" rx="4" fill="#003C7E" stroke="#F6AA00" stroke-width="1"/>
+                  <text x="0" y="16" text-anchor="middle" fill="white" font-size="13" font-weight="bold">SANYA · 三亚</text>
+                  <text x="0" y="32" text-anchor="middle" fill="#F6AA00" font-size="9" letter-spacing="1.5">START / FINISH</text>
+                </g>
+              </g>
+
+              <!-- HAIKOU (Full round turning) -->
+              <g id="waypoint-haikou" class="cursor-pointer">
+                <circle cx="400" cy="95" r="18" fill="url(#waypointGlow)" class="waypoint-glow"/>
+                <circle cx="400" cy="95" r="8" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
+                <circle cx="400" cy="95" r="3" fill="white"/>
+                <g transform="translate(400,50)">
+                  <rect x="-64" y="0" width="128" height="42" rx="4" fill="#003C7E" stroke="#F6AA00" stroke-width="1"/>
+                  <text x="0" y="16" text-anchor="middle" fill="white" font-size="13" font-weight="bold">HAIKOU · 海口</text>
+                  <text x="0" y="32" text-anchor="middle" fill="#F6AA00" font-size="9" letter-spacing="1">FULL ROUND TURN</text>
+                </g>
+              </g>
+
+              <!-- LINGSHUI (Half round turning) -->
+              <g id="waypoint-lingshui" class="cursor-pointer">
+                <circle cx="495" cy="375" r="18" fill="url(#waypointGlow)" class="waypoint-glow"/>
+                <circle cx="495" cy="375" r="8" fill="#0096DF" stroke="white" stroke-width="2.5"/>
+                <circle cx="495" cy="375" r="3" fill="white"/>
+                <g transform="translate(560,345)">
+                  <rect x="0" y="0" width="128" height="42" rx="4" fill="#003C7E" stroke="#0096DF" stroke-width="1"/>
+                  <text x="64" y="16" text-anchor="middle" fill="white" font-size="13" font-weight="bold">LINGSHUI · 陵水</text>
+                  <text x="64" y="32" text-anchor="middle" fill="#0096DF" font-size="9" letter-spacing="1">HALF ROUND TURN</text>
+                </g>
+                <line x1="510" y1="378" x2="558" y2="365" stroke="#0096DF" stroke-width="1" stroke-dasharray="2 2"/>
+              </g>
+
+              <!-- Route distance label -->
+              <text x="180" y="120" fill="#F6AA00" font-size="11" font-weight="bold" opacity="0.9">FULL ROUND</text>
+              <text x="180" y="134" fill="#F6AA00" font-size="10" opacity="0.7">680 Nautical Miles</text>
+
+              <text x="530" y="465" fill="#0096DF" font-size="11" font-weight="bold" opacity="0.9">HALF ROUND</text>
+              <text x="530" y="479" fill="#0096DF" font-size="10" opacity="0.7">~340 Nautical Miles</text>
+
+            </svg>
+          </div>
+
+          <!-- Below map hint -->
+          <div class="mt-6 flex flex-wrap items-center justify-center gap-6 text-white/60 text-xs">
+            <span class="flex items-center gap-2"><i data-lucide="mouse-pointer-click" class="w-3.5 h-3.5 text-accent-gold"></i>Click legend to highlight route</span>
+            <span class="flex items-center gap-2"><i data-lucide="info" class="w-3.5 h-3.5 text-accent-gold"></i>Reference: Notice of Race 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Section 3: Two Route Cards                                   -->
+    <!-- ============================================================ -->
+    <section id="section-routes" class="bg-background py-20 md:py-28">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-3xl mb-14">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-px bg-accent-gold"></span>
+            <span class="text-primary text-xs font-semibold tracking-[0.3em] uppercase">Race Formats</span>
+          </div>
+          <h2 class="font-display text-on-surface text-4xl md:text-5xl font-bold leading-tight">
+            Two Offshore Routes,<br/>One Legendary Island
+          </h2>
+          <p class="mt-4 text-on-surface-variant text-base md:text-lg">
+            Whether crews pursue the complete 680-mile circumnavigation or the shorter half-round test, both formats depart from and return to Sanya Serenity Marina.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+          <!-- 列表-路线卡片1 · Full Round -->
+          <article id="card-full-round" class="group relative bg-surface rounded-2xl shadow-float overflow-hidden border border-outline-variant/20">
+            <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-accent-gold via-accent-yellow to-accent-gold"></div>
+            <!-- Card header with icon -->
+            <div class="p-8 md:p-10 bg-gradient-to-br from-primary-deep to-primary">
+              <div class="flex items-start justify-between">
+                <div class="w-16 h-16 rounded-2xl bg-accent-gold/20 border border-accent-gold/40 flex items-center justify-center">
+                  <i data-lucide="waves" class="w-8 h-8 text-accent-gold"></i>
+                </div>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-accent-gold text-primary-deep uppercase tracking-wider">Flagship</span>
+              </div>
+              <h3 class="mt-6 font-display text-white text-3xl md:text-4xl font-bold leading-tight">
+                Full Round<br/>Offshore Race
+              </h3>
+              <p class="mt-3 text-white/70 text-sm">
+                Sanya → Haikou → Sanya · Clockwise circumnavigation
+              </p>
+            </div>
+
+            <!-- Card body -->
+            <div class="p-8 md:p-10 space-y-6">
+              <!-- Stats -->
+              <div class="grid grid-cols-3 gap-4">
+                <div>
+                  <div class="text-xs text-on-surface-variant uppercase tracking-wider mb-1">Distance</div>
+                  <div class="font-display text-2xl md:text-3xl font-bold text-primary-deep">680<span class="text-sm ml-1 text-on-surface-variant font-sans font-normal">nm</span></div>
+                </div>
+                <div>
+                  <div class="text-xs text-on-surface-variant uppercase tracking-wider mb-1">Duration</div>
+                  <div class="font-display text-2xl md:text-3xl font-bold text-primary-deep">3–5<span class="text-sm ml-1 text-on-surface-variant font-sans font-normal">days</span></div>
+                </div>
+                <div>
+                  <div class="text-xs text-on-surface-variant uppercase tracking-wider mb-1">Classes</div>
+                  <div class="font-display text-2xl md:text-3xl font-bold text-primary-deep">2</div>
+                </div>
+              </div>
+
+              <!-- Route -->
+              <div>
+                <div class="text-xs text-on-surface-variant uppercase tracking-wider mb-2">Route</div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-accent-gold/15 text-primary-deep text-sm font-semibold">
+                    <i data-lucide="flag" class="w-3.5 h-3.5"></i>Sanya
+                  </span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 text-on-surface-variant"></i>
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-surface-container text-on-surface text-sm font-semibold">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>Haikou
+                  </span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 text-on-surface-variant"></i>
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-accent-gold/15 text-primary-deep text-sm font-semibold">
+                    <i data-lucide="flag-triangle-right" class="w-3.5 h-3.5"></i>Sanya
+                  </span>
+                </div>
+              </div>
+
+              <!-- Classes -->
+              <div>
+                <div class="text-xs text-on-surface-variant uppercase tracking-wider mb-2">Eligible Classes</div>
+                <div class="flex flex-wrap gap-2">
+                  <span class="inline-flex items-center px-2.5 py-1 rounded-sm text-xs font-medium bg-primary/10 text-primary">Dubois 50</span>
+                  <span class="inline-flex items-center px-2.5 py-1 rounded-sm text-xs font-medium bg-primary/10 text-primary">ORC Full Round</span>
+                </div>
+              </div>
+
+              <!-- Features -->
+              <ul class="space-y-2.5 pt-4 border-t border-outline-variant/30">
+                <li class="flex items-start gap-3 text-sm text-on-surface">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-accent-gold shrink-0 mt-0.5"></i>
+                  <span>Complete circumnavigation of Hainan Island</span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-on-surface">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-accent-gold shrink-0 mt-0.5"></i>
+                  <span>Multi-day continuous offshore sailing, day &amp; night</span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-on-surface">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-accent-gold shrink-0 mt-0.5"></i>
+                  <span>The ultimate open-water challenge for seasoned crews</span>
+                </li>
+              </ul>
+
+              <button id="btn-full-details" class="w-full mt-2 bg-primary-deep text-white px-5 py-3.5 rounded-md text-sm font-semibold hover:bg-primary transition-all inline-flex items-center justify-center gap-2 group">
+                View Full Route Details
+                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+              </button>
+            </div>
+          </article>
+
+          <!-- 列表-路线卡片2 · Half Round -->
+          <article id="card-half-round" class="group relative bg-surface rounded-2xl shadow-float overflow-hidden border border-outline-variant/20">
+            <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary-bright via-primary to-primary-bright"></div>
+            <!-- Card header with icon -->
+            <div class="p-8 md:p-10 bg-gradient-to-br from-primary to-primary-bright">
+              <div class="flex items-start justify-between">
+                <div class="w-16 h-16 rounded-2xl bg-white/20 border border-white/40 flex items-center justify-center">
+                  <i data-lucide="sailboat" class="w-8 h-8 text-white"></i>
+                </div>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-white text-primary uppercase tracking-wider">Accessible</span>
+              </div>
+              <h3 class="mt-6 font-display text-white text-3xl md:text-4xl font-bold leading-tight">
+                Half Round<br/>Offshore Race
+              </h3>
+              <p class="mt-3 text-white/80 text-sm">
+                Sanya → Lingshui → Sanya · Southeastern loop
+              </p>
+            </div>
+
+            <!-- Card body -->
+            <div class="p-8 md:p-10 space-y-6">
+              <!-- Stats -->
+              <div class="grid grid-cols-3 gap-4">
+                <div>
+                  <div class="text-xs text-on-surface-variant uppercase tracking-wider mb-1">Distance</div>
+                  <div class="font-display text-2xl md:text-3xl font-bold text-primary">340<span class="text-sm ml-1 text-on-surface-variant font-sans font-normal">nm</span></div>
+                </div>
+                <div>
+                  <div class="text-xs text-on-surface-variant uppercase tracking-wider mb-1">Duration</div>
+                  <div class="font-display text-2xl md:text-3xl font-bold text-primary">2–3<span class="text-sm ml-1 text-on-surface-variant font-sans font-normal">days</span></div>
+                </div>
+                <div>
+                  <div class="text-xs text-on-surface-variant uppercase tracking-wider mb-1">Classes</div>
+                  <div class="font-display text-2xl md:text-3xl font-bold text-primary">2</div>
+                </div>
+              </div>
+
+              <!-- Route -->
+              <div>
+                <div class="text-xs text-on-surface-variant uppercase tracking-wider mb-2">Route</div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-primary-bright/15 text-primary text-sm font-semibold">
+                    <i data-lucide="flag" class="w-3.5 h-3.5"></i>Sanya
+                  </span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 text-on-surface-variant"></i>
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-surface-container text-on-surface text-sm font-semibold">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>Lingshui
+                  </span>
+                  <i data-lucide="arrow-right" class="w-4 h-4 text-on-surface-variant"></i>
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-primary-bright/15 text-primary text-sm font-semibold">
+                    <i data-lucide="flag-triangle-right" class="w-3.5 h-3.5"></i>Sanya
+                  </span>
+                </div>
+              </div>
+
+              <!-- Classes -->
+              <div>
+                <div class="text-xs text-on-surface-variant uppercase tracking-wider mb-2">Eligible Classes</div>
+                <div class="flex flex-wrap gap-2">
+                  <span class="inline-flex items-center px-2.5 py-1 rounded-sm text-xs font-medium bg-primary-bright/15 text-primary">ORC Half Round</span>
+                  <span class="inline-flex items-center px-2.5 py-1 rounded-sm text-xs font-medium bg-primary-bright/15 text-primary">Fareast 28R</span>
+                </div>
+              </div>
+
+              <!-- Features -->
+              <ul class="space-y-2.5 pt-4 border-t border-outline-variant/30">
+                <li class="flex items-start gap-3 text-sm text-on-surface">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-primary-bright shrink-0 mt-0.5"></i>
+                  <span>Shorter offshore leg, ideal for mid-size crews</span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-on-surface">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-primary-bright shrink-0 mt-0.5"></i>
+                  <span>Broader class eligibility, more competitive fleet</span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-on-surface">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-primary-bright shrink-0 mt-0.5"></i>
+                  <span>Perfect blend of offshore experience &amp; race tempo</span>
+                </li>
+              </ul>
+
+              <button id="btn-half-details" class="w-full mt-2 bg-primary text-white px-5 py-3.5 rounded-md text-sm font-semibold hover:bg-primary-bright transition-all inline-flex items-center justify-center gap-2 group">
+                View Half Route Details
+                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Section 4: Waypoints Timeline                                -->
+    <!-- ============================================================ -->
+    <section id="section-waypoints" class="bg-surface-container py-20 md:py-28">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-3xl mb-14">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-8 h-px bg-accent-gold"></span>
+            <span class="text-primary text-xs font-semibold tracking-[0.3em] uppercase">Key Waypoints</span>
+          </div>
+          <h2 class="font-display text-on-surface text-4xl md:text-5xl font-bold leading-tight">
+            Navigating the Route
+          </h2>
+          <p class="mt-4 text-on-surface-variant text-base md:text-lg">
+            Five signature waypoints define the offshore passage — each with its own currents, character and story on the water.
+          </p>
+        </div>
+
+        <!-- Horizontal timeline -->
+        <div class="relative">
+          <!-- Connecting line -->
+          <div class="hidden md:block absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-accent-gold via-primary to-accent-gold opacity-40"></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4">
+
+            <!-- 列表-航点1 · Sanya Start -->
+            <div id="waypoint-1" class="relative">
+              <div class="flex md:justify-center mb-6">
+                <div class="relative w-16 h-16 rounded-full bg-accent-gold flex items-center justify-center shadow-float ring-4 ring-surface-container">
+                  <span class="font-display text-white text-xl font-bold">01</span>
+                  <span class="absolute inset-0 rounded-full bg-accent-gold/40 animate-ping opacity-60"></span>
+                </div>
+              </div>
+              <div class="md:text-center">
+                <div class="text-xs text-primary font-semibold tracking-widest uppercase mb-1">Start · 0 nm</div>
+                <h4 class="font-display text-xl font-bold text-on-surface mb-2">Sanya · 三亚</h4>
+                <p class="text-sm text-on-surface-variant leading-relaxed">
+                  Race start off Serenity Marina. Fleet heads east then north along Hainan's eastern shelf.
+                </p>
+              </div>
+            </div>
+
+            <!-- 列表-航点2 · Wanning -->
+            <div id="waypoint-2" class="relative">
+              <div class="flex md:justify-center mb-6">
+                <div class="relative w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-float ring-4 ring-surface-container">
+                  <span class="font-display text-white text-xl font-bold">02</span>
+                </div>
+              </div>
+              <div class="md:text-center">
+                <div class="text-xs text-primary font-semibold tracking-widest uppercase mb-1">East Coast · ~85 nm</div>
+                <h4 class="font-display text-xl font-bold text-on-surface mb-2">Wanning · 万宁</h4>
+                <p class="text-sm text-on-surface-variant leading-relaxed">
+                  Passing the surf coast of Wanning — steady NE trade winds accelerate the fleet northward.
+                </p>
+              </div>
+            </div>
+
+            <!-- 列表-航点3 · Haikou -->
+            <div id="waypoint-3" class="relative">
+              <div class="flex md:justify-center mb-6">
+                <div class="relative w-16 h-16 rounded-full bg-accent-gold flex items-center justify-center shadow-float ring-4 ring-surface-container">
+                  <span class="font-display text-white text-xl font-bold">03</span>
+                  <span class="absolute inset-0 rounded-full bg-accent-gold/40 animate-ping opacity-60"></span>
+                </div>
+              </div>
+              <div class="md:text-center">
+                <div class="text-xs text-accent-gold font-semibold tracking-widest uppercase mb-1">Turning Mark · ~340 nm</div>
+                <h4 class="font-display text-xl font-bold text-on-surface mb-2">Haikou · 海口</h4>
+                <p class="text-sm text-on-surface-variant leading-relaxed">
+                  The northernmost turn. Crews round Haikou and set southwest into the Qiongzhou Strait.
+                </p>
+              </div>
+            </div>
+
+            <!-- 列表-航点4 · West Waters -->
+            <div id="waypoint-4" class="relative">
+              <div class="flex md:justify-center mb-6">
+                <div class="relative w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-float ring-4 ring-surface-container">
+                  <span class="font-display text-white text-xl font-bold">04</span>
+                </div>
+              </div>
+              <div class="md:text-center">
+                <div class="text-xs text-primary font-semibold tracking-widest uppercase mb-1">West Passage · ~525 nm</div>
+                <h4 class="font-display text-xl font-bold text-on-surface mb-2">Danzhou Waters · 儋州海域</h4>
+                <p class="text-sm text-on-surface-variant leading-relaxed">
+                  Sailing south along the western coast — variable pressure zones, tactical decisions define standings.
+                </p>
+              </div>
+            </div>
+
+            <!-- 列表-航点5 · Sanya Finish -->
+            <div id="waypoint-5" class="relative">
+              <div class="flex md:justify-center mb-6">
+                <div class="relative w-16 h-16 rounded-full bg-accent-gold flex items-center justify-center shadow-float ring-4 ring-surface-container">
+                  <span class="font-display text-white text-xl font-bold">05</span>
+                  <span class="absolute inset-0 rounded-full bg-accent-gold/40 animate-ping opacity-60"></span>
+                </div>
+              </div>
+              <div class="md:text-center">
+                <div class="text-xs text-primary font-semibold tracking-widest uppercase mb-1">Finish · 680 nm</div>
+                <h4 class="font-display text-xl font-bold text-on-surface mb-2">Sanya Finish · 三亚终点</h4>
+                <p class="text-sm text-on-surface-variant leading-relaxed">
+                  Fleet returns to Sanya Bay for the finish line — corrected time crowns the overall champion.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Section 5: Inshore Racing                                    -->
+    <!-- ============================================================ -->
+    <section id="section-inshore" class="bg-background py-20 md:py-28">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          <!-- Left · Copy -->
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-8 h-px bg-accent-coral"></span>
+              <span class="text-accent-coral text-xs font-semibold tracking-[0.3em] uppercase">Inshore Racing</span>
+            </div>
+            <h2 class="font-display text-on-surface text-4xl md:text-5xl font-bold leading-tight">
+              Sanya Coastal Races
+            </h2>
+            <p class="mt-5 text-on-surface-variant text-base md:text-lg leading-relaxed">
+              In addition to the offshore race, competitors will engage in <strong class="text-on-surface">inshore fleet races within Sanya Bay</strong> — a spectator-friendly stage where technique, tactics and starts decide every position.
+            </p>
+
+            <!-- Feature list -->
+            <ul class="mt-8 space-y-4">
+              <!-- 列表-inshore特点1 -->
+              <li id="inshore-feat-1" class="flex items-start gap-4">
+                <div class="w-11 h-11 rounded-xl bg-accent-coral/10 flex items-center justify-center shrink-0">
+                  <i data-lucide="triangle" class="w-5 h-5 text-accent-coral"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-on-surface">Windward-Leeward Course</div>
+                  <p class="text-sm text-on-surface-variant mt-1">Classic Olympic-format course laid within Sanya Bay, testing crew work and boat handling.</p>
+                </div>
+              </li>
+              <!-- 列表-inshore特点2 -->
+              <li id="inshore-feat-2" class="flex items-start gap-4">
+                <div class="w-11 h-11 rounded-xl bg-accent-coral/10 flex items-center justify-center shrink-0">
+                  <i data-lucide="calendar-days" class="w-5 h-5 text-accent-coral"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-on-surface">Multiple Race Days</div>
+                  <p class="text-sm text-on-surface-variant mt-1">Up to 8 short-course races scheduled across the regatta week, weather permitting.</p>
+                </div>
+              </li>
+              <!-- 列表-inshore特点3 -->
+              <li id="inshore-feat-3" class="flex items-start gap-4">
+                <div class="w-11 h-11 rounded-xl bg-accent-coral/10 flex items-center justify-center shrink-0">
+                  <i data-lucide="eye" class="w-5 h-5 text-accent-coral"></i>
+                </div>
+                <div>
+                  <div class="font-semibold text-on-surface">Spectator-Friendly</div>
+                  <p class="text-sm text-on-surface-variant mt-1">Racing action visible from Sanya's beaches and boardwalks — bring the family, cheer the fleet.</p>
+                </div>
+              </li>
+            </ul>
+
+            <div class="mt-10 flex flex-wrap gap-3">
+              <a href="classes.html" id="btn-inshore-classes" class="inline-flex items-center gap-2 bg-accent-coral text-white px-5 py-3 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity">
+                <i data-lucide="users" class="w-4 h-4"></i>
+                See Inshore Classes
+              </a>
+              <a href="schedule.html" id="btn-inshore-schedule" class="inline-flex items-center gap-2 bg-surface-container text-on-surface px-5 py-3 rounded-md text-sm font-semibold hover:bg-surface-container-high transition-colors">
+                <i data-lucide="calendar" class="w-4 h-4"></i>
+                Race Schedule
+              </a>
+            </div>
+          </div>
+
+          <!-- Right · Diagram + image -->
+          <div class="relative">
+            <div class="relative rounded-2xl overflow-hidden shadow-float">
+              <img
+                src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&auto=format&fit=crop"
+                alt="帆船比赛场地赛的空中视角"
+                data-category="运动体育"
+                class="w-full aspect-[4/5] object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-primary-deep/80 via-transparent to-transparent"></div>
+
+              <!-- Windward-leeward diagram overlay -->
+              <div class="absolute top-6 right-6 bg-primary-deep/85 backdrop-blur-sm rounded-xl p-4 border border-white/10 w-52">
+                <div class="text-white text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <i data-lucide="wind" class="w-3.5 h-3.5 text-accent-coral"></i>
+                  Course Layout
+                </div>
+                <svg viewBox="0 0 160 200" class="w-full">
+                  <!-- Wind arrow -->
+                  <g opacity="0.7">
+                    <line x1="80" y1="20" x2="80" y2="55" stroke="#DD0078" stroke-width="1.5" stroke-dasharray="3 2"/>
+                    <polygon points="80,55 75,45 85,45" fill="#DD0078"/>
+                    <text x="90" y="35" fill="white" font-size="9">Wind ↓</text>
+                  </g>
+                  <!-- Windward mark -->
+                  <polygon points="80,60 75,70 85,70" fill="#F6AA00"/>
+                  <text x="95" y="68" fill="white" font-size="9">Top</text>
+                  <!-- Leeward mark -->
+                  <polygon points="80,160 75,150 85,150" fill="#F6AA00"/>
+                  <text x="95" y="163" fill="white" font-size="9">Bot.</text>
+                  <!-- Course lines -->
+                  <line x1="80" y1="70" x2="60" y2="150" stroke="white" stroke-width="1" stroke-dasharray="2 2"/>
+                  <line x1="80" y1="70" x2="100" y2="150" stroke="white" stroke-width="1" stroke-dasharray="2 2"/>
+                  <!-- Boats -->
+                  <polygon points="65,120 62,128 68,128" fill="white"/>
+                  <polygon points="95,100 92,108 98,108" fill="white"/>
+                  <polygon points="75,140 72,148 78,148" fill="white"/>
+                  <!-- Start line -->
+                  <line x1="55" y1="180" x2="105" y2="180" stroke="#F6AA00" stroke-width="1.5"/>
+                  <circle cx="55" cy="180" r="2.5" fill="#F6AA00"/>
+                  <circle cx="105" cy="180" r="2.5" fill="#F6AA00"/>
+                  <text x="80" y="195" text-anchor="middle" fill="#F6AA00" font-size="8" font-weight="bold">START / FINISH</text>
+                </svg>
+              </div>
+
+              <!-- Bottom caption -->
+              <div class="absolute bottom-0 inset-x-0 p-6">
+                <div class="text-white/80 text-xs uppercase tracking-widest mb-2">Venue</div>
+                <div class="font-display text-white text-2xl md:text-3xl font-bold">Sanya Bay · 三亚湾</div>
+                <div class="text-white/70 text-sm mt-1">18°14′N · 109°30′E</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Section 6: Ocean Conditions Panel                            -->
+    <!-- ============================================================ -->
+    <section id="section-conditions" class="relative bg-primary-deep py-20 md:py-28 overflow-hidden">
+      <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(circle at 30% 20%, #F6AA00 0%, transparent 50%);"></div>
+
+      <div class="relative max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <div class="flex items-center justify-center gap-3 mb-4">
+            <span class="w-8 h-px bg-accent-gold"></span>
+            <span class="text-accent-gold text-xs font-semibold tracking-[0.3em] uppercase">Sailing Conditions</span>
+            <span class="w-8 h-px bg-accent-gold"></span>
+          </div>
+          <h2 class="font-display text-white text-4xl md:text-5xl font-bold leading-tight">
+            The Waters &amp; The Weather
+          </h2>
+          <p class="mt-4 text-white/70 text-base md:text-lg">
+            Hainan's late-autumn monsoon delivers reliable trade winds, warm seas and long stretches of clear sailing — perfect conditions for offshore competition.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <!-- 列表-条件卡片1 · Wind -->
+          <div id="condition-wind" class="bg-white/[0.04] backdrop-blur-sm rounded-2xl border border-white/10 p-8 hover:bg-white/[0.07] hover:border-accent-gold/30 transition-all">
+            <div class="w-14 h-14 rounded-xl bg-accent-gold/20 flex items-center justify-center mb-6">
+              <i data-lucide="wind" class="w-7 h-7 text-accent-gold"></i>
+            </div>
+            <div class="text-accent-gold text-xs font-semibold tracking-widest uppercase mb-2">Wind</div>
+            <div class="font-display text-white text-3xl md:text-4xl font-bold leading-tight">
+              NE 15–25<span class="text-lg text-white/60 ml-1">knots</span>
+            </div>
+            <p class="mt-4 text-white/70 text-sm leading-relaxed">
+              Steady northeast monsoon dominates the race window, providing consistent breeze along the eastern and southern coasts.
+            </p>
+            <div class="mt-6 flex items-center gap-2 text-white/50 text-xs">
+              <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
+              <span>Typical range · Beaufort 4–6</span>
+            </div>
+          </div>
+
+          <!-- 列表-条件卡片2 · Water Temp -->
+          <div id="condition-temp" class="bg-white/[0.04] backdrop-blur-sm rounded-2xl border border-white/10 p-8 hover:bg-white/[0.07] hover:border-accent-gold/30 transition-all">
+            <div class="w-14 h-14 rounded-xl bg-accent-gold/20 flex items-center justify-center mb-6">
+              <i data-lucide="thermometer-sun" class="w-7 h-7 text-accent-gold"></i>
+            </div>
+            <div class="text-accent-gold text-xs font-semibold tracking-widest uppercase mb-2">Water Temp</div>
+            <div class="font-display text-white text-3xl md:text-4xl font-bold leading-tight">
+              24–27<span class="text-lg text-white/60 ml-1">°C</span>
+            </div>
+            <p class="mt-4 text-white/70 text-sm leading-relaxed">
+              Tropical sea temperatures make for comfortable sailing conditions — light foulies suffice for the entire regatta.
+            </p>
+            <div class="mt-6 flex items-center gap-2 text-white/50 text-xs">
+              <i data-lucide="droplets" class="w-3.5 h-3.5"></i>
+              <span>Salinity · 33–34 ppt</span>
+            </div>
+          </div>
+
+          <!-- 列表-条件卡片3 · Best Season -->
+          <div id="condition-season" class="bg-white/[0.04] backdrop-blur-sm rounded-2xl border border-white/10 p-8 hover:bg-white/[0.07] hover:border-accent-gold/30 transition-all">
+            <div class="w-14 h-14 rounded-xl bg-accent-gold/20 flex items-center justify-center mb-6">
+              <i data-lucide="calendar-check" class="w-7 h-7 text-accent-gold"></i>
+            </div>
+            <div class="text-accent-gold text-xs font-semibold tracking-widest uppercase mb-2">Best Season</div>
+            <div class="font-display text-white text-3xl md:text-4xl font-bold leading-tight">
+              Late Oct<br/>Early Nov
+            </div>
+            <p class="mt-4 text-white/70 text-sm leading-relaxed">
+              The regatta is timed for the transitional monsoon — clear skies, moderate seas and consistent trades.
+            </p>
+            <div class="mt-6 flex items-center gap-2 text-white/50 text-xs">
+              <i data-lucide="sun" class="w-3.5 h-3.5"></i>
+              <span>Avg. 8 hrs sun / day</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Additional info strip -->
+        <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-white/[0.03] rounded-xl border border-white/10 p-4 text-center">
+            <div class="text-white/50 text-xs uppercase tracking-widest">Tide Range</div>
+            <div class="font-display text-white text-xl font-bold mt-1">1.2 m</div>
+          </div>
+          <div class="bg-white/[0.03] rounded-xl border border-white/10 p-4 text-center">
+            <div class="text-white/50 text-xs uppercase tracking-widest">Current</div>
+            <div class="font-display text-white text-xl font-bold mt-1">0.5–1.2 kt</div>
+          </div>
+          <div class="bg-white/[0.03] rounded-xl border border-white/10 p-4 text-center">
+            <div class="text-white/50 text-xs uppercase tracking-widest">Visibility</div>
+            <div class="font-display text-white text-xl font-bold mt-1">&gt; 10 nm</div>
+          </div>
+          <div class="bg-white/[0.03] rounded-xl border border-white/10 p-4 text-center">
+            <div class="text-white/50 text-xs uppercase tracking-widest">Sea State</div>
+            <div class="font-display text-white text-xl font-bold mt-1">Moderate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Section 7: CTA                                               -->
+    <!-- ============================================================ -->
+    <section id="section-cta" class="relative py-20 md:py-28 overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1519160558534-579f5106e43f?w=1920&auto=format&fit=crop"
+        alt="夕阳下的帆船海面"
+        data-category="自然风景"
+        class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-r from-primary-deep/95 via-primary-deep/85 to-primary-deep/60"></div>
+
+      <div class="relative max-w-7xl mx-auto px-6">
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="w-10 h-px bg-accent-gold"></span>
+            <span class="text-accent-gold text-xs font-semibold tracking-[0.3em] uppercase">Join the Fleet</span>
+          </div>
+          <h2 class="font-display text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            Ready to sail<br/>this course?
+          </h2>
+          <p class="mt-6 text-white/80 text-lg md:text-xl font-light max-w-xl">
+            680 nautical miles. One island. A place waiting for your crew in the 15th Round Hainan Regatta.
+          </p>
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a href="contact.html" id="btn-cta-register" class="inline-flex items-center gap-2 bg-accent-gold text-primary-deep px-7 py-4 rounded-md text-base font-bold hover:bg-accent-yellow transition-colors">
+              Register Now
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+            <a href="schedule.html" id="btn-cta-schedule" class="inline-flex items-center gap-2 bg-white/10 text-white border border-white/30 backdrop-blur-sm px-7 py-4 rounded-md text-base font-semibold hover:bg-white/20 transition-colors">
+              <i data-lucide="calendar" class="w-5 h-5"></i>
+              View Schedule
+            </a>
+          </div>
+
+          <!-- Quick stats bar -->
+          <div class="mt-14 grid grid-cols-3 gap-6 max-w-2xl">
+            <div class="border-l-2 border-accent-gold pl-4">
+              <div class="font-display text-white text-3xl md:text-4xl font-bold">680</div>
+              <div class="text-white/60 text-xs uppercase tracking-widest mt-1">Nautical Miles</div>
+            </div>
+            <div class="border-l-2 border-accent-gold pl-4">
+              <div class="font-display text-white text-3xl md:text-4xl font-bold">5</div>
+              <div class="text-white/60 text-xs uppercase tracking-widest mt-1">Key Waypoints</div>
+            </div>
+            <div class="border-l-2 border-accent-gold pl-4">
+              <div class="font-display text-white text-3xl md:text-4xl font-bold">15<sup class="text-sm">th</sup></div>
+              <div class="text-white/60 text-xs uppercase tracking-widest mt-1">Edition · 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <!-- @main-content:end -->
+
+  <!-- ============================================================ -->
+  <!-- Footer                                                       -->
+  <!-- ============================================================ -->
+  <footer id="site-footer" class="bg-[#001a3c] text-white/70">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <!-- Brand -->
+        <div class="md:col-span-1">
+          <a href="home.html" class="flex items-center gap-3 mb-4">
+            <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-10 h-10 object-contain bg-white rounded-full p-1"/>
+            <div class="leading-tight">
+              <div class="text-white font-bold text-sm tracking-wide">ROUND HAINAN REGATTA</div>
+              <div class="text-white/50 text-[10px] tracking-widest uppercase">15th Edition · 2026</div>
+            </div>
+          </a>
+          <p class="text-sm text-white/60 leading-relaxed">
+            One island. Two routes. Endless open water.
+          </p>
+        </div>
+
+        <!-- Race -->
+        <div>
+          <div class="text-white font-semibold text-sm uppercase tracking-widest mb-4">The Race</div>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="about.html" class="hover:text-accent-gold transition-colors">About the Regatta</a></li>
+            <li><a href="course.html" class="hover:text-accent-gold transition-colors">Race Course</a></li>
+            <li><a href="schedule.html" class="hover:text-accent-gold transition-colors">Schedule</a></li>
+            <li><a href="classes.html" class="hover:text-accent-gold transition-colors">Classes</a></li>
+          </ul>
+        </div>
+
+        <!-- Info -->
+        <div>
+          <div class="text-white font-semibold text-sm uppercase tracking-widest mb-4">Information</div>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="news.html" class="hover:text-accent-gold transition-colors">News &amp; Updates</a></li>
+            <li><a href="contact.html" class="hover:text-accent-gold transition-colors">Contact</a></li>
+            <li><a href="contact.html" class="hover:text-accent-gold transition-colors">Notice of Race</a></li>
+            <li><a href="contact.html" class="hover:text-accent-gold transition-colors">Sailing Instructions</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <div class="text-white font-semibold text-sm uppercase tracking-widest mb-4">Get in Touch</div>
+          <ul class="space-y-2.5 text-sm">
+            <li class="flex items-start gap-2">
+              <i data-lucide="mail" class="w-4 h-4 mt-0.5 text-accent-gold shrink-0"></i>
+              <span>info@roundhainanregatta.com</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 text-accent-gold shrink-0"></i>
+              <span>Serenity Marina, Sanya, Hainan</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="phone" class="w-4 h-4 mt-0.5 text-accent-gold shrink-0"></i>
+              <span>+86 (0)898 8888 8888</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="text-xs text-white/50">
+          © 2026 Round Hainan Regatta Organizing Committee. All rights reserved.
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="#" id="social-instagram" class="text-white/50 hover:text-accent-gold transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+          <a href="#" id="social-facebook" class="text-white/50 hover:text-accent-gold transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+          <a href="#" id="social-youtube" class="text-white/50 hover:text-accent-gold transition-colors"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+          <a href="#" id="social-twitter" class="text-white/50 hover:text-accent-gold transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    $(function () {
+
+      // ============================================================
+      // Map legend - highlight/dim routes on click
+      // ============================================================
+      $('#map-legend').on('click', 'button', function () {
+        const route = $(this).data('route');
+        // Toggle active state on legend buttons
+        $('#map-legend button').removeClass('ring-2 ring-white');
+        $(this).addClass('ring-2 ring-white');
+
+        // Reset all opacity, then dim non-selected
+        $('#route-full, #arrows-full').css('opacity', route === 'full' ? 1 : (route === 'all' ? 0.95 : 0.15));
+        $('#route-half').css('opacity', route === 'half' ? 1 : (route === 'all' ? 0.9 : 0.15));
+        $('#route-inshore').css('opacity', route === 'inshore' ? 1 : (route === 'all' ? 0.85 : 0.15));
+      });
+
+      // ============================================================
+      // Waypoint tooltips on SVG map
+      // Complex interaction — future implementation should:
+      // 1. On hover of #waypoint-sanya / #waypoint-haikou / #waypoint-lingshui,
+      //    display a floating tooltip with GPS coordinates, description
+      //    and connection to the waypoints timeline below.
+      // 2. Clicking a waypoint should smoothly scroll the page to the
+      //    corresponding item in #section-waypoints and briefly pulse it.
+      // 3. Show a "connecting line" from the SVG dot to the tooltip.
+      // ============================================================
+      $('#waypoint-sanya, #waypoint-haikou, #waypoint-lingshui').on('click', function () {
+        const id = $(this).attr('id');
+        console.log('Waypoint clicked on map:', id);
+        // Scroll into waypoint timeline section
+        $('html, body').animate({
+          scrollTop: $('#section-waypoints').offset().top - 80
+        }, 500);
+      });
+
+      // ============================================================
+      // Route card CTA buttons
+      // ============================================================
+      $('#btn-full-details').on('click', function () {
+        // Complex interaction — future implementation should:
+        // 1. Open a modal dialog showing full route details:
+        //    - Full GPS coordinates of all mandatory turning marks
+        //    - Chart of expected weather along each leg
+        //    - Historical record times for Dubois 50 and ORC Full Round
+        //    - Downloadable GPX / KML file link
+        // 2. Modal is dismissable via ESC or backdrop click.
+        console.log('Show Full Round detail modal (route: Sanya → Haikou → Sanya, 680nm)');
+      });
+      $('#btn-half-details').on('click', function () {
+        // Complex interaction — future implementation should:
+        // 1. Open a modal dialog showing half round route details similar
+        //    to the full round modal above but for Sanya → Lingshui → Sanya.
+        console.log('Show Half Round detail modal (route: Sanya → Lingshui → Sanya, ~340nm)');
+      });
+
+      // ============================================================
+      // Timeline waypoint highlight on hover
+      // ============================================================
+      $('[id^=waypoint-]').filter(function(){ return /^waypoint-\d$/.test(this.id); })
+        .on('mouseenter', function () {
+          $(this).find('h4').addClass('text-primary').removeClass('text-on-surface');
+        })
+        .on('mouseleave', function () {
+          $(this).find('h4').removeClass('text-primary').addClass('text-on-surface');
+        });
+
+      // ============================================================
+      // Mobile menu toggle
+      // Complex interaction — future implementation should:
+      // 1. Toggle a full-screen mobile navigation drawer that slides
+      //    in from the right, listing all nav links + Enter the Race CTA.
+      // 2. Trap focus while open. Close on ESC or backdrop tap.
+      // ============================================================
+      $('#btn-mobile-menu').on('click', function () {
+        console.log('Toggle mobile navigation drawer');
+      });
+
+    });
+  </script>
+</body>
+
+</html>

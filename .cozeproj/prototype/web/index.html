@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Round Hainan Regatta 2026 - Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.cn">
+  <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin>
+  <link href="https://fonts.googleapis.cn/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: #F5F7FA; 
+      color: #1A2332; 
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .container { max-width: 900px; width: 100%; }
+    .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .logo img { height: 48px; width: auto; }
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 800; color: #003C7E; }
+    .tagline { color: #F6AA00; font-size: 14px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; margin-bottom: 32px; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 800; color: #003C7E; margin-bottom: 8px; }
+    .subtitle { color: #595757; font-size: 18px; margin-bottom: 40px; line-height: 1.5; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; margin-bottom: 40px; }
+    .card {
+      background: #fff; border-radius: 12px; padding: 24px; 
+      box-shadow: 0 4px 20px rgba(0,60,126,0.08);
+      text-decoration: none; color: inherit; display: block;
+      transition: all 0.3s ease; border: 1px solid #EEF2F7;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0,60,126,0.12);
+      border-color: #F6AA00;
+    }
+    .card-num { font-size: 12px; font-weight: 700; color: #F6AA00; letter-spacing: 2px; margin-bottom: 8px; }
+    .card-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #003C7E; margin-bottom: 6px; }
+    .card-desc { font-size: 14px; color: #595757; line-height: 1.5; }
+    .card-icon { font-size: 28px; margin-bottom: 10px; }
+    .launch-btn {
+      display: inline-block; background: #005BAB; color: #fff; 
+      padding: 14px 40px; border-radius: 8px; text-decoration: none;
+      font-weight: 600; transition: all 0.3s; border: none; cursor: pointer;
+    }
+    .launch-btn:hover { background: #003C7E; transform: scale(1.02); }
+    .footer-text { color: #9CA3AF; font-size: 13px; margin-top: 40px; text-align: center; }
+    .badge { display: inline-block; background: #F6AA00; color: #003C7E; padding: 2px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-left: 6px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="assets/logo.png" alt="RHN Logo">
+      <span class="logo-text">Round Hainan Regatta</span>
+    </div>
+    <div class="tagline">15th Edition · 2026 · Prototype</div>
+
+    <h1>Design Prototype</h1>
+    <p class="subtitle">7 pages · Brand colors from Logo · Real data from Notice of Race 2026</p>
+
+    <div class="grid">
+      <a href="home.html" class="card">
+        <div class="card-icon">🏠</div>
+        <div class="card-num">01 · HOME</div>
+        <div class="card-title">Homepage</div>
+        <div class="card-desc">Hero, stats, about preview, course, schedule, classes, sponsors, news, CTA, footer</div>
+      </a>
+      <a href="about.html" class="card">
+        <div class="card-icon">📜</div>
+        <div class="card-num">02 · THE RACE</div>
+        <div class="card-title">About the Regatta</div>
+        <div class="card-desc">History, milestones timeline, statistics, significance, testimonial</div>
+      </a>
+      <a href="course.html" class="card">
+        <div class="card-icon">🗺️</div>
+        <div class="card-num">03 · RACE COURSE</div>
+        <div class="card-title">Course Details</div>
+        <div class="card-desc">SVG Hainan map, Full/Half routes, waypoints, inshore + conditions</div>
+      </a>
+      <a href="schedule.html" class="card">
+        <div class="card-icon">📅</div>
+        <div class="card-num">04 · SCHEDULE</div>
+        <div class="card-title">Event Schedule</div>
+        <div class="card-desc">8-day compact timeline, shore program, downloads</div>
+      </a>
+      <a href="classes.html" class="card">
+        <div class="card-icon">⛵</div>
+        <div class="card-num">05 · CLASSES</div>
+        <div class="card-title">Classes & Entry</div>
+        <div class="card-desc">4 racing classes, eligibility, entry process, fees table</div>
+      </a>
+      <a href="news.html" class="card">
+        <div class="card-icon">📰</div>
+        <div class="card-num">06 · NEWS</div>
+        <div class="card-title">News & Media</div>
+        <div class="card-desc">Featured article, 6 news cards, photo gallery, videos, media resources</div>
+      </a>
+      <a href="contact.html" class="card">
+        <div class="card-icon">📬</div>
+        <div class="card-num">07 · CONTACT</div>
+        <div class="card-title">Contact</div>
+        <div class="card-desc">Committee info, contact form, map, FAQ, CTA</div>
+      </a>
+    </div>
+
+    <div style="text-align: center;">
+      <a href="home.html" class="launch-btn">🔗 Launch Homepage →</a>
+    </div>
+
+    <div class="footer-text">
+      © 2026 Round Hainan Regatta Organizing Committee. Prototype v1.0
+    </div>
+  </div>
+</body>
+</html>

@@ -100,7 +100,7 @@
 .hero-carousel { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; }
 .hero-carousel .slide { position: absolute; inset: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease-in-out; will-change: opacity; }
 .hero-carousel .slide.active { opacity: 1; }
-.hero-carousel .slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,60,126,0.85) 0%, rgba(0,91,171,0.55) 40%, rgba(0,60,126,0.75) 100%); }
+.hero-carousel .slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 100%); }
 .carousel-dots { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 12px; }
 .carousel-dots .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; border: 2px solid rgba(255,255,255,0.5); transition: all 0.3s ease; }
 .carousel-dots .dot.active { background: #F6AA00; border-color: #F6AA00; transform: scale(1.2); box-shadow: 0 0 12px rgba(246,170,0,0.5); }
@@ -325,37 +325,35 @@
 
               <!-- ============ ROUTES (Offshore, in the ocean around the island) ============ -->
 
-              <!-- Full Round route: Sanya → Danzhou (W) → Haikou (N) → Wanning (E) → Sanya (Clockwise offshore) -->
+              <!-- Full Round route: Sanya (S) → Danzhou (W offshore) → Haikou (N offshore) → Wanning (E offshore) → Sanya (Clockwise, in ocean around island) -->
               <path id="route-full"
-                    d="M 336,424
-                       C 250,455 165,420 155,345
-                       C 148,288 175,210 205,188
-                       C 240,158 320,95 405,80
-                       C 490,65 560,110 600,180
-                       C 622,235 620,295 580,330
-                       C 540,370 490,425 430,425
-                       C 390,425 360,425 336,424 Z"
+                    d="M 343,410
+                       C 260,455 150,450 105,360
+                       C 85,290 115,175 200,110
+                       C 290,65 400,55 500,60
+                       C 590,70 660,145 680,240
+                       C 685,320 645,405 570,445
+                       C 490,475 400,468 343,410 Z"
                     fill="none"
                     stroke="#F6AA00"
                     stroke-width="3"
                     class="route-dash-full"
                     opacity="0.95"/>
 
-              <!-- Full Round direction arrows -->
+              <!-- Full Round direction arrows (clockwise, offshore) -->
               <g id="arrows-full" fill="#F6AA00">
-                <polygon points="0,-5 10,0 0,5" transform="translate(158,280) rotate(-80)"/>
-                <polygon points="0,-5 10,0 0,5" transform="translate(310,72) rotate(-10)"/>
-                <polygon points="0,-5 10,0 0,5" transform="translate(625,260) rotate(100)"/>
-                <polygon points="0,-5 10,0 0,5" transform="translate(490,443) rotate(175)"/>
+                <polygon points="0,-5 10,0 0,5" transform="translate(100,280) rotate(-80)"/>
+                <polygon points="0,-5 10,0 0,5" transform="translate(400,55) rotate(-5)"/>
+                <polygon points="0,-5 10,0 0,5" transform="translate(683,300) rotate(100)"/>
+                <polygon points="0,-5 10,0 0,5" transform="translate(475,470) rotate(180)"/>
               </g>
 
-              <!-- Half Round route: Sanya → SE to Lingshui → back to Sanya -->
+              <!-- Half Round route: Sanya → SE offshore to Lingshui area → back to Sanya -->
               <path id="route-half"
-                    d="M 336,424
-                       C 380,455 445,455 490,428
-                       C 520,412 515,392 495,382
-                       C 470,398 425,418 380,428
-                       C 360,432 345,428 336,424 Z"
+                    d="M 343,410
+                       C 390,460 465,458 500,420
+                       C 520,395 495,378 460,378
+                       C 430,382 390,405 343,410 Z"
                     fill="none"
                     stroke="#0096DF"
                     stroke-width="3"
@@ -364,18 +362,18 @@
 
               <!-- Inshore Sanya Bay races (windward-leeward) -->
               <g id="route-inshore" opacity="0.85">
-                <ellipse cx="310" cy="465" rx="42" ry="15" fill="none" stroke="#DD0078" stroke-width="1.5" stroke-dasharray="3 3"/>
-                <polygon points="290,458 285,472 295,472" fill="#DD0078"/>
-                <polygon points="330,458 325,472 335,472" fill="#DD0078"/>
+                <ellipse cx="320" cy="450" rx="38" ry="14" fill="none" stroke="#DD0078" stroke-width="1.5" stroke-dasharray="3 3"/>
+                <polygon points="302,443 297,457 307,457" fill="#DD0078"/>
+                <polygon points="338,443 333,457 343,457" fill="#DD0078"/>
               </g>
 
               <!-- ============ WAYPOINTS (Real geographic positions) ============ -->
 
               <!-- SANYA (Start/Finish - south) -->
               <g id="waypoint-sanya" class="cursor-pointer">
-                <circle cx="336" cy="424" r="18" fill="url(#waypointGlow)" class="waypoint-glow"/>
-                <circle cx="336" cy="424" r="8" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
-                <circle cx="336" cy="424" r="3" fill="white"/>
+                <circle cx="343" cy="410" r="18" fill="url(#waypointGlow)" class="waypoint-glow"/>
+                <circle cx="343" cy="410" r="8" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
+                <circle cx="343" cy="410" r="3" fill="white"/>
                 <g transform="translate(336,455)">
                   <rect x="-56" y="0" width="112" height="42" rx="4" fill="#003C7E" stroke="#F6AA00" stroke-width="1"/>
                   <text x="0" y="16" text-anchor="middle" fill="white" font-size="13" font-weight="bold">SANYA · 三亚</text>
@@ -385,62 +383,62 @@
 
               <!-- DANZHOU (West coast - clockwise 1st turning) -->
               <g id="waypoint-danzhou" class="cursor-pointer">
-                <circle cx="220" cy="185" r="16" fill="url(#waypointGlow)" class="waypoint-glow"/>
-                <circle cx="220" cy="185" r="7" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
-                <circle cx="220" cy="185" r="2.5" fill="white"/>
-                <g transform="translate(115,155)">
+                <circle cx="354" cy="207" r="16" fill="url(#waypointGlow)" class="waypoint-glow"/>
+                <circle cx="354" cy="207" r="7" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
+                <circle cx="354" cy="207" r="2.5" fill="white"/>
+                <g transform="translate(115,175)">
                   <rect x="0" y="0" width="118" height="42" rx="4" fill="#003C7E" stroke="#F6AA00" stroke-width="1"/>
                   <text x="59" y="16" text-anchor="middle" fill="white" font-size="12" font-weight="bold">DANZHOU · 儋州</text>
                   <text x="59" y="32" text-anchor="middle" fill="#F6AA00" font-size="9" letter-spacing="1">WEST PASSAGE</text>
                 </g>
-                <line x1="215" y1="180" x2="230" y2="172" stroke="#F6AA00" stroke-width="1" stroke-dasharray="2 2"/>
+                <line x1="233" y1="196" x2="343" y2="207" stroke="#F6AA00" stroke-width="1" stroke-dasharray="2 2"/>
               </g>
 
               <!-- HAIKOU (North - Full round turning mark) -->
               <g id="waypoint-haikou" class="cursor-pointer">
-                <circle cx="405" cy="80" r="18" fill="url(#waypointGlow)" class="waypoint-glow"/>
-                <circle cx="405" cy="80" r="8" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
-                <circle cx="405" cy="80" r="3" fill="white"/>
-                <g transform="translate(405,35)">
+                <circle cx="477" cy="123" r="18" fill="url(#waypointGlow)" class="waypoint-glow"/>
+                <circle cx="477" cy="123" r="8" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
+                <circle cx="477" cy="123" r="3" fill="white"/>
+                <g transform="translate(477,35)">
                   <rect x="-64" y="0" width="128" height="42" rx="4" fill="#003C7E" stroke="#F6AA00" stroke-width="1"/>
                   <text x="0" y="16" text-anchor="middle" fill="white" font-size="13" font-weight="bold">HAIKOU · 海口</text>
                   <text x="0" y="32" text-anchor="middle" fill="#F6AA00" font-size="9" letter-spacing="1">FULL ROUND TURN</text>
                 </g>
-                <line x1="405" y1="72" x2="405" y2="77" stroke="#F6AA00" stroke-width="1" stroke-dasharray="2 2"/>
+                <line x1="477" y1="77" x2="477" y2="112" stroke="#F6AA00" stroke-width="1" stroke-dasharray="2 2"/>
               </g>
 
               <!-- WANNING (East coast - clockwise 3rd turning point) -->
               <g id="waypoint-wanning" class="cursor-pointer">
-                <circle cx="580" cy="330" r="16" fill="url(#waypointGlow)" class="waypoint-glow"/>
-                <circle cx="580" cy="330" r="7" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
-                <circle cx="580" cy="330" r="2.5" fill="white"/>
+                <circle cx="484" cy="322" r="16" fill="url(#waypointGlow)" class="waypoint-glow"/>
+                <circle cx="484" cy="322" r="7" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
+                <circle cx="484" cy="322" r="2.5" fill="white"/>
                 <g transform="translate(600,300)">
                   <rect x="0" y="0" width="120" height="42" rx="4" fill="#003C7E" stroke="#F6AA00" stroke-width="1"/>
                   <text x="60" y="16" text-anchor="middle" fill="white" font-size="12" font-weight="bold">WANNING · 万宁</text>
                   <text x="60" y="32" text-anchor="middle" fill="#F6AA00" font-size="9" letter-spacing="1">EAST COAST</text>
                 </g>
-                <line x1="592" y1="325" x2="602" y2="320" stroke="#F6AA00" stroke-width="1" stroke-dasharray="2 2"/>
+                <line x1="495" y1="322" x2="598" y2="322" stroke="#F6AA00" stroke-width="1" stroke-dasharray="2 2"/>
               </g>
 
               <!-- LINGSHUI (Half round turning) -->
               <g id="waypoint-lingshui" class="cursor-pointer">
-                <circle cx="500" cy="395" r="16" fill="url(#waypointGlow)" class="waypoint-glow"/>
-                <circle cx="500" cy="395" r="7" fill="#0096DF" stroke="white" stroke-width="2.5"/>
-                <circle cx="500" cy="395" r="2.5" fill="white"/>
-                <g transform="translate(555,378)">
+                <circle cx="426" cy="368" r="16" fill="url(#waypointGlow)" class="waypoint-glow"/>
+                <circle cx="426" cy="368" r="7" fill="#0096DF" stroke="white" stroke-width="2.5"/>
+                <circle cx="426" cy="368" r="2.5" fill="white"/>
+                <g transform="translate(555,395)">
                   <rect x="0" y="0" width="130" height="40" rx="4" fill="#003C7E" stroke="#0096DF" stroke-width="1"/>
                   <text x="65" y="15" text-anchor="middle" fill="white" font-size="12" font-weight="bold">LINGSHUI · 陵水</text>
                   <text x="65" y="30" text-anchor="middle" fill="#0096DF" font-size="9" letter-spacing="1">HALF ROUND TURN</text>
                 </g>
-                <line x1="514" y1="392" x2="555" y2="388" stroke="#0096DF" stroke-width="1" stroke-dasharray="2 2"/>
+                <line x1="437" y1="373" x2="553" y2="410" stroke="#0096DF" stroke-width="1" stroke-dasharray="2 2"/>
               </g>
 
-              <!-- Route distance label -->
-              <text x="90" y="120" fill="#F6AA00" font-size="12" font-weight="bold" opacity="0.95">FULL ROUND</text>
-              <text x="90" y="135" fill="#F6AA00" font-size="10" opacity="0.75">680 Nautical Miles</text>
+              <!-- Route distance labels -->
+              <text x="20" y="50" fill="#F6AA00" font-size="12" font-weight="bold" opacity="0.95">FULL ROUND</text>
+              <text x="20" y="65" fill="#F6AA00" font-size="10" opacity="0.75">680 Nautical Miles</text>
 
-              <text x="620" y="470" fill="#0096DF" font-size="12" font-weight="bold" opacity="0.95">HALF ROUND</text>
-              <text x="620" y="485" fill="#0096DF" font-size="10" opacity="0.75">~340 Nautical Miles</text>
+              <text x="20" y="485" fill="#0096DF" font-size="12" font-weight="bold" opacity="0.95">HALF ROUND</text>
+              <text x="105" y="485" fill="#0096DF" font-size="10" opacity="0.75">~340 Nautical Miles</text>
 
             </svg>
           </div>

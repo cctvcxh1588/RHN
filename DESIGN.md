@@ -9,7 +9,7 @@
 - **Tagline**: "680 Miles. One Island. A Sea You've Never Sailed."
 - **赛事时间**: October 31 – November 7, 2026
 - **主办地**: Sanya, Hainan, China
-- **Logo**: `/public/images/logo.png` / `/public/images/logo.svg`
+- **Logo**: `/logo.png`（RGBA 透明背景，放置于 public/ 目录）
 
 ## Visual Identity (基于品牌 VI)
 

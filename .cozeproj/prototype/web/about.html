@@ -82,11 +82,11 @@
   <!-- @nav:start Navigation, remove this section if not needed -->
   <header class="fixed top-0 inset-x-0 z-50 bg-primary-deep/95 backdrop-blur-md border-b border-white/10">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="home.html" class="flex items-center gap-3">
-        <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-9 h-9 object-contain bg-white rounded-full p-1" />
+      <a href="home.html" class="flex items-center gap-3 group">
+        <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="h-12 w-auto object-contain [filter:drop-shadow(0_0_8px_rgba(255,255,255,0.35))_brightness(1.1)] group-hover:[filter:drop-shadow(0_0_12px_rgba(246,170,0,0.5))_brightness(1.15)] transition-all" />
         <div class="leading-tight">
-          <div class="text-white font-bold text-sm tracking-wide">ROUND HAINAN REGATTA</div>
-          <div class="text-white/60 text-[10px] tracking-widest uppercase">15th Edition · 2026</div>
+          <div class="text-white font-black text-base tracking-wide">ROUND HAINAN REGATTA</div>
+          <div class="text-accent-gold/90 text-[10px] tracking-[0.25em] uppercase font-semibold">15th Edition · 2026</div>
         </div>
       </a>
       <nav class="hidden lg:flex items-center gap-1">
@@ -119,7 +119,7 @@
       <!-- Background gradient -->
       <div class="absolute inset-0 bg-gradient-to-br from-primary-deep via-primary to-primary-deep"></div>
       <!-- Sail/ocean texture image, faded -->
-      <img src="https://images.unsplash.com/photo-1508615039623-a25605d2b022?w=1600&q=80"
+      <img src="assets/hero.jpg"
            alt="海面上迎风航行的帆船海报纹理" data-category="运动体育"
            class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity" />
       <!-- Dark vignette overlay -->
@@ -167,25 +167,26 @@
               <span class="text-primary text-xs font-semibold tracking-[0.3em] uppercase">Our Story</span>
             </div>
             <h2 class="font-display font-bold text-on-surface leading-[1.1] mb-10" style="font-size: clamp(2.25rem, 4vw, 3.5rem);">
-              From a national initiative to a <span class="italic text-primary">world-class regatta</span>.
+              A sea you've never <span class="italic text-primary">sailed</span>.
             </h2>
 
             <p class="text-xl md:text-2xl font-semibold text-on-surface leading-relaxed mb-8">
-              Born from a nation's rediscovery of the sea, the Round Hainan Regatta has grown from a domestic sailing initiative into the defining offshore event of the South China coast.
+              There's a race around an island in the South China Sea that most of the world doesn't know about — yet.
             </p>
 
             <div class="space-y-6 text-base leading-relaxed text-on-surface-variant">
               <p>
-                <strong class="text-on-surface font-semibold">Founded in 2010</strong> as a domestic sailing initiative under the vision of building Hainan into an international tourism island, the inaugural edition brought together twenty-three yachts and a handful of visionary skippers. What began as an experiment in offshore racing would soon become a national tradition.
+                Hainan is China's tropical southern tip: <strong class="text-on-surface font-semibold">1,900 kilometers of coastline</strong> most sailors have never seen. Volcanic reefs. Monsoon winds that have driven maritime trade for 2,000 years. Night passages through ancient fishing grounds. Currents that connect the Pacific to the Indian Ocean. This is where the <strong class="text-on-surface font-semibold">Maritime Silk Road</strong> was born.
               </p>
               <p>
-                By 2013, the regatta had earned its place on the <strong class="text-on-surface font-semibold">World Sailing calendar</strong>, drawing IRC and ORC-rated fleets from Hong Kong, Southeast Asia, Australia and Europe. International recognition came alongside rising domestic ambition — Chinese skippers and crews began sharpening their offshore craft against seasoned bluewater competitors.
+                Since <strong class="text-on-surface font-semibold">2010</strong>, the Round Hainan Regatta has been testing offshore sailors on this water. Full circumnavigation. Non-stop. <strong class="text-on-surface font-semibold">680 nautical miles</strong> from Sanya, around the entire island, and back to where you started. It's been in the <strong class="text-on-surface font-semibold">World Sailing global racing calendar since 2013</strong>.
               </p>
               <p>
-                The signature <strong class="text-on-surface font-semibold">680-nautical-mile course</strong> that circumnavigates Hainan Island has become the regatta's soul: eight days at sea, tradewind reaches along the eastern coast, tactical shifts through the Qiongzhou Strait, and long night watches under a canopy of stars over the Beibu Gulf.
+                In <strong class="text-on-surface font-semibold">2020</strong>, twelve crews battled the worst storm in race history — and completed the full loop without a single port call. Some sailors call it the most demanding weekend of their life. Others come back every year.
               </p>
-              <p>
-                Today, the Round Hainan Regatta is recognised as <strong class="text-on-surface font-semibold">China's premier offshore regatta</strong> — a proving ground for domestic talent, a magnet for international crews, and a fifteen-year celebration of the wind that has always shaped the fate of islands.
+              <p class="text-lg font-semibold text-primary italic">
+                You probably haven't heard of it. That's about to change.<br/>
+                Your chapter on this sea starts here.
               </p>
             </div>
 
@@ -244,9 +245,9 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- 3) TIMELINE OF EDITIONS — Horizontal, py-20                    -->
+    <!-- 3) TIMELINE OF EDITIONS — HIDDEN per user request (keep code)   -->
     <!-- ============================================================ -->
-    <section class="py-20 bg-surface-container">
+    <section class="py-20 bg-surface-container hidden">
       <div class="max-w-7xl mx-auto px-6">
 
         <div class="text-center mb-16 max-w-3xl mx-auto">
@@ -494,9 +495,9 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- 6) TESTIMONIAL — Large italic pull quote                       -->
+    <!-- 6) TESTIMONIAL — HIDDEN per user request (keep code)            -->
     <!-- ============================================================ -->
-    <section class="py-32 bg-background">
+    <section class="py-32 bg-background hidden">
       <div class="max-w-5xl mx-auto px-6 text-center">
 
         <i data-lucide="quote" class="w-14 h-14 text-accent-gold mx-auto mb-10"></i>
@@ -575,7 +576,7 @@
           <!-- Brand -->
           <div class="md:col-span-4">
             <div class="flex items-center gap-3 mb-5">
-              <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-10 h-10 object-contain bg-white rounded-full p-1" />
+              <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="h-11 w-auto object-contain [filter:drop-shadow(0_0_8px_rgba(255,255,255,0.3))]" />
               <div>
                 <div class="font-bold text-sm tracking-wide">ROUND HAINAN REGATTA</div>
                 <div class="text-white/50 text-[10px] tracking-widest uppercase">15th Edition · 2026</div>

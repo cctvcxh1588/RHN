@@ -101,11 +101,11 @@
   <!-- @nav:start Navigation, remove this section if not needed -->
   <header class="fixed top-0 inset-x-0 z-50 bg-primary-deep/95 backdrop-blur-md border-b border-white/10">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="home.html" id="nav-logo" class="flex items-center gap-3">
-        <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-9 h-9 object-contain bg-white rounded-full p-1" />
+      <a href="home.html" id="nav-logo" class="flex items-center gap-3 group">
+        <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="h-12 w-auto object-contain [filter:drop-shadow(0_0_8px_rgba(255,255,255,0.35))_brightness(1.1)] group-hover:[filter:drop-shadow(0_0_12px_rgba(246,170,0,0.5))_brightness(1.15)] transition-all" />
         <div class="leading-tight">
-          <div class="text-white font-bold text-sm tracking-wide">ROUND HAINAN REGATTA</div>
-          <div class="text-white/60 text-[10px] tracking-widest uppercase">15th Edition · 2026</div>
+          <div class="text-white font-black text-base tracking-wide">ROUND HAINAN REGATTA</div>
+          <div class="text-accent-gold/90 text-[10px] tracking-[0.25em] uppercase font-semibold">15th Edition · 2026</div>
         </div>
       </a>
       <nav class="hidden lg:flex items-center gap-1">
@@ -136,7 +136,7 @@
     <!-- ============================================================ -->
     <section id="section-hero" class="relative h-[50vh] min-h-[420px] w-full overflow-hidden">
       <img
-        src="https://images.unsplash.com/photo-1500930540546-25cd8f0bd188?w=1920&auto=format&fit=crop"
+        src="assets/hero.jpg"
         alt="航拍蔚蓝海洋和帆船"
         data-category="自然风景"
         class="absolute inset-0 w-full h-full object-cover" />
@@ -230,10 +230,38 @@
                 </radialGradient>
               </defs>
 
+              <!-- SVG Filters for map color adjustment (blend real map into brand palette) -->
+              <defs>
+                <filter id="mapTone" x="0%" y="0%" width="100%" height="100%">
+                  <!-- Desaturate + shift towards blue-gold for brand cohesion -->
+                  <feColorMatrix type="matrix" values="
+                    0.55 0.45 0.15 0 0.08
+                    0.45 0.50 0.20 0 0.08
+                    0.30 0.35 0.40 0 0.10
+                    0 0 0 1 0"/>
+                  <feComponentTransfer>
+                    <feFuncR type="linear" slope="1.05" intercept="0.02"/>
+                    <feFuncG type="linear" slope="1.02" intercept="0.02"/>
+                    <feFuncB type="linear" slope="0.90" intercept="0.02"/>
+                  </feComponentTransfer>
+                </filter>
+                <!-- Gold rim glow around island -->
+                <filter id="islandGlow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+                  <feOffset dx="0" dy="0" result="offsetblur"/>
+                  <feFlood flood-color="#F6AA00" flood-opacity="0.45"/>
+                  <feComposite in2="offsetblur" operator="in"/>
+                  <feMerge>
+                    <feMergeNode/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+
               <rect width="800" height="500" fill="url(#oceanGrid)"/>
 
               <!-- Compass rose (top-left) -->
-              <g transform="translate(70,70)" opacity="0.5">
+              <g transform="translate(70,70)" opacity="0.6">
                 <circle r="30" fill="none" stroke="#F6AA00" stroke-width="1"/>
                 <circle r="22" fill="none" stroke="#F6AA00" stroke-width="0.5" stroke-dasharray="2 3"/>
                 <path d="M 0,-28 L 4,0 L 0,28 L -4,0 Z" fill="#F6AA00" opacity="0.9"/>
@@ -242,7 +270,7 @@
               </g>
 
               <!-- Scale bar -->
-              <g transform="translate(650,440)" opacity="0.6">
+              <g transform="translate(650,455)" opacity="0.6">
                 <line x1="0" y1="0" x2="100" y2="0" stroke="white" stroke-width="1"/>
                 <line x1="0" y1="-4" x2="0" y2="4" stroke="white" stroke-width="1"/>
                 <line x1="50" y1="-3" x2="50" y2="3" stroke="white" stroke-width="1"/>
@@ -250,41 +278,43 @@
                 <text x="50" y="18" text-anchor="middle" fill="white" font-size="10">100 nm</text>
               </g>
 
-              <!-- Hainan Island (simplified teardrop shape) -->
-              <!-- Approximate coordinates: Haikou top-north (~x=400,y=130), Sanya south (~x=340,y=400), Lingshui east-south (~x=490,y=370) -->
-              <path
-                d="M 400,130
-                   C 500,135 570,175 590,240
-                   C 605,290 580,340 520,370
-                   C 470,395 400,410 340,400
-                   C 270,388 220,340 215,275
-                   C 212,220 240,175 300,145
-                   C 330,132 365,128 400,130 Z"
-                fill="url(#islandGrad)"
-                stroke="#F6AA00"
-                stroke-width="1.5"
-                opacity="0.85"/>
+              <!-- ==================================================== -->
+              <!-- REAL Hainan Island Map (satellite 3D relief image)   -->
+              <!-- Placed to approximate real geographic positions       -->
+              <!-- ==================================================== -->
+              <image id="hainan-island-img"
+                     href="assets/hainan-map.png"
+                     xlink:href="assets/hainan-map.png"
+                     x="175" y="55"
+                     width="430" height="410"
+                     preserveAspectRatio="xMidYMid meet"
+                     filter="url(#mapTone)"
+                     opacity="0.94"/>
 
-              <!-- Island label -->
-              <text x="400" y="270" text-anchor="middle" fill="#003C7E" font-size="18" font-weight="bold" font-family="Playfair Display, serif" opacity="0.55">HAINAN</text>
-              <text x="400" y="290" text-anchor="middle" fill="#003C7E" font-size="10" letter-spacing="4" opacity="0.5">海南岛</text>
+              <!-- Subtle gold glow ring hint around island (decorative) -->
+              <ellipse cx="390" cy="260" rx="215" ry="205"
+                       fill="none"
+                       stroke="#F6AA00"
+                       stroke-width="0.8"
+                       stroke-dasharray="1 4"
+                       opacity="0.15"/>
 
-              <!-- Interior geography hints -->
-              <path d="M 350,220 Q 400,240 450,220 Q 470,260 440,290 Q 400,280 360,290 Q 340,260 350,220 Z"
-                    fill="#9C7F4E" opacity="0.25"/>
-              <text x="400" y="255" text-anchor="middle" fill="#4A3A1F" font-size="8" opacity="0.6">Wuzhi Mtn.</text>
+              <!-- Island label overlay -->
+              <text x="390" y="270" text-anchor="middle" fill="#F6AA00" font-size="20" font-weight="bold" font-family="Playfair Display, serif" opacity="0.35" style="paint-order:stroke;stroke:#001d4a;stroke-width:3px;">HAINAN</text>
+              <text x="390" y="290" text-anchor="middle" fill="#F6AA00" font-size="10" letter-spacing="4" opacity="0.4">海 南 岛</text>
 
-              <!-- ============ ROUTES ============ -->
+              <!-- ============ ROUTES (Offshore, in the ocean around the island) ============ -->
 
-              <!-- Full Round route: Sanya -> West coast -> Haikou -> East coast -> Sanya (Clockwise offshore, in the ocean) -->
+              <!-- Full Round route: Sanya → Danzhou (W) → Haikou (N) → Wanning (E) → Sanya (Clockwise offshore) -->
               <path id="route-full"
-                    d="M 340,415
-                       C 260,430 190,400 165,340
-                       C 145,270 165,200 220,145
-                       C 280,90 355,80 400,95
-                       C 470,105 555,135 600,190
-                       C 640,240 640,300 615,355
-                       C 585,410 510,435 430,425"
+                    d="M 336,424
+                       C 250,445 175,410 155,340
+                       C 135,265 165,190 220,140
+                       C 285,85 365,68 405,80
+                       C 470,90 555,120 605,175
+                       C 645,225 655,290 625,355
+                       C 590,420 510,445 430,438
+                       C 390,435 360,432 336,424 Z"
                     fill="none"
                     stroke="#F6AA00"
                     stroke-width="3"
@@ -293,19 +323,19 @@
 
               <!-- Full Round direction arrows -->
               <g id="arrows-full" fill="#F6AA00">
-                <polygon points="0,-5 10,0 0,5" transform="translate(175,240) rotate(-80)"/>
-                <polygon points="0,-5 10,0 0,5" transform="translate(310,90) rotate(-10)"/>
-                <polygon points="0,-5 10,0 0,5" transform="translate(625,255) rotate(100)"/>
-                <polygon points="0,-5 10,0 0,5" transform="translate(490,430) rotate(175)"/>
+                <polygon points="0,-5 10,0 0,5" transform="translate(158,240) rotate(-85)"/>
+                <polygon points="0,-5 10,0 0,5" transform="translate(310,72) rotate(-15)"/>
+                <polygon points="0,-5 10,0 0,5" transform="translate(640,255) rotate(100)"/>
+                <polygon points="0,-5 10,0 0,5" transform="translate(490,443) rotate(175)"/>
               </g>
 
-              <!-- Half Round route: Sanya -> south/east to Lingshui -> back to Sanya -->
+              <!-- Half Round route: Sanya → SE to Lingshui → back to Sanya -->
               <path id="route-half"
-                    d="M 340,415
-                       C 380,445 440,445 490,420
-                       C 520,405 515,385 495,375
-                       C 470,390 425,410 380,420
-                       C 360,425 345,420 340,415 Z"
+                    d="M 336,424
+                       C 380,455 445,455 490,428
+                       C 520,412 515,392 495,382
+                       C 470,398 425,418 380,428
+                       C 360,432 345,428 336,424 Z"
                     fill="none"
                     stroke="#0096DF"
                     stroke-width="3"
@@ -314,56 +344,83 @@
 
               <!-- Inshore Sanya Bay races (windward-leeward) -->
               <g id="route-inshore" opacity="0.85">
-                <ellipse cx="310" cy="450" rx="45" ry="18" fill="none" stroke="#DD0078" stroke-width="1.5" stroke-dasharray="3 3"/>
-                <polygon points="290,443 285,458 295,458" fill="#DD0078"/>
-                <polygon points="330,443 325,458 335,458" fill="#DD0078"/>
+                <ellipse cx="310" cy="465" rx="42" ry="15" fill="none" stroke="#DD0078" stroke-width="1.5" stroke-dasharray="3 3"/>
+                <polygon points="290,458 285,472 295,472" fill="#DD0078"/>
+                <polygon points="330,458 325,472 335,472" fill="#DD0078"/>
               </g>
 
-              <!-- ============ WAYPOINTS ============ -->
+              <!-- ============ WAYPOINTS (Real geographic positions) ============ -->
 
-              <!-- SANYA (Start/Finish) -->
+              <!-- SANYA (Start/Finish - south) -->
               <g id="waypoint-sanya" class="cursor-pointer">
-                <circle cx="340" cy="415" r="18" fill="url(#waypointGlow)" class="waypoint-glow"/>
-                <circle cx="340" cy="415" r="8" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
-                <circle cx="340" cy="415" r="3" fill="white"/>
-                <g transform="translate(340,445)">
-                  <rect x="-52" y="0" width="104" height="42" rx="4" fill="#003C7E" stroke="#F6AA00" stroke-width="1"/>
+                <circle cx="336" cy="424" r="18" fill="url(#waypointGlow)" class="waypoint-glow"/>
+                <circle cx="336" cy="424" r="8" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
+                <circle cx="336" cy="424" r="3" fill="white"/>
+                <g transform="translate(336,455)">
+                  <rect x="-56" y="0" width="112" height="42" rx="4" fill="#003C7E" stroke="#F6AA00" stroke-width="1"/>
                   <text x="0" y="16" text-anchor="middle" fill="white" font-size="13" font-weight="bold">SANYA · 三亚</text>
                   <text x="0" y="32" text-anchor="middle" fill="#F6AA00" font-size="9" letter-spacing="1.5">START / FINISH</text>
                 </g>
               </g>
 
-              <!-- HAIKOU (Full round turning) -->
+              <!-- DANZHOU (West coast - clockwise 1st turning) -->
+              <g id="waypoint-danzhou" class="cursor-pointer">
+                <circle cx="220" cy="185" r="16" fill="url(#waypointGlow)" class="waypoint-glow"/>
+                <circle cx="220" cy="185" r="7" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
+                <circle cx="220" cy="185" r="2.5" fill="white"/>
+                <g transform="translate(115,155)">
+                  <rect x="0" y="0" width="118" height="42" rx="4" fill="#003C7E" stroke="#F6AA00" stroke-width="1"/>
+                  <text x="59" y="16" text-anchor="middle" fill="white" font-size="12" font-weight="bold">DANZHOU · 儋州</text>
+                  <text x="59" y="32" text-anchor="middle" fill="#F6AA00" font-size="9" letter-spacing="1">WEST PASSAGE</text>
+                </g>
+                <line x1="215" y1="180" x2="230" y2="172" stroke="#F6AA00" stroke-width="1" stroke-dasharray="2 2"/>
+              </g>
+
+              <!-- HAIKOU (North - Full round turning mark) -->
               <g id="waypoint-haikou" class="cursor-pointer">
-                <circle cx="400" cy="95" r="18" fill="url(#waypointGlow)" class="waypoint-glow"/>
-                <circle cx="400" cy="95" r="8" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
-                <circle cx="400" cy="95" r="3" fill="white"/>
-                <g transform="translate(400,50)">
+                <circle cx="405" cy="80" r="18" fill="url(#waypointGlow)" class="waypoint-glow"/>
+                <circle cx="405" cy="80" r="8" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
+                <circle cx="405" cy="80" r="3" fill="white"/>
+                <g transform="translate(405,35)">
                   <rect x="-64" y="0" width="128" height="42" rx="4" fill="#003C7E" stroke="#F6AA00" stroke-width="1"/>
                   <text x="0" y="16" text-anchor="middle" fill="white" font-size="13" font-weight="bold">HAIKOU · 海口</text>
                   <text x="0" y="32" text-anchor="middle" fill="#F6AA00" font-size="9" letter-spacing="1">FULL ROUND TURN</text>
                 </g>
+                <line x1="405" y1="72" x2="405" y2="77" stroke="#F6AA00" stroke-width="1" stroke-dasharray="2 2"/>
+              </g>
+
+              <!-- WANNING (East coast - clockwise 3rd turning point) -->
+              <g id="waypoint-wanning" class="cursor-pointer">
+                <circle cx="580" cy="330" r="16" fill="url(#waypointGlow)" class="waypoint-glow"/>
+                <circle cx="580" cy="330" r="7" fill="#F6AA00" stroke="white" stroke-width="2.5"/>
+                <circle cx="580" cy="330" r="2.5" fill="white"/>
+                <g transform="translate(600,300)">
+                  <rect x="0" y="0" width="120" height="42" rx="4" fill="#003C7E" stroke="#F6AA00" stroke-width="1"/>
+                  <text x="60" y="16" text-anchor="middle" fill="white" font-size="12" font-weight="bold">WANNING · 万宁</text>
+                  <text x="60" y="32" text-anchor="middle" fill="#F6AA00" font-size="9" letter-spacing="1">EAST COAST</text>
+                </g>
+                <line x1="592" y1="325" x2="602" y2="320" stroke="#F6AA00" stroke-width="1" stroke-dasharray="2 2"/>
               </g>
 
               <!-- LINGSHUI (Half round turning) -->
               <g id="waypoint-lingshui" class="cursor-pointer">
-                <circle cx="495" cy="375" r="18" fill="url(#waypointGlow)" class="waypoint-glow"/>
-                <circle cx="495" cy="375" r="8" fill="#0096DF" stroke="white" stroke-width="2.5"/>
-                <circle cx="495" cy="375" r="3" fill="white"/>
-                <g transform="translate(560,345)">
-                  <rect x="0" y="0" width="128" height="42" rx="4" fill="#003C7E" stroke="#0096DF" stroke-width="1"/>
-                  <text x="64" y="16" text-anchor="middle" fill="white" font-size="13" font-weight="bold">LINGSHUI · 陵水</text>
-                  <text x="64" y="32" text-anchor="middle" fill="#0096DF" font-size="9" letter-spacing="1">HALF ROUND TURN</text>
+                <circle cx="500" cy="395" r="16" fill="url(#waypointGlow)" class="waypoint-glow"/>
+                <circle cx="500" cy="395" r="7" fill="#0096DF" stroke="white" stroke-width="2.5"/>
+                <circle cx="500" cy="395" r="2.5" fill="white"/>
+                <g transform="translate(555,378)">
+                  <rect x="0" y="0" width="130" height="40" rx="4" fill="#003C7E" stroke="#0096DF" stroke-width="1"/>
+                  <text x="65" y="15" text-anchor="middle" fill="white" font-size="12" font-weight="bold">LINGSHUI · 陵水</text>
+                  <text x="65" y="30" text-anchor="middle" fill="#0096DF" font-size="9" letter-spacing="1">HALF ROUND TURN</text>
                 </g>
-                <line x1="510" y1="378" x2="558" y2="365" stroke="#0096DF" stroke-width="1" stroke-dasharray="2 2"/>
+                <line x1="514" y1="392" x2="555" y2="388" stroke="#0096DF" stroke-width="1" stroke-dasharray="2 2"/>
               </g>
 
               <!-- Route distance label -->
-              <text x="180" y="120" fill="#F6AA00" font-size="11" font-weight="bold" opacity="0.9">FULL ROUND</text>
-              <text x="180" y="134" fill="#F6AA00" font-size="10" opacity="0.7">680 Nautical Miles</text>
+              <text x="90" y="120" fill="#F6AA00" font-size="12" font-weight="bold" opacity="0.95">FULL ROUND</text>
+              <text x="90" y="135" fill="#F6AA00" font-size="10" opacity="0.75">680 Nautical Miles</text>
 
-              <text x="530" y="465" fill="#0096DF" font-size="11" font-weight="bold" opacity="0.9">HALF ROUND</text>
-              <text x="530" y="479" fill="#0096DF" font-size="10" opacity="0.7">~340 Nautical Miles</text>
+              <text x="620" y="470" fill="#0096DF" font-size="12" font-weight="bold" opacity="0.95">HALF ROUND</text>
+              <text x="620" y="485" fill="#0096DF" font-size="10" opacity="0.75">~340 Nautical Miles</text>
 
             </svg>
           </div>
@@ -612,12 +669,12 @@
                 <div class="text-xs text-primary font-semibold tracking-widest uppercase mb-1">Start · 0 nm</div>
                 <h4 class="font-display text-xl font-bold text-on-surface mb-2">Sanya · 三亚</h4>
                 <p class="text-sm text-on-surface-variant leading-relaxed">
-                  Race start off Serenity Marina. Fleet heads east then north along Hainan's eastern shelf.
+                  Race start off Sanya Serenity Marina. Fleet heads southwest, then rounds the island's south cape and turns north along the western shelf.
                 </p>
               </div>
             </div>
 
-            <!-- 列表-航点2 · Wanning -->
+            <!-- 列表-航点2 · Danzhou -->
             <div id="waypoint-2" class="relative">
               <div class="flex md:justify-center mb-6">
                 <div class="relative w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-float ring-4 ring-surface-container">
@@ -625,10 +682,10 @@
                 </div>
               </div>
               <div class="md:text-center">
-                <div class="text-xs text-primary font-semibold tracking-widest uppercase mb-1">East Coast · ~85 nm</div>
-                <h4 class="font-display text-xl font-bold text-on-surface mb-2">Wanning · 万宁</h4>
+                <div class="text-xs text-primary font-semibold tracking-widest uppercase mb-1">West Passage · ~180 nm</div>
+                <h4 class="font-display text-xl font-bold text-on-surface mb-2">Danzhou · 儋州</h4>
                 <p class="text-sm text-on-surface-variant leading-relaxed">
-                  Passing the surf coast of Wanning — steady NE trade winds accelerate the fleet northward.
+                  Sailing up the western coast past Danzhou — variable pressure zones and tactical route decisions define the leaderboard here.
                 </p>
               </div>
             </div>
@@ -645,12 +702,12 @@
                 <div class="text-xs text-accent-gold font-semibold tracking-widest uppercase mb-1">Turning Mark · ~340 nm</div>
                 <h4 class="font-display text-xl font-bold text-on-surface mb-2">Haikou · 海口</h4>
                 <p class="text-sm text-on-surface-variant leading-relaxed">
-                  The northernmost turn. Crews round Haikou and set southwest into the Qiongzhou Strait.
+                  The northernmost turn through the Qiongzhou Strait. Crews round Haikou and set course southeast down the island's windward coast.
                 </p>
               </div>
             </div>
 
-            <!-- 列表-航点4 · West Waters -->
+            <!-- 列表-航点4 · Wanning -->
             <div id="waypoint-4" class="relative">
               <div class="flex md:justify-center mb-6">
                 <div class="relative w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-float ring-4 ring-surface-container">
@@ -658,10 +715,10 @@
                 </div>
               </div>
               <div class="md:text-center">
-                <div class="text-xs text-primary font-semibold tracking-widest uppercase mb-1">West Passage · ~525 nm</div>
-                <h4 class="font-display text-xl font-bold text-on-surface mb-2">Danzhou Waters · 儋州海域</h4>
+                <div class="text-xs text-primary font-semibold tracking-widest uppercase mb-1">East Coast · ~525 nm</div>
+                <h4 class="font-display text-xl font-bold text-on-surface mb-2">Wanning · 万宁</h4>
                 <p class="text-sm text-on-surface-variant leading-relaxed">
-                  Sailing south along the western coast — variable pressure zones, tactical decisions define standings.
+                  Passing the surf coast of Wanning — steady NE trade winds accelerate the fleet southward toward the finish.
                 </p>
               </div>
             </div>
@@ -678,7 +735,7 @@
                 <div class="text-xs text-primary font-semibold tracking-widest uppercase mb-1">Finish · 680 nm</div>
                 <h4 class="font-display text-xl font-bold text-on-surface mb-2">Sanya Finish · 三亚终点</h4>
                 <p class="text-sm text-on-surface-variant leading-relaxed">
-                  Fleet returns to Sanya Bay for the finish line — corrected time crowns the overall champion.
+                  Fleet returns to Sanya Bay for the finish line — corrected time under ORC/IRC handicap crowns the overall champion.
                 </p>
               </div>
             </div>
@@ -976,7 +1033,7 @@
         <!-- Brand -->
         <div class="md:col-span-1">
           <a href="home.html" class="flex items-center gap-3 mb-4">
-            <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-10 h-10 object-contain bg-white rounded-full p-1"/>
+            <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="h-11 w-auto object-contain [filter:drop-shadow(0_0_8px_rgba(255,255,255,0.3))]" />
             <div class="leading-tight">
               <div class="text-white font-bold text-sm tracking-wide">ROUND HAINAN REGATTA</div>
               <div class="text-white/50 text-[10px] tracking-widest uppercase">15th Edition · 2026</div>

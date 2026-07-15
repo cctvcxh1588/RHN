@@ -82,11 +82,11 @@
   <!-- @nav:start Navigation, remove this section if not needed -->
   <header class="fixed top-0 inset-x-0 z-50 bg-primary-deep/95 backdrop-blur-md border-b border-white/10">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="home.html" class="flex items-center gap-3">
-        <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-9 h-9 object-contain bg-white rounded-full p-1" />
+      <a href="home.html" class="flex items-center gap-3 group">
+        <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="h-12 w-auto object-contain [filter:drop-shadow(0_0_8px_rgba(255,255,255,0.35))_brightness(1.1)] group-hover:[filter:drop-shadow(0_0_12px_rgba(246,170,0,0.5))_brightness(1.15)] transition-all" />
         <div class="leading-tight">
-          <div class="text-white font-bold text-sm tracking-wide">ROUND HAINAN REGATTA</div>
-          <div class="text-white/60 text-[10px] tracking-widest uppercase">15th Edition · 2026</div>
+          <div class="text-white font-black text-base tracking-wide">ROUND HAINAN REGATTA</div>
+          <div class="text-accent-gold/90 text-[10px] tracking-[0.25em] uppercase font-semibold">15th Edition · 2026</div>
         </div>
       </a>
       <nav class="hidden lg:flex items-center gap-1">
@@ -215,17 +215,21 @@
           <div>
             <div class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-4">The Story</div>
             <h2 class="font-display font-bold text-on-surface text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
-              China's Premier<br/>Offshore Sailing Classic
+              A Sea You've<br/>Never Sailed
             </h2>
             <div class="mt-8 space-y-5 text-on-surface-variant text-base md:text-lg leading-relaxed">
               <p>
-                Founded in 2010 in the tropical waters of Sanya, the Round Hainan Regatta has grown from a domestic coastal event into an internationally recognized offshore classic, joining the World Sailing calendar in 2013.
+                There's a race around an island in the South China Sea that most of the world doesn't know about — yet.
               </p>
               <p>
-                Spanning <span class="text-on-surface font-semibold">680 nautical miles</span> around Hainan Island, the race takes competitors through the South China Sea's most demanding and beautiful waters — from Sanya's tropical shores past Haikou's northern coast and back through open ocean.
+                Hainan is China's tropical southern tip: <span class="text-on-surface font-semibold">1,900 kilometers of coastline</span> most sailors have never seen. Volcanic reefs. Monsoon winds that have driven maritime trade for 2,000 years. Night passages through ancient fishing grounds. Currents that connect the Pacific to the Indian Ocean. This is where the <span class="text-on-surface font-semibold">Maritime Silk Road</span> was born.
               </p>
               <p>
-                Beyond the racing, the regatta celebrates Hainan's rich maritime heritage — blending world-class competition with cultural immersion, dockside festivities, and the warm hospitality of China's southernmost province.
+                Since 2010, the Round Hainan Regatta has been testing offshore sailors on this water. Full circumnavigation. Non-stop. <span class="text-on-surface font-semibold">680 nautical miles</span> from Sanya, around the entire island, and back to where you started. It's been in the <span class="text-on-surface font-semibold">World Sailing global racing calendar since 2013</span>. In 2020, twelve crews battled the worst storm in race history — and completed the full loop without a single port call.
+              </p>
+              <p class="text-on-surface font-display italic text-xl md:text-2xl leading-snug pt-2">
+                You probably haven't heard of it. That's about to change.<br/>
+                <span class="text-primary">Your chapter on this sea starts here.</span>
               </p>
             </div>
             <a href="about.html" id="link-about-more" class="mt-10 inline-flex items-center gap-2 text-primary font-semibold text-base hover:gap-3 transition-all">
@@ -234,13 +238,13 @@
             </a>
           </div>
 
-          <!-- Right: Image -->
+          <!-- Right: Image (Phoenix Island Sanya - real venue photo) -->
           <div class="relative">
             <div class="absolute -inset-4 bg-accent-gold/20 rounded-lg -z-10 translate-x-4 translate-y-4"></div>
-            <img src="https://images.unsplash.com/photo-1500043357865-c6b8827edf10" alt="蓝海帆船特写迎风远航" data-category="运动体育" class="w-full h-[520px] object-cover rounded-lg shadow-float" />
+            <img src="assets/phoenix-sanya.jpg" alt="三亚凤凰岛前的Sanya品牌帆船与城市天际线" data-category="运动体育" class="w-full h-[520px] object-cover object-center rounded-lg shadow-float" />
             <div class="absolute bottom-6 left-6 right-6 bg-primary-deep/85 backdrop-blur-sm rounded-md px-5 py-4">
-              <div class="text-accent-gold text-[10px] font-bold tracking-widest uppercase">Est. 2010</div>
-              <div class="text-white font-display font-semibold text-lg mt-1">Sanya, Hainan Province</div>
+              <div class="text-accent-gold text-[10px] font-bold tracking-widest uppercase">Est. 2010 · Sanya Bay</div>
+              <div class="text-white font-display font-semibold text-lg mt-1">Phoenix Island, Sanya</div>
             </div>
           </div>
         </div>
@@ -422,8 +426,9 @@
     </section>
 
     <!-- ============================================ -->
-    <!-- 7) SPONSORS STRIP                             -->
+    <!-- 7) SPONSORS STRIP  [HIDDEN - RESTORE LATER]   -->
     <!-- ============================================ -->
+    <!--
     <section id="section-sponsors" class="bg-background py-20">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-12">
@@ -498,9 +503,161 @@
       </div>
     </section>
 
+        </div>
+      </div>
+    </section>
+    -->
+
     <!-- ============================================ -->
-    <!-- 8) NEWS PREVIEW                               -->
+    <!-- 7b) ABOUT HAINAN (Destination Introduction)   -->
     <!-- ============================================ -->
+    <section id="section-hainan" class="relative bg-background py-24 overflow-hidden">
+      <!-- Decorative background -->
+      <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(circle at 15% 25%, #F6AA00 0%, transparent 35%), radial-gradient(circle at 85% 75%, #0096DF 0%, transparent 40%);" aria-hidden="true"></div>
+
+      <div class="relative max-w-7xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="max-w-3xl mb-14">
+          <div class="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-4">The Destination</div>
+          <h2 class="font-display font-bold text-on-surface text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
+            About Hainan &mdash;<br/>China's Tropical Island
+          </h2>
+          <p class="mt-6 text-on-surface-variant text-base md:text-lg leading-relaxed">
+            More than a race venue &mdash; Hainan is a Free Trade Port, a tropical paradise, and one of Asia's most welcoming destinations. Here's what awaits you beyond the finish line.
+          </p>
+        </div>
+
+        <!-- 4 Feature Cards Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <!-- Card 1: Free Trade Port -->
+          <article class="bg-surface rounded-lg border border-outline-variant/20 overflow-hidden hover:shadow-float transition-all group flex flex-col">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800" alt="海南自贸港城市天际线" data-category="城市建筑" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-primary-deep/60 via-transparent to-transparent"></div>
+              <span class="absolute top-4 left-4 bg-accent-gold text-primary-deep text-[10px] font-black tracking-widest uppercase px-2.5 py-1 rounded">Policy</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <div class="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                <i data-lucide="plane-takeoff" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-display font-bold text-on-surface text-xl leading-snug">
+                Free Trade Port &amp; Visa-Free Entry
+              </h3>
+              <p class="mt-3 text-sm text-on-surface-variant leading-relaxed flex-1">
+                Hainan is China's largest Free Trade Port. Passport holders from <span class="text-on-surface font-semibold">59 countries</span> enjoy <span class="text-on-surface font-semibold">30-day visa-free entry</span>. Duty-free shopping caps at ¥100,000 per person per year.
+              </p>
+              <ul class="mt-4 space-y-1.5 text-xs text-on-surface-variant">
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-primary flex-shrink-0"></i><span>59 countries · 30-day stay</span></li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-primary flex-shrink-0"></i><span>Sea &amp; air ports open</span></li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-primary flex-shrink-0"></i><span>Duty-free shopping</span></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 2: Culture & Heritage -->
+          <article class="bg-surface rounded-lg border border-outline-variant/20 overflow-hidden hover:shadow-float transition-all group flex flex-col">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1518183261945-b0989c458396?w=800" alt="海南黎族传统文化风情" data-category="人文文化" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-primary-deep/60 via-transparent to-transparent"></div>
+              <span class="absolute top-4 left-4 bg-primary text-white text-[10px] font-black tracking-widest uppercase px-2.5 py-1 rounded">Culture</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <div class="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                <i data-lucide="feather" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-display font-bold text-on-surface text-xl leading-snug">
+                Culture &amp; Heritage
+              </h3>
+              <p class="mt-3 text-sm text-on-surface-variant leading-relaxed flex-1">
+                A tropical melting pot of <span class="text-on-surface font-semibold">Li and Miao</span> ethnic traditions, over a millennium of <span class="text-on-surface font-semibold">Maritime Silk Road</span> history, and living folk arts from brocade weaving to bamboo dances.
+              </p>
+              <ul class="mt-4 space-y-1.5 text-xs text-on-surface-variant">
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-primary flex-shrink-0"></i><span>Li &amp; Miao villages</span></li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-primary flex-shrink-0"></i><span>Silk Road relics</span></li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-primary flex-shrink-0"></i><span>2,000-year fishing heritage</span></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 3: Beach & Resort -->
+          <article class="bg-surface rounded-lg border border-outline-variant/20 overflow-hidden hover:shadow-float transition-all group flex flex-col">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800" alt="三亚亚龙湾热带白沙滩海景" data-category="风景景观" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-primary-deep/60 via-transparent to-transparent"></div>
+              <span class="absolute top-4 left-4 bg-primary-bright text-white text-[10px] font-black tracking-widest uppercase px-2.5 py-1 rounded">Vacation</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <div class="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                <i data-lucide="palmtree" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-display font-bold text-on-surface text-xl leading-snug">
+                Beaches &amp; Resort Escapes
+              </h3>
+              <p class="mt-3 text-sm text-on-surface-variant leading-relaxed flex-1">
+                Tropical monsoon climate with <span class="text-on-surface font-semibold">1,900 km of coastline</span>. World-class resorts line <span class="text-on-surface font-semibold">Yalong Bay</span>, <span class="text-on-surface font-semibold">Haitang Bay</span>, and <span class="text-on-surface font-semibold">Dadonghai</span> &mdash; a Chinese Hawaii on the South China Sea.
+              </p>
+              <ul class="mt-4 space-y-1.5 text-xs text-on-surface-variant">
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-primary flex-shrink-0"></i><span>Year-round 20&ndash;28&deg;C</span></li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-primary flex-shrink-0"></i><span>Wuzhizhou Island</span></li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-primary flex-shrink-0"></i><span>Yalong Bay resort strip</span></li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 4: Food & Cuisine -->
+          <article class="bg-surface rounded-lg border border-outline-variant/20 overflow-hidden hover:shadow-float transition-all group flex flex-col">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800" alt="海南特色美食椰子鸡火锅" data-category="美食佳肴" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-primary-deep/60 via-transparent to-transparent"></div>
+              <span class="absolute top-4 left-4 bg-accent-gold text-primary-deep text-[10px] font-black tracking-widest uppercase px-2.5 py-1 rounded">Cuisine</span>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <div class="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
+                <i data-lucide="utensils" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-display font-bold text-on-surface text-xl leading-snug">
+                Tropical Cuisine
+              </h3>
+              <p class="mt-3 text-sm text-on-surface-variant leading-relaxed flex-1">
+                Home of the <span class="text-on-surface font-semibold">"Four Famous Dishes"</span> &mdash; Wenchang Chicken, Jiaji Duck, Dongshan Lamb, Hele Crab. Plus fresh reef-caught seafood, coconut chicken hotpot, and tropical fruits year-round.
+              </p>
+              <ul class="mt-4 space-y-1.5 text-xs text-on-surface-variant">
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-primary flex-shrink-0"></i><span>Four Famous Dishes</span></li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-primary flex-shrink-0"></i><span>Coconut chicken hotpot</span></li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-primary flex-shrink-0"></i><span>Reef seafood &amp; tropical fruit</span></li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Facts strip -->
+        <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-6 bg-surface rounded-lg shadow-card p-8 border border-outline-variant/20">
+          <div class="text-center border-r border-outline-variant/30 last:border-none md:border-r">
+            <div class="font-display font-black text-primary text-3xl md:text-4xl">1,900<span class="text-lg align-top">km</span></div>
+            <div class="mt-1 text-[11px] font-bold tracking-widest uppercase text-on-surface-variant">Coastline</div>
+          </div>
+          <div class="text-center md:border-r border-outline-variant/30">
+            <div class="font-display font-black text-primary text-3xl md:text-4xl">59</div>
+            <div class="mt-1 text-[11px] font-bold tracking-widest uppercase text-on-surface-variant">Visa-Free Nations</div>
+          </div>
+          <div class="text-center border-r border-outline-variant/30">
+            <div class="font-display font-black text-primary text-3xl md:text-4xl">25&deg;C</div>
+            <div class="mt-1 text-[11px] font-bold tracking-widest uppercase text-on-surface-variant">Avg. Temperature</div>
+          </div>
+          <div class="text-center">
+            <div class="font-display font-black text-primary text-3xl md:text-4xl">2018</div>
+            <div class="mt-1 text-[11px] font-bold tracking-widest uppercase text-on-surface-variant">Free Trade Port</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 8) NEWS PREVIEW  [HIDDEN - RESTORE LATER]     -->
+    <!-- ============================================ -->
+    <!--
     <section id="section-news" class="bg-surface-container py-24">
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex items-end justify-between mb-12 flex-wrap gap-4">
@@ -577,6 +734,7 @@
         </div>
       </div>
     </section>
+    -->
 
     <!-- ============================================ -->
     <!-- 9) CTA SECTION (Deep Blue)                    -->
@@ -626,7 +784,7 @@
           <!-- Column 1: Brand -->
           <div class="col-span-2 md:col-span-1">
             <a href="home.html" class="flex items-center gap-3 mb-5">
-              <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="w-11 h-11 object-contain bg-white rounded-full p-1.5" />
+              <img src="assets/logo.png" alt="Round Hainan Regatta Logo" data-category="其他" class="h-11 w-auto object-contain [filter:drop-shadow(0_0_8px_rgba(255,255,255,0.3))]" />
               <div class="leading-tight">
                 <div class="font-display font-bold text-white text-base">Round Hainan</div>
                 <div class="font-display font-bold text-accent-gold text-base">Regatta</div>

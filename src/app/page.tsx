@@ -16,6 +16,7 @@ import {
 
 import HeroCarousel from "@/components/HeroCarousel";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import { useLang } from "@/lib/LanguageProvider";
 
 function AnimatedCounter(
     {
@@ -157,6 +158,10 @@ const racingClasses = [{
 }];
 
 export default function Home() {
+    const { t } = useLang();
+    const statLabels = [t('home', 'statEdition'), t('home', 'statMiles'), t('home', 'statDays'), t('home', 'statClasses')];
+    const hainanTitles = [t('home', 'hainanFTP'), t('home', 'hainanCulture'), t('home', 'hainanBeaches'), t('home', 'hainanCuisine')];
+    const hainanDescs = [t('home', 'hainanFTPDesc'), t('home', 'hainanCultureDesc'), t('home', 'hainanBeachesDesc'), t('home', 'hainanCuisineDesc')];
     return (
         <>
             {}
@@ -167,7 +172,7 @@ export default function Home() {
                         {}
                         <RevealOnScroll delay={0.1}>
                             <span
-                                className="inline-block rounded-full bg-accent-gold/20 px-5 py-1.5 text-xs font-semibold tracking-[0.2em] uppercase text-accent-gold backdrop-blur-sm mb-6">15th Edition
+                                className="inline-block rounded-full bg-accent-gold/20 px-5 py-1.5 text-xs font-semibold tracking-[0.2em] uppercase text-accent-gold backdrop-blur-sm mb-6">{t('home', 'heroBadge')}
                                                                                                                                               </span>
                         </RevealOnScroll>
                         {}
@@ -189,7 +194,7 @@ export default function Home() {
                                 style={{
                                     fontSize: "clamp(20px, 3.2vw, 36px)",
                                     textShadow: "0 2px 12px rgba(0,0,0,0.7), 0 0 32px rgba(0,60,126,0.5)"
-                                }}>680 Miles. One Island. A Sea You've Never Sailed.
+                                }}>{t('home', 'heroTitle')} {t('home', 'heroTitle2')}
                                                                                                                                               </p>
                         </RevealOnScroll>
                         {}
@@ -200,7 +205,7 @@ export default function Home() {
                                     fontSize: "clamp(14px, 1.6vw, 20px)",
                                     textShadow: "0 1px 6px rgba(0,0,0,0.6)"
                                 }}>
-                                <span className="text-accent-gold">●</span>October 31 – November 7, 2026  ·  Sanya, China
+                                <span className="text-accent-gold">●</span>{t('home', 'heroDate')}
                                                                                                                                               </p>
                         </RevealOnScroll>
                         {}
@@ -208,12 +213,12 @@ export default function Home() {
                             <div className="flex flex-col sm:flex-row gap-4">
                                 <Link
                                     href="/about"
-                                    className="inline-flex items-center justify-center px-8 py-3.5 bg-accent-gold text-primary-deep font-semibold text-sm rounded-md hover:bg-accent-gold/90 transition-all hover:scale-105 shadow-lg">Explore The Race
+                                    className="inline-flex items-center justify-center px-8 py-3.5 bg-accent-gold text-primary-deep font-semibold text-sm rounded-md hover:bg-accent-gold/90 transition-all hover:scale-105 shadow-lg">{t('home', 'heroCta')}
                                                                                                                                                                   <ChevronRight className="ml-2 h-4 w-4" />
                                 </Link>
                                 <Link
-                                    href="/contact"
-                                    className="inline-flex items-center justify-center px-8 py-3.5 border-2 border-white/40 text-white font-semibold text-sm rounded-md hover:bg-white/10 hover:border-white/60 transition-all">Register Interest
+                                    href="/register"
+                                    className="inline-flex items-center justify-center px-8 py-3.5 border-2 border-white/40 text-white font-semibold text-sm rounded-md hover:bg-white/10 hover:border-white/60 transition-all">{t('common', 'register')}
                                                                                                                                                                 </Link>
                             </div>
                         </RevealOnScroll>
@@ -232,7 +237,7 @@ export default function Home() {
                                 </div>
                                 <p
                                     className="mt-2 text-sm md:text-base text-muted-foreground font-medium uppercase tracking-widest">
-                                    {stat.label}
+                                    {statLabels[index] ?? stat.label}
                                 </p>
                             </div>
                         </RevealOnScroll>)}
@@ -245,11 +250,11 @@ export default function Home() {
                     <RevealOnScroll>
                         <div className="text-center mb-4">
                             <span
-                                className="text-xs font-semibold tracking-[0.25em] uppercase text-accent-gold">The Story
+                                className="text-xs font-semibold tracking-[0.25em] uppercase text-accent-gold">{t('home', 'aboutEyebrow')}
                                                                                                                                               </span>
                         </div>
                         <h2
-                            className="font-display text-3xl sm:text-4xl md:text-5xl text-center text-foreground mb-4">A Race Around Paradise
+                            className="font-display text-3xl sm:text-4xl md:text-5xl text-center text-foreground mb-4">{t('home', 'aboutTitle')}
                                                                                                                             </h2>
                         <div className="flex justify-center mb-12">
                             <div className="h-1 w-16 bg-accent-gold rounded-full" />
@@ -289,11 +294,11 @@ export default function Home() {
                     <RevealOnScroll>
                         <div className="text-center mb-4">
                             <span
-                                className="text-xs font-semibold tracking-[0.25em] uppercase text-accent-gold">Explore Hainan
+                                className="text-xs font-semibold tracking-[0.25em] uppercase text-accent-gold">{t('home', 'hainanEyebrow')}
                                                                                                                                               </span>
                         </div>
                         <h2
-                            className="font-display text-3xl sm:text-4xl md:text-5xl text-center text-foreground mb-4">Beyond the Race
+                            className="font-display text-3xl sm:text-4xl md:text-5xl text-center text-foreground mb-4">{t('home', 'hainanTitle')}
                                                                                                                             </h2>
                         <div className="flex justify-center mb-16">
                             <div className="h-1 w-16 bg-accent-gold rounded-full" />
@@ -313,13 +318,13 @@ export default function Home() {
                                             <Icon className="h-7 w-7" />
                                         </div>
                                         <h3 className="text-lg font-bold text-foreground mb-3">
-                                            {item.title}
+                                            {hainanTitles[index] ?? item.title}
                                         </h3>
                                         <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                                            {item.description}
+                                            {hainanDescs[index] ?? item.description}
                                         </p>
                                         <span
-                                            className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-widest text-accent-gold group-hover:gap-2 transition-all">Learn More
+                                            className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-widest text-accent-gold group-hover:gap-2 transition-all">{t('common', 'learnMore')}
                                                                                         <ChevronRight className="h-3.5 w-3.5" />
                                         </span>
                                     </Link>
@@ -335,11 +340,11 @@ export default function Home() {
                     <RevealOnScroll>
                         <div className="text-center mb-4">
                             <span
-                                className="text-xs font-semibold tracking-[0.25em] uppercase text-accent-gold">The Course
+                                className="text-xs font-semibold tracking-[0.25em] uppercase text-accent-gold">{t('home', 'courseEyebrow')}
                                                                                                                                               </span>
                         </div>
                         <h2
-                            className="font-display text-3xl sm:text-4xl md:text-5xl text-center text-foreground mb-4">Around the Island
+                            className="font-display text-3xl sm:text-4xl md:text-5xl text-center text-foreground mb-4">{t('home', 'courseTitle')}
                                                                                                                             </h2>
                         <div className="flex justify-center mb-6">
                             <div className="h-1 w-16 bg-accent-gold rounded-full" />

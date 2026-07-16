@@ -3,8 +3,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import RevealOnScroll from '@/components/RevealOnScroll';
+import { useLang } from '@/lib/LanguageProvider';
 
 export default function AboutPage() {
+  const { t } = useLang();
   const stats = [
     { number: '15', suffix: '', label: 'Editions' },
     { number: '680', suffix: '', label: 'Nautical Miles' },
@@ -32,12 +34,12 @@ export default function AboutPage() {
         <div className="relative z-[2] text-center px-4 sm:px-6">
           <RevealOnScroll>
             <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-white leading-tight mb-4">
-              The Race
+              {t('about', 'heroTitle')}
             </h1>
           </RevealOnScroll>
           <RevealOnScroll delay={0.2}>
             <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto font-light tracking-wide">
-              680 Miles of World-Class Offshore Racing
+              {t('about', 'heroSub')}
             </p>
           </RevealOnScroll>
         </div>
@@ -49,14 +51,14 @@ export default function AboutPage() {
           {/* Eyebrow */}
           <RevealOnScroll>
             <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-              The Story
+              {t('about', 'storyEyebrow')}
             </span>
           </RevealOnScroll>
 
           {/* Title */}
           <RevealOnScroll delay={0.1}>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-foreground mt-3 mb-4 leading-tight">
-              A Legacy on the Water
+              {t('about', 'storyTitle')}
             </h2>
           </RevealOnScroll>
 
@@ -134,7 +136,7 @@ export default function AboutPage() {
             <RevealOnScroll>
               <div>
                 <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-foreground leading-tight mb-6">
-                  The Vision
+                  {t('about', 'visionTitle')}
                 </h2>
                 <div className="w-16 h-1 bg-accent-gold mb-8" />
                 <div className="space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed">

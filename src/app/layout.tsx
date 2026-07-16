@@ -3,6 +3,7 @@ import { Inspector } from 'react-dev-inspector';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { LanguageProvider } from '@/lib/LanguageProvider';
 
 export const metadata: Metadata = {
   title: {
@@ -42,9 +43,11 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         {isDev && <Inspector />}
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <LanguageProvider>
+          <Navbar />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

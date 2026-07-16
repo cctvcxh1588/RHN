@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ChevronDown, MapPin, Anchor, Ship, Compass, Calendar, ArrowRight } from 'lucide-react';
 import RevealOnScroll from '@/components/RevealOnScroll';
+import { useLang } from '@/lib/LanguageProvider';
 import {
   Accordion,
   AccordionItem,
@@ -405,6 +406,7 @@ function DayCard({
 
 /* ─── Page Component ─── */
 export default function SchedulePage() {
+    const { t } = useLang();
   return (
     <>
       {/* ════════════════════════════════════════════════════
@@ -424,17 +426,17 @@ export default function SchedulePage() {
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6">
           <RevealOnScroll>
             <span className="mb-4 inline-block rounded-full bg-accent-gold/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-accent-gold backdrop-blur-sm">
-              Race Week Schedule
+              {t('schedule', 'heroBadge')}
             </span>
           </RevealOnScroll>
           <RevealOnScroll delay={0.15}>
             <h1 className="font-display text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
-              The Schedule
+              {t('schedule', 'heroTitle')}
             </h1>
           </RevealOnScroll>
           <RevealOnScroll delay={0.3}>
             <p className="mt-4 text-lg font-light text-white/80 sm:text-xl">
-              Eight Days of World-Class Racing
+              {t('schedule', 'heroSub')}
             </p>
           </RevealOnScroll>
           <RevealOnScroll delay={0.45}>
@@ -467,10 +469,10 @@ export default function SchedulePage() {
           <RevealOnScroll>
             <div className="mb-16 text-center">
               <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold">
-                Day by Day
+                {t('schedule', 'timelineEyebrow')}
               </span>
               <h2 className="font-display text-4xl font-bold text-primary-deep sm:text-5xl">
-                Race Week Schedule
+                {t('schedule', 'timelineTitle')}
               </h2>
               <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-accent-gold" />
               <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">

@@ -4,21 +4,24 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
-
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'The Race' },
-  { href: '/course', label: 'Course' },
-  { href: '/schedule', label: 'Schedule' },
-  { href: '/classes', label: 'Classes' },
-  { href: '/news', label: 'News' },
-  { href: '/contact', label: 'Contact' },
-];
+import { useLang } from '@/lib/LanguageProvider';
+import LanguageToggle from './LanguageToggle';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const { t } = useLang();
+
+  const navLinks = [
+    { href: '/', label: t('nav', 'home') },
+    { href: '/about', label: t('nav', 'about') },
+    { href: '/course', label: t('nav', 'course') },
+    { href: '/schedule', label: t('nav', 'schedule') },
+    { href: '/classes', label: t('nav', 'classes') },
+    { href: '/news', label: t('nav', 'news') },
+    { href: '/contact', label: t('nav', 'contact') },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -79,29 +82,33 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <LanguageToggle className="ml-2" />
             <Link
-              href="/contact"
-              className="ml-4 px-5 py-2 text-sm font-semibold text-primary-deep bg-accent-gold hover:bg-accent-gold/90 rounded-md transition-all hover:scale-105"
+              href="/register"
+              className="ml-3 px-5 py-2 text-sm font-semibold text-primary-deep bg-accent-gold hover:bg-accent-gold/90 rounded-md transition-all hover:scale-105"
             >
-              Register Interest
+              {t('nav', 'register')}
             </Link>
           </div>
 
-          {/* Mobile Hamburger */}
-          <button
-            className="lg:hidden text-white/80 hover:text-white p-2"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile */}
+          <div className="lg:hidden flex items-center gap-2">
+            <LanguageToggle />
+            <button
+              className="text-white/80 hover:text-white p-2"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Mobile Menu */}
       <div
         className={`lg:hidden transition-all duration-300 overflow-hidden ${
-          mobileOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+          mobileOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <div className="px-4 pb-4 pt-2 space-y-1 bg-primary-deep/98 backdrop-blur-md">
@@ -119,10 +126,10 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="/contact"
+            href="/register"
             className="block px-4 py-3 text-sm font-semibold text-primary-deep bg-accent-gold hover:bg-accent-gold/90 rounded-md text-center mt-2"
           >
-            Register Interest
+            {t('nav', 'register')}
           </Link>
         </div>
       </div>

@@ -15,8 +15,10 @@ import {
 } from "lucide-react";
 
 import RevealOnScroll from "@/components/RevealOnScroll";
+import { useLang } from "@/lib/LanguageProvider";
 
 export default function ContactPage() {
+    const { t } = useLang();
     useEffect(() => {
         document.title = "Contact Us | Round Hainan Regatta";
     }, []);
@@ -80,9 +82,9 @@ export default function ContactPage() {
                 <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
                     <RevealOnScroll>
                         <h1
-                            className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-tight mb-4">Contact Us
+                            className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-tight mb-4">{t('contact', 'heroTitle')}
                                         </h1>
-                        <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">Get in touch with the Round Hainan Regatta Organizing Committee.
+                        <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">{t('contact', 'heroSub')}
                                           We're here to help.
                                         </p>
                     </RevealOnScroll>
@@ -94,10 +96,10 @@ export default function ContactPage() {
                     <RevealOnScroll>
                         <div className="text-center mb-16">
                             <span
-                                className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold mb-4">Get in Touch
+                                className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold mb-4">{t('contact', 'heroBadge')}
                                               </span>
                             <h2
-                                className="text-3xl md:text-4xl font-display font-bold text-primary-deep mb-4">Contact Information
+                                className="text-3xl md:text-4xl font-display font-bold text-primary-deep mb-4">{t('contact', 'infoEyebrow')}
                                               </h2>
                             <p
                                 className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">Have a question about registration, sponsorship, or the race?

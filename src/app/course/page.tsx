@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import { useLang } from "@/lib/LanguageProvider";
 import { Anchor, Navigation, MapPin, Ship, Compass, ArrowRight, Sailboat, FileText, AlertTriangle, ClipboardCheck, Scale } from "lucide-react";
 
 const waypoints = [{
@@ -71,6 +72,7 @@ const waypoints = [{
 }];
 
 export default function CoursePage() {
+    const { t } = useLang();
     return (
         <div className="min-h-screen">
             {}
@@ -90,12 +92,12 @@ export default function CoursePage() {
                 <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
                     <RevealOnScroll delay={0.1}>
                         <h1
-                            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 tracking-tight">The Course
+                            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 tracking-tight">{t('course', 'heroTitle')}
                                         </h1>
                     </RevealOnScroll>
                     <RevealOnScroll delay={0.3}>
                         <p
-                            className="text-lg md:text-xl text-white/80 font-light tracking-wide max-w-2xl mx-auto">Circumnavigating Hainan Island — Clockwise
+                            className="text-lg md:text-xl text-white/80 font-light tracking-wide max-w-2xl mx-auto">{t('course', 'heroSub')}
                                         </p>
                     </RevealOnScroll>
                     <RevealOnScroll delay={0.5}>
@@ -187,7 +189,7 @@ export default function CoursePage() {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <RevealOnScroll>
                         <h2
-                            className="text-center font-display text-3xl md:text-4xl font-bold text-primary-deep mb-4">Race Routes
+                            className="text-center font-display text-3xl md:text-4xl font-bold text-primary-deep mb-4">{t('course', 'routesTitle')}
                                         </h2>
                         <p
                             className="text-center text-muted-foreground text-sm md:text-base mb-12 max-w-xl mx-auto">Solid dark blue marks the Racing Route around Hainan Island; dashed orange marks the Non-Racing Route near Haikou.
@@ -210,13 +212,13 @@ export default function CoursePage() {
                         <div className="mt-20 md:mt-24">
                             <div className="text-center mb-12">
                                 <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold mb-4">
-                                    Official Documents
+                                    {t('course', 'documentsEyebrow')}
                                 </span>
                                 <h3 className="text-3xl md:text-4xl font-display font-bold text-primary-deep mb-4">
-                                    Race Regulations & References
+                                    {t('course', 'documentsTitle')}
                                 </h3>
                                 <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                                    Essential documents for competitors, technical committee, and race officials. Click any card to read the full text.
+                                    {t('course', 'documentsSub')}
                                 </p>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

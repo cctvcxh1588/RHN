@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Sailboat, MapPin, Users, Trophy, Ship, Anchor, Compass, ArrowRight, CheckCircle, ClipboardList, Calendar, Flag } from 'lucide-react';
 import RevealOnScroll from '@/components/RevealOnScroll';
+import { useLang } from '@/lib/LanguageProvider';
 
 const classes = [
   {
@@ -101,6 +102,7 @@ const steps = [
 ];
 
 export default function ClassesPage() {
+  const { t } = useLang();
   useEffect(() => {
     document.title = 'Racing Classes | Round Hainan Regatta';
   }, []);
@@ -129,11 +131,10 @@ export default function ClassesPage() {
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <RevealOnScroll>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-tight mb-4">
-              Racing Classes
+              {t('classes', 'heroTitle')}
             </h1>
             <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
-              Four competitive classes — from one-design inshore racing to
-              full-offshore circumnavigation.
+              {t('classes', 'heroSub')}
             </p>
           </RevealOnScroll>
         </div>
@@ -145,10 +146,10 @@ export default function ClassesPage() {
           <RevealOnScroll>
             <div className="text-center mb-16">
               <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold mb-4">
-                Choose Your Challenge
+                {t('classes', 'cardsEyebrow')}
               </span>
               <h2 className="text-3xl md:text-4xl font-display font-bold text-primary-deep mb-4">
-                Four Competitive Classes
+                {t('classes', 'cardsTitle')}
               </h2>
               <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Whether you&apos;re a seasoned offshore veteran or a passionate

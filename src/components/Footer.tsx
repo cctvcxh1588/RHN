@@ -1,22 +1,24 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-
-const quickLinks = [
-  { href: '/about', label: 'About the Race' },
-  { href: '/course', label: 'Race Course' },
-  { href: '/schedule', label: 'Event Schedule' },
-  { href: '/classes', label: 'Racing Classes' },
-];
-
-const resources = [
-  { href: '/news', label: 'News & Media' },
-  { href: '/contact', label: 'Contact Us' },
-];
+import { useLang } from '@/lib/LanguageProvider';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useLang();
+
+  const quickLinks = [
+    { href: '/about', label: t('footer', 'aboutTheRace') },
+    { href: '/course', label: t('footer', 'raceCourse') },
+    { href: '/schedule', label: t('footer', 'eventSchedule') },
+    { href: '/classes', label: t('footer', 'racingClasses') },
+  ];
+
+  const resources = [
+    { href: '/news', label: t('footer', 'newsMedia') },
+    { href: '/register', label: t('footer', 'register') },
+    { href: '/contact', label: t('footer', 'contactUs') },
+  ];
 
   return (
     <footer className="bg-primary-deep text-white">
@@ -36,15 +38,14 @@ export default function Footer() {
               />
             </Link>
             <p className="text-sm text-white/60 leading-relaxed max-w-xs">
-              The 15th Round Hainan Regatta — 680 miles of world-class offshore
-              racing around China&apos;s most beautiful island.
+              {t('footer', 'tagline')}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-widest text-accent-gold mb-4">
-              Quick Links
+              {t('footer', 'quickLinks')}
             </h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
@@ -63,7 +64,7 @@ export default function Footer() {
           {/* Resources */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-widest text-accent-gold mb-4">
-              Resources
+              {t('footer', 'resources')}
             </h4>
             <ul className="space-y-3">
               {resources.map((link) => (
@@ -82,7 +83,7 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-widest text-accent-gold mb-4">
-              Contact
+              {t('footer', 'contact')}
             </h4>
             <ul className="space-y-3 text-sm text-white/70">
               <li>
@@ -93,10 +94,9 @@ export default function Footer() {
                   roundhainanregatta@foxmail.com
                 </a>
               </li>
-              <li>Sanya, Hainan, China</li>
+              <li>{t('footer', 'location')}</li>
             </ul>
             <div className="flex gap-3 mt-4">
-              {/* Social Icons Placeholder */}
               <a
                 href="#"
                 className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-gold/30 transition-colors"
@@ -115,11 +115,10 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/40">
-            &copy; {currentYear} Round Hainan Regatta Organizing Committee. All
-            rights reserved.
+            &copy; {currentYear} {t('footer', 'copyright')}
           </p>
           <div className="flex gap-6 text-xs text-white/30">
-            <span>15th Edition | October 31 – November 7, 2026</span>
+            <span>{t('footer', 'edition')}</span>
           </div>
         </div>
       </div>

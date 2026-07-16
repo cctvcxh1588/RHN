@@ -18,7 +18,17 @@ Professional English official website for the 15th Round Hainan Regatta (2026). 
 /classes           - 4 racing classes
 /news              - News & photo gallery (placeholder)
 /contact           - Contact form & committee info
+/register          - Race entry registration form (posts to /api/register)
+/admin/registrations - Token-gated admin dashboard to view/export entries
 ```
+
+## API Routes
+- `GET  /api/register` - health probe; with `?token=<RHN_ADMIN_TOKEN>` returns entries list (default token: `rhn-2026-admin`, override via env)
+- `POST /api/register` - validate + persist an entry to Supabase `registrations` table
+
+## Database (Supabase)
+- Table: `registrations` — see `src/storage/database/shared/schema.ts`
+- Managed via Coze Supabase integration; backend uses service_role_key (RLS enabled, no policy needed for public write via API layer)
 
 ## Components
 ```

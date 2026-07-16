@@ -2,63 +2,88 @@
 
 import Image from 'next/image';
 import RevealOnScroll from '@/components/RevealOnScroll';
-import { Anchor, Navigation, MapPin, Ship, Compass, ArrowRight } from 'lucide-react';
+import { Anchor, Navigation, MapPin, Ship, Compass, ArrowRight, Sailboat } from 'lucide-react';
 
 const waypoints = [
   {
     name: 'Sanya',
     role: 'Start / Finish',
     description:
-      'The racing capital of Hainan. Departure from Sanya Serenity Marina, heading west along the coast.',
+      'Home port and gateway to the tropics. Departure from Sanya Serenity Marina, heading east along the south coast.',
     distance: '—',
     icon: 'MapPin',
-    color: 'text-accent-gold',
     svgX: 343,
-    svgY: 410,
+    svgY: 425,
   },
   {
-    name: 'Danzhou',
+    name: 'Lingshui',
     role: 'Waypoint',
     description:
-      'Mid-race checkpoint on the western side. Known for its dramatic coastal cliffs and shifting winds.',
-    distance: '~185 NM from Sanya',
+      'Southeast coast, first mark. Tactical rounding where crews set up for the long haul north.',
+    distance: '~55 NM from Sanya',
     icon: 'Navigation',
-    color: 'text-accent-gold',
-    svgX: 354,
-    svgY: 207,
-  },
-  {
-    name: 'Haikou',
-    role: 'Halfway Rest',
-    description:
-      'Capital of Hainan Island. The fleet rounds the northern tip before heading down the east coast.',
-    distance: '~130 NM from Danzhou',
-    icon: 'Ship',
-    color: 'text-accent-gold',
-    svgX: 477,
-    svgY: 123,
+    svgX: 440,
+    svgY: 385,
   },
   {
     name: 'Wanning',
     role: 'Waypoint',
     description:
-      'East coast surfing hub. A strategic leg where wind shifts can make or break positions.',
-    distance: '~175 NM from Haikou',
+      'East coast waters — Hele Crab country. Trade winds and open ocean tactics dominate this leg.',
+    distance: '~65 NM from Lingshui',
     icon: 'Compass',
-    color: 'text-accent-gold',
-    svgX: 484,
-    svgY: 322,
+    svgX: 500,
+    svgY: 340,
+  },
+  {
+    name: 'Qinglan',
+    role: 'Waypoint',
+    description:
+      'Northeast port near Wenchang — a historic maritime hub. Gateway to the Qiongzhou Strait.',
+    distance: '~150 NM from Wanning',
+    icon: 'Sailboat',
+    svgX: 555,
+    svgY: 200,
+  },
+  {
+    name: 'Haikou',
+    role: 'Halfway Rest',
+    description:
+      'Northern capital on the Qiongzhou Strait. The fleet rounds the top of Hainan before heading west.',
+    distance: '~95 NM from Qinglan',
+    icon: 'Ship',
+    svgX: 477,
+    svgY: 105,
+  },
+  {
+    name: 'Yang Pu',
+    role: 'Waypoint',
+    description:
+      'Northwest deep-water port in the Danzhou area. Sheltered waters give way to open west-coast racing.',
+    distance: '~110 NM from Haikou',
+    icon: 'Navigation',
+    svgX: 280,
+    svgY: 175,
+  },
+  {
+    name: 'Dongfang',
+    role: 'Waypoint',
+    description:
+      'West coast turning point. Final mark before the sprint south back to Sanya Bay.',
+    distance: '~115 NM from Yang Pu',
+    icon: 'Compass',
+    svgX: 190,
+    svgY: 285,
   },
   {
     name: 'Sanya',
     role: 'Finish',
     description:
       'The grand finish back in Sanya Bay. Full circumnavigation complete after 680 nautical miles.',
-    distance: '~190 NM from Wanning',
+    distance: '~90 NM from Dongfang',
     icon: 'Anchor',
-    color: 'text-accent-coral',
     svgX: 343,
-    svgY: 410,
+    svgY: 425,
   },
 ];
 
@@ -86,13 +111,13 @@ export default function CoursePage() {
           </RevealOnScroll>
           <RevealOnScroll delay={0.3}>
             <p className="text-lg md:text-xl text-white/80 font-light tracking-wide max-w-2xl mx-auto">
-              Circumnavigating Hainan Island
+              Circumnavigating Hainan Island — Counterclockwise
             </p>
           </RevealOnScroll>
           <RevealOnScroll delay={0.5}>
             <div className="mt-8 flex items-center justify-center gap-2 text-accent-gold/80 text-sm font-medium">
               <MapPin className="w-4 h-4" />
-              <span>680 NM &bull; 2 Courses &bull; 5 Waypoints</span>
+              <span>680 NM &bull; 2 Courses &bull; 7 Waypoints</span>
             </div>
           </RevealOnScroll>
         </div>
@@ -111,10 +136,10 @@ export default function CoursePage() {
           <RevealOnScroll>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto text-center mb-16">
               The 15th Round Hainan Regatta offers two offshore race courses designed
-              for different levels of sailing challenge. Both routes showcase the
-              breathtaking coastline of Hainan Island, from the bustling port city of
-              Sanya to the historic capital Haikou, with tactical racing conditions
-              that test the mettle of every crew.
+              for different levels of sailing challenge. As set out in the 2026 Notice
+              of Race, the Full Round now sails counterclockwise around Hainan Island
+              — heading east from Sanya, up the eastern seaboard, across the Qiongzhou
+              Strait, and back down the western coast through seven strategic waypoints.
             </p>
           </RevealOnScroll>
 
@@ -130,8 +155,9 @@ export default function CoursePage() {
                   680 <span className="text-sm font-sans font-normal text-muted-foreground">NM</span>
                 </p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Sanya &rarr; Danzhou &rarr; Haikou &rarr; Wanning &rarr; Sanya. A complete
-                  circumnavigation of Hainan Island.
+                  Sanya &rarr; Lingshui &rarr; Wanning &rarr; Qinglan &rarr; Haikou &rarr;
+                  Yang Pu &rarr; Dongfang &rarr; Sanya. A counterclockwise circumnavigation
+                  of Hainan Island.
                 </p>
               </div>
             </RevealOnScroll>
@@ -148,7 +174,7 @@ export default function CoursePage() {
                 </p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Sanya &rarr; Lingshui &rarr; Sanya. A shorter coastal route along the
-                  southern and eastern shores.
+                  southern and southeastern shores, ideal for crews new to offshore racing.
                 </p>
               </div>
             </RevealOnScroll>
@@ -181,7 +207,7 @@ export default function CoursePage() {
               Race Routes
             </h2>
             <p className="text-center text-muted-foreground text-sm md:text-base mb-12 max-w-xl mx-auto">
-              Follow the full circumnavigation (gold) and half-round course (blue)
+              Follow the counterclockwise Full Round (gold) and the Half Round course (blue)
             </p>
           </RevealOnScroll>
 
@@ -203,15 +229,22 @@ export default function CoursePage() {
                 className="absolute inset-0 w-full h-full"
                 preserveAspectRatio="xMidYMid meet"
               >
-                {/* ===== Full Round Route (gold dashed ~ outside island) ===== */}
-                {/* Sanya(343,410) → Danzhou(354,207) → Haikou(477,123) → Wanning(484,322) → Sanya(343,410) */}
-                {/* Going outside the island: swing west then north then east then south */}
+                {/*
+                  ===== Full Round Route (gold dashed) — Counterclockwise =====
+                  Sanya(343,425) → Lingshui(440,385) → Wanning(500,340) →
+                  Qinglan(555,200) → Haikou(477,105) → Yang Pu(280,175) →
+                  Dongfang(190,285) → Sanya(343,425)
+                  Curves stay OUTSIDE the island (in the sea).
+                */}
                 <path
-                  d="M 343 410
-                     C 300 380, 310 280, 354 207
-                     C 380 170, 430 130, 477 123
-                     C 510 120, 530 220, 484 322
-                     C 460 370, 390 420, 343 410"
+                  d="M 343 425
+                     C 380 445, 415 415, 440 385
+                     C 465 370, 485 360, 500 340
+                     C 545 300, 580 260, 555 200
+                     C 560 155, 530 115, 477 105
+                     C 400 85, 320 115, 280 175
+                     C 240 210, 200 245, 190 285
+                     C 185 335, 260 405, 343 425"
                   className="text-accent-gold animate-dash"
                   stroke="currentColor"
                   strokeWidth="3"
@@ -220,11 +253,11 @@ export default function CoursePage() {
                 />
 
                 {/* ===== Half Round Route (blue dashed) ===== */}
-                {/* Sanya(343,410) → Lingshui(426,368) → Sanya(343,410) */}
+                {/* Sanya(343,425) → Lingshui(440,385) → Sanya(343,425) */}
                 <path
-                  d="M 343 410
-                     C 370 395, 400 380, 426 368
-                     C 400 385, 370 400, 343 410"
+                  d="M 343 425
+                     C 380 448, 415 415, 440 385
+                     C 415 405, 380 418, 343 425"
                   className="text-primary-bright animate-dash"
                   stroke="currentColor"
                   strokeWidth="3"
@@ -232,65 +265,71 @@ export default function CoursePage() {
                   fill="none"
                 />
 
-                {/* ===== Connecting lines from waypoints to route ===== */}
-                {/* Full Round connecting lines */}
-                <line x1="343" y1="410" x2="343" y2="400" className="text-accent-gold" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" />
-                <line x1="354" y1="207" x2="354" y2="195" className="text-accent-gold" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" />
-                <line x1="477" y1="123" x2="477" y2="111" className="text-accent-gold" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" />
-                <line x1="484" y1="322" x2="484" y2="310" className="text-accent-gold" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" />
-
-                {/* Half Round connecting line */}
-                <line x1="426" y1="368" x2="426" y2="356" className="text-primary-bright" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" />
-
-                {/* ===== Waypoint Markers (Gold circles) ===== */}
+                {/* ===== Waypoint Markers ===== */}
                 {/* Sanya (Start/Finish) */}
-                <circle cx="343" cy="410" r="8" className="text-accent-gold" fill="currentColor" stroke="white" strokeWidth="2" />
-                <circle cx="343" cy="410" r="4" fill="white" />
+                <circle cx="343" cy="425" r="8" className="text-accent-gold" fill="currentColor" stroke="white" strokeWidth="2" />
+                <circle cx="343" cy="425" r="4" fill="white" />
 
-                {/* Danzhou */}
-                <circle cx="354" cy="207" r="8" className="text-accent-gold" fill="currentColor" stroke="white" strokeWidth="2" />
-                <circle cx="354" cy="207" r="4" fill="white" />
-
-                {/* Haikou */}
-                <circle cx="477" cy="123" r="8" className="text-accent-gold" fill="currentColor" stroke="white" strokeWidth="2" />
-                <circle cx="477" cy="123" r="4" fill="white" />
+                {/* Lingshui (shared with Half Round — draw in gold) */}
+                <circle cx="440" cy="385" r="8" className="text-accent-gold" fill="currentColor" stroke="white" strokeWidth="2" />
+                <circle cx="440" cy="385" r="4" fill="white" />
 
                 {/* Wanning */}
-                <circle cx="484" cy="322" r="8" className="text-accent-gold" fill="currentColor" stroke="white" strokeWidth="2" />
-                <circle cx="484" cy="322" r="4" fill="white" />
+                <circle cx="500" cy="340" r="8" className="text-accent-gold" fill="currentColor" stroke="white" strokeWidth="2" />
+                <circle cx="500" cy="340" r="4" fill="white" />
 
-                {/* Lingshui (Half Round) */}
-                <circle cx="426" cy="368" r="8" className="text-primary-bright" fill="currentColor" stroke="white" strokeWidth="2" />
-                <circle cx="426" cy="368" r="4" fill="white" />
+                {/* Qinglan (NEW) */}
+                <circle cx="555" cy="200" r="8" className="text-accent-gold" fill="currentColor" stroke="white" strokeWidth="2" />
+                <circle cx="555" cy="200" r="4" fill="white" />
 
-                {/* ===== Labels ===== */}
-                {/* Sanya label */}
-                <text x="343" y="440" textAnchor="middle" className="text-xs font-bold" fill="#003C7E" stroke="white" strokeWidth="3" paintOrder="stroke" style={{ fontSize: '11px' }}>Sanya</text>
-                <text x="343" y="440" textAnchor="middle" className="text-xs font-bold" fill="#003C7E" style={{ fontSize: '11px' }}>Sanya</text>
+                {/* Haikou */}
+                <circle cx="477" cy="105" r="8" className="text-accent-gold" fill="currentColor" stroke="white" strokeWidth="2" />
+                <circle cx="477" cy="105" r="4" fill="white" />
 
-                {/* Danzhou label */}
-                <text x="354" y="185" textAnchor="middle" className="text-xs font-bold" fill="#003C7E" stroke="white" strokeWidth="3" paintOrder="stroke" style={{ fontSize: '11px' }}>Danzhou</text>
-                <text x="354" y="185" textAnchor="middle" className="text-xs font-bold" fill="#003C7E" style={{ fontSize: '11px' }}>Danzhou</text>
+                {/* Yang Pu (renamed from Danzhou) */}
+                <circle cx="280" cy="175" r="8" className="text-accent-gold" fill="currentColor" stroke="white" strokeWidth="2" />
+                <circle cx="280" cy="175" r="4" fill="white" />
 
-                {/* Haikou label */}
-                <text x="477" y="101" textAnchor="middle" className="text-xs font-bold" fill="#003C7E" stroke="white" strokeWidth="3" paintOrder="stroke" style={{ fontSize: '11px' }}>Haikou</text>
-                <text x="477" y="101" textAnchor="middle" className="text-xs font-bold" fill="#003C7E" style={{ fontSize: '11px' }}>Haikou</text>
+                {/* Dongfang (NEW) */}
+                <circle cx="190" cy="285" r="8" className="text-accent-gold" fill="currentColor" stroke="white" strokeWidth="2" />
+                <circle cx="190" cy="285" r="4" fill="white" />
 
-                {/* Wanning label */}
-                <text x="484" y="300" textAnchor="middle" className="text-xs font-bold" fill="#003C7E" stroke="white" strokeWidth="3" paintOrder="stroke" style={{ fontSize: '11px' }}>Wanning</text>
-                <text x="484" y="300" textAnchor="middle" className="text-xs font-bold" fill="#003C7E" style={{ fontSize: '11px' }}>Wanning</text>
+                {/* ===== Labels (double-drawn: stroke + fill for readability) ===== */}
+                {/* Sanya */}
+                <text x="343" y="455" textAnchor="middle" fill="#003C7E" stroke="white" strokeWidth="3" paintOrder="stroke" style={{ fontSize: '11px', fontWeight: 700 }}>Sanya</text>
+                <text x="343" y="455" textAnchor="middle" fill="#003C7E" style={{ fontSize: '11px', fontWeight: 700 }}>Sanya</text>
 
-                {/* Lingshui label */}
-                <text x="426" y="346" textAnchor="middle" className="text-xs font-bold" fill="#0096DF" stroke="white" strokeWidth="3" paintOrder="stroke" style={{ fontSize: '11px' }}>Lingshui</text>
-                <text x="426" y="346" textAnchor="middle" className="text-xs font-bold" fill="#0096DF" style={{ fontSize: '11px' }}>Lingshui</text>
+                {/* Lingshui */}
+                <text x="465" y="400" textAnchor="start" fill="#003C7E" stroke="white" strokeWidth="3" paintOrder="stroke" style={{ fontSize: '11px', fontWeight: 700 }}>Lingshui</text>
+                <text x="465" y="400" textAnchor="start" fill="#003C7E" style={{ fontSize: '11px', fontWeight: 700 }}>Lingshui</text>
+
+                {/* Wanning */}
+                <text x="520" y="345" textAnchor="start" fill="#003C7E" stroke="white" strokeWidth="3" paintOrder="stroke" style={{ fontSize: '11px', fontWeight: 700 }}>Wanning</text>
+                <text x="520" y="345" textAnchor="start" fill="#003C7E" style={{ fontSize: '11px', fontWeight: 700 }}>Wanning</text>
+
+                {/* Qinglan */}
+                <text x="575" y="205" textAnchor="start" fill="#003C7E" stroke="white" strokeWidth="3" paintOrder="stroke" style={{ fontSize: '11px', fontWeight: 700 }}>Qinglan</text>
+                <text x="575" y="205" textAnchor="start" fill="#003C7E" style={{ fontSize: '11px', fontWeight: 700 }}>Qinglan</text>
+
+                {/* Haikou */}
+                <text x="477" y="88" textAnchor="middle" fill="#003C7E" stroke="white" strokeWidth="3" paintOrder="stroke" style={{ fontSize: '11px', fontWeight: 700 }}>Haikou</text>
+                <text x="477" y="88" textAnchor="middle" fill="#003C7E" style={{ fontSize: '11px', fontWeight: 700 }}>Haikou</text>
+
+                {/* Yang Pu */}
+                <text x="260" y="160" textAnchor="end" fill="#003C7E" stroke="white" strokeWidth="3" paintOrder="stroke" style={{ fontSize: '11px', fontWeight: 700 }}>Yang Pu</text>
+                <text x="260" y="160" textAnchor="end" fill="#003C7E" style={{ fontSize: '11px', fontWeight: 700 }}>Yang Pu</text>
+
+                {/* Dongfang */}
+                <text x="170" y="290" textAnchor="end" fill="#003C7E" stroke="white" strokeWidth="3" paintOrder="stroke" style={{ fontSize: '11px', fontWeight: 700 }}>Dongfang</text>
+                <text x="170" y="290" textAnchor="end" fill="#003C7E" style={{ fontSize: '11px', fontWeight: 700 }}>Dongfang</text>
 
                 {/* Route legend */}
-                <g transform="translate(420, 440)">
-                  <rect x="0" y="0" width="150" height="50" rx="6" fill="white" fillOpacity="0.9" stroke="#C8D2DE" strokeWidth="1" />
+                <g transform="translate(20, 440)">
+                  <rect x="0" y="0" width="170" height="50" rx="6" fill="white" fillOpacity="0.9" stroke="#C8D2DE" strokeWidth="1" />
                   <line x1="12" y1="16" x2="42" y2="16" className="text-accent-gold" stroke="currentColor" strokeWidth="2.5" strokeDasharray="5 4" />
-                  <text x="50" y="20" className="text-xs" fill="#1A2332" style={{ fontSize: '10px' }}>Full Round (680 NM)</text>
+                  <text x="50" y="20" fill="#1A2332" style={{ fontSize: '10px' }}>Full Round (680 NM)</text>
                   <line x1="12" y1="36" x2="42" y2="36" className="text-primary-bright" stroke="currentColor" strokeWidth="2.5" strokeDasharray="4 4" />
-                  <text x="50" y="40" className="text-xs" fill="#1A2332" style={{ fontSize: '10px' }}>Half Round (280 NM)</text>
+                  <text x="50" y="40" fill="#1A2332" style={{ fontSize: '10px' }}>Half Round (280 NM)</text>
                 </g>
               </svg>
             </div>
@@ -306,12 +345,13 @@ export default function CoursePage() {
               KEY WAYPOINTS
             </h2>
             <p className="text-center text-muted-foreground text-sm md:text-base mb-16 max-w-xl mx-auto">
-              Strategic points along the circumnavigation course
+              Seven strategic points along the counterclockwise circumnavigation
             </p>
           </RevealOnScroll>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {waypoints.map((wp, index) => {
+              const isFinish = index === waypoints.length - 1;
               const IconComponent =
                 wp.icon === 'MapPin'
                   ? MapPin
@@ -321,15 +361,17 @@ export default function CoursePage() {
                       ? Ship
                       : wp.icon === 'Compass'
                         ? Compass
-                        : Anchor;
+                        : wp.icon === 'Sailboat'
+                          ? Sailboat
+                          : Anchor;
 
               return (
-                <RevealOnScroll key={`${wp.name}-${wp.role}`} delay={0.1 * index}>
+                <RevealOnScroll key={`${wp.name}-${wp.role}-${index}`} delay={0.08 * index}>
                   <div className="bg-surface-container rounded-2xl p-6 shadow-card border border-surface-container-high text-center h-full flex flex-col items-center group hover:shadow-float transition-all duration-300 hover:-translate-y-1">
                     {/* Icon */}
                     <div
                       className={`w-14 h-14 rounded-full flex items-center justify-center mb-4 ${
-                        index === 4
+                        isFinish
                           ? 'bg-accent-coral/10 text-accent-coral'
                           : 'bg-accent-gold/10 text-accent-gold'
                       }`}
@@ -339,13 +381,17 @@ export default function CoursePage() {
 
                     {/* Waypoint number */}
                     <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground/60 mb-1">
-                      {index === 0 ? 'Start' : index === 4 ? 'Finish' : `WP 0${index}`}
+                      {index === 0
+                        ? 'Start'
+                        : isFinish
+                          ? 'Finish'
+                          : `WP 0${index}`}
                     </span>
 
                     {/* City name */}
                     <h3
                       className={`text-lg font-bold mb-1 ${
-                        index === 4 ? 'text-accent-coral' : 'text-primary-deep'
+                        isFinish ? 'text-accent-coral' : 'text-primary-deep'
                       }`}
                     >
                       {wp.name}
@@ -399,7 +445,9 @@ export default function CoursePage() {
                     </div>
                     <div>
                       <h3 className="text-2xl font-bold text-primary-deep">Full Round</h3>
-                      <p className="text-sm text-muted-foreground">Sanya → Danzhou → Haikou → Wanning → Sanya</p>
+                      <p className="text-sm text-muted-foreground">
+                        Sanya → Lingshui → Wanning → Qinglan → Haikou → Yang Pu → Dongfang → Sanya
+                      </p>
                     </div>
                   </div>
 
@@ -409,11 +457,13 @@ export default function CoursePage() {
                   </div>
 
                   <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                    The ultimate test of offshore sailing. The Full Round course takes
-                    competitors on a complete circumnavigation of Hainan Island, passing
-                    through four strategic waypoints. Teams face varied wind and sea
-                    conditions as they round the island, from the sheltered waters of the
-                    Gulf of Tonkin to the exposed eastern seaboard.
+                    The ultimate test of offshore sailing. As set out in the 2026 Notice
+                    of Race, the Full Round takes competitors on a counterclockwise
+                    circumnavigation of Hainan Island, passing seven strategic waypoints —
+                    Lingshui, Wanning, Qinglan, Haikou, Yang Pu and Dongfang — before the
+                    final run back to Sanya. Teams face varied conditions as they round
+                    the island, from the trade-wind eastern seaboard, through the busy
+                    Qiongzhou Strait in the north, and back down the exposed western coast.
                   </p>
 
                   <div className="space-y-3">
@@ -422,11 +472,12 @@ export default function CoursePage() {
                     </h4>
                     <ul className="space-y-2">
                       {[
-                        'Complete circumnavigation of Hainan Island',
-                        'Passing 4 strategic waypoints',
-                        'Variable wind conditions — west coast vs east coast',
-                        'Night sailing required for competitive finish',
+                        'Counterclockwise circumnavigation of Hainan Island',
+                        'Passing 7 strategic waypoints per 2026 Notice of Race',
+                        'Trade-wind eastern seaboard racing to Qinglan',
                         'Navigation through busy shipping lanes near Haikou',
+                        'West-coast sprint from Yang Pu via Dongfang home to Sanya',
+                        'Multiple nights at sea required for a competitive finish',
                       ].map((feature, i) => (
                         <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
                           <ArrowRight className="w-4 h-4 text-accent-gold mt-0.5 shrink-0" />
@@ -462,9 +513,10 @@ export default function CoursePage() {
                   <p className="text-sm text-muted-foreground leading-relaxed mb-6">
                     A shorter but no less challenging course for crews looking for a
                     competitive offshore race without the full circumnavigation. The
-                    Half Round takes competitors along the stunning southern and eastern
-                    coastline of Hainan, with Lingshui as the turning waypoint before
-                    the sprint back to Sanya.
+                    Half Round takes competitors east along Hainan&apos;s southern
+                    coastline to Lingshui as the turning waypoint, before the sprint
+                    back to Sanya. Certain legs may be run as non-race delivery segments
+                    to align with the Full Round schedule.
                   </p>
 
                   <div className="space-y-3">
@@ -473,10 +525,11 @@ export default function CoursePage() {
                     </h4>
                     <ul className="space-y-2">
                       {[
-                        'Southern and eastern coastal route',
+                        'Southern and southeastern coastal route',
                         'Ideal for crews new to offshore racing',
                         'Stunning coastal scenery throughout',
                         'Tactical wind shifts near Lingshui peninsula',
+                        'Non-race delivery segments between certain legs',
                         'Same start and finish as Full Round in Sanya',
                       ].map((feature, i) => (
                         <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">

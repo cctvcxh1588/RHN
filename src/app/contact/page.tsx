@@ -370,13 +370,21 @@ export default function ContactPage() {
                     <h3 className="text-base font-bold text-primary-deep mb-1">
                       Address
                     </h3>
-                    <p className="text-sm text-muted-foreground">
-                      Sanya Serenity Marina
-                      <br />
-                      Sanya Bay Road, Sanya
-                      <br />
-                      Hainan Province, China
-                    </p>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=Sanya+Serenity+Marina+Hainan"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-start gap-1.5 text-sm text-primary hover:text-primary-deep hover:underline transition-colors"
+                    >
+                      <span>
+                        Sanya Serenity Marina (三亚半山半岛帆船港)
+                        <br />
+                        Luhuitou Peninsula, Sanya
+                        <br />
+                        Hainan Province, China
+                      </span>
+                      <ExternalLink className="w-3.5 h-3.5 mt-0.5 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
+                    </a>
                   </div>
                 </div>
 

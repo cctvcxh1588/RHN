@@ -165,8 +165,8 @@ export default function AboutPage() {
             <RevealOnScroll delay={0.2}>
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-card">
                 <Image
-                  src="/phoenix-sanya.jpg"
-                  alt="Phoenix Island, Sanya — home of the Round Hainan Regatta"
+                  src="/vision-image.jpg"
+                  alt="The Vision — Round Hainan Regatta"
                   fill
                   className="object-cover"
                 />

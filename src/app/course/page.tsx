@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
-import { Anchor, Navigation, MapPin, Ship, Compass, ArrowRight, Sailboat } from "lucide-react";
+import { Anchor, Navigation, MapPin, Ship, Compass, ArrowRight, Sailboat, FileText, Shield, AlertTriangle, ClipboardCheck, Scale } from "lucide-react";
 
 const waypoints = [{
     name: "Sanya",
@@ -205,7 +206,7 @@ export default function CoursePage() {
                             </div>
                             {}
                             <svg
-                                viewBox="0 0 660 500"
+                                viewBox="20 25 660 500"
                                 className="absolute inset-0 w-full h-full"
                                 preserveAspectRatio="xMidYMid meet"
                                 style={{
@@ -509,6 +510,99 @@ export default function CoursePage() {
                                         }}>Half Round (280 NM)</text>
                                 </g>
                             </svg>
+                        </div>
+                    </RevealOnScroll>
+                    {/* Race Documents Cards — 5 official regulatory documents */}
+                    <RevealOnScroll delay={0.3}>
+                        <div className="mt-20 md:mt-24">
+                            <div className="text-center mb-12">
+                                <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold mb-4">
+                                    Official Documents
+                                </span>
+                                <h3 className="text-3xl md:text-4xl font-display font-bold text-primary-deep mb-4">
+                                    Race Regulations & References
+                                </h3>
+                                <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                                    Essential documents for competitors, technical committee, and race officials. Click any card to read the full text.
+                                </p>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {[
+                                    {
+                                        href: "/course/notice-of-race",
+                                        icon: FileText,
+                                        title: "Notice of Race",
+                                        subtitle: "NOR 2026",
+                                        desc: "The full 2026 Notice of Race governing the 15th Round Hainan Regatta — rules, entries, schedule, and scoring.",
+                                        accent: "from-primary to-primary-deep",
+                                    },
+                                    {
+                                        href: "/course/on-water-penalties",
+                                        icon: Scale,
+                                        title: "Recommended On-Water Penalties",
+                                        subtitle: "Appendix UA",
+                                        desc: "Umpire observation procedures, flag signals, and how on-water penalties are applied during racing.",
+                                        accent: "from-accent-gold to-orange-500",
+                                    },
+                                    {
+                                        href: "/course/port-information",
+                                        icon: Anchor,
+                                        title: "Port Information",
+                                        subtitle: "Appendix 5",
+                                        desc: "Coordinates, berths, VHF channels and depths for the host port and all emergency ports of call.",
+                                        accent: "from-primary-bright to-primary",
+                                    },
+                                    {
+                                        href: "/course/disclaimer",
+                                        icon: AlertTriangle,
+                                        title: "Disclaimer of Liability",
+                                        subtitle: "Appendix 6",
+                                        desc: "Mandatory disclaimer and declaration to be signed by every competitor prior to participation.",
+                                        accent: "from-accent-coral to-pink-600",
+                                    },
+                                    {
+                                        href: "/course/inspection-list",
+                                        icon: ClipboardCheck,
+                                        title: "Inspection List — Category 3",
+                                        subtitle: "Appendix 1",
+                                        desc: "Full equipment inspection checklist for Race Category 3 (with liferaft) Monohulls per OSR requirements.",
+                                        accent: "from-primary-deep to-primary",
+                                    },
+                                ].map((doc) => {
+                                    const Icon = doc.icon;
+                                    return (
+                                        <Link
+                                            key={doc.href}
+                                            href={doc.href}
+                                            className="group relative overflow-hidden rounded-2xl bg-white border border-surface-container-high shadow-card hover:shadow-float transition-all duration-300 hover:-translate-y-1"
+                                        >
+                                            <div className={`h-1.5 w-full bg-gradient-to-r ${doc.accent}`} />
+                                            <div className="p-6 md:p-7">
+                                                <div className="flex items-start gap-4 mb-4">
+                                                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${doc.accent} flex items-center justify-center shrink-0 shadow-sm`}>
+                                                        <Icon className="w-6 h-6 text-white" />
+                                                    </div>
+                                                    <div className="flex-1 min-w-0">
+                                                        <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.15em] text-accent-gold mb-1">
+                                                            {doc.subtitle}
+                                                        </span>
+                                                        <h4 className="text-lg md:text-xl font-display font-bold text-primary-deep leading-tight group-hover:text-primary transition-colors">
+                                                            {doc.title}
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                                <p className="text-sm text-muted-foreground leading-relaxed mb-5 line-clamp-3">
+                                                    {doc.desc}
+                                                </p>
+                                                <div className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-3 transition-all">
+                                                    Read document
+                                                    <ArrowRight className="w-4 h-4" />
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    );
+                                })}
+                            </div>
                         </div>
                     </RevealOnScroll>
                 </div>

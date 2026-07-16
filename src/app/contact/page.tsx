@@ -335,24 +335,25 @@ export default function ContactPage() {
                         </div>
                     </RevealOnScroll>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                        {/* Embedded OpenStreetMap — visible directly on the page (no external access required) */}
+                        {/* Embedded Google Maps — Sanya Serenity Marina */}
                         <RevealOnScroll delay={0.1}>
                             <div className="rounded-2xl overflow-hidden shadow-card bg-white border border-surface-container-high">
                                 <iframe
-                                    title="Sanya Serenity Marina — OpenStreetMap"
-                                    src="https://www.openstreetmap.org/export/embed.html?bbox=109.51,18.20,109.55,18.24&layer=mapnik&marker=18.216,109.531"
+                                    title="Sanya Serenity Marina — Google Maps"
+                                    src="https://www.google.com/maps?q=Sanya+Serenity+Marina&hl=en&z=15&output=embed"
                                     width="100%"
                                     height="360"
                                     style={{ border: 0 }}
                                     className="rounded-2xl block"
                                     loading="lazy"
-                                    referrerPolicy="no-referrer-when-downgrade" />
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    allowFullScreen />
                                 <div className="px-5 py-3 flex items-center justify-between border-t border-surface-container-high bg-surface-container/40">
                                     <span className="text-xs text-muted-foreground">
-                                        © OpenStreetMap contributors
+                                        © Google Maps
                                     </span>
                                     <a
-                                        href="https://www.openstreetmap.org/?mlat=18.216&mlon=109.531#map=15/18.216/109.531"
+                                        href="https://www.google.com/maps/search/?api=1&query=Sanya+Serenity+Marina+Hainan"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:text-primary-deep transition-colors">

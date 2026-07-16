@@ -200,9 +200,81 @@ export default function CoursePage() {
                                 alt="Race Routes around Hainan Island — waypoints and directional arrows"
                                 width={1267}
                                 height={1033}
-                                className="w-full h-auto"
+                                className="w-full h-auto block"
                                 priority
                             />
+                            {/* Animated route overlay */}
+                            <svg
+                                viewBox="0 0 1267 1033"
+                                className="absolute inset-0 w-full h-full pointer-events-none"
+                                preserveAspectRatio="none"
+                                aria-hidden="true">
+                                <defs>
+                                    {/* Glow filter for the animated highlight */}
+                                    <filter id="routeGlow" x="-20%" y="-20%" width="140%" height="140%">
+                                        <feGaussianBlur stdDeviation="3.5" result="blur" />
+                                        <feMerge>
+                                            <feMergeNode in="blur" />
+                                            <feMergeNode in="SourceGraphic" />
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+
+                                {/* Racing route — smooth curved path following the ocean around the island (clockwise: Haikou → Qinglan → Wanning → Lingshui → Sanya → Dongfang → Yang Pu → Haikou) */}
+                                <path
+                                    d="M 571 288
+                                       C 660 300, 720 380, 720 470
+                                       C 740 580, 680 680, 606 741
+                                       C 570 800, 540 820, 505 830
+                                       C 470 870, 450 890, 420 897
+                                       C 340 900, 240 820, 180 720
+                                       C 130 640, 150 580, 199 578
+                                       C 170 500, 220 430, 290 396
+                                       C 380 340, 470 300, 571 288 Z"
+                                    fill="none"
+                                    stroke="#F6AA00"
+                                    strokeWidth="6"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeDasharray="24 18"
+                                    filter="url(#routeGlow)"
+                                    className="route-flow"
+                                    style={{ opacity: 0.85 }}
+                                />
+
+                                {/* Non-racing route (near Haikou) — orange dashed highlight */}
+                                <path
+                                    d="M 478 238 L 695 238"
+                                    fill="none"
+                                    stroke="#FF7A00"
+                                    strokeWidth="4"
+                                    strokeLinecap="round"
+                                    strokeDasharray="10 8"
+                                    className="route-flow-short"
+                                    style={{ opacity: 0.9 }}
+                                />
+
+                                {/* Pulsing waypoint markers */}
+                                {[
+                                    { name: "Haikou", cx: 571, cy: 288 },
+                                    { name: "Qinglan", cx: 720, cy: 470 },
+                                    { name: "Wanning", cx: 606, cy: 741 },
+                                    { name: "Lingshui", cx: 505, cy: 830 },
+                                    { name: "Sanya", cx: 420, cy: 897 },
+                                    { name: "Dongfang", cx: 199, cy: 578 },
+                                    { name: "Yang Pu", cx: 290, cy: 396 },
+                                ].map((wp, i) => (
+                                    <circle
+                                        key={wp.name}
+                                        cx={wp.cx}
+                                        cy={wp.cy}
+                                        r="8"
+                                        fill="#F6AA00"
+                                        className="waypoint-pulse"
+                                        style={{ animationDelay: `${i * 0.35}s` }}
+                                    />
+                                ))}
+                            </svg>
                         </div>
                     </RevealOnScroll>
                     {/* Race Documents Cards — 5 official regulatory documents */}

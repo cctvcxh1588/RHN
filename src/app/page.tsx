@@ -168,7 +168,7 @@ export default function Home() {
                         <RevealOnScroll delay={0.1}>
                             <span
                                 className="inline-block rounded-full bg-accent-gold/20 px-5 py-1.5 text-xs font-semibold tracking-[0.2em] uppercase text-accent-gold backdrop-blur-sm mb-6">15th Edition
-                                                                                                              </span>
+                                                                                                                                              </span>
                         </RevealOnScroll>
                         {}
                         <RevealOnScroll delay={0.2}>
@@ -179,8 +179,8 @@ export default function Home() {
                                     fontSize: "72px",
                                     fontWeight: "bold"
                                 }}>Round Hainan
-                                                                                                                <br />Regatta
-                                                                                                              </h1>
+                                                                                                                                                <br />Regatta
+                                                                                                                                              </h1>
                         </RevealOnScroll>
                         {}
                         <RevealOnScroll delay={0.3}>
@@ -189,8 +189,8 @@ export default function Home() {
                                 style={{
                                     fontSize: "clamp(20px, 3.2vw, 36px)",
                                     textShadow: "0 2px 12px rgba(0,0,0,0.7), 0 0 32px rgba(0,60,126,0.5)"
-                                }}>680 Miles. One Island. A Sea You&apos;ve Never Sailed.
-                                                                                                              </p>
+                                }}>680 Miles. One Island. A Sea You've Never Sailed.
+                                                                                                                                              </p>
                         </RevealOnScroll>
                         {}
                         <RevealOnScroll delay={0.4}>
@@ -200,8 +200,8 @@ export default function Home() {
                                     fontSize: "clamp(14px, 1.6vw, 20px)",
                                     textShadow: "0 1px 6px rgba(0,0,0,0.6)"
                                 }}>
-                                <span className="text-accent-gold">●</span>&nbsp; October 31 – November 7, 2026&nbsp;&nbsp;·&nbsp;&nbsp;Sanya, China
-                                                                                                              </p>
+                                <span className="text-accent-gold">●</span>October 31 – November 7, 2026  ·  Sanya, China
+                                                                                                                                              </p>
                         </RevealOnScroll>
                         {}
                         <RevealOnScroll delay={0.5}>
@@ -209,12 +209,12 @@ export default function Home() {
                                 <Link
                                     href="/about"
                                     className="inline-flex items-center justify-center px-8 py-3.5 bg-accent-gold text-primary-deep font-semibold text-sm rounded-md hover:bg-accent-gold/90 transition-all hover:scale-105 shadow-lg">Explore The Race
-                                                                                                                              <ChevronRight className="ml-2 h-4 w-4" />
+                                                                                                                                                                  <ChevronRight className="ml-2 h-4 w-4" />
                                 </Link>
                                 <Link
                                     href="/contact"
                                     className="inline-flex items-center justify-center px-8 py-3.5 border-2 border-white/40 text-white font-semibold text-sm rounded-md hover:bg-white/10 hover:border-white/60 transition-all">Register Interest
-                                                                                                                            </Link>
+                                                                                                                                                                </Link>
                             </div>
                         </RevealOnScroll>
                     </div>
@@ -246,11 +246,11 @@ export default function Home() {
                         <div className="text-center mb-4">
                             <span
                                 className="text-xs font-semibold tracking-[0.25em] uppercase text-accent-gold">The Story
-                                                                                                              </span>
+                                                                                                                                              </span>
                         </div>
                         <h2
                             className="font-display text-3xl sm:text-4xl md:text-5xl text-center text-foreground mb-4">A Race Around Paradise
-                                                                                                </h2>
+                                                                                                                            </h2>
                         <div className="flex justify-center mb-12">
                             <div className="h-1 w-16 bg-accent-gold rounded-full" />
                         </div>
@@ -260,13 +260,13 @@ export default function Home() {
                         <RevealOnScroll delay={0.1}>
                             <div className="space-y-6">
                                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed">Since its founding in 2011, the Round Hainan Regatta has grown into one of Asia's premier offshore sailing events, attracting professional and amateur crews from around the globe. The 680-nautical-mile circumnavigation of Hainan Island offers a unique challenge: unpredictable currents, shifting trade winds, and the stunning backdrop of China's tropical coastline.
-                                                                                                                            </p>
+                                                                                                                                                                </p>
                                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed">The 15th edition in 2026 promises to be the most competitive yet, with an expanded fleet, enhanced safety protocols, and a renewed focus on sustainability. Whether you're a seasoned offshore racer or a passionate spectator, the Round Hainan Regatta is an experience like no other.
-                                                                                                                            </p>
+                                                                                                                                                                </p>
                                 <Link
                                     href="/about"
                                     className="inline-flex items-center text-primary font-semibold text-sm hover:text-primary-bright transition-colors group">Learn More About The Race
-                                                                                                                              <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                                                                                                                                                  <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                             </div>
                         </RevealOnScroll>
@@ -290,11 +290,11 @@ export default function Home() {
                         <div className="text-center mb-4">
                             <span
                                 className="text-xs font-semibold tracking-[0.25em] uppercase text-accent-gold">Explore Hainan
-                                                                                                              </span>
+                                                                                                                                              </span>
                         </div>
                         <h2
                             className="font-display text-3xl sm:text-4xl md:text-5xl text-center text-foreground mb-4">Beyond the Race
-                                                                                                </h2>
+                                                                                                                            </h2>
                         <div className="flex justify-center mb-16">
                             <div className="h-1 w-16 bg-accent-gold rounded-full" />
                         </div>
@@ -318,9 +318,9 @@ export default function Home() {
                                         <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                                             {item.description}
                                         </p>
-                                        <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-widest text-accent-gold group-hover:gap-2 transition-all">
-                                            Learn More
-                                            <ChevronRight className="h-3.5 w-3.5" />
+                                        <span
+                                            className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-widest text-accent-gold group-hover:gap-2 transition-all">Learn More
+                                                                                        <ChevronRight className="h-3.5 w-3.5" />
                                         </span>
                                     </Link>
                                 </RevealOnScroll>
@@ -336,11 +336,11 @@ export default function Home() {
                         <div className="text-center mb-4">
                             <span
                                 className="text-xs font-semibold tracking-[0.25em] uppercase text-accent-gold">The Course
-                                                                                                              </span>
+                                                                                                                                              </span>
                         </div>
                         <h2
                             className="font-display text-3xl sm:text-4xl md:text-5xl text-center text-foreground mb-4">Around the Island
-                                                                                                </h2>
+                                                                                                                            </h2>
                         <div className="flex justify-center mb-6">
                             <div className="h-1 w-16 bg-accent-gold rounded-full" />
                         </div>
@@ -350,12 +350,12 @@ export default function Home() {
                         <RevealOnScroll delay={0.1}>
                             <div className="space-y-6">
                                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed">The full circumnavigation covers 680 nautical miles around Hainan Island, starting and finishing in Sanya. The course takes competitors through some of the most challenging and beautiful waters in the South China Sea.
-                                                                                                                            </p>
+                                                                                                                                                                </p>
                                 {}
                                 <div className="space-y-4">
                                     <h4
                                         className="text-sm font-semibold uppercase tracking-widest text-foreground">Key Waypoints
-                                                                                                                                          </h4>
+                                                                                                                                                                                  </h4>
                                     <div className="flex flex-wrap gap-3">
                                         {["Sanya", "Danzhou", "Haikou", "Wanning", "Sanya"].map(
                                             (waypoint, idx) => <div key={waypoint} className="flex items-center gap-2">
@@ -374,7 +374,7 @@ export default function Home() {
                                 <Link
                                     href="/course"
                                     className="inline-flex items-center text-primary font-semibold text-sm hover:text-primary-bright transition-colors group">View Full Course
-                                                                                                                              <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                                                                                                                                                  <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                             </div>
                         </RevealOnScroll>
@@ -390,7 +390,7 @@ export default function Home() {
                                     <div
                                         className="absolute inset-0 bg-primary-deep/0 group-hover:bg-primary-deep/10 transition-colors"
                                         style={{
-                                            backgroundColor: "#93B4FF"
+                                            backgroundColor: "transparent"
                                         }} />
                                 </div>
                             </Link>
@@ -405,11 +405,11 @@ export default function Home() {
                         <div className="text-center mb-4">
                             <span
                                 className="text-xs font-semibold tracking-[0.25em] uppercase text-accent-gold">The Schedule
-                                                                                                              </span>
+                                                                                                                                              </span>
                         </div>
                         <h2
                             className="font-display text-3xl sm:text-4xl md:text-5xl text-center text-foreground mb-4">Mark Your Calendar
-                                                                                                </h2>
+                                                                                                                            </h2>
                         <div className="flex justify-center mb-16">
                             <div className="h-1 w-16 bg-accent-gold rounded-full" />
                         </div>
@@ -435,7 +435,7 @@ export default function Home() {
                             <Link
                                 href="/schedule"
                                 className="inline-flex items-center text-primary font-semibold text-sm hover:text-primary-bright transition-colors group">View Full Schedule
-                                                                                                                <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                                                                                                                                <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                             </Link>
                         </div>
                     </RevealOnScroll>
@@ -448,11 +448,11 @@ export default function Home() {
                         <div className="text-center mb-4">
                             <span
                                 className="text-xs font-semibold tracking-[0.25em] uppercase text-accent-gold">The Classes
-                                                                                                              </span>
+                                                                                                                                              </span>
                         </div>
                         <h2
                             className="font-display text-3xl sm:text-4xl md:text-5xl text-center text-foreground mb-4">Choose Your Challenge
-                                                                                                </h2>
+                                                                                                                            </h2>
                         <div className="flex justify-center mb-16">
                             <div className="h-1 w-16 bg-accent-gold rounded-full" />
                         </div>
@@ -489,7 +489,7 @@ export default function Home() {
                             <Link
                                 href="/classes"
                                 className="inline-flex items-center text-primary font-semibold text-sm hover:text-primary-bright transition-colors group">View All Classes
-                                                                                                                <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                                                                                                                                <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                             </Link>
                         </div>
                     </RevealOnScroll>
@@ -501,13 +501,13 @@ export default function Home() {
                     <RevealOnScroll>
                         <div className="text-center">
                             <h2 className="font-display text-4xl sm:text-5xl md:text-6xl text-white mb-4">Ready to Set Sail?
-                                                                                                              </h2>
+                                                                                                                                              </h2>
                             <p className="text-lg md:text-xl text-white/70 mb-10 max-w-xl mx-auto">Join the 15th Round Hainan Regatta
-                                                                                                              </p>
+                                                                                                                                              </p>
                             <Link
                                 href="/contact"
                                 className="inline-flex items-center justify-center px-10 py-4 bg-accent-gold text-primary-deep font-bold text-base rounded-md hover:bg-accent-gold/90 transition-all hover:scale-105 shadow-lg">Register Interest
-                                                                                                                <ChevronRight className="ml-2 h-5 w-5" />
+                                                                                                                                                <ChevronRight className="ml-2 h-5 w-5" />
                             </Link>
                         </div>
                     </RevealOnScroll>

@@ -21,21 +21,25 @@ export default function CuisinePage() {
       name: 'Wenchang Chicken 文昌鸡',
       subtitle: 'Origin: Wenchang City',
       desc: 'The undisputed king of Hainan cuisine. Free-range chickens raised on banyan seeds and coconuts are gently poached in aromatic broth, then served cold with a bright ginger-scallion dipping sauce. The tender, jelly-like skin and clean flavour make this the ancestor of Hainanese Chicken Rice worldwide.',
+      image: '/hainan-wenchang-chicken.jpg',
     },
     {
       name: 'Dongshan Mutton 东山羊',
       subtitle: 'Origin: Dongshan Mountain, Wanning',
       desc: 'Black mountain goats raised on wild herbs and grasses produce meat that is famously tender, aromatic and almost entirely free of the &ldquo;gamey&rdquo; taste common elsewhere. Traditionally braised with red dates or roasted whole for banquets.',
+      image: '/hainan-coconut-chicken.jpg',
     },
     {
       name: 'Jiaji Duck 加积鸭',
       subtitle: 'Origin: Jiaji, Qionghai',
       desc: 'A native Hainan duck breed fattened on rice and small fish, then slow-braised or steamed. The result is rich, silky meat with a clean broth — historically served at the tables of returning Overseas Chinese merchants.',
+      image: '/hainan-seafood-market.jpg',
     },
     {
       name: 'Hele Crab 和乐蟹',
       subtitle: 'Origin: Hele Town, Wanning',
       desc: 'Mangrove-dwelling mud crabs prized for their fist-sized golden roe and exceptionally sweet meat. Simply steamed and served with a vinegar-ginger dip, they are the crown jewel of a Hainan seafood banquet.',
+      image: '/hainan-seafood-market.jpg',
     },
   ];
 
@@ -106,7 +110,7 @@ export default function CuisinePage() {
       <section className="relative min-h-[360px] h-[50vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/hero.jpg')" }}
+          style={{ backgroundImage: "url('/hainan-wenchang-chicken.jpg')" }}
         />
         <div
           className="absolute inset-0 z-[1]"
@@ -200,24 +204,34 @@ export default function CuisinePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {famousDishes.map((d, i) => (
               <RevealOnScroll key={d.name} delay={i * 0.1}>
-                <div className="bg-white rounded-xl p-7 lg:p-8 shadow-card hover:shadow-float transition-all h-full">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="shrink-0 w-11 h-11 rounded-full bg-accent-gold/15 flex items-center justify-center">
-                      <Award className="w-5 h-5 text-accent-gold" />
-                    </div>
-                    <div>
-                      <h3 className="font-display text-xl sm:text-2xl text-primary-deep leading-snug">
-                        {d.name}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-foreground/50 uppercase tracking-wider mt-1">
-                        {d.subtitle}
-                      </p>
-                    </div>
+                <div className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-float transition-all h-full flex flex-col">
+                  <div className="relative aspect-[16/9] bg-primary-deep/10">
+                    <Image
+                      src={d.image}
+                      alt={d.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                  <p
-                    className="text-sm sm:text-base text-foreground/70 leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: d.desc }}
-                  />
+                  <div className="p-7 lg:p-8 flex-1 flex flex-col">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="shrink-0 w-11 h-11 rounded-full bg-accent-gold/15 flex items-center justify-center">
+                        <Award className="w-5 h-5 text-accent-gold" />
+                      </div>
+                      <div>
+                        <h3 className="font-display text-xl sm:text-2xl text-primary-deep leading-snug">
+                          {d.name}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-foreground/50 uppercase tracking-wider mt-1">
+                          {d.subtitle}
+                        </p>
+                      </div>
+                    </div>
+                    <p
+                      className="text-sm sm:text-base text-foreground/70 leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: d.desc }}
+                    />
+                  </div>
                 </div>
               </RevealOnScroll>
             ))}
@@ -243,6 +257,27 @@ export default function CuisinePage() {
               <div className="w-16 h-1 bg-accent-gold mx-auto" />
             </RevealOnScroll>
           </div>
+
+          {/* Feature image: Coconut chicken hot pot */}
+          <RevealOnScroll>
+            <div className="relative aspect-[21/9] rounded-2xl overflow-hidden shadow-card mb-12 lg:mb-14">
+              <Image
+                src="/hainan-coconut-chicken.jpg"
+                alt="Coconut chicken hot pot"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10">
+                <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
+                  Sanya Signature
+                </span>
+                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-white mt-2 leading-tight">
+                  Coconut Chicken Hot Pot
+                </h3>
+              </div>
+            </div>
+          </RevealOnScroll>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {streetFood.map((s, i) => {
@@ -295,6 +330,18 @@ export default function CuisinePage() {
             </RevealOnScroll>
           </div>
 
+          {/* Banner image: Tropical fruits arrangement */}
+          <RevealOnScroll>
+            <div className="relative aspect-[21/9] rounded-2xl overflow-hidden shadow-card mb-10 lg:mb-12">
+              <Image
+                src="/hainan-fruits.jpg"
+                alt="Tropical fruits arrangement"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </RevealOnScroll>
+
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
             {fruits.map((f, i) => (
               <RevealOnScroll key={f.name} delay={i * 0.05}>
@@ -335,6 +382,27 @@ export default function CuisinePage() {
               <div className="w-16 h-1 bg-accent-gold mx-auto" />
             </RevealOnScroll>
           </div>
+
+          {/* Banner image: Sanya seafood market */}
+          <RevealOnScroll>
+            <div className="relative aspect-[21/9] rounded-2xl overflow-hidden shadow-card mb-12 lg:mb-14">
+              <Image
+                src="/hainan-seafood-market.jpg"
+                alt="Sanya seafood market"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10">
+                <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
+                  Local Institution
+                </span>
+                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-white mt-2 leading-tight">
+                  Sanya Seafood Market
+                </h3>
+              </div>
+            </div>
+          </RevealOnScroll>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {eatSpots.map((e, i) => (

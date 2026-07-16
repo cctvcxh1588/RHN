@@ -1,35 +1,37 @@
 'use client';
 
 import { useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, ArrowRight, Camera, ImageIcon } from 'lucide-react';
 import RevealOnScroll from '@/components/RevealOnScroll';
 
 const newsArticles = [
   {
-    id: 'entry-announcement',
-    date: 'March 15, 2026',
-    title: 'Entries Open for the 15th Round Hainan Regatta',
+    id: 'rhn-2026-entry-open',
+    date: 'October 15, 2026',
+    title: 'Entries Now Open for 15th Round Hainan Regatta',
     excerpt:
-      'The Organizing Committee is pleased to announce that entries are now open for the 15th edition of the Round Hainan Regatta. Competing classes include Dubois 50, ORC Full Round, ORC Half Round, and Fareast 28R.',
-    category: 'Announcements',
+      'The Organizing Committee is pleased to announce that entries are now open for the 15th edition of the Round Hainan Regatta, running October 31 – November 7, 2026 from Sanya. Competing classes include Dubois 50, ORC Full Round, ORC Half Round, and Fareast 28R.',
+    category: 'Entry Announcement',
+    image: '/hero.jpg',
   },
   {
-    id: 'course-preview',
-    date: 'April 2, 2026',
-    title: 'Race Course Preview: 680 Miles Around Hainan',
+    id: 'course-preview-2026',
+    date: 'October 8, 2026',
+    title: 'Race Course Revealed: New Clockwise Route Around Hainan',
     excerpt:
-      'Get an early look at the 2026 race course. Starting from Sanya, the fleet will navigate clockwise around Hainan Island, passing iconic landmarks and challenging offshore passages.',
-    category: 'Race Info',
+      'For 2026 the fleet will circumnavigate Hainan clockwise for the first time — heading west out of Sanya through seven waypoints across approximately 680 nautical miles. Discover the strategy behind the new course.',
+    category: 'Race Course',
+    image: '/carousel-2.jpg',
   },
   {
     id: 'skipper-interview',
-    date: 'April 20, 2026',
-    title: 'Skipper Spotlight: Preparing for the 15th Edition',
+    date: 'September 20, 2026',
+    title: 'Skipper Interview: Veteran Sailor on Sailing Around Hainan',
     excerpt:
-      'We sat down with returning skippers to discuss their preparations, strategies, and what makes the Round Hainan Regatta a must-do event on the Asian sailing calendar.',
-    category: 'Interviews',
+      'Captain Chen Wei, veteran of eight Round Hainan Regattas, sits down to share how the race has evolved, which leg is toughest, and what advice he has for newcomers preparing for their first tropical offshore adventure.',
+    category: 'Interview',
+    image: '/carousel-3.jpg',
   },
 ];
 
@@ -103,48 +105,50 @@ export default function NewsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {newsArticles.map((article, index) => (
               <RevealOnScroll key={article.id} delay={index * 0.1}>
-                <article className="group bg-white rounded-2xl shadow-card hover:shadow-float transition-all duration-300 overflow-hidden flex flex-col h-full">
-                  {/* Image */}
-                  <div className="relative h-48 overflow-hidden bg-surface-container">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105"
-                      style={{ backgroundImage: "url('/hero.jpg')" }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/20 to-transparent" />
-                    {/* Category Badge */}
-                    <span className="absolute top-4 left-4 px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-accent-gold/90 text-primary-deep rounded-full">
-                      {article.category}
-                    </span>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6 flex flex-col flex-1">
-                    {/* Date */}
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
-                      <Calendar className="w-3.5 h-3.5" />
-                      <time dateTime={article.date}>{article.date}</time>
+                <Link
+                  href={`/news/${article.id}`}
+                  className="group block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 rounded-2xl"
+                >
+                  <article className="bg-white rounded-2xl shadow-card overflow-hidden flex flex-col h-full transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-float cursor-pointer">
+                    {/* Image */}
+                    <div className="relative h-48 overflow-hidden bg-surface-container">
+                      <div
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-110"
+                        style={{ backgroundImage: `url('${article.image}')` }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/30 to-transparent" />
+                      {/* Category Badge */}
+                      <span className="absolute top-4 left-4 px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-accent-gold/90 text-primary-deep rounded-full">
+                        {article.category}
+                      </span>
                     </div>
 
-                    {/* Title */}
-                    <h3 className="text-lg font-bold text-primary-deep mb-3 leading-snug group-hover:text-primary transition-colors">
-                      {article.title}
-                    </h3>
+                    {/* Content */}
+                    <div className="p-6 flex flex-col flex-1">
+                      {/* Date */}
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
+                        <Calendar className="w-3.5 h-3.5" />
+                        <time dateTime={article.date}>{article.date}</time>
+                      </div>
 
-                    {/* Excerpt */}
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
-                      {article.excerpt}
-                    </p>
+                      {/* Title */}
+                      <h3 className="text-lg font-bold text-primary-deep mb-3 leading-snug transition-colors group-hover:text-primary">
+                        {article.title}
+                      </h3>
 
-                    {/* Read More */}
-                    <Link
-                      href={`/news/${article.id}`}
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-bright transition-colors mt-auto group/link"
-                    >
-                      Read More
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                    </Link>
-                  </div>
-                </article>
+                      {/* Excerpt */}
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
+                        {article.excerpt}
+                      </p>
+
+                      {/* Read More */}
+                      <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-all duration-300 mt-auto group-hover:text-accent-gold group-hover:gap-3">
+                        Read More
+                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                      </span>
+                    </div>
+                  </article>
+                </Link>
               </RevealOnScroll>
             ))}
           </div>

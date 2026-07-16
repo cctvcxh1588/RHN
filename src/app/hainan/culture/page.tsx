@@ -7,11 +7,8 @@ import {
   Feather,
   Palette,
   Music,
-  Mountain,
-  MapPin,
   CalendarDays,
   Sparkles,
-  Landmark,
   ArrowLeft,
 } from 'lucide-react';
 
@@ -57,21 +54,25 @@ export default function CulturePage() {
       name: 'Betel Nut Valley 槟榔谷',
       subtitle: 'Baoting · Indigenous Cultural Village',
       desc: 'Hainan&apos;s premier living museum of Li and Miao culture. Wander through traditional boat-shaped thatched houses, watch brocade weaving demonstrations, and see the last generation of tattooed Li grandmothers.',
+      image: '/hainan-li-brocade.jpg',
     },
     {
       name: 'Wuzhi Mountain 五指山',
       subtitle: 'Sacred Peak · 1,867 m',
       desc: 'The &ldquo;Five-Finger Mountain&rdquo; is the tallest peak in Hainan and the spiritual heart of the Li people, who believe their ancestors emerged from its slopes. Rainforest hikes reveal rare orchids and endemic wildlife.',
+      image: '/hainan-wuzhi-mountain.jpg',
     },
     {
       name: 'Boao Buddhist Complex 博鳌禅寺',
       subtitle: 'Qionghai · Contemporary Sanctuary',
       desc: 'Adjacent to the famous Boao Forum, this vast temple complex blends Southern Chinese and Southeast Asian Buddhist architecture, with tranquil courtyards, lotus ponds and towering golden halls.',
+      image: '/hainan-miao-silver.jpg',
     },
     {
       name: 'Qilou Old Street 骑楼老街',
       subtitle: 'Haikou · Living Heritage District',
       desc: 'A kilometre of arcaded shophouses built by returning Overseas Chinese in the early 20th century. The blend of Baroque, Southeast Asian and Lingnan styles is unlike anywhere else in China.',
+      image: '/hainan-qilou-street.jpg',
     },
   ];
 
@@ -108,7 +109,7 @@ export default function CulturePage() {
       <section className="relative min-h-[360px] h-[50vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/hero.jpg')" }}
+          style={{ backgroundImage: "url('/hainan-li-brocade.jpg')" }}
         />
         <div
           className="absolute inset-0 z-[1]"
@@ -181,6 +182,34 @@ export default function CulturePage() {
       {/* ============ 3. The Li People ============ */}
       <section className="bg-surface-container py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <RevealOnScroll>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-14">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-card">
+                <Image
+                  src="/hainan-li-brocade.jpg"
+                  alt="Li ethnic brocade weaving"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
+                  Living Heritage
+                </span>
+                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-primary-deep mt-3 mb-4 leading-tight">
+                  A Textile Tradition of 3,000 Years
+                </h3>
+                <div className="w-16 h-1 bg-accent-gold mb-6" />
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
+                  Woven on backstrap looms by generations of Li women, brocade
+                  is more than fabric — it is a living record of clan lineage,
+                  cosmology and myth. UNESCO recognised its urgent need for
+                  safeguarding in 2009, and today a new generation of weavers
+                  is keeping the loom alive in villages across central Hainan.
+                </p>
+              </div>
+            </div>
+          </RevealOnScroll>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14 mb-12">
             <RevealOnScroll>
               <div className="lg:col-span-1">
@@ -229,6 +258,34 @@ export default function CulturePage() {
       {/* ============ 4. The Miao People ============ */}
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <RevealOnScroll>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-14">
+              <div className="order-2 lg:order-1">
+                <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
+                  Silver &amp; Song
+                </span>
+                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-primary-deep mt-3 mb-4 leading-tight">
+                  Wearable Family Fortunes
+                </h3>
+                <div className="w-16 h-1 bg-accent-gold mb-6" />
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
+                  Miao silversmiths handcraft elaborate headdresses, collars
+                  and bracelets that can weigh several kilograms — worn on
+                  festival days as a shining record of family history. Each
+                  piece encodes ancestral stories, protective symbols and
+                  mountain motifs passed from mother to daughter.
+                </p>
+              </div>
+              <div className="order-1 lg:order-2 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-card">
+                <Image
+                  src="/hainan-miao-silver.jpg"
+                  alt="Miao silver ornaments"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </RevealOnScroll>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14">
             <RevealOnScroll>
               <div className="lg:col-span-1">
@@ -295,17 +352,16 @@ export default function CulturePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {sites.map((s, i) => (
               <RevealOnScroll key={s.name} delay={i * 0.1}>
-                <div className="bg-white rounded-xl p-7 lg:p-8 shadow-card hover:shadow-float transition-all h-full flex gap-5">
-                  <div className="shrink-0 w-12 h-12 rounded-full bg-primary-deep/5 flex items-center justify-center">
-                    {i === 1 ? (
-                      <Mountain className="w-6 h-6 text-primary-deep" />
-                    ) : i === 2 ? (
-                      <Landmark className="w-6 h-6 text-primary-deep" />
-                    ) : (
-                      <MapPin className="w-6 h-6 text-primary-deep" />
-                    )}
+                <div className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-float transition-all h-full flex flex-col">
+                  <div className="relative aspect-[16/9] bg-primary-deep/10">
+                    <Image
+                      src={s.image}
+                      alt={s.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                  <div>
+                  <div className="p-7 lg:p-8 flex-1 flex flex-col">
                     <h3 className="font-display text-xl sm:text-2xl text-primary-deep leading-snug mb-1">
                       {s.name}
                     </h3>

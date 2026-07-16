@@ -21,31 +21,37 @@ export default function BeachesPage() {
       name: 'Yalong Bay 亚龙湾',
       tag: 'The Oriental Hawaii',
       desc: 'A 7-kilometre crescent of powder-fine white sand backed by lush tropical hills. Yalong Bay boasts the clearest water in Hainan — visibility routinely exceeds 10 metres — and is home to a strip of five-star international resorts including Ritz-Carlton, St. Regis and Mandarin Oriental.',
+      image: '/hainan-yalong-bay.jpg',
     },
     {
       name: 'Sanya Bay 三亚湾',
       tag: 'The City Coastline',
       desc: 'A 22-kilometre urban beach hugging downtown Sanya. Its palm-lined coconut avenue (椰梦长廊) is the city&apos;s beloved sunset promenade — locals gather here at dusk for kite-flying, tai chi and street food.',
+      image: '/hero.jpg',
     },
     {
       name: 'Haitang Bay 海棠湾',
       tag: 'The Luxury Strip',
       desc: 'Home to Atlantis Sanya, the Sanya International Duty-Free Complex, and a string of ultra-luxury resorts. Haitang&apos;s beach is quieter and more upscale than Yalong, with sweeping views of Wuzhizhou Island offshore.',
+      image: '/carousel-2.jpg',
     },
     {
       name: 'Dadonghai 大东海',
       tag: 'Family Friendly',
       desc: 'The most accessible beach in Sanya — a walkable 3-kilometre bay just minutes from downtown. Gentle waves, lifeguards, and a lively boardwalk of restaurants make it perfect for families and first-time visitors.',
+      image: '/carousel-3.jpg',
     },
     {
       name: 'Shimei Bay 石梅湾',
       tag: 'Untouched Paradise',
       desc: 'Two hours north of Sanya in Wanning, Shimei Bay is a 6-kilometre stretch backed by China&apos;s only preserved coconut forest — a UNESCO-protected biosphere. Deserted stretches, sea turtles and the Le Méridien resort define the escape.',
+      image: '/carousel-4.jpg',
     },
     {
       name: 'Riyue Bay 日月湾',
       tag: 'Surf Capital of China',
       desc: 'Also in Wanning, Riyue Bay (&ldquo;Sun-Moon Bay&rdquo;) hosts consistent year-round swells and has become the undisputed heart of Chinese surf culture, home to the Wanning Riyue Bay International Surfing Festival.',
+      image: '/phoenix-sanya.jpg',
     },
   ];
 
@@ -102,7 +108,7 @@ export default function BeachesPage() {
       <section className="relative min-h-[360px] h-[50vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/hero.jpg')" }}
+          style={{ backgroundImage: "url('/hainan-yalong-bay.jpg')" }}
         />
         <div
           className="absolute inset-0 z-[1]"
@@ -198,7 +204,7 @@ export default function BeachesPage() {
                 <div className="bg-white rounded-xl overflow-hidden shadow-card hover:shadow-float transition-all h-full flex flex-col">
                   <div className="relative aspect-[16/10] bg-primary-deep/10">
                     <Image
-                      src="/hero.jpg"
+                      src={b.image}
                       alt={b.name}
                       fill
                       className="object-cover"
@@ -268,6 +274,27 @@ export default function BeachesPage() {
               })}
             </div>
           </div>
+
+          {/* Feature image: Wuzhizhou Island diving */}
+          <RevealOnScroll>
+            <div className="mt-16 relative aspect-[21/9] rounded-2xl overflow-hidden shadow-card">
+              <Image
+                src="/hainan-diving.jpg"
+                alt="Wuzhizhou Island diving"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10">
+                <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
+                  Wuzhizhou Island
+                </span>
+                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-white mt-2 leading-tight">
+                  Hainan&apos;s Underwater Playground
+                </h3>
+              </div>
+            </div>
+          </RevealOnScroll>
 
           {/* Highlighted spots */}
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">

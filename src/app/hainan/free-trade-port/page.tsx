@@ -97,7 +97,7 @@ export default function FreeTradePortPage() {
       <section className="relative min-h-[360px] h-[50vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/hero.jpg')" }}
+          style={{ backgroundImage: "url('/hainan-ftp-city.jpg')" }}
         />
         <div
           className="absolute inset-0 z-[1]"
@@ -215,6 +215,17 @@ export default function FreeTradePortPage() {
       {/* ============ 4. For Sailing Visitors ============ */}
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <RevealOnScroll>
+            <div className="relative aspect-[21/9] rounded-2xl overflow-hidden shadow-card mb-12 lg:mb-16">
+              <Image
+                src="/hainan-ftp-city.jpg"
+                alt="Hainan Free Trade Port skyline"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/60 via-transparent to-transparent" />
+            </div>
+          </RevealOnScroll>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <RevealOnScroll>
               <div>
@@ -287,6 +298,35 @@ export default function FreeTradePortPage() {
               <div className="w-16 h-1 bg-accent-gold mx-auto" />
             </RevealOnScroll>
           </div>
+
+          {/* Feature image: Sanya International Duty-Free Shopping Complex */}
+          <RevealOnScroll>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+              <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-card">
+                <Image
+                  src="/hainan-duty-free.jpg"
+                  alt="Sanya International Duty-Free Shopping Complex"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
+                  World&apos;s Largest Duty-Free Complex
+                </span>
+                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-primary-deep mt-3 mb-4 leading-tight">
+                  Shop the World, Tax-Free
+                </h3>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
+                  With over 120,000 m² of retail space and hundreds of global
+                  luxury brands, the Sanya International Duty-Free Shopping
+                  Complex is the crown jewel of Hainan&apos;s retail revolution.
+                  Visitors can enjoy up to ¥100,000 (~US$14,000) in duty-free
+                  purchases per person per year — no departure required.
+                </p>
+              </div>
+            </div>
+          </RevealOnScroll>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-14">
             {shoppingHubs.map((s, i) => (

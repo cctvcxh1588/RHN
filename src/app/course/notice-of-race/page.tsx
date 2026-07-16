@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import { ArrowLeft, FileText, Calendar, MapPin, Mail } from "lucide-react";
+import { ArrowLeft, FileText, Calendar, MapPin, Mail, Download } from "lucide-react";
 import RevealOnScroll from "@/components/RevealOnScroll";
 
 export default function NoticeOfRacePage() {
@@ -193,13 +193,23 @@ export default function NoticeOfRacePage() {
       {/* BACK LINK */}
       <section className="bg-white py-8 border-b border-primary-deep/10">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/course"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent-gold transition-colors group"
-          >
-            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            Back to The Course
-          </Link>
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <Link
+              href="/course"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent-gold transition-colors group"
+            >
+              <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+              Back to The Course
+            </Link>
+            <a
+              href="/downloads/15th-Round-Hainan-Regatta-2026-Notice-of-Race.docx"
+              download
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary-deep transition-colors shadow-sm"
+            >
+              <Download className="w-4 h-4" />
+              Download DOCX
+            </a>
+          </div>
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-2">
               <Calendar className="w-4 h-4 text-accent-gold" />

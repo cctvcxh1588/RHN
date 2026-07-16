@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import { ArrowLeft, AlertTriangle, ShieldAlert } from "lucide-react";
+import { ArrowLeft, AlertTriangle, ShieldAlert, Download } from "lucide-react";
 import RevealOnScroll from "@/components/RevealOnScroll";
 
 export default function DisclaimerPage() {
@@ -52,7 +52,7 @@ export default function DisclaimerPage() {
 
       {/* BACK */}
       <section className="bg-white py-8 border-b border-primary-deep/10">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
           <Link
             href="/course"
             className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent-gold transition-colors group"
@@ -60,6 +60,14 @@ export default function DisclaimerPage() {
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             Back to The Course
           </Link>
+          <a
+            href="/downloads/Disclaimer-of-Liability-and-Declaration.docx"
+            download
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-accent-coral text-white text-sm font-semibold hover:bg-accent-coral/90 transition-colors shadow-sm"
+          >
+            <Download className="w-4 h-4" />
+            Download DOCX
+          </a>
         </div>
       </section>
 

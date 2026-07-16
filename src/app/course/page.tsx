@@ -206,7 +206,7 @@ export default function CoursePage() {
                             </div>
                             {}
                             <svg
-                                viewBox="20 25 660 500"
+                                viewBox="55 45 660 500"
                                 className="absolute inset-0 w-full h-full"
                                 preserveAspectRatio="xMidYMid meet"
                                 style={{

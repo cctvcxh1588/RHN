@@ -56,10 +56,20 @@ export default function InspectionListPage() {
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             Back to The Course
           </Link>
-          <span className="inline-flex items-center gap-2 text-xs text-muted-foreground">
-            <Info className="w-4 h-4 text-accent-gold" />
-            {pages.length} pages
-          </span>
+          <div className="flex items-center gap-4">
+            <span className="inline-flex items-center gap-2 text-xs text-muted-foreground">
+              <Info className="w-4 h-4 text-accent-gold" />
+              {pages.length} pages
+            </span>
+            <a
+              href="/downloads/Inspection-List-Category-3-Monohulls.docx"
+              download
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary-deep transition-colors shadow-sm"
+            >
+              <Download className="w-4 h-4" />
+              Download DOCX
+            </a>
+          </div>
         </div>
       </section>
 
@@ -75,11 +85,12 @@ export default function InspectionListPage() {
                 Every participating boat must complete the equipment inspection based on this checklist prior to the start of the regatta. The inspection follows the World Sailing Offshore Special Regulations (OSR) for Race Category 3 Monohulls with Liferaft, together with the special safety regulations of the Organizing Committee. Skippers must self-inspect, sign, and submit the completed list to the Race Office before the first race.
               </p>
               <a
-                href="mailto:roundhainanregatta@foxmail.com"
+                href="/downloads/Inspection-List-Category-3-Monohulls.docx"
+                download
                 className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent-gold transition-colors"
               >
                 <Download className="w-4 h-4" />
-                Request a signed copy from the OC
+                Download the full checklist (DOCX)
               </a>
             </div>
           </RevealOnScroll>

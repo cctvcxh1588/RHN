@@ -159,8 +159,43 @@ const racingClasses = [{
 
 export default function Home() {
     const {
-        t
+        t,
+        lang
     } = useLang();
+
+    // CMS Hero overrides (fetched at runtime; falls back to i18n dictionary if absent)
+    const [heroOverride, setHeroOverride] = useState<{
+        badge?: string;
+        tagline?: string;
+        date?: string;
+    }>({});
+
+    useEffect(() => {
+        fetch('/api/cms/settings')
+            .then((r) => r.json())
+            .then((data: {
+                ok?: boolean;
+                settings?: Record<string, { value_en: string; value_zh: string | null }>;
+            }) => {
+                if (!data.ok || !data.settings) return;
+                const pick = (key: string) => {
+                    const item = data.settings?.[key];
+                    if (!item) return undefined;
+                    const val = lang === 'zh' ? (item.value_zh || item.value_en) : item.value_en;
+                    return val || undefined;
+                };
+                setHeroOverride({
+                    badge: pick('hero_badge'),
+                    tagline: pick('hero_tagline'),
+                    date: pick('hero_subtitle'),
+                });
+            })
+            .catch(() => { /* silent fallback */ });
+    }, [lang]);
+
+    const heroBadge = heroOverride.badge ?? t("home", "heroBadge");
+    const heroTagline = heroOverride.tagline ?? `${t("home", "heroTitle")} ${t("home", "heroTitle2")}`;
+    const heroDate = heroOverride.date ?? t("home", "heroDate");
 
     const statLabels = [
         t("home", "statEdition"),
@@ -193,7 +228,7 @@ export default function Home() {
                         {}
                         <RevealOnScroll delay={0.1}>
                             <span
-                                className="inline-block rounded-full bg-accent-gold/20 px-5 py-1.5 text-xs font-semibold tracking-[0.2em] uppercase text-accent-gold backdrop-blur-sm mb-6">{t("home", "heroBadge")}
+                                className="inline-block rounded-full bg-accent-gold/20 px-5 py-1.5 text-xs font-semibold tracking-[0.2em] uppercase text-accent-gold backdrop-blur-sm mb-6">{heroBadge}
                             </span>
                         </RevealOnScroll>
                         {}
@@ -215,7 +250,7 @@ export default function Home() {
                                 style={{
                                     fontSize: "clamp(20px, 3.2vw, 36px)",
                                     textShadow: "0 2px 12px rgba(0,0,0,0.7), 0 0 32px rgba(0,60,126,0.5)"
-                                }}>{t("home", "heroTitle")} {t("home", "heroTitle2")}
+                                }}>{heroTagline}
                             </p>
                         </RevealOnScroll>
                         {}
@@ -226,7 +261,7 @@ export default function Home() {
                                     fontSize: "clamp(14px, 1.6vw, 20px)",
                                     textShadow: "0 1px 6px rgba(0,0,0,0.6)"
                                 }}>
-                                <span className="text-accent-gold">●</span>{t("home", "heroDate")}
+                                <span className="text-accent-gold">●</span>{heroDate}
                             </p>
                         </RevealOnScroll>
                         {}

@@ -1,37 +1,54 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Calendar, ArrowRight, Camera, ImageIcon } from 'lucide-react';
 import RevealOnScroll from '@/components/RevealOnScroll';
 
-const newsArticles = [
+interface Article {
+  id: string;
+  href: string;
+  date: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  image: string;
+  sortKey: number;
+}
+
+const staticArticles: Article[] = [
   {
     id: 'rhn-2026-entry-open',
+    href: '/news/rhn-2026-entry-open',
     date: 'October 15, 2026',
     title: 'Entries Now Open for 15th Round Hainan Regatta',
     excerpt:
       'The Organizing Committee is pleased to announce that entries are now open for the 15th edition of the Round Hainan Regatta, running October 31 – November 7, 2026 from Sanya. Competing classes include Dubois 50, ORC Full Round, ORC Half Round, and Fareast 28R.',
     category: 'Entry Announcement',
     image: '/hero.jpg',
+    sortKey: new Date('2026-10-15').getTime(),
   },
   {
     id: 'course-preview-2026',
+    href: '/news/course-preview-2026',
     date: 'October 8, 2026',
     title: 'Race Course Revealed: New Clockwise Route Around Hainan',
     excerpt:
       'For 2026 the fleet will circumnavigate Hainan clockwise for the first time — heading west out of Sanya through seven waypoints across approximately 680 nautical miles. Discover the strategy behind the new course.',
     category: 'Race Course',
     image: '/carousel-2.jpg',
+    sortKey: new Date('2026-10-08').getTime(),
   },
   {
     id: 'skipper-interview',
+    href: '/news/skipper-interview',
     date: 'September 20, 2026',
     title: 'Skipper Interview: Veteran Sailor on Sailing Around Hainan',
     excerpt:
       'Captain Chen Wei, veteran of eight Round Hainan Regattas, sits down to share how the race has evolved, which leg is toughest, and what advice he has for newcomers preparing for their first tropical offshore adventure.',
     category: 'Interview',
     image: '/carousel-3.jpg',
+    sortKey: new Date('2026-09-20').getTime(),
   },
 ];
 
@@ -45,8 +62,43 @@ const galleryImages = [
 ];
 
 export default function NewsPage() {
+  const [articles, setArticles] = useState<Article[]>(staticArticles);
+
   useEffect(() => {
     document.title = 'News & Media | Round Hainan Regatta';
+
+    // Fetch CMS news and merge with static articles
+    fetch('/api/cms/news?published=true')
+      .then((r) => r.json())
+      .then((data: { ok?: boolean; entries?: Array<{
+        slug: string;
+        title_en: string;
+        title_zh: string | null;
+        excerpt_en: string | null;
+        excerpt_zh: string | null;
+        category: string | null;
+        image_url: string | null;
+        published_at: string | null;
+      }> }) => {
+        if (!data.ok || !Array.isArray(data.entries)) return;
+        const cmsItems: Article[] = data.entries.map((n) => {
+          const dateObj = n.published_at ? new Date(n.published_at) : new Date();
+          return {
+            id: `cms-${n.slug}`,
+            href: `/news/cms/${n.slug}`,
+            date: dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+            title: n.title_en || '',
+            excerpt: n.excerpt_en || '',
+            category: n.category || 'News',
+            image: n.image_url || '/hero.jpg',
+            sortKey: dateObj.getTime(),
+          };
+        });
+        // Merge and sort by date desc
+        const merged = [...cmsItems, ...staticArticles].sort((a, b) => b.sortKey - a.sortKey);
+        setArticles(merged);
+      })
+      .catch(() => { /* silent fallback to static */ });
   }, []);
 
   return (
@@ -103,10 +155,10 @@ export default function NewsPage() {
 
           {/* News Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {newsArticles.map((article, index) => (
+            {articles.map((article, index) => (
               <RevealOnScroll key={article.id} delay={index * 0.1}>
                 <Link
-                  href={`/news/${article.id}`}
+                  href={article.href}
                   className="group block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 rounded-2xl"
                 >
                   <article className="bg-white rounded-2xl shadow-card overflow-hidden flex flex-col h-full transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-float cursor-pointer">

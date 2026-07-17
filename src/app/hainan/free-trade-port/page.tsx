@@ -121,12 +121,14 @@ export default function FreeTradePortPage() {
       subtitle: 'CDF Sanya · Haitang Bay',
       desc: 'The largest duty-free complex in the world by floor area — over 120,000 m² of luxury boutiques, cosmetics halls, wines & spirits, and international brands. A must-visit even for non-shoppers.',
       tag: 'Flagship',
+      image: '/sanya-duty-free.jpg',
     },
     {
       name: 'CDF Haikou International Duty Free City',
       subtitle: 'Haikou · Xiuying District',
       desc: 'Opened in 2022, this waterfront complex spans 280,000 m² and hosts over 800 global brands. Fashion, watches, jewellery, gourmet food and even cars are available under duty-free terms.',
       tag: 'Newest',
+      image: '/haikou-duty-free.jpg',
     },
   ];
 
@@ -398,7 +400,7 @@ export default function FreeTradePortPage() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
                 <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-card">
                   <Image
-                    src="/hainan-duty-free.jpg"
+                    src="/sanya-duty-free.jpg"
                     alt="Sanya International Duty-Free Shopping Complex"
                     fill
                     className="object-cover"
@@ -428,7 +430,7 @@ export default function FreeTradePortPage() {
                   <div className="bg-white rounded-xl overflow-hidden shadow-card hover:shadow-float transition-all h-full">
                     <div className="relative aspect-[16/9] bg-primary-deep/10">
                       <Image
-                        src="/phoenix-sanya.jpg"
+                        src={s.image}
                         alt={s.name}
                         fill
                         className="object-cover"
@@ -700,7 +702,7 @@ export default function FreeTradePortPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
               <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-card">
                 <Image
-                  src="/hainan-duty-free.jpg"
+                  src="/sanya-duty-free.jpg"
                   alt="Sanya International Duty-Free Shopping Complex"
                   fill
                   className="object-cover"
@@ -730,7 +732,7 @@ export default function FreeTradePortPage() {
                 <div className="bg-white rounded-xl overflow-hidden shadow-card hover:shadow-float transition-all h-full">
                   <div className="relative aspect-[16/9] bg-primary-deep/10">
                     <Image
-                      src="/phoenix-sanya.jpg"
+                      src={s.image}
                       alt={s.name}
                       fill
                       className="object-cover"

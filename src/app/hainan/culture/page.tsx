@@ -70,7 +70,7 @@ export default function CulturePage() {
         name: "Betel Nut Valley 槟榔谷",
         subtitle: "Baoting · Indigenous Cultural Village",
         desc: "Hainan&apos;s premier living museum of Li and Miao culture. Wander through traditional boat-shaped thatched houses, watch brocade weaving demonstrations, and see the last generation of tattooed Li grandmothers.",
-        image: "/hainan-li-brocade.jpg"
+        image: "/binglanggu.jpg"
     }, {
         name: "Wuzhi Mountain 五指山",
         subtitle: "Sacred Peak · 1,867 m",
@@ -80,7 +80,7 @@ export default function CulturePage() {
         name: "Boao Buddhist Complex 博鳌禅寺",
         subtitle: "Qionghai · Contemporary Sanctuary",
         desc: "Adjacent to the famous Boao Forum, this vast temple complex blends Southern Chinese and Southeast Asian Buddhist architecture, with tranquil courtyards, lotus ponds and towering golden halls.",
-        image: "/hainan-miao-silver.jpg"
+        image: "/boao-zen.jpg"
     }, {
         name: "Qilou Old Street 骑楼老街",
         subtitle: "Haikou · Living Heritage District",

@@ -110,51 +110,49 @@ export default function AboutPage() {
 
           {/* Story Content */}
           <RevealOnScroll delay={0.3}>
-            <div
-              className="max-w-4xl space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed [&_p]:mb-4"
-              dangerouslySetInnerHTML={
-                storyBody ? { __html: storyBody } : undefined
-              }
-            >
-              {!storyBody && (
-                <>
-                  <p>
-                    Since its founding in 2011, the Round Hainan Regatta has
-                    grown into one of Asia&apos;s premier offshore sailing events,
-                    attracting world-class sailors and competitive fleets from
-                    across the globe.
-                  </p>
-                  <p>
-                    The 15th edition in 2026 promises to be the most competitive
-                    yet, with an expanded fleet of international competitors. The
-                    race circumnavigates Hainan Island — China&apos;s southernmost
-                    tropical paradise — covering approximately 680 nautical miles
-                    of challenging ocean racing.
-                  </p>
-                  <p>
-                    The regatta is not merely a competition; it is a celebration
-                    of maritime heritage, seamanship, and the spirit of adventure.
-                    From the strategic challenges of the Qiongzhou Strait to the
-                    tactical inshore courses off Sanya&apos;s coastline, every mile
-                    demands skill, strategy, and endurance.
-                  </p>
-                  <p>
-                    The Round Hainan Regatta has been instrumental in developing
-                    China&apos;s offshore sailing culture, providing a platform for
-                    Chinese sailors to compete on an international stage while
-                    introducing the world to the breathtaking beauty of Hainan&apos;s
-                    coastline.
-                  </p>
-                  <p>
-                    As the race enters its 15th edition, it continues to honor
-                    its founding mission: to promote international sailing
-                    exchange, foster the sport of ocean racing in China, and
-                    showcase Hainan as a world-class destination for marine
-                    sports.
-                  </p>
-                </>
-              )}
-            </div>
+            {storyBody ? (
+              <div
+                className="max-w-4xl space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed [&_p]:mb-4"
+                dangerouslySetInnerHTML={{ __html: storyBody }}
+              />
+            ) : (
+              <div className="max-w-4xl space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed [&_p]:mb-4">
+                <p>
+                  Since its founding in 2011, the Round Hainan Regatta has
+                  grown into one of Asia&apos;s premier offshore sailing events,
+                  attracting world-class sailors and competitive fleets from
+                  across the globe.
+                </p>
+                <p>
+                  The 15th edition in 2026 promises to be the most competitive
+                  yet, with an expanded fleet of international competitors. The
+                  race circumnavigates Hainan Island — China&apos;s southernmost
+                  tropical paradise — covering approximately 680 nautical miles
+                  of challenging ocean racing.
+                </p>
+                <p>
+                  The regatta is not merely a competition; it is a celebration
+                  of maritime heritage, seamanship, and the spirit of adventure.
+                  From the strategic challenges of the Qiongzhou Strait to the
+                  tactical inshore courses off Sanya&apos;s coastline, every mile
+                  demands skill, strategy, and endurance.
+                </p>
+                <p>
+                  The Round Hainan Regatta has been instrumental in developing
+                  China&apos;s offshore sailing culture, providing a platform for
+                  Chinese sailors to compete on an international stage while
+                  introducing the world to the breathtaking beauty of Hainan&apos;s
+                  coastline.
+                </p>
+                <p>
+                  As the race enters its 15th edition, it continues to honor
+                  its founding mission: to promote international sailing
+                  exchange, foster the sport of ocean racing in China, and
+                  showcase Hainan as a world-class destination for marine
+                  sports.
+                </p>
+              </div>
+            )}
           </RevealOnScroll>
         </div>
       </section>

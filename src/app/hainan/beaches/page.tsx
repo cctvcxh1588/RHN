@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import RevealOnScroll from '@/components/RevealOnScroll';
+import { useLang } from '@/lib/LanguageProvider';
 import {
   Waves,
   Sun,
@@ -32,53 +33,66 @@ interface CmsPage {
 }
 
 export default function BeachesPage() {
+  const { lang } = useLang();
   const [cmsData, setCmsData] = useState<CmsPage | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   // Hardcoded fallback content
   const fallback = {
-    eyebrow: 'Explore Hainan',
-    title: 'Tropical Paradise',
-    subtitle: '1,823 Kilometres of Pristine Coastline',
+    eyebrow: lang === 'zh' ? '探索海南' : 'Explore Hainan',
+    title: lang === 'zh' ? '热带天堂' : 'Tropical Paradise',
+    subtitle: lang === 'zh' ? '1,823 公里纯净海岸线' : '1,823 Kilometres of Pristine Coastline',
     body: null as string | null,
   };
 
   const beaches = [
     {
-      name: 'Yalong Bay 亚龙湾',
-      tag: 'The Oriental Hawaii',
-      desc: 'A 7-kilometre crescent of powder-fine white sand backed by lush tropical hills. Yalong Bay boasts the clearest water in Hainan — visibility routinely exceeds 10 metres — and is home to a strip of five-star international resorts including Ritz-Carlton, St. Regis and Mandarin Oriental.',
+      name: lang === 'zh' ? '亚龙湾' : 'Yalong Bay',
+      tag: lang === 'zh' ? '东方夏威夷' : 'The Oriental Hawaii',
+      desc: lang === 'zh'
+        ? '7 公里新月形洁白沙滩，背靠热带丘陵。亚龙湾拥有海南最清澈的海水——能见度 routinely 超过 10 米——汇聚丽思卡尔顿、瑞吉、文华东方等五星国际度假酒店。'
+        : 'A 7-kilometre crescent of powder-fine white sand backed by lush tropical hills. Yalong Bay boasts the clearest water in Hainan — visibility routinely exceeds 10 metres — and is home to a strip of five-star international resorts including Ritz-Carlton, St. Regis and Mandarin Oriental.',
       image: '/hainan-yalong-bay.jpg',
     },
     {
-      name: 'Sanya Bay 三亚湾',
-      tag: 'The City Coastline',
-      desc: 'A 22-kilometre urban beach hugging downtown Sanya. Its palm-lined coconut avenue (椰梦长廊) is the city&apos;s beloved sunset promenade — locals gather here at dusk for kite-flying, tai chi and street food.',
-      image: '/hero.jpg',
+      name: lang === 'zh' ? '三亚湾' : 'Sanya Bay',
+      tag: lang === 'zh' ? '城市海岸线' : 'The City Coastline',
+      desc: lang === 'zh'
+        ? '22 公里城市沙滩环抱三亚市区。椰梦长廊是市民最爱的日落漫步道——黄昏时分，当地人聚集于此放风筝、打太极、品尝街头美食。'
+        : 'A 22-kilometre urban beach hugging downtown Sanya. Its palm-lined coconut avenue (椰梦长廊) is the city&apos;s beloved sunset promenade — locals gather here at dusk for kite-flying, tai chi and street food.',
+      image: '/sanya-bay.jpg',
     },
     {
-      name: 'Haitang Bay 海棠湾',
-      tag: 'The Luxury Strip',
-      desc: 'Home to Atlantis Sanya, the Sanya International Duty-Free Complex, and a string of ultra-luxury resorts. Haitang&apos;s beach is quieter and more upscale than Yalong, with sweeping views of Wuzhizhou Island offshore.',
-      image: '/carousel-2.jpg',
+      name: lang === 'zh' ? '海棠湾' : 'Haitang Bay',
+      tag: lang === 'zh' ? '奢华度假带' : 'The Luxury Strip',
+      desc: lang === 'zh'
+        ? '汇聚三亚亚特兰蒂斯、三亚国际免税城及一众超奢华度假酒店。海棠湾沙滩比亚龙湾更静谧高端，可远眺 offshore 的蜈支洲岛。'
+        : 'Home to Atlantis Sanya, the Sanya International Duty-Free Complex, and a string of ultra-luxury resorts. Haitang&apos;s beach is quieter and more upscale than Yalong, with sweeping views of Wuzhizhou Island offshore.',
+      image: '/haitang-bay.jpg',
     },
     {
-      name: 'Dadonghai 大东海',
-      tag: 'Family Friendly',
-      desc: 'The most accessible beach in Sanya — a walkable 3-kilometre bay just minutes from downtown. Gentle waves, lifeguards, and a lively boardwalk of restaurants make it perfect for families and first-time visitors.',
-      image: '/carousel-3.jpg',
+      name: lang === 'zh' ? '大东海' : 'Dadonghai',
+      tag: lang === 'zh' ? '亲子友好' : 'Family Friendly',
+      desc: lang === 'zh'
+        ? '三亚最易抵达的沙滩——距市中心仅数分钟的 3 公里海湾。浪柔、有救生员、餐厅林立的热闹海滨步道，是家庭和首次游客的理想之选。'
+        : 'The most accessible beach in Sanya — a walkable 3-kilometre bay just minutes from downtown. Gentle waves, lifeguards, and a lively boardwalk of restaurants make it perfect for families and first-time visitors.',
+      image: '/dadonghai.jpg',
     },
     {
-      name: 'Shimei Bay 石梅湾',
-      tag: 'Untouched Paradise',
-      desc: 'Two hours north of Sanya in Wanning, Shimei Bay is a 6-kilometre stretch backed by China&apos;s only preserved coconut forest — a UNESCO-protected biosphere. Deserted stretches, sea turtles and the Le Méridien resort define the escape.',
-      image: '/carousel-4.jpg',
+      name: lang === 'zh' ? '石梅湾' : 'Shimei Bay',
+      tag: lang === 'zh' ? '未开发的天堂' : 'Untouched Paradise',
+      desc: lang === 'zh'
+        ? '距三亚两小时车程的万宁石梅湾，6 公里沙滩背靠中国唯一保存完整的椰林——UNESCO 保护生物圈。人迹罕至的沙滩、海龟和艾美度假酒店构成完美逃离。'
+        : 'Two hours north of Sanya in Wanning, Shimei Bay is a 6-kilometre stretch backed by China&apos;s only preserved coconut forest — a UNESCO-protected biosphere. Deserted stretches, sea turtles and the Le Méridien resort define the escape.',
+      image: '/shimei-bay.jpg',
     },
     {
-      name: 'Riyue Bay 日月湾',
-      tag: 'Surf Capital of China',
-      desc: 'Also in Wanning, Riyue Bay (&ldquo;Sun-Moon Bay&rdquo;) hosts consistent year-round swells and has become the undisputed heart of Chinese surf culture, home to the Wanning Riyue Bay International Surfing Festival.',
+      name: lang === 'zh' ? '日月湾' : 'Riyue Bay',
+      tag: lang === 'zh' ? '中国冲浪之都' : 'Surf Capital of China',
+      desc: lang === 'zh'
+        ? '同样位于万宁，日月湾全年浪涌稳定，已成为中国冲浪文化的核心，是万宁日月湾国际冲浪节的举办地。'
+        : 'Also in Wanning, Riyue Bay (&ldquo;Sun-Moon Bay&rdquo;) hosts consistent year-round swells and has become the undisputed heart of Chinese surf culture, home to the Wanning Riyue Bay International Surfing Festival.',
       image: '/phoenix-sanya.jpg',
     },
   ];
@@ -86,38 +100,52 @@ export default function BeachesPage() {
   const activities = [
     {
       icon: Anchor,
-      title: 'Sailing &amp; Yachting',
-      desc: 'From day charters to the Round Hainan Regatta, Sanya&apos;s marinas host one of Asia&apos;s most active yacht communities. Bareboat and skippered options are widely available.',
+      title: lang === 'zh' ? '帆船与游艇' : 'Sailing & Yachting',
+      desc: lang === 'zh'
+        ? '从日租包船到环海南岛国际大帆船赛，三亚的码头汇聚了亚洲最活跃的游艇社群。裸船和带船长选项均可预订。'
+        : 'From day charters to the Round Hainan Regatta, Sanya&apos;s marinas host one of Asia&apos;s most active yacht communities. Bareboat and skippered options are widely available.',
     },
     {
       icon: Wind,
-      title: 'Kite &amp; Wind Surfing',
-      desc: 'The steady northeast trade winds from November through March make Sanya Bay and Houhai a favourite for kite surfers of every level.',
+      title: lang === 'zh' ? '风筝与风帆冲浪' : 'Kite & Wind Surfing',
+      desc: lang === 'zh'
+        ? '11 月至 3 月稳定的东北信风使三亚湾和后海成为各级风筝冲浪爱好者的最爱。'
+        : 'The steady northeast trade winds from November through March make Sanya Bay and Houhai a favourite for kite surfers of every level.',
     },
     {
       icon: Fish,
-      title: 'Diving &amp; Snorkelling',
-      desc: 'Wuzhizhou Island (蜈支洲岛) offers Hainan&apos;s best coral reef diving, with over 80 species of coral, sea turtles and reef fish in warm 26 °C waters.',
+      title: lang === 'zh' ? '潜水与浮潜' : 'Diving & Snorkelling',
+      desc: lang === 'zh'
+        ? '蜈支洲岛提供海南最佳珊瑚礁潜水，超过 80 种珊瑚、海龟和礁鱼在温暖的 26°C 海水中。'
+        : 'Wuzhizhou Island (蜈支洲岛) offers Hainan&apos;s best coral reef diving, with over 80 species of coral, sea turtles and reef fish in warm 26 °C waters.',
     },
     {
       icon: Waves,
-      title: 'Surfing',
-      desc: 'Riyue Bay in Wanning is China&apos;s surf capital, with beginner-friendly beach breaks and consistent waves up to 2 metres during typhoon season.',
+      title: lang === 'zh' ? '冲浪' : 'Surfing',
+      desc: lang === 'zh'
+        ? '万宁日月湾是中国冲浪之都，拥有适合初学者的沙滩浪点，台风季节浪高可达 2 米。'
+        : 'Riyue Bay in Wanning is China&apos;s surf capital, with beginner-friendly beach breaks and consistent waves up to 2 metres during typhoon season.',
     },
   ];
 
   const marineSpots = [
     {
-      name: 'Wuzhizhou Island 蜈支洲岛',
-      desc: 'A 1.48 km² tropical island 30 minutes offshore from Haitang Bay, famous for its coral reefs, glass-bottom boats and turquoise water. Hainan&apos;s most iconic dive site.',
+      name: lang === 'zh' ? '蜈支洲岛' : 'Wuzhizhou Island',
+      desc: lang === 'zh'
+        ? '距海棠湾 30 分钟船程的 1.48 平方公里热带岛屿，以珊瑚礁、玻璃底船和碧绿海水闻名。海南最具标志性的潜水胜地。'
+        : 'A 1.48 km² tropical island 30 minutes offshore from Haitang Bay, famous for its coral reefs, glass-bottom boats and turquoise water. Hainan&apos;s most iconic dive site.',
     },
     {
-      name: 'Boao Yudai Beach 博鳌玉带滩',
-      desc: 'A slender natural sandbar where three rivers meet the South China Sea — a Guinness-recognised wonder of geography and one of Hainan&apos;s most photogenic landscapes.',
+      name: lang === 'zh' ? '博鳌玉带滩' : 'Boao Yudai Beach',
+      desc: lang === 'zh'
+        ? '三条河流汇入南海的狭长天然沙坝——吉尼斯认证的地理奇观，海南最上镜的景观之一。'
+        : 'A slender natural sandbar where three rivers meet the South China Sea — a Guinness-recognised wonder of geography and one of Hainan&apos;s most photogenic landscapes.',
     },
     {
-      name: 'Phoenix Island 凤凰岛',
-      desc: 'Sanya&apos;s landmark man-made island and cruise port, home to a world-class marina and the starting line of the Round Hainan Regatta.',
+      name: lang === 'zh' ? '凤凰岛' : 'Phoenix Island',
+      desc: lang === 'zh'
+        ? '三亚地标性人工岛和邮轮港，拥有世界级码头，也是环海南岛国际大帆船赛的起航线。'
+        : 'Sanya&apos;s landmark man-made island and cruise port, home to a world-class marina and the starting line of the Round Hainan Regatta.',
     },
   ];
 
@@ -204,12 +232,12 @@ export default function BeachesPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
             <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-              An Island of Beaches
+              {lang === 'zh' ? '沙滩之岛' : 'An Island of Beaches'}
             </span>
           </RevealOnScroll>
           <RevealOnScroll delay={0.1}>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">
-              68 Bays. Endless Summer.
+              {lang === 'zh' ? '68 个海湾，无尽夏日' : '68 Bays. Endless Summer.'}
             </h2>
           </RevealOnScroll>
           <RevealOnScroll delay={0.2}>
@@ -299,10 +327,10 @@ export default function BeachesPage() {
             <RevealOnScroll>
               <div>
                 <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-                  Marine Activities
+                  {lang === 'zh' ? '海上活动' : 'Marine Activities'}
                 </span>
                 <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">
-                  Life on &amp; Under the Water
+                  {lang === 'zh' ? '水上与水下生活' : 'Life on & Under the Water'}
                 </h2>
                 <div className="w-16 h-1 bg-accent-gold mb-8" />
                 <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
@@ -384,12 +412,12 @@ export default function BeachesPage() {
           <div className="text-center mb-14">
             <RevealOnScroll>
               <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-                Plan Your Trip
+                {lang === 'zh' ? '计划你的旅行' : 'Plan Your Trip'}
               </span>
             </RevealOnScroll>
             <RevealOnScroll delay={0.1}>
               <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">
-                Best Time to Visit
+                {lang === 'zh' ? '最佳旅行时间' : 'Best Time to Visit'}
               </h2>
             </RevealOnScroll>
             <RevealOnScroll delay={0.2}>

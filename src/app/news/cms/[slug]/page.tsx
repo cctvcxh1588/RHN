@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { cookies } from "next/headers";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -44,10 +45,12 @@ export default async function CmsNewsDetailPage({ params }: { params: Promise<{ 
 	const item = await getNews(slug);
 	if (!item) notFound();
 
-	const title = item.title_en;
-	const titleZh = item.title_zh;
-	const excerpt = item.excerpt_en || "";
-	const bodyHtml = item.body_en || "";
+	const cookieStore = await cookies();
+	const lang = cookieStore.get("rhn-lang")?.value || "en";
+
+	const title = lang === "zh" && item.title_zh ? item.title_zh : item.title_en;
+	const excerpt = lang === "zh" && item.excerpt_zh ? item.excerpt_zh : item.excerpt_en || "";
+	const bodyHtml = lang === "zh" && item.body_zh ? item.body_zh : item.body_en || "";
 	const bodyZhHtml = item.body_zh || "";
 
 	return (
@@ -66,18 +69,17 @@ export default async function CmsNewsDetailPage({ params }: { params: Promise<{ 
 							href="/news"
 							className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 text-sm"
 						>
-							<ArrowLeft size={16} /> Back to News
+							<ArrowLeft size={16} /> {lang === "zh" ? "返回新闻" : "Back to News"}
 						</Link>
 						<div className="flex flex-wrap items-center gap-3 mb-4 text-sm">
 							<span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-accent-gold text-primary-deep font-semibold">
 								<Tag size={12} /> {item.category}
 							</span>
 							<span className="inline-flex items-center gap-1 text-white/80">
-								<Calendar size={14} /> {new Date(item.published_at).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+								<Calendar size={14} /> {new Date(item.published_at).toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { year: "numeric", month: "long", day: "numeric" })}
 							</span>
 						</div>
 						<h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">{title}</h1>
-						{titleZh && <p className="mt-3 text-xl md:text-2xl text-white/80">{titleZh}</p>}
 						{excerpt && <p className="mt-6 text-lg text-white/90 leading-relaxed max-w-3xl">{excerpt}</p>}
 					</div>
 				</section>

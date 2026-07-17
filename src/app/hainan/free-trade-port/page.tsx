@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import RevealOnScroll from '@/components/RevealOnScroll';
 import { Spinner } from '@/components/ui/spinner';
+import { useLang } from '@/lib/LanguageProvider';
 import {
   ShoppingBag,
   Plane,
@@ -35,6 +36,7 @@ interface CmsPageItem {
 type FetchState = 'loading' | 'success' | 'error';
 
 export default function FreeTradePortPage() {
+  const { lang } = useLang();
   const [cmsItem, setCmsItem] = useState<CmsPageItem | null>(null);
   const [fetchState, setFetchState] = useState<FetchState>('loading');
 
@@ -69,9 +71,12 @@ export default function FreeTradePortPage() {
   }, []);
 
   // ── Derived hero values with CMS fallback ──────────────────────────────
-  const heroTitle = cmsItem?.title_en ?? 'Hainan Free Trade Port';
-  const heroSubtitle =
-    cmsItem?.subtitle_en ?? "Asia's Newest Duty-Free Destination";
+  const heroTitle = lang === 'zh'
+    ? (cmsItem?.title_zh || cmsItem?.title_en ?? '海南自由贸易港')
+    : (cmsItem?.title_en ?? 'Hainan Free Trade Port');
+  const heroSubtitle = lang === 'zh'
+    ? (cmsItem?.subtitle_zh || cmsItem?.subtitle_en ?? '亚洲最新免税目的地')
+    : (cmsItem?.subtitle_en ?? "Asia's Newest Duty-Free Destination");
 
   // ── Hardcoded fallback content (used when CMS is unavailable) ──────────
   const policies = [
@@ -226,7 +231,7 @@ export default function FreeTradePortPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <RevealOnScroll>
               <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-                A New Global Gateway
+                {lang === 'zh' ? '全新全球门户' : 'A New Global Gateway'}
               </span>
             </RevealOnScroll>
             <RevealOnScroll delay={0.1}>
@@ -273,7 +278,7 @@ export default function FreeTradePortPage() {
             <div className="text-center mb-14">
               <RevealOnScroll>
                 <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-                  What You Need to Know
+                  {lang === 'zh' ? '购物须知' : 'What You Need to Know'}
                 </span>
               </RevealOnScroll>
               <RevealOnScroll delay={0.1}>
@@ -327,7 +332,7 @@ export default function FreeTradePortPage() {
               <RevealOnScroll>
                 <div>
                   <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-                    For the Sailing Community
+                    {lang === 'zh' ? '帆船社区专属' : 'For the Sailing Community'}
                   </span>
                   <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">
                     Built for International Sailors
@@ -383,7 +388,7 @@ export default function FreeTradePortPage() {
             <div className="text-center mb-14">
               <RevealOnScroll>
                 <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-                  Duty-Free Paradise
+                  {lang === 'zh' ? '免税天堂' : 'Duty-Free Paradise'}
                 </span>
               </RevealOnScroll>
               <RevealOnScroll delay={0.1}>
@@ -408,7 +413,7 @@ export default function FreeTradePortPage() {
                 </div>
                 <div>
                   <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-                    World&apos;s Largest Duty-Free Complex
+                    {lang === 'zh' ? '全球最大免税综合体' : 'World&apos;s Largest Duty-Free Complex'}
                   </span>
                   <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-primary-deep mt-3 mb-4 leading-tight">
                     Shop the World, Tax-Free
@@ -575,7 +580,7 @@ export default function FreeTradePortPage() {
           <div className="text-center mb-14">
             <RevealOnScroll>
               <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-                What You Need to Know
+                {lang === 'zh' ? '购物须知' : 'What You Need to Know'}
               </span>
             </RevealOnScroll>
             <RevealOnScroll delay={0.1}>
@@ -629,7 +634,7 @@ export default function FreeTradePortPage() {
             <RevealOnScroll>
               <div>
                 <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-                  For the Sailing Community
+                  {lang === 'zh' ? '帆船社区专属' : 'For the Sailing Community'}
                 </span>
                 <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">
                   Built for International Sailors
@@ -685,7 +690,7 @@ export default function FreeTradePortPage() {
           <div className="text-center mb-14">
             <RevealOnScroll>
               <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-                Duty-Free Paradise
+                {lang === 'zh' ? '免税天堂' : 'Duty-Free Paradise'}
               </span>
             </RevealOnScroll>
             <RevealOnScroll delay={0.1}>

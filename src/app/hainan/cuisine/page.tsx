@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import RevealOnScroll from '@/components/RevealOnScroll';
+import { useLang } from '@/lib/LanguageProvider';
 import {
   Utensils,
   Soup,
@@ -32,11 +33,12 @@ interface CmsPage {
 }
 
 // ── Hardcoded hero fallback ──────────────────────────────────
-const fallbackTitle = 'Culinary Journey';
-const fallbackSubtitle = 'Tropical Flavours of the South China Sea';
-const fallbackEyebrow = 'Explore Hainan';
+const fallbackTitle = { en: 'Culinary Journey', zh: '美食之旅' };
+const fallbackSubtitle = { en: 'Tropical Flavours of the South China Sea', zh: '南海热带风味' };
+const fallbackEyebrow = { en: 'Explore Hainan', zh: '探索海南' };
 
 export default function CuisinePage() {
+  const { lang } = useLang();
   const [cmsData, setCmsData] = useState<CmsPage | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -69,10 +71,10 @@ export default function CuisinePage() {
   }, []);
 
   // ── Determine hero content ──────────────────────────────────
-  const heroTitle = cmsData?.title_en || fallbackTitle;
-  const heroSubtitle = cmsData?.subtitle_en || fallbackSubtitle;
-  const heroEyebrow = cmsData?.eyebrow_en || fallbackEyebrow;
-  const cmsBodyEn = cmsData?.body_en || null;
+  const heroTitle = lang === 'zh' ? (cmsData?.title_zh || fallbackTitle.zh) : (cmsData?.title_en || fallbackTitle.en);
+  const heroSubtitle = lang === 'zh' ? (cmsData?.subtitle_zh || fallbackSubtitle.zh) : (cmsData?.subtitle_en || fallbackSubtitle.en);
+  const heroEyebrow = lang === 'zh' ? (cmsData?.eyebrow_zh || fallbackEyebrow.zh) : (cmsData?.eyebrow_en || fallbackEyebrow.en);
+  const cmsBody = lang === 'zh' ? (cmsData?.body_zh || null) : (cmsData?.body_en || null);
 
   // ── Loading state ───────────────────────────────────────────
   if (loading) {
@@ -162,12 +164,12 @@ export default function CuisinePage() {
       </section>
 
       {/* ============ CMS Body (additional section below hero, if present) ============ */}
-      {cmsBodyEn && (
+      {cmsBody && (
         <section className="bg-white py-12 md:py-16 border-b border-black/5">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div
               className="prose prose-lg max-w-4xl mx-auto text-foreground/80"
-              dangerouslySetInnerHTML={{ __html: cmsBodyEn }}
+              dangerouslySetInnerHTML={{ __html: cmsBody }}
             />
           </div>
         </section>
@@ -178,10 +180,10 @@ export default function CuisinePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center md:text-left">
             <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-              A Cuisine of Islands &amp; Oceans
+              {lang === 'zh' ? '海岛与海洋的美食' : 'A Cuisine of Islands & Oceans'}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">
-              Fresh, Clean, Tropical
+              {lang === 'zh' ? '新鲜、纯净、热带' : 'Fresh, Clean, Tropical'}
             </h2>
             <div className="w-16 h-1 bg-accent-gold mb-10"></div>
           </div>
@@ -216,10 +218,10 @@ export default function CuisinePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-              海南四大名菜
+              {lang === 'zh' ? '海南四大名菜' : 'The Four Famous Dishes'}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">
-              The Four Famous Dishes
+              {lang === 'zh' ? '四大名菜' : 'The Four Famous Dishes'}
             </h2>
             <div className="w-16 h-1 bg-accent-gold mx-auto"></div>
           </div>
@@ -308,8 +310,8 @@ export default function CuisinePage() {
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">Street Food &amp; Signatures</span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">What Locals Eat</h2>
+            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">{lang === 'zh' ? '街头美食与特色菜' : 'Street Food & Signatures'}</span>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">{lang === 'zh' ? '本地人吃什么' : 'What Locals Eat'}</h2>
             <div className="w-16 h-1 bg-accent-gold mx-auto"></div>
           </div>
 
@@ -449,8 +451,8 @@ export default function CuisinePage() {
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">Where to Eat</span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">Insider Food Destinations</h2>
+            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">{lang === 'zh' ? '去哪吃' : 'Where to Eat'}</span>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">{lang === 'zh' ? '美食目的地推荐' : 'Insider Food Destinations'}</h2>
             <div className="w-16 h-1 bg-accent-gold mx-auto"></div>
           </div>
 

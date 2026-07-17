@@ -72,11 +72,11 @@ export default function FreeTradePortPage() {
 
   // ── Derived hero values with CMS fallback ──────────────────────────────
   const heroTitle = lang === 'zh'
-    ? (cmsItem?.title_zh || cmsItem?.title_en ?? '海南自由贸易港')
-    : (cmsItem?.title_en ?? 'Hainan Free Trade Port');
+    ? (cmsItem?.title_zh || cmsItem?.title_en || '海南自由贸易港')
+    : (cmsItem?.title_en || 'Hainan Free Trade Port');
   const heroSubtitle = lang === 'zh'
-    ? (cmsItem?.subtitle_zh || cmsItem?.subtitle_en ?? '亚洲最新免税目的地')
-    : (cmsItem?.subtitle_en ?? "Asia's Newest Duty-Free Destination");
+    ? (cmsItem?.subtitle_zh || cmsItem?.subtitle_en || '亚洲最新免税目的地')
+    : (cmsItem?.subtitle_en || "Asia's Newest Duty-Free Destination");
 
   // ── Hardcoded fallback content (used when CMS is unavailable) ──────────
   const policies = [

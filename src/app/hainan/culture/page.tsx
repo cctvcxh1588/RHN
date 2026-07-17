@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import { useLang } from "@/lib/LanguageProvider";
 import { Feather, Palette, Music, CalendarDays, Sparkles, ArrowLeft, Loader2 } from "lucide-react";
 
 interface CmsPageItem {
@@ -20,6 +21,7 @@ interface CmsPageItem {
 }
 
 export default function CulturePage() {
+    const { lang } = useLang();
     const [cmsItem, setCmsItem] = useState<CmsPageItem | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);

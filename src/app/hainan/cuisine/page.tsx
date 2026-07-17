@@ -249,7 +249,7 @@ export default function CuisinePage() {
             {/* Famous Dish 2: Dongshan Mutton */}
             <div className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-float transition-all h-full flex flex-col">
               <div className="relative aspect-[16/9] bg-primary-deep/10">
-                <img src="/hainan-coconut-chicken.jpg" alt="Dongshan Mutton 东山羊" style={{width:'100%',height:'100%',objectFit:'cover'}} />
+                <img src="/hainan-dongshan-goat.png" alt="Dongshan Mutton 东山羊" style={{width:'100%',height:'100%',objectFit:'cover'}} />
               </div>
               <div className="p-7 lg:p-8 flex-1 flex flex-col">
                 <div className="flex items-start gap-4 mb-4">
@@ -268,7 +268,7 @@ export default function CuisinePage() {
             {/* Famous Dish 3: Jiaji Duck */}
             <div className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-float transition-all h-full flex flex-col">
               <div className="relative aspect-[16/9] bg-primary-deep/10">
-                <img src="/hainan-seafood-market.jpg" alt="Jiaji Duck 加积鸭" style={{width:'100%',height:'100%',objectFit:'cover'}} />
+                <img src="/hainan-jiaji-duck.png" alt="Jiaji Duck 加积鸭" style={{width:'100%',height:'100%',objectFit:'cover'}} />
               </div>
               <div className="p-7 lg:p-8 flex-1 flex flex-col">
                 <div className="flex items-start gap-4 mb-4">
@@ -287,7 +287,7 @@ export default function CuisinePage() {
             {/* Famous Dish 4: Hele Crab */}
             <div className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-float transition-all h-full flex flex-col">
               <div className="relative aspect-[16/9] bg-primary-deep/10">
-                <img src="/hainan-seafood-market.jpg" alt="Hele Crab 和乐蟹" style={{width:'100%',height:'100%',objectFit:'cover'}} />
+                <img src="/hainan-hele-crab.jpg" alt="Hele Crab 和乐蟹" style={{width:'100%',height:'100%',objectFit:'cover'}} />
               </div>
               <div className="p-7 lg:p-8 flex-1 flex flex-col">
                 <div className="flex items-start gap-4 mb-4">
@@ -317,7 +317,7 @@ export default function CuisinePage() {
 
           {/* Feature image */}
           <div className="relative aspect-[21/9] rounded-2xl overflow-hidden shadow-card mb-12 lg:mb-14">
-            <img src="/hainan-coconut-chicken.jpg" alt="Coconut chicken hot pot" style={{width:'100%',height:'100%',objectFit:'cover'}} />
+            <img src="/hainan-coconut-chicken.png" alt="Coconut chicken hot pot" style={{width:'100%',height:'100%',objectFit:'cover'}} />
             <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-transparent"></div>
             <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10">
               <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">Sanya Signature</span>

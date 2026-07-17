@@ -1,4 +1,4 @@
-import { pgTable, serial, timestamp, varchar, text, boolean, integer, index } from "drizzle-orm/pg-core"
+import { pgTable, serial, timestamp, varchar, text, boolean, integer, index, decimal } from "drizzle-orm/pg-core"
 import { sql } from "drizzle-orm"
 
 export const healthCheck = pgTable("health_check", {
@@ -75,3 +75,11 @@ export const cmsSettings = pgTable(
 		updated_at: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
 	}
 );
+
+// CMS · 赛程（8 天时间线）
+
+// CMS · 参赛组别
+
+// CMS · 航点
+
+// CMS · 长页内容（About / Hainan 4 页 / Course 段落文本 等）

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FileText, Settings2, Users, Home, LogOut, ExternalLink } from "lucide-react";
+import { FileText, Settings2, Users, Home, LogOut, ExternalLink, Calendar, Trophy, MapPin, FileStack } from "lucide-react";
 
 export default function CmsDashboardPage() {
 	const [token, setToken] = useState("");
@@ -65,8 +65,12 @@ export default function CmsDashboardPage() {
 	}
 
 	const cards = [
-		{ href: "/admin/cms/news", icon: FileText, title: "新闻管理", subtitle: "News Management", desc: "发布、编辑、删除新闻文章" },
-		{ href: "/admin/cms/settings", icon: Settings2, title: "站点设置", subtitle: "Site Settings", desc: "首页标语、联系方式、全局配置" },
+		{ href: "/admin/cms/news", icon: FileText, title: "新闻管理", subtitle: "News", desc: "发布、编辑、删除新闻文章" },
+		{ href: "/admin/cms/settings", icon: Settings2, title: "站点设置", subtitle: "Settings", desc: "首页标语、联系方式、全局配置" },
+		{ href: "/admin/cms/schedule", icon: Calendar, title: "赛程管理", subtitle: "Schedule", desc: "8 天赛程表，逐日编辑" },
+		{ href: "/admin/cms/classes", icon: Trophy, title: "组别管理", subtitle: "Classes", desc: "4 个组别卡片，增删改" },
+		{ href: "/admin/cms/waypoints", icon: MapPin, title: "航点管理", subtitle: "Waypoints", desc: "航线航点顺序与坐标" },
+		{ href: "/admin/cms/pages", icon: FileStack, title: "长页内容", subtitle: "Pages", desc: "About / Hainan 等长文内容" },
 		{ href: "/admin/registrations", icon: Users, title: "报名管理", subtitle: "Registrations", desc: "查看船队报名、导出 CSV" },
 	];
 
@@ -93,7 +97,7 @@ export default function CmsDashboardPage() {
 				<h2 className="text-3xl font-display font-bold text-foreground mb-2">仪表盘</h2>
 				<p className="text-ink-gray mb-8">选择要管理的内容模块</p>
 
-				<div className="grid md:grid-cols-3 gap-6">
+				<div className="grid md:grid-cols-3 gap-5">
 					{cards.map((c) => (
 						<Link
 							key={c.href}

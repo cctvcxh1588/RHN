@@ -282,7 +282,7 @@ export default function Home() {
                 </HeroCarousel>
             </section>
             {}
-            <section className="bg-white py-16 md:py-24">
+            <section id="explore-hainan" className="bg-white py-16 md:py-24">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
                         {stats.map((stat, index) => <RevealOnScroll key={stat.label} delay={index * 0.1}>

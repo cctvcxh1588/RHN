@@ -378,6 +378,26 @@ export default function CulturePage() {
                     </div>
                 </section>
             )}
+            <section className="bg-white py-16 md:py-24">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <RevealOnScroll>
+                        <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">Three Thousand Years of Living Culture</span>
+                    </RevealOnScroll>
+                    <RevealOnScroll delay={0.1}>
+                        <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">An Island of Many Peoples</h2>
+                    </RevealOnScroll>
+                    <RevealOnScroll delay={0.2}>
+                        <div className="w-16 h-1 bg-accent-gold mb-10" />
+                    </RevealOnScroll>
+                    <RevealOnScroll delay={0.3}>
+                        <div className="max-w-4xl space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed">
+                            <p>Long before Hainan became a tropical resort destination, it was home to some of southern China&apos;s oldest civilisations. The Li people arrived from the mainland more than 3,000 years ago, followed centuries later by the Miao, the Hui, and finally waves of Han settlers, merchants and returning Overseas Chinese.</p>
+                            <p>The result is a cultural tapestry unlike anywhere else in China: boat-shaped Li houses beneath coconut groves; Miao silver headdresses catching the mountain sun; Southeast Asian arcaded shophouses lining Haikou&apos;s old streets; and Buddhist temples opening onto tropical seas.</p>
+                            <p>For visitors to the Round Hainan Regatta, exploring these heritage sites is a chance to see the human story behind the landscape — a story written in fabric, silver, song and stone.</p>
+                        </div>
+                    </RevealOnScroll>
+                </div>
+            </section>
             <section className="bg-surface-container py-16 md:py-24">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <RevealOnScroll>

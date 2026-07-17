@@ -553,7 +553,7 @@ export default function FreeTradePortPage() {
         </div>
       </section>
 
-      {/* ============ 2. Body content (from CMS) ============ */}
+      {/* ============ 2. CMS Additional Body Content (if present) ============ */}
       {cmsItem?.body_en && (
         <section className="bg-white py-16 md:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

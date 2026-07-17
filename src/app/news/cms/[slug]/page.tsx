@@ -47,9 +47,8 @@ export default async function CmsNewsDetailPage({ params }: { params: Promise<{ 
 	const title = item.title_en;
 	const titleZh = item.title_zh;
 	const excerpt = item.excerpt_en || "";
-	const body = item.body_en || item.body_zh || "";
-	const paragraphs = body.split(/\n\s*\n/).filter((p) => p.trim().length > 0);
-	const bodyZhParagraphs = (item.body_zh || "").split(/\n\s*\n/).filter((p) => p.trim().length > 0);
+	const bodyHtml = item.body_en || "";
+	const bodyZhHtml = item.body_zh || "";
 
 	return (
 		<>
@@ -86,19 +85,15 @@ export default async function CmsNewsDetailPage({ params }: { params: Promise<{ 
 				{/* Body */}
 				<section className="py-16 md:py-24">
 					<div className="max-w-3xl mx-auto px-6 prose prose-lg">
-						{paragraphs.length > 0 ? (
-							paragraphs.map((p, i) => (
-								<p key={i} className="text-foreground/85 leading-relaxed mb-6">{p}</p>
-							))
+						{bodyHtml ? (
+							<div dangerouslySetInnerHTML={{ __html: bodyHtml }} />
 						) : (
 							<p className="text-ink-gray italic">No content.</p>
 						)}
-						{bodyZhParagraphs.length > 0 && (
+						{bodyZhHtml && (
 							<div className="mt-12 pt-8 border-t border-fog">
 								<h3 className="font-display text-2xl font-bold text-foreground mb-4">中文版</h3>
-								{bodyZhParagraphs.map((p, i) => (
-									<p key={i} className="text-foreground/85 leading-relaxed mb-6">{p}</p>
-								))}
+								<div dangerouslySetInnerHTML={{ __html: bodyZhHtml }} />
 							</div>
 						)}
 					</div>

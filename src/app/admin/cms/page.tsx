@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FileText, Settings2, Users, Home, LogOut, ExternalLink, Calendar, Trophy, MapPin, FileStack } from "lucide-react";
+import { FileText, Settings2, Users, Home, LogOut, ExternalLink, Calendar, Trophy, MapPin, FileStack, Image } from "lucide-react";
 
 export default function CmsDashboardPage() {
 	const [token, setToken] = useState("");
@@ -72,6 +72,7 @@ export default function CmsDashboardPage() {
 		{ href: "/admin/cms/waypoints", icon: MapPin, title: "航点管理", subtitle: "Waypoints", desc: "航线航点顺序与坐标" },
 		{ href: "/admin/cms/pages", icon: FileStack, title: "长页内容", subtitle: "Pages", desc: "About / Hainan 等长文内容" },
 		{ href: "/admin/registrations", icon: Users, title: "报名管理", subtitle: "Registrations", desc: "查看船队报名、导出 CSV" },
+		{ href: "/admin/cms/gallery", icon: Image, title: "图库管理", subtitle: "Photo Gallery", desc: "上传/管理 Photo Gallery 图片" },
 	];
 
 	return (

@@ -4,7 +4,7 @@ import { useEffect, useState, FormEvent } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Pencil, Save, X, ArrowLeft, Check, FileText } from "lucide-react";
+import { Pencil, Save, X, ArrowLeft, Check, FileText, Upload } from "lucide-react";
 
 type PageItem = {
   id: string;
@@ -145,10 +145,40 @@ export default function AdminPagesPage() {
               </div>
               <div className="md:col-span-2">
                 <label className="mb-1 block text-sm font-medium text-foreground">Body (EN) — HTML supported</label>
+                <div className="mb-2 flex items-center gap-2">
+                  <input type="file" accept="image/*" id="upload-en" className="hidden" onChange={async (e) => {
+                    const f = e.target.files?.[0]; if (!f) return;
+                    const fd = new FormData(); fd.append("file", f);
+                    const r = await fetch("/api/upload", { method: "POST", body: fd });
+                    const j = await r.json();
+                    if (j.ok) { navigator.clipboard.writeText(j.url); alert("URL copied to clipboard:\n" + j.url); }
+                    else alert(j.error || "Upload failed");
+                    e.target.value = "";
+                  }} />
+                  <label htmlFor="upload-en" className="inline-flex cursor-pointer items-center gap-1 rounded-md border border-border px-2.5 py-1.5 text-xs hover:bg-muted">
+                    <Upload className="h-3 w-3" /> Upload Image
+                  </label>
+                  <span className="text-xs text-muted-foreground">Click to upload, URL copied to clipboard</span>
+                </div>
                 <textarea value={editing.body_en ?? ""} onChange={(e) => setEditing({ ...editing, body_en: e.target.value })} rows={18} className="w-full rounded-lg border border-border bg-muted px-3 py-2 font-mono text-sm text-foreground" />
               </div>
               <div className="md:col-span-2">
                 <label className="mb-1 block text-sm font-medium text-foreground">Body (ZH) — HTML supported</label>
+                <div className="mb-2 flex items-center gap-2">
+                  <input type="file" accept="image/*" id="upload-zh" className="hidden" onChange={async (e) => {
+                    const f = e.target.files?.[0]; if (!f) return;
+                    const fd = new FormData(); fd.append("file", f);
+                    const r = await fetch("/api/upload", { method: "POST", body: fd });
+                    const j = await r.json();
+                    if (j.ok) { navigator.clipboard.writeText(j.url); alert("URL copied to clipboard:\n" + j.url); }
+                    else alert(j.error || "Upload failed");
+                    e.target.value = "";
+                  }} />
+                  <label htmlFor="upload-zh" className="inline-flex cursor-pointer items-center gap-1 rounded-md border border-border px-2.5 py-1.5 text-xs hover:bg-muted">
+                    <Upload className="h-3 w-3" /> Upload Image
+                  </label>
+                  <span className="text-xs text-muted-foreground">Click to upload, URL copied to clipboard</span>
+                </div>
                 <textarea value={editing.body_zh ?? ""} onChange={(e) => setEditing({ ...editing, body_zh: e.target.value })} rows={18} className="w-full rounded-lg border border-border bg-muted px-3 py-2 font-mono text-sm text-foreground" />
               </div>
             </div>

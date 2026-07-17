@@ -1,8 +1,10 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import RevealOnScroll from '@/components/RevealOnScroll';
+import { Spinner } from '@/components/ui/spinner';
 import {
   ShoppingBag,
   Plane,
@@ -16,7 +18,62 @@ import {
   ArrowLeft,
 } from 'lucide-react';
 
+interface CmsPageItem {
+  id: string;
+  slug: string;
+  title_en: string;
+  title_zh: string;
+  eyebrow_en: string;
+  eyebrow_zh: string;
+  subtitle_en: string;
+  subtitle_zh: string;
+  body_en: string;
+  body_zh: string;
+  hero_image_url: string;
+}
+
+type FetchState = 'loading' | 'success' | 'error';
+
 export default function FreeTradePortPage() {
+  const [cmsItem, setCmsItem] = useState<CmsPageItem | null>(null);
+  const [fetchState, setFetchState] = useState<FetchState>('loading');
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function load() {
+      try {
+        const res = await fetch('/api/cms/pages?slug=hainan-free-trade-port');
+        const json = await res.json();
+        if (!json.ok) throw new Error(json.error ?? 'API_ERROR');
+        const item: CmsPageItem | undefined = json.items?.find(
+          (p: CmsPageItem) => p.slug === 'hainan-free-trade-port',
+        );
+        if (cancelled) return;
+        if (item) {
+          setCmsItem(item);
+          setFetchState('success');
+        } else {
+          // No matching CMS item found – fall back to hardcoded content
+          setFetchState('error');
+        }
+      } catch {
+        if (!cancelled) setFetchState('error');
+      }
+    }
+
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // ── Derived hero values with CMS fallback ──────────────────────────────
+  const heroTitle = cmsItem?.title_en ?? 'Hainan Free Trade Port';
+  const heroSubtitle =
+    cmsItem?.subtitle_en ?? "Asia's Newest Duty-Free Destination";
+
+  // ── Hardcoded fallback content (used when CMS is unavailable) ──────────
   const policies = [
     {
       icon: Plane,
@@ -82,6 +139,373 @@ export default function FreeTradePortPage() {
     { icon: Sparkles, label: 'Wines & Spirits' },
   ];
 
+  // ── Loading state ──────────────────────────────────────────────────────
+  if (fetchState === 'loading') {
+    return (
+      <>
+        {/* Reference note */}
+        <div className="bg-surface-container border-b border-black/5">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2 text-center">
+            <p className="text-[11px] sm:text-xs text-foreground/50 tracking-wide">
+              Reference: Cool Hainan APP &amp; official tourism resources
+            </p>
+          </div>
+        </div>
+
+        {/* Hero placeholder with spinner */}
+        <section className="relative min-h-[360px] h-[50vh] flex items-center justify-center overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('/hainan-ftp-city.jpg')" }}
+          />
+          <div
+            className="absolute inset-0 z-[1]"
+            style={{
+              background:
+                'linear-gradient(145deg, rgba(0,60,126,0.78) 0%, rgba(0,0,0,0.55) 50%, rgba(0,60,126,0.7) 100%)',
+            }}
+          />
+          <div className="relative z-[2] flex flex-col items-center gap-4">
+            <Spinner className="h-10 w-10 text-accent-gold" />
+            <p className="text-white/70 text-sm tracking-wide">Loading…</p>
+          </div>
+        </section>
+      </>
+    );
+  }
+
+  // ── Error / fallback state ─────────────────────────────────────────────
+  if (fetchState === 'error') {
+    return (
+      <>
+        {/* Reference note */}
+        <div className="bg-surface-container border-b border-black/5">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2 text-center">
+            <p className="text-[11px] sm:text-xs text-foreground/50 tracking-wide">
+              Reference: Cool Hainan APP &amp; official tourism resources
+            </p>
+          </div>
+        </div>
+
+        {/* ============ 1. Hero Banner ============ */}
+        <section className="relative min-h-[360px] h-[50vh] flex items-center justify-center overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('/hainan-ftp-city.jpg')" }}
+          />
+          <div
+            className="absolute inset-0 z-[1]"
+            style={{
+              background:
+                'linear-gradient(145deg, rgba(0,60,126,0.78) 0%, rgba(0,0,0,0.55) 50%, rgba(0,60,126,0.7) 100%)',
+            }}
+          />
+          <div className="relative z-[2] text-center px-4 sm:px-6">
+            <RevealOnScroll>
+              <span className="text-xs sm:text-sm font-semibold tracking-[0.25em] text-accent-gold uppercase">
+                Explore Hainan
+              </span>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.15}>
+              <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl text-white leading-tight mt-4 mb-4">
+                {heroTitle}
+              </h1>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.3}>
+              <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto font-light tracking-wide">
+                {heroSubtitle}
+              </p>
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* ============ 2. Introduction ============ */}
+        <section className="bg-white py-16 md:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <RevealOnScroll>
+              <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
+                A New Global Gateway
+              </span>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.1}>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">
+                China&apos;s Boldest Economic Experiment
+              </h2>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.2}>
+              <div className="w-16 h-1 bg-accent-gold mb-10" />
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.3}>
+              <div className="max-w-4xl space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed">
+                <p>
+                  Established in June 2020 with the release of the &ldquo;Master
+                  Plan for the Construction of Hainan Free Trade Port,&rdquo;
+                  the Hainan FTP is China&apos;s most ambitious opening-up
+                  initiative since the founding of the Shenzhen Special Economic
+                  Zone. The entire 35,000 km² island is being transformed into a
+                  single, integrated free trade port.
+                </p>
+                <p>
+                  By 2025, Hainan will complete the &ldquo;independent customs
+                  operation&rdquo; milestone — meaning goods and capital move
+                  freely across the island under a first-line-open,
+                  second-line-managed system. By 2035, the island aims to become
+                  the world&apos;s largest free trade port, rivalling Hong Kong,
+                  Singapore and Dubai as a global hub for trade, tourism and
+                  finance.
+                </p>
+                <p>
+                  For international visitors, sailors and businesses, this means
+                  unprecedented access: visa-free travel, tax-free shopping,
+                  low-tariff imports and a rapidly modernising infrastructure
+                  built for a truly international audience.
+                </p>
+              </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+
+        {/* ============ 3. Key Policies ============ */}
+        <section className="bg-surface-container py-16 md:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-14">
+              <RevealOnScroll>
+                <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
+                  What You Need to Know
+                </span>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.1}>
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">
+                  Key Policies at a Glance
+                </h2>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.2}>
+                <div className="w-16 h-1 bg-accent-gold mx-auto" />
+              </RevealOnScroll>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+              {policies.map((p, i) => {
+                const Icon = p.icon;
+                return (
+                  <RevealOnScroll key={p.title} delay={i * 0.1}>
+                    <div className="bg-white rounded-xl p-7 lg:p-8 shadow-card hover:shadow-float transition-all h-full">
+                      <div className="w-12 h-12 rounded-full bg-primary-deep/5 flex items-center justify-center mb-5">
+                        <Icon className="w-6 h-6 text-primary-deep" />
+                      </div>
+                      <h3 className="font-display text-xl sm:text-2xl text-primary-deep mb-3 leading-snug">
+                        {p.title}
+                      </h3>
+                      <p className="text-sm sm:text-base text-foreground/70 leading-relaxed">
+                        {p.desc}
+                      </p>
+                    </div>
+                  </RevealOnScroll>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ============ 4. For Sailing Visitors ============ */}
+        <section className="bg-white py-16 md:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <RevealOnScroll>
+              <div className="relative aspect-[21/9] rounded-2xl overflow-hidden shadow-card mb-12 lg:mb-16">
+                <Image
+                  src="/hainan-ftp-city.jpg"
+                  alt="Hainan Free Trade Port skyline"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/60 via-transparent to-transparent" />
+              </div>
+            </RevealOnScroll>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+              <RevealOnScroll>
+                <div>
+                  <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
+                    For the Sailing Community
+                  </span>
+                  <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">
+                    Built for International Sailors
+                  </h2>
+                  <div className="w-16 h-1 bg-accent-gold mb-8" />
+                  <p className="text-base sm:text-lg text-foreground/80 leading-relaxed mb-6">
+                    The Free Trade Port framework has been especially
+                    transformative for the marine leisure industry. Hainan is
+                    now positioning itself as the &ldquo;Yacht Capital of
+                    Asia&rdquo; — with policies specifically tailored to help
+                    international boats, crews and event organisers thrive.
+                  </p>
+                  <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
+                    Whether you are a Round Hainan Regatta competitor, an ocean
+                    cruiser passing through Asia, or a superyacht owner exploring
+                    the region, Hainan&apos;s FTP status makes arrival easier
+                    than anywhere else in mainland China.
+                  </p>
+                </div>
+              </RevealOnScroll>
+
+              <div className="space-y-5">
+                {sailingBenefits.map((b, i) => {
+                  const Icon = b.icon;
+                  return (
+                    <RevealOnScroll key={b.title} delay={0.15 + i * 0.1}>
+                      <div className="bg-surface-container rounded-xl p-6 shadow-card hover:shadow-float transition-all">
+                        <div className="flex items-start gap-4">
+                          <div className="shrink-0 w-11 h-11 rounded-full bg-accent-gold/15 flex items-center justify-center">
+                            <Icon className="w-5 h-5 text-accent-gold" />
+                          </div>
+                          <div>
+                            <h3 className="font-display text-lg sm:text-xl text-primary-deep mb-2">
+                              {b.title}
+                            </h3>
+                            <p className="text-sm sm:text-base text-foreground/70 leading-relaxed">
+                              {b.desc}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </RevealOnScroll>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============ 5. Duty-Free Shopping ============ */}
+        <section className="bg-surface-container py-16 md:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-14">
+              <RevealOnScroll>
+                <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
+                  Duty-Free Paradise
+                </span>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.1}>
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">
+                  Where to Shop
+                </h2>
+              </RevealOnScroll>
+              <RevealOnScroll delay={0.2}>
+                <div className="w-16 h-1 bg-accent-gold mx-auto" />
+              </RevealOnScroll>
+            </div>
+
+            <RevealOnScroll>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+                <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-card">
+                  <Image
+                    src="/hainan-duty-free.jpg"
+                    alt="Sanya International Duty-Free Shopping Complex"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
+                    World&apos;s Largest Duty-Free Complex
+                  </span>
+                  <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-primary-deep mt-3 mb-4 leading-tight">
+                    Shop the World, Tax-Free
+                  </h3>
+                  <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
+                    With over 120,000 m² of retail space and hundreds of global
+                    luxury brands, the Sanya International Duty-Free Shopping
+                    Complex is the crown jewel of Hainan&apos;s retail revolution.
+                    Visitors can enjoy up to ¥100,000 (~US$14,000) in duty-free
+                    purchases per person per year — no departure required.
+                  </p>
+                </div>
+              </div>
+            </RevealOnScroll>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-14">
+              {shoppingHubs.map((s, i) => (
+                <RevealOnScroll key={s.name} delay={i * 0.15}>
+                  <div className="bg-white rounded-xl overflow-hidden shadow-card hover:shadow-float transition-all h-full">
+                    <div className="relative aspect-[16/9] bg-primary-deep/10">
+                      <Image
+                        src="/phoenix-sanya.jpg"
+                        alt={s.name}
+                        fill
+                        className="object-cover"
+                      />
+                      <span className="absolute top-4 left-4 inline-block px-3 py-1 rounded-full bg-accent-gold text-primary-deep text-xs font-bold tracking-wider uppercase">
+                        {s.tag}
+                      </span>
+                    </div>
+                    <div className="p-7">
+                      <h3 className="font-display text-xl sm:text-2xl text-primary-deep leading-snug mb-1">
+                        {s.name}
+                      </h3>
+                      <p className="text-sm text-accent-gold font-medium mb-4">
+                        {s.subtitle}
+                      </p>
+                      <p className="text-sm sm:text-base text-foreground/70 leading-relaxed">
+                        {s.desc}
+                      </p>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+              ))}
+            </div>
+
+            <RevealOnScroll>
+              <h3 className="font-display text-2xl sm:text-3xl text-primary-deep text-center mb-8">
+                What You Can Buy
+              </h3>
+            </RevealOnScroll>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+              {categories.map((c, i) => {
+                const Icon = c.icon;
+                return (
+                  <RevealOnScroll key={c.label} delay={i * 0.06}>
+                    <div className="bg-white rounded-lg p-5 text-center shadow-card hover:shadow-float transition-all">
+                      <Icon className="w-6 h-6 text-accent-gold mx-auto mb-3" />
+                      <p className="text-xs sm:text-sm font-medium text-foreground/80">
+                        {c.label}
+                      </p>
+                    </div>
+                  </RevealOnScroll>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ============ 6. CTA ============ */}
+        <section className="bg-primary-deep py-16 md:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+            <RevealOnScroll>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6">
+                Discover More of Hainan
+              </h2>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.15}>
+              <p className="text-white/70 text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+                From duty-free luxury to tropical beaches and ancient Li culture
+                — Hainan is a world of experiences waiting to be explored.
+              </p>
+            </RevealOnScroll>
+            <RevealOnScroll delay={0.3}>
+              <Link
+                href="/#explore-hainan"
+                className="inline-flex items-center gap-2 px-8 sm:px-10 py-4 text-base font-semibold text-primary-deep bg-accent-gold hover:bg-accent-gold/90 rounded-md transition-all hover:scale-105 shadow-lg"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Explore Hainan
+              </Link>
+            </RevealOnScroll>
+          </div>
+        </section>
+      </>
+    );
+  }
+
+  // ── Success state – CMS data available ─────────────────────────────────
   return (
     <>
       {/* Reference note */}
@@ -97,7 +521,11 @@ export default function FreeTradePortPage() {
       <section className="relative min-h-[360px] h-[50vh] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/hainan-ftp-city.jpg')" }}
+          style={{
+            backgroundImage: cmsItem?.hero_image_url
+              ? `url(${cmsItem.hero_image_url})`
+              : "url('/hainan-ftp-city.jpg')",
+          }}
         />
         <div
           className="absolute inset-0 z-[1]"
@@ -109,66 +537,35 @@ export default function FreeTradePortPage() {
         <div className="relative z-[2] text-center px-4 sm:px-6">
           <RevealOnScroll>
             <span className="text-xs sm:text-sm font-semibold tracking-[0.25em] text-accent-gold uppercase">
-              Explore Hainan
+              {cmsItem?.eyebrow_en || 'Explore Hainan'}
             </span>
           </RevealOnScroll>
           <RevealOnScroll delay={0.15}>
             <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl text-white leading-tight mt-4 mb-4">
-              Hainan Free Trade Port
+              {heroTitle}
             </h1>
           </RevealOnScroll>
           <RevealOnScroll delay={0.3}>
             <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto font-light tracking-wide">
-              Asia&apos;s Newest Duty-Free Destination
+              {heroSubtitle}
             </p>
           </RevealOnScroll>
         </div>
       </section>
 
-      {/* ============ 2. Introduction ============ */}
-      <section className="bg-white py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll>
-            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-              A New Global Gateway
-            </span>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.1}>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">
-              China&apos;s Boldest Economic Experiment
-            </h2>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.2}>
-            <div className="w-16 h-1 bg-accent-gold mb-10" />
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.3}>
-            <div className="max-w-4xl space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed">
-              <p>
-                Established in June 2020 with the release of the &ldquo;Master
-                Plan for the Construction of Hainan Free Trade Port,&rdquo; the
-                Hainan FTP is China&apos;s most ambitious opening-up initiative
-                since the founding of the Shenzhen Special Economic Zone. The
-                entire 35,000 km² island is being transformed into a single,
-                integrated free trade port.
-              </p>
-              <p>
-                By 2025, Hainan will complete the &ldquo;independent customs
-                operation&rdquo; milestone — meaning goods and capital move
-                freely across the island under a first-line-open, second-line-
-                managed system. By 2035, the island aims to become the world&apos;s
-                largest free trade port, rivalling Hong Kong, Singapore and
-                Dubai as a global hub for trade, tourism and finance.
-              </p>
-              <p>
-                For international visitors, sailors and businesses, this means
-                unprecedented access: visa-free travel, tax-free shopping,
-                low-tariff imports and a rapidly modernising infrastructure
-                built for a truly international audience.
-              </p>
-            </div>
-          </RevealOnScroll>
-        </div>
-      </section>
+      {/* ============ 2. Body content (from CMS) ============ */}
+      {cmsItem?.body_en && (
+        <section className="bg-white py-16 md:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <RevealOnScroll>
+              <div
+                className="cms-body prose prose-lg max-w-none text-foreground/80 leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: cmsItem.body_en }}
+              />
+            </RevealOnScroll>
+          </div>
+        </section>
+      )}
 
       {/* ============ 3. Key Policies ============ */}
       <section className="bg-surface-container py-16 md:py-24">
@@ -237,11 +634,11 @@ export default function FreeTradePortPage() {
                 </h2>
                 <div className="w-16 h-1 bg-accent-gold mb-8" />
                 <p className="text-base sm:text-lg text-foreground/80 leading-relaxed mb-6">
-                  The Free Trade Port framework has been especially transformative
-                  for the marine leisure industry. Hainan is now positioning
-                  itself as the &ldquo;Yacht Capital of Asia&rdquo; — with
-                  policies specifically tailored to help international boats,
-                  crews and event organisers thrive.
+                  The Free Trade Port framework has been especially
+                  transformative for the marine leisure industry. Hainan is now
+                  positioning itself as the &ldquo;Yacht Capital of Asia&rdquo;
+                  — with policies specifically tailored to help international
+                  boats, crews and event organisers thrive.
                 </p>
                 <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
                   Whether you are a Round Hainan Regatta competitor, an ocean
@@ -299,7 +696,6 @@ export default function FreeTradePortPage() {
             </RevealOnScroll>
           </div>
 
-          {/* Feature image: Sanya International Duty-Free Shopping Complex */}
           <RevealOnScroll>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
               <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-card">
@@ -392,8 +788,8 @@ export default function FreeTradePortPage() {
           </RevealOnScroll>
           <RevealOnScroll delay={0.15}>
             <p className="text-white/70 text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-              From duty-free luxury to tropical beaches and ancient Li culture —
-              Hainan is a world of experiences waiting to be explored.
+              From duty-free luxury to tropical beaches and ancient Li culture
+              — Hainan is a world of experiences waiting to be explored.
             </p>
           </RevealOnScroll>
           <RevealOnScroll delay={0.3}>

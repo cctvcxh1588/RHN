@@ -130,7 +130,11 @@ export default function CmsSettingsPage() {
 						以下键值将影响网站显示。前台会优先使用 CMS 中的值，若为空则回退到代码默认值。
 					</p>
 					<p className="text-xs text-ink-gray mt-2">
-						常用 Key: <code className="bg-fog px-1 rounded">hero_tagline</code>{" "}
+						u7ffbu8bd1u952eu683cu5f0f: <code className="bg-fog px-1 rounded">nav_home</code>{" "}
+						<code className="bg-fog px-1 rounded">footer_quicklinks</code>{" "}
+						<code className="bg-fog px-1 rounded">common_register</code>
+						<br />
+						u8bbeu7f6eu952e: <code className="bg-fog px-1 rounded">hero_tagline</code>{" "}
 						<code className="bg-fog px-1 rounded">hero_subtitle</code>{" "}
 						<code className="bg-fog px-1 rounded">hero_badge</code>{" "}
 						<code className="bg-fog px-1 rounded">contact_email</code>{" "}

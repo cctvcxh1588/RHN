@@ -1,7 +1,8 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ChevronDown, MapPin, Anchor, Ship, Compass, Calendar, ArrowRight } from 'lucide-react';
+import { ChevronDown, MapPin, Anchor, Ship, Compass, Calendar, ArrowRight, ClipboardList, Users, Trophy } from 'lucide-react';
 import RevealOnScroll from '@/components/RevealOnScroll';
 import { useLang } from '@/lib/LanguageProvider';
 import {
@@ -11,234 +12,61 @@ import {
   AccordionContent,
 } from '@/components/ui/accordion';
 
-/* ─── Schedule Data ─── */
-const scheduleDays = [
-  {
-    date: 'October 31',
-    day: 'Saturday',
-    title: 'Registration & Measurement',
-    icon: Calendar,
-    events: [
-      {
-        time: '08:00 – 12:00',
-        label: 'Registration Opens',
-        location: 'Sanya Serenity Marina',
-        detail:
-          'All competing teams must complete registration at the Sanya Serenity Marina Race Office. Documents verification, crew list submission, and boat registration forms to be processed.',
-      },
-      {
-        time: '13:00 – 17:00',
-        label: 'Crew Weigh-in & Safety Checks',
-        location: 'Sanya Serenity Marina',
-        detail:
-          'Mandatory crew weigh-in for all teams. Safety equipment inspection including life jackets, EPIRBs, flares, fire extinguishers, and emergency rafts. Each boat must have a valid safety certificate.',
-      },
-      {
-        time: '18:00 – 21:00',
-        label: 'Welcome Reception & Skippers\' Briefing',
-        location: 'Sanya Serenity Marina — Event Hall',
-        detail:
-          'Official welcome reception for all participants, sponsors, and officials. The Skippers\' Briefing will cover race rules, navigation marks, weather forecasts, communication protocols, and safety procedures for the 15th edition.',
-      },
-    ],
-  },
-  {
-    date: 'November 1',
-    day: 'Sunday',
-    title: 'Practice Race & Opening Ceremony',
-    icon: Ship,
-    events: [
-      {
-        time: '09:00 – 12:00',
-        label: 'Practice Race in Sanya Bay',
-        location: 'Sanya Bay',
-        detail:
-          'A practice race to allow crews to familiarize themselves with the local conditions, test boat handling, and practice starting procedures. All competing yachts are expected to participate.',
-      },
-      {
-        time: '15:00 – 17:00',
-        label: 'Official Opening Ceremony',
-        location: 'Sanya Serenity Marina — Main Stage',
-        detail:
-          'Grand Opening Ceremony featuring traditional performances, parade of nations, and speeches from organizing committee, government officials, and distinguished guests. All teams to present in uniform.',
-      },
-      {
-        time: '19:00 – 22:00',
-        label: 'Opening Dinner',
-        location: 'Sanya Serenity Marina — Ballroom',
-        detail:
-          'Gala dinner for all participants, dignitaries, and sponsors. Cultural performances and networking opportunities. Team photos and media interviews scheduled.',
-      },
-    ],
-  },
-  {
-    date: 'November 2',
-    day: 'Monday',
-    title: 'Inshore Races',
-    icon: Compass,
-    events: [
-      {
-        time: '10:00',
-        label: 'First Warning Signal',
-        location: 'Sanya Bay',
-        detail:
-          'First warning signal at 11:00. Up to three inshore races scheduled depending on wind conditions. Courses will be set using windward-leeward or trapezoid configurations.',
-      },
-      {
-        time: '11:00 – 16:00',
-        label: 'Inshore Racing (3 Races)',
-        location: 'Sanya Bay',
-        detail:
-          'Three inshore races scheduled back-to-back. Each race approximately 45-60 minutes. The race committee will announce the course format at the morning briefing. All classes participate.',
-      },
-      {
-        time: '17:00',
-        label: 'Post-Race Briefing',
-        location: 'Sanya Serenity Marina',
-        detail:
-          'Results review and weather briefing for the following day\'s offshore start. Protests to be filed within the protest time limit.',
-      },
-    ],
-  },
-  {
-    date: 'November 3',
-    day: 'Tuesday',
-    title: 'Offshore Race Start',
-    icon: Anchor,
-    events: [
-      {
-        time: '08:00',
-        label: 'Full Round Fleet — Offshore Start',
-        location: 'Sanya Bay',
-        detail:
-          'The Full Round fleet starts the 680-nautical-mile circumnavigation of Hainan Island. Course: Sanya → West Coast → Haikou. Teams face overnight sailing with challenging coastal conditions.',
-      },
-      {
-        time: '08:30',
-        label: 'Half Round Fleet — Offshore Start',
-        location: 'Sanya Bay',
-        detail:
-          'The Half Round fleet departs for a shorter course: Sanya → Lingshui area. This course tests tactical decision-making along the southeastern coast.',
-      },
-      {
-        time: '18:00 – 22:00',
-        label: 'Tracking & Live Updates',
-        location: 'Sanya Serenity Marina — Race HQ',
-        detail:
-          'Live yacht tracking available via the official race tracker. Estimated positions and ETA updates posted regularly. Media center open for press coverage.',
-      },
-    ],
-  },
-  {
-    date: 'November 4',
-    day: 'Wednesday',
-    title: 'Offshore Racing (Day 2)',
-    icon: Ship,
-    events: [
-      {
-        time: 'All Day',
-        label: 'Full Round Fleet — Northwest Coast',
-        location: 'West Coast → Approaching Haikou',
-        detail:
-          'The Full Round fleet rounds the northwest coast of Hainan, navigating through challenging tidal currents and variable wind conditions along the Gulf of Tonkin. Leading boats approach Haikou by evening.',
-      },
-      {
-        time: 'All Day',
-        label: 'Half Round Fleet — Lingshui Area',
-        location: 'Lingshui',
-        detail:
-          'The Half Round fleet competes in the Lingshui area, known for its scenic coastal waters and challenging wind patterns. Racing continues throughout the day.',
-      },
-      {
-        time: 'Evening',
-        label: 'Half Round — Return to Sanya',
-        location: 'Sanya',
-        detail:
-          'Half Round fleet expected to return to Sanya Marina. Post-race processing and initial results compilation.',
-      },
-    ],
-  },
-  {
-    date: 'November 5',
-    day: 'Thursday',
-    title: 'Offshore Racing (Day 3)',
-    icon: Ship,
-    events: [
-      {
-        time: 'All Day',
-        label: 'Full Round Fleet — Haikou to East Coast',
-        location: 'Haikou → South along East Coast',
-        detail:
-          'Full Round fleet departs Haikou, heading south along the picturesque east coast of Hainan. This leg features iconic coastal landmarks and potentially challenging sea states as boats navigate the eastern seaboard.',
-      },
-      {
-        time: 'All Day',
-        label: 'Half Round Fleet — Rest Day / Inshore Racing',
-        location: 'Sanya Bay',
-        detail:
-          'Rest day for the Half Round fleet with optional inshore racing for those who wish to continue competing. Social activities organized at the marina.',
-      },
-    ],
-  },
-  {
-    date: 'November 6',
-    day: 'Friday',
-    title: 'Finish & Prize Giving',
-    icon: Anchor,
-    events: [
-      {
-        time: 'Morning – Afternoon',
-        label: 'Full Round — Southeast Coast Finish',
-        location: 'Southeast Coast → Approaching Sanya',
-        detail:
-          'Full Round fleet rounds the southeast coast of Hainan, passing through the scenic waters near Luhuitou Peninsula. Leading boats expected to finish in Sanya. Estimated finish times will be announced based on progress.',
-      },
-      {
-        time: 'Afternoon',
-        label: 'Full Round — Finish at Sanya',
-        location: 'Sanya Serenity Marina',
-        detail:
-          'Finish line off Sanya Serenity Marina. Welcome celebrations for completing teams. Post-race documentation and interviews.',
-      },
-      {
-        time: '18:00',
-        label: 'Half Round — Prize Giving Ceremony',
-        location: 'Sanya Serenity Marina',
-        detail:
-          'Prize Giving Ceremony for the Half Round fleet. Recognition of top finishers and special category awards.',
-      },
-    ],
-  },
-  {
-    date: 'November 7',
-    day: 'Saturday',
-    title: 'Awards Ceremony & Closing',
-    icon: Calendar,
-    events: [
-      {
-        time: '15:00 – 17:00',
-        label: 'Final Prize Giving Ceremony',
-        location: 'Sanya Serenity Marina — Main Stage',
-        detail:
-          'Grand Prize Giving Ceremony for the Full Round fleet. Overall winners, class winners, and special awards presented. Commemorative trophies and prizes for all categories.',
-      },
-      {
-        time: '19:00 – 22:00',
-        label: 'Closing Dinner & Farewell',
-        location: 'Sanya Serenity Marina — Ballroom',
-        detail:
-          'Official closing dinner to celebrate the 15th edition of the Round Hainan Regatta. Speeches, cultural performances, and a special tribute to participants and volunteers. Preview of the 16th edition.',
-      },
-      {
-        time: '22:00',
-        label: 'Official End of the 15th Edition',
-        location: 'Sanya',
-        detail:
-          'The 15th Round Hainan Regatta officially concludes. Departure arrangements for international teams and logistics for boat shipping coordinated by the race office.',
-      },
-    ],
-  },
-];
+/* ─── Types ─── */
+type ScheduleEvent = {
+  time: string;
+  label_en: string;
+  label_zh: string;
+  location_en: string;
+  location_zh: string;
+  detail_en: string;
+  detail_zh: string;
+};
+
+type ScheduleItem = {
+  id: string;
+  day_label: string;
+  date_label_en: string;
+  date_label_zh: string;
+  title_en: string;
+  title_zh: string;
+  description_en: string | null;
+  description_zh: string | null;
+  location_en: string | null;
+  location_zh: string | null;
+  category: string;
+  sort_order: number;
+  events_json: string | ScheduleEvent[];
+  is_published: boolean;
+};
+
+type DayData = {
+  date: string;
+  day: string;
+  title: string;
+  icon: React.ComponentType<{ className?: string }>;
+  events: {
+    time: string;
+    label: string;
+    location: string;
+    detail: string;
+  }[];
+};
+
+/* ─── Icon mapping ─── */
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  Ceremony: Calendar,
+  Race: Ship,
+  Briefing: ClipboardList,
+  Other: Compass,
+};
+
+function getIcon(category: string, sortOrder: number): React.ComponentType<{ className?: string }> {
+  if (iconMap[category]) return iconMap[category];
+  // Fallback based on sort_order
+  const fallbacks: React.ComponentType<{ className?: string }>[] = [Calendar, Ship, Compass, Anchor, Users, Trophy, ClipboardList, Ship];
+  return fallbacks[sortOrder % fallbacks.length];
+}
 
 /* ─── SVG Timeline Line ─── */
 function TimelineLine() {
@@ -275,7 +103,7 @@ function DayCard({
   day,
   index,
 }: {
-  day: (typeof scheduleDays)[0];
+  day: DayData;
   index: number;
 }) {
   const isLeft = index % 2 === 0;
@@ -406,7 +234,81 @@ function DayCard({
 
 /* ─── Page Component ─── */
 export default function SchedulePage() {
-    const { t } = useLang();
+  const { t } = useLang();
+  const [scheduleDays, setScheduleDays] = useState<DayData[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const fetchSchedule = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const res = await fetch('/api/cms/schedule');
+        const json = await res.json();
+
+        if (!json.ok) {
+          throw new Error(json.error || 'Failed to fetch schedule');
+        }
+
+        const items: ScheduleItem[] = json.items;
+
+        // Sort by sort_order
+        const sorted = [...items].sort((a, b) => a.sort_order - b.sort_order);
+
+        const days: DayData[] = sorted.map((item) => {
+          // Parse events_json
+          let events: ScheduleEvent[] = [];
+          if (item.events_json) {
+            if (typeof item.events_json === 'string') {
+              try {
+                events = JSON.parse(item.events_json);
+              } catch {
+                events = [];
+              }
+            } else {
+              events = item.events_json;
+            }
+          }
+
+          return {
+            date: item.date_label_en,
+            day: item.day_label,
+            title: item.title_en,
+            icon: getIcon(item.category, item.sort_order),
+            events: events.map((ev) => ({
+              time: ev.time,
+              label: ev.label_en,
+              location: ev.location_en,
+              detail: ev.detail_en,
+            })),
+          };
+        });
+
+        if (!cancelled) {
+          setScheduleDays(days);
+        }
+      } catch (err: unknown) {
+        if (!cancelled) {
+          setError(err instanceof Error ? err.message : 'An unexpected error occurred');
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchSchedule();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <>
       {/* ════════════════════════════════════════════════════
@@ -487,10 +389,34 @@ export default function SchedulePage() {
             {/* Desktop — central vertical line */}
             <TimelineLine />
 
-            {/* Day cards */}
-            {scheduleDays.map((day, index) => (
-              <DayCard key={index} day={day} index={index} />
-            ))}
+            {loading ? (
+              <div className="flex items-center justify-center py-20">
+                <div className="flex flex-col items-center gap-3">
+                  <div className="h-8 w-8 animate-spin rounded-full border-4 border-accent-gold/30 border-t-accent-gold" />
+                  <span className="text-sm text-muted-foreground">Loading schedule...</span>
+                </div>
+              </div>
+            ) : error ? (
+              <div className="rounded-xl border border-destructive/20 bg-destructive/5 p-8 text-center">
+                <p className="text-sm font-medium text-destructive">Failed to load schedule</p>
+                <p className="mt-1 text-xs text-muted-foreground">{error}</p>
+                <button
+                  onClick={() => window.location.reload()}
+                  className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-primary-deep px-4 py-2 text-sm font-semibold text-white hover:bg-primary-deep/90"
+                >
+                  Retry
+                </button>
+              </div>
+            ) : scheduleDays.length === 0 ? (
+              <div className="rounded-xl border border-border bg-muted/30 p-8 text-center">
+                <p className="text-sm text-muted-foreground">No schedule items available yet.</p>
+              </div>
+            ) : (
+              /* Day cards */
+              scheduleDays.map((day, index) => (
+                <DayCard key={index} day={day} index={index} />
+              ))
+            )}
           </div>
         </div>
       </section>

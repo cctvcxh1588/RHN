@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft, Save } from "lucide-react";
+import ImageUploader from "@/components/ImageUploader";
 
 interface NewsForm {
 	slug: string;
@@ -202,13 +203,8 @@ export default function CmsNewsEditPage() {
 							</Field>
 						</div>
 
-						<Field label="封面图片 URL（可选，建议 /public 目录下路径如 /news-cover.jpg）">
-							<input
-								value={form.image_url}
-								onChange={(e) => upd("image_url", e.target.value)}
-								className="w-full px-3 py-2 rounded-lg border border-fog focus:outline-none focus:ring-2 focus:ring-primary/30"
-								placeholder="/hero.jpg 或 https://..."
-							/>
+						<Field label="封面图片">
+							<ImageUploader value={form.image_url} onChange={(v) => upd("image_url", v)} placeholder="/hero.jpg 或 https://..." />
 						</Field>
 
 						<Field label="英文摘要（列表卡片显示）">

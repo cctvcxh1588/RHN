@@ -1,78 +1,70 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import { useLang } from "@/lib/LanguageProvider";
 import { Anchor, Navigation, MapPin, Ship, Compass, ArrowRight, Sailboat, FileText, AlertTriangle, ClipboardCheck, Scale } from "lucide-react";
 
-const waypoints = [{
-    name: "Sanya",
-    role: "Start",
-    description: "Home port and gateway to the tropics. Departure from Sanya Serenity Marina, heading west along the southern shore.",
-    distance: "—",
-    icon: "MapPin",
-    svgX: 343,
-    svgY: 425
-}, {
-    name: "Dongfang",
-    role: "Waypoint",
-    description: "West coast, first turning point. Crews set up for the long haul north along the exposed western seaboard.",
-    distance: "~90 NM from Sanya",
-    icon: "Compass",
-    svgX: 190,
-    svgY: 285
-}, {
-    name: "Yang Pu",
-    role: "Waypoint",
-    description: "Northwest deep-water port in the Danzhou coast area. Sheltered waters before the run to the top of the island.",
-    distance: "~115 NM from Dongfang",
-    icon: "Navigation",
-    svgX: 280,
-    svgY: 175
-}, {
-    name: "Haikou",
-    role: "Halfway Rest",
-    description: "Northern capital on the Qiongzhou Strait. The fleet rounds the top of Hainan before heading down the east coast.",
-    distance: "~110 NM from Yang Pu",
-    icon: "Ship",
-    svgX: 477,
-    svgY: 105
-}, {
-    name: "Qinglan",
-    role: "Waypoint",
-    description: "Northeast port near Wenchang — a historic maritime hub. Gateway from the Qiongzhou Strait to the trade-wind coast.",
-    distance: "~95 NM from Haikou",
-    icon: "Sailboat",
-    svgX: 555,
-    svgY: 200
-}, {
-    name: "Wanning",
-    role: "Waypoint",
-    description: "East coast waters — Hele Crab country. Trade winds and open ocean tactics dominate this leg.",
-    distance: "~150 NM from Qinglan",
-    icon: "Compass",
-    svgX: 500,
-    svgY: 340
-}, {
-    name: "Lingshui",
-    role: "Waypoint",
-    description: "Southeast coast, final approach. Tactical rounding before the sprint home to Sanya Bay.",
-    distance: "~65 NM from Wanning",
-    icon: "Navigation",
-    svgX: 440,
-    svgY: 385
-}, {
-    name: "Sanya",
-    role: "Finish",
-    description: "Return home to the finish line in Sanya Bay. Full circumnavigation complete after 680 nautical miles.",
-    distance: "~55 NM from Lingshui",
-    icon: "Anchor",
-    svgX: 343,
-    svgY: 425
-}];
+// Hardcoded distances based on sort_order index (0-based)
+const HARDCODED_DISTANCES = [
+    "—",                    // 0 - Start (Sanya)
+    "~90 NM from Sanya",     // 1 - Dongfang
+    "~115 NM from Dongfang", // 2 - Yang Pu
+    "~110 NM from Yang Pu",  // 3 - Haikou
+    "~95 NM from Haikou",    // 4 - Qinglan
+    "~150 NM from Qinglan",  // 5 - Wanning
+    "~65 NM from Wanning",   // 6 - Lingshui
+    "~55 NM from Lingshui",  // 7 - Finish (Sanya)
+];
+
+// Map role_en to lucide icon name
+function getIconForRole(role: string, index: number, total: number): string {
+    const roleLower = role.toLowerCase();
+    if (roleLower === "start") return "MapPin";
+    if (roleLower === "finish") return "Anchor";
+    if (roleLower === "halfway rest" || roleLower === "halfway") return "Ship";
+    // Rotating set for regular waypoints
+    const rotatingIcons = ["Compass", "Navigation", "Sailboat", "Compass", "Navigation"];
+    const waypointIndex = index - 1; // skip start
+    return rotatingIcons[waypointIndex % rotatingIcons.length] || "Navigation";
+}
+
+// Map CMS item to the waypoint shape used in the template
+function cmsItemToWaypoint(item: any, index: number, total: number) {
+    return {
+        name: item.name_en || item.name_zh || "",
+        role: item.role_en || item.role_zh || "Waypoint",
+        description: item.description_en || item.description_zh || "",
+        distance: HARDCODED_DISTANCES[index] || "",
+        icon: getIconForRole(item.role_en || item.role_zh || "", index, total),
+    };
+}
 
 export default function CoursePage() {
     const { t } = useLang();
+    const [waypoints, setWaypoints] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        let cancelled = false;
+        fetch("/api/cms/waypoints")
+            .then((r) => r.json())
+            .then((data) => {
+                if (cancelled) return;
+                if (data.ok && Array.isArray(data.items)) {
+                    const total = data.items.length;
+                    const mapped = data.items.map((item: any, idx: number) =>
+                        cmsItemToWaypoint(item, idx, total)
+                    );
+                    setWaypoints(mapped);
+                }
+                setLoading(false);
+            })
+            .catch(() => {
+                if (!cancelled) setLoading(false);
+            });
+        return () => { cancelled = true; };
+    }, []);
     return (
         <div className="min-h-screen">
             {}
@@ -315,7 +307,15 @@ export default function CoursePage() {
                     </RevealOnScroll>
                     <div
                         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-                        {waypoints.map((wp, index) => {
+                        {loading ? (
+                            <div className="col-span-full text-center py-12 text-muted-foreground">
+                                Loading waypoints…
+                            </div>
+                        ) : waypoints.length === 0 ? (
+                            <div className="col-span-full text-center py-12 text-muted-foreground">
+                                No waypoint data available.
+                            </div>
+                        ) : waypoints.map((wp, index) => {
                             const isFinish = index === waypoints.length - 1;
                             const IconComponent = wp.icon === "MapPin" ? MapPin : wp.icon === "Navigation" ? Navigation : wp.icon === "Ship" ? Ship : wp.icon === "Compass" ? Compass : wp.icon === "Sailboat" ? Sailboat : Anchor;
 

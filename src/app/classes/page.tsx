@@ -1,78 +1,67 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Sailboat, MapPin, Users, Trophy, Ship, Anchor, Compass, ArrowRight, CheckCircle, ClipboardList, Calendar, Flag } from 'lucide-react';
 import RevealOnScroll from '@/components/RevealOnScroll';
 import { useLang } from '@/lib/LanguageProvider';
 
-const classes = [
-  {
-    id: 'dubois-50',
-    name: 'Dubois 50 Class',
-    tagline: 'One-design class',
-    description:
-      'The Dubois 50 is a 50-ft performance cruiser designed for competitive one-design racing. With identical boats, victory comes down to pure sailing skill, crew coordination, and tactical decision-making.',
-    color: 'from-accent-gold to-yellow-500',
-    colorLight: 'bg-accent-gold/10',
-    borderColor: 'border-accent-gold',
-    features: [
-      'One-design competition — identical boats',
-      'Strict measurement rules',
-      'Professional crew required',
-    ],
-    icon: Sailboat,
-  },
-  {
-    id: 'orc-full',
-    name: 'ORC Full Round Class',
-    tagline: 'Full circumnavigation — 680 NM',
-    description:
-      'The premier offshore class using the ORC rating system. Competitors tackle the full 680-nautical-mile circumnavigation of Hainan Island, testing endurance and strategy.',
-    color: 'from-primary to-primary-deep',
-    colorLight: 'bg-primary-container',
-    borderColor: 'border-primary',
-    features: [
-      'ORC certificate required',
-      'Full offshore crew',
-      'Competitive rating system',
-    ],
-    icon: Ship,
-  },
-  {
-    id: 'orc-half',
-    name: 'ORC Half Round Class',
-    tagline: 'Half circumnavigation',
-    description:
-      'A shorter but no less competitive course using the ORC rating system. Ideal for regional teams and those new to the Round Hainan experience.',
-    color: 'from-primary-bright to-blue-400',
-    colorLight: 'bg-primary-bright/10',
-    borderColor: 'border-primary-bright',
-    features: [
-      'ORC certificate required',
-      'Shorter offshore course',
-      'Ideal for regional teams',
-    ],
-    icon: Compass,
-  },
-  {
-    id: 'fareast-28r',
-    name: 'Fareast 28R Class',
-    tagline: 'One-design sports boat',
-    description:
-      'High-performance inshore racing in the exciting Fareast 28R sports boat. Perfect for Corinthian crews seeking thrilling, close-quarters competition.',
-    color: 'from-accent-coral to-pink-500',
-    colorLight: 'bg-accent-coral/10',
-    borderColor: 'border-accent-coral',
-    features: [
-      'High-performance sports boat',
-      'Ideal for Corinthian crews',
-      'Exciting inshore racing',
-    ],
-    icon: Anchor,
-  },
-];
+interface CmsClass {
+  id: string;
+  name_en: string;
+  name_zh: string;
+  tagline_en: string;
+  tagline_zh: string;
+  description_en: string;
+  description_zh: string;
+  features_en: string;
+  features_zh: string;
+  icon: 'Sailboat' | 'Ship' | 'Compass' | 'Anchor';
+  color: 'primary-deep' | 'primary' | 'primary-bright' | 'accent-gold';
+  sort_order: number;
+}
+
+interface ClassCard {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  color: string;
+  colorLight: string;
+  borderColor: string;
+  features: string[];
+  icon: typeof Sailboat;
+}
+
+const iconMap: Record<CmsClass['icon'], typeof Sailboat> = {
+  Sailboat,
+  Ship,
+  Anchor,
+  Compass,
+};
+
+const colorMap: Record<CmsClass['color'], { gradient: string; light: string; border: string }> = {
+  'primary-deep': { gradient: 'from-accent-gold to-yellow-500', light: 'bg-accent-gold/10', border: 'border-accent-gold' },
+  'primary': { gradient: 'from-primary to-primary-deep', light: 'bg-primary-container', border: 'border-primary' },
+  'primary-bright': { gradient: 'from-primary-bright to-blue-400', light: 'bg-primary-bright/10', border: 'border-primary-bright' },
+  'accent-gold': { gradient: 'from-accent-coral to-pink-500', light: 'bg-accent-coral/10', border: 'border-accent-coral' },
+};
+
+function mapCmsToClassCard(item: CmsClass): ClassCard {
+  const colors = colorMap[item.color] || colorMap['primary'];
+  return {
+    id: item.id,
+    name: item.name_en,
+    tagline: item.tagline_en,
+    description: item.description_en,
+    color: colors.gradient,
+    colorLight: colors.light,
+    borderColor: colors.border,
+    features: (item.features_en || '').split('|').filter(Boolean),
+    icon: iconMap[item.icon] || Sailboat,
+  };
+}
 
 const steps = [
   {
@@ -103,8 +92,21 @@ const steps = [
 
 export default function ClassesPage() {
   const { t } = useLang();
+  const [classes, setClasses] = useState<ClassCard[]>([]);
+
   useEffect(() => {
     document.title = 'Racing Classes | Round Hainan Regatta';
+
+    fetch('/api/cms/classes')
+      .then((r) => r.json())
+      .then((data: { ok?: boolean; items?: CmsClass[] }) => {
+        if (!data.ok || !Array.isArray(data.items)) return;
+        const mapped = data.items.map(mapCmsToClassCard);
+        setClasses(mapped);
+      })
+      .catch(() => {
+        // Silently handle — page will render with empty state if fetch fails
+      });
   }, []);
 
   return (

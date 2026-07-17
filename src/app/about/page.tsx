@@ -2,16 +2,57 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import RevealOnScroll from '@/components/RevealOnScroll';
 import { useLang } from '@/lib/LanguageProvider';
 
+type CmsPage = {
+  id: string;
+  slug: string;
+  title_en: string;
+  title_zh: string;
+  eyebrow_en: string;
+  eyebrow_zh: string;
+  subtitle_en: string;
+  subtitle_zh: string;
+  body_en: string;
+  body_zh: string;
+  hero_image_url: string;
+};
+
 export default function AboutPage() {
   const { t } = useLang();
+  const [page, setPage] = useState<CmsPage | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/cms/pages?slug=about')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.ok && Array.isArray(data.items)) {
+          const found = data.items.find(
+            (item: CmsPage) => item.slug === 'about',
+          );
+          if (found) setPage(found);
+        }
+      })
+      .catch(() => {
+        /* silently fall back to hardcoded content */
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
   const stats = [
     { number: '15', suffix: '', label: 'Editions' },
     { number: '680', suffix: '', label: 'Nautical Miles' },
     { number: '8', suffix: '', label: 'Days of Racing' },
   ];
+
+  const heroTitle = page?.title_en ?? t('about', 'heroTitle');
+  const heroSub = page?.subtitle_en ?? t('about', 'heroSub');
+  const storyEyebrow = page?.eyebrow_en ?? t('about', 'storyEyebrow');
+  const storyTitle = page?.title_en ?? t('about', 'storyTitle');
+  const storyBody = page?.body_en ?? '';
 
   return (
     <>
@@ -34,12 +75,12 @@ export default function AboutPage() {
         <div className="relative z-[2] text-center px-4 sm:px-6">
           <RevealOnScroll>
             <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-white leading-tight mb-4">
-              {t('about', 'heroTitle')}
+              {heroTitle}
             </h1>
           </RevealOnScroll>
           <RevealOnScroll delay={0.2}>
             <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto font-light tracking-wide">
-              {t('about', 'heroSub')}
+              {heroSub}
             </p>
           </RevealOnScroll>
         </div>
@@ -51,14 +92,14 @@ export default function AboutPage() {
           {/* Eyebrow */}
           <RevealOnScroll>
             <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-              {t('about', 'storyEyebrow')}
+              {storyEyebrow}
             </span>
           </RevealOnScroll>
 
           {/* Title */}
           <RevealOnScroll delay={0.1}>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-foreground mt-3 mb-4 leading-tight">
-              {t('about', 'storyTitle')}
+              {storyTitle}
             </h2>
           </RevealOnScroll>
 
@@ -69,39 +110,50 @@ export default function AboutPage() {
 
           {/* Story Content */}
           <RevealOnScroll delay={0.3}>
-            <div className="max-w-4xl space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed">
-              <p>
-                Since its founding in 2011, the Round Hainan Regatta has grown
-                into one of Asia&apos;s premier offshore sailing events, attracting
-                world-class sailors and competitive fleets from across the globe.
-              </p>
-              <p>
-                The 15th edition in 2026 promises to be the most competitive yet,
-                with an expanded fleet of international competitors. The race
-                circumnavigates Hainan Island — China&apos;s southernmost tropical
-                paradise — covering approximately 680 nautical miles of
-                challenging ocean racing.
-              </p>
-              <p>
-                The regatta is not merely a competition; it is a celebration of
-                maritime heritage, seamanship, and the spirit of adventure. From
-                the strategic challenges of the Qiongzhou Strait to the tactical
-                inshore courses off Sanya&apos;s coastline, every mile demands skill,
-                strategy, and endurance.
-              </p>
-              <p>
-                The Round Hainan Regatta has been instrumental in developing
-                China&apos;s offshore sailing culture, providing a platform for
-                Chinese sailors to compete on an international stage while
-                introducing the world to the breathtaking beauty of Hainan&apos;s
-                coastline.
-              </p>
-              <p>
-                As the race enters its 15th edition, it continues to honor its
-                founding mission: to promote international sailing exchange,
-                foster the sport of ocean racing in China, and showcase Hainan as
-                a world-class destination for marine sports.
-              </p>
+            <div
+              className="max-w-4xl space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed [&_p]:mb-4"
+              dangerouslySetInnerHTML={
+                storyBody ? { __html: storyBody } : undefined
+              }
+            >
+              {!storyBody && (
+                <>
+                  <p>
+                    Since its founding in 2011, the Round Hainan Regatta has
+                    grown into one of Asia&apos;s premier offshore sailing events,
+                    attracting world-class sailors and competitive fleets from
+                    across the globe.
+                  </p>
+                  <p>
+                    The 15th edition in 2026 promises to be the most competitive
+                    yet, with an expanded fleet of international competitors. The
+                    race circumnavigates Hainan Island — China&apos;s southernmost
+                    tropical paradise — covering approximately 680 nautical miles
+                    of challenging ocean racing.
+                  </p>
+                  <p>
+                    The regatta is not merely a competition; it is a celebration
+                    of maritime heritage, seamanship, and the spirit of adventure.
+                    From the strategic challenges of the Qiongzhou Strait to the
+                    tactical inshore courses off Sanya&apos;s coastline, every mile
+                    demands skill, strategy, and endurance.
+                  </p>
+                  <p>
+                    The Round Hainan Regatta has been instrumental in developing
+                    China&apos;s offshore sailing culture, providing a platform for
+                    Chinese sailors to compete on an international stage while
+                    introducing the world to the breathtaking beauty of Hainan&apos;s
+                    coastline.
+                  </p>
+                  <p>
+                    As the race enters its 15th edition, it continues to honor
+                    its founding mission: to promote international sailing
+                    exchange, foster the sport of ocean racing in China, and
+                    showcase Hainan as a world-class destination for marine
+                    sports.
+                  </p>
+                </>
+              )}
             </div>
           </RevealOnScroll>
         </div>

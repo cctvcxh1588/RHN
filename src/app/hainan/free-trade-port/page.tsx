@@ -400,7 +400,7 @@ export default function FreeTradePortPage() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
                 <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-card">
                   <Image
-                    src="/sanya-duty-free.jpg"
+                    src="/hainan-duty-free.jpg"
                     alt="Sanya International Duty-Free Shopping Complex"
                     fill
                     className="object-cover"
@@ -702,7 +702,7 @@ export default function FreeTradePortPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
               <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-card">
                 <Image
-                  src="/sanya-duty-free.jpg"
+                  src="/hainan-duty-free.jpg"
                   alt="Sanya International Duty-Free Shopping Complex"
                   fill
                   className="object-cover"

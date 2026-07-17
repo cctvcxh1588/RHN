@@ -320,8 +320,8 @@ export default function CuisinePage() {
             <img src="/hainan-coconut-chicken.png" alt="Coconut chicken hot pot" style={{width:'100%',height:'100%',objectFit:'cover'}} />
             <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-transparent"></div>
             <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10">
-              <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">Sanya Signature</span>
-              <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-white mt-2 leading-tight">Coconut Chicken Hot Pot</h3>
+              <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">{lang === 'zh' ? '三亚特色' : 'Sanya Signature'}</span>
+              <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-white mt-2 leading-tight">{lang === 'zh' ? '椰子鸡火锅' : 'Coconut Chicken Hot Pot'}</h3>
             </div>
           </div>
 
@@ -369,10 +369,10 @@ export default function CuisinePage() {
       <section className="bg-surface-container py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">Tropical Bounty</span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">Fruits of Hainan</h2>
+            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">{lang === 'zh' ? '热带馈赠' : 'Tropical Bounty'}</span>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">{lang === 'zh' ? '海南水果' : 'Fruits of Hainan'}</h2>
             <div className="w-16 h-1 bg-accent-gold mx-auto mb-6"></div>
-            <p className="max-w-3xl mx-auto text-base sm:text-lg text-foreground/70 leading-relaxed">Sitting in the tropical belt, Hainan produces more than 50 varieties of fruit — many available almost year-round. Roadside stalls and morning markets are the best places to try them.</p>
+            <p className="max-w-3xl mx-auto text-base sm:text-lg text-foreground/70 leading-relaxed">{lang === 'zh' ? '海南地处热带，盛产50多种水果，许多几乎全年可供应。路边摊和早市是品尝的最佳去处。' : 'Sitting in the tropical belt, Hainan produces more than 50 varieties of fruit — many available almost year-round. Roadside stalls and morning markets are the best places to try them.'}</p>
           </div>
 
           <div className="relative aspect-[21/9] rounded-2xl overflow-hidden shadow-card mb-10 lg:mb-12">
@@ -383,65 +383,65 @@ export default function CuisinePage() {
             {/* Fruit 1: Mango */}
             <div className="bg-white rounded-xl p-5 lg:p-6 shadow-card hover:shadow-float transition-all h-full">
               <svg className="w-5 h-5 text-accent-gold mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22c-4.97 0-9-4.03-9-9 0-2.39 1.14-4.49 2.39-6.29C6.57 4.87 8 2 12 2s5.43 2.87 6.61 4.71C19.86 8.51 21 10.61 21 13c0 4.97-4.03 9-9 9z"/></svg>
-              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">Mango 芒果</h4>
-              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">April – July</p>
-              <p className="text-xs sm:text-sm text-foreground/70">Sanya golden mangoes</p>
+              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">{lang === 'zh' ? '芒果' : 'Mango'} 芒果</h4>
+              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">{lang === 'zh' ? '4月 – 7月' : 'April – July'}</p>
+              <p className="text-xs sm:text-sm text-foreground/70">{lang === 'zh' ? '三亚金芒' : 'Sanya golden mangoes'}</p>
             </div>
 
             {/* Fruit 2: Coconut */}
             <div className="bg-white rounded-xl p-5 lg:p-6 shadow-card hover:shadow-float transition-all h-full">
               <svg className="w-5 h-5 text-accent-gold mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22c-4.97 0-9-4.03-9-9 0-2.39 1.14-4.49 2.39-6.29C6.57 4.87 8 2 12 2s5.43 2.87 6.61 4.71C19.86 8.51 21 10.61 21 13c0 4.97-4.03 9-9 9z"/></svg>
-              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">Coconut 椰子</h4>
-              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">Year-round</p>
-              <p className="text-xs sm:text-sm text-foreground/70">Wenchang variety</p>
+              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">{lang === 'zh' ? '椰子' : 'Coconut'} 椰子</h4>
+              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">{lang === 'zh' ? '全年' : 'Year-round'}</p>
+              <p className="text-xs sm:text-sm text-foreground/70">{lang === 'zh' ? '文昌品种' : 'Wenchang variety'}</p>
             </div>
 
             {/* Fruit 3: Mangosteen */}
             <div className="bg-white rounded-xl p-5 lg:p-6 shadow-card hover:shadow-float transition-all h-full">
               <svg className="w-5 h-5 text-accent-gold mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22c-4.97 0-9-4.03-9-9 0-2.39 1.14-4.49 2.39-6.29C6.57 4.87 8 2 12 2s5.43 2.87 6.61 4.71C19.86 8.51 21 10.61 21 13c0 4.97-4.03 9-9 9z"/></svg>
-              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">Mangosteen 山竹</h4>
-              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">May – September</p>
-              <p className="text-xs sm:text-sm text-foreground/70">Purple queen of fruits</p>
+              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">{lang === 'zh' ? '山竹' : 'Mangosteen'} 山竹</h4>
+              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">{lang === 'zh' ? '5月 – 9月' : 'May – September'}</p>
+              <p className="text-xs sm:text-sm text-foreground/70">{lang === 'zh' ? '紫色水果皇后' : 'Purple queen of fruits'}</p>
             </div>
 
             {/* Fruit 4: Dragon Fruit */}
             <div className="bg-white rounded-xl p-5 lg:p-6 shadow-card hover:shadow-float transition-all h-full">
               <svg className="w-5 h-5 text-accent-gold mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22c-4.97 0-9-4.03-9-9 0-2.39 1.14-4.49 2.39-6.29C6.57 4.87 8 2 12 2s5.43 2.87 6.61 4.71C19.86 8.51 21 10.61 21 13c0 4.97-4.03 9-9 9z"/></svg>
-              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">Dragon Fruit 火龙果</h4>
-              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">June – November</p>
-              <p className="text-xs sm:text-sm text-foreground/70">Red-fleshed &amp; sweet</p>
+              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">{lang === 'zh' ? '火龙果' : 'Dragon Fruit'} 火龙果</h4>
+              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">{lang === 'zh' ? '6月 – 11月' : 'June – November'}</p>
+              <p className="text-xs sm:text-sm text-foreground/70">{lang === 'zh' ? '红心 & 甜' : 'Red-fleshed & sweet'}</p>
             </div>
 
             {/* Fruit 5: Lychee */}
             <div className="bg-white rounded-xl p-5 lg:p-6 shadow-card hover:shadow-float transition-all h-full">
               <svg className="w-5 h-5 text-accent-gold mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22c-4.97 0-9-4.03-9-9 0-2.39 1.14-4.49 2.39-6.29C6.57 4.87 8 2 12 2s5.43 2.87 6.61 4.71C19.86 8.51 21 10.61 21 13c0 4.97-4.03 9-9 9z"/></svg>
-              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">Lychee 荔枝</h4>
-              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">May – June</p>
-              <p className="text-xs sm:text-sm text-foreground/70">Hainan is China&apos;s earliest harvest</p>
+              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">{lang === 'zh' ? '荔枝' : 'Lychee'} 荔枝</h4>
+              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">{lang === 'zh' ? '5月 – 6月' : 'May – June'}</p>
+              <p className="text-xs sm:text-sm text-foreground/70">{lang === 'zh' ? '海南是中国最早收获' : 'Hainan is China\'s earliest harvest'}</p>
             </div>
 
             {/* Fruit 6: Longan */}
             <div className="bg-white rounded-xl p-5 lg:p-6 shadow-card hover:shadow-float transition-all h-full">
               <svg className="w-5 h-5 text-accent-gold mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22c-4.97 0-9-4.03-9-9 0-2.39 1.14-4.49 2.39-6.29C6.57 4.87 8 2 12 2s5.43 2.87 6.61 4.71C19.86 8.51 21 10.61 21 13c0 4.97-4.03 9-9 9z"/></svg>
-              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">Longan 龙眼</h4>
-              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">July – August</p>
-              <p className="text-xs sm:text-sm text-foreground/70">Sweet &amp; floral</p>
+              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">{lang === 'zh' ? '龙眼' : 'Longan'} 龙眼</h4>
+              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">{lang === 'zh' ? '7月 – 8月' : 'July – August'}</p>
+              <p className="text-xs sm:text-sm text-foreground/70">{lang === 'zh' ? '甜 & 花香' : 'Sweet & floral'}</p>
             </div>
 
             {/* Fruit 7: Jackfruit */}
             <div className="bg-white rounded-xl p-5 lg:p-6 shadow-card hover:shadow-float transition-all h-full">
               <svg className="w-5 h-5 text-accent-gold mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22c-4.97 0-9-4.03-9-9 0-2.39 1.14-4.49 2.39-6.29C6.57 4.87 8 2 12 2s5.43 2.87 6.61 4.71C19.86 8.51 21 10.61 21 13c0 4.97-4.03 9-9 9z"/></svg>
-              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">Jackfruit 菠萝蜜</h4>
-              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">April – August</p>
-              <p className="text-xs sm:text-sm text-foreground/70">Massive &amp; fragrant</p>
+              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">{lang === 'zh' ? '菠萝蜜' : 'Jackfruit'} 菠萝蜜</h4>
+              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">{lang === 'zh' ? '4月 – 8月' : 'April – August'}</p>
+              <p className="text-xs sm:text-sm text-foreground/70">{lang === 'zh' ? '大 & 香' : 'Massive & fragrant'}</p>
             </div>
 
             {/* Fruit 8: Wax Apple */}
             <div className="bg-white rounded-xl p-5 lg:p-6 shadow-card hover:shadow-float transition-all h-full">
               <svg className="w-5 h-5 text-accent-gold mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22c-4.97 0-9-4.03-9-9 0-2.39 1.14-4.49 2.39-6.29C6.57 4.87 8 2 12 2s5.43 2.87 6.61 4.71C19.86 8.51 21 10.61 21 13c0 4.97-4.03 9-9 9z"/></svg>
-              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">Wax Apple 莲雾</h4>
-              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">May – July</p>
-              <p className="text-xs sm:text-sm text-foreground/70">Crisp &amp; refreshing</p>
+              <h4 className="font-display text-base sm:text-lg text-primary-deep leading-snug mb-2">{lang === 'zh' ? '莲雾' : 'Wax Apple'} 莲雾</h4>
+              <p className="text-[11px] sm:text-xs text-foreground/50 uppercase tracking-wider mb-1">{lang === 'zh' ? '5月 – 7月' : 'May – July'}</p>
+              <p className="text-xs sm:text-sm text-foreground/70">{lang === 'zh' ? '脆 & 清爽' : 'Crisp & refreshing'}</p>
             </div>
           </div>
         </div>
@@ -460,8 +460,8 @@ export default function CuisinePage() {
             <img src="/hainan-seafood-market.jpg" alt="Sanya seafood market" style={{width:'100%',height:'100%',objectFit:'cover'}} />
             <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-transparent"></div>
             <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10">
-              <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">Local Institution</span>
-              <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-white mt-2 leading-tight">Sanya Seafood Market</h3>
+              <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">{lang === 'zh' ? '本地推荐' : 'Local Institution'}</span>
+              <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-white mt-2 leading-tight">{lang === 'zh' ? '三亚海鲜市场' : 'Sanya Seafood Market'}</h3>
             </div>
           </div>
 
@@ -504,13 +504,12 @@ export default function CuisinePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <RevealOnScroll>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white leading-tight mb-6">
-              Taste the Island
+              {lang === 'zh' ? '品味海南' : 'Taste the Island'}
             </h2>
           </RevealOnScroll>
           <RevealOnScroll delay={0.15}>
             <p className="text-white/70 text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-              From poached Wenchang chicken to a Sanya seafood feast — every
-              meal in Hainan is an invitation.
+              {lang === 'zh' ? '从白切文昌鸡到三亚海鲜盛宴——海南的每一餐都是一次邀请。' : 'From poached Wenchang chicken to a Sanya seafood feast — every meal in Hainan is an invitation.'}
             </p>
           </RevealOnScroll>
           <RevealOnScroll delay={0.3}>
@@ -519,7 +518,7 @@ export default function CuisinePage() {
               className="inline-flex items-center gap-2 px-8 sm:px-10 py-4 text-base font-semibold text-primary-deep bg-accent-gold hover:bg-accent-gold/90 rounded-md transition-all hover:scale-105 shadow-lg"
             >
               <ArrowLeft className="w-4 h-4" />
-              Back to Explore Hainan
+              {lang === 'zh' ? '返回探索海南' : 'Back to Explore Hainan'}
             </Link>
           </RevealOnScroll>
         </div>

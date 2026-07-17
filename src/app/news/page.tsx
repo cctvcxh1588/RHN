@@ -59,11 +59,13 @@ export default function NewsPage() {
   useEffect(() => {
     document.title = lang === 'zh' ? "新闻与媒体 | 环海南岛国际大帆船赛" : "News & Media | Round Hainan Regatta";
 
+    setLoading(true);
+
     // Fetch CMS news
-    fetch("/api/cms/news?published=true")
+    const newsPromise = fetch("/api/cms/news?published=true")
       .then((r) => r.json())
       .then((data: CmsNewsResponse) => {
-        if (!data.ok || !Array.isArray(data.items)) return;
+        if (!data.ok || !Array.isArray(data.items)) return [];
         const cmsItems: Article[] = data.items.map((n) => {
           const dateObj = n.published_at
             ? new Date(n.published_at)
@@ -85,27 +87,28 @@ export default function NewsPage() {
         });
         // Sort by date desc
         cmsItems.sort((a, b) => b.sortKey - a.sortKey);
-        setArticles(cmsItems);
+        return cmsItems;
       })
-      .catch(() => {
-        /* silent fallback to empty */
-      });
+      .catch(() => []);
 
     // Fetch gallery images
-    fetch("/api/cms/gallery?published=true")
+    const galleryPromise = fetch("/api/cms/gallery?published=true")
       .then((r) => r.json())
       .then((data: CmsGalleryResponse) => {
-        if (!data.ok || !Array.isArray(data.items)) return;
-        const items = data.items
+        if (!data.ok || !Array.isArray(data.items)) return [];
+        return data.items
           .sort((a, b) => a.sort_order - b.sort_order)
           .map((g) => ({ src: g.src, alt: g.alt }));
-        setGalleryImages(items);
       })
-      .catch(() => {
-        /* silent */
-      })
-      .finally(() => setLoading(false));
-  }, []);
+      .catch(() => []);
+
+    // Wait for both to complete
+    Promise.all([newsPromise, galleryPromise]).then(([articles, images]) => {
+      setArticles(articles);
+      setGalleryImages(images);
+      setLoading(false);
+    });
+  }, [lang]);
 
   return (
     <div className="min-h-screen">

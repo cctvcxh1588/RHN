@@ -283,7 +283,7 @@ export default function FreeTradePortPage() {
               </RevealOnScroll>
               <RevealOnScroll delay={0.1}>
                 <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">
-                  Key Policies at a Glance
+                  {lang === 'zh' ? '关键政策一览' : 'Key Policies at a Glance'}
                 </h2>
               </RevealOnScroll>
               <RevealOnScroll delay={0.2}>
@@ -335,7 +335,7 @@ export default function FreeTradePortPage() {
                     {lang === 'zh' ? '帆船社区专属' : 'For the Sailing Community'}
                   </span>
                   <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">
-                    Built for International Sailors
+                    {lang === 'zh' ? '为国际帆船人而建' : 'Built for International Sailors'}
                   </h2>
                   <div className="w-16 h-1 bg-accent-gold mb-8" />
                   <p className="text-base sm:text-lg text-foreground/80 leading-relaxed mb-6">

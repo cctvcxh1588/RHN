@@ -93,7 +93,7 @@ export default function BeachesPage() {
       desc: lang === 'zh'
         ? '同样位于万宁，日月湾全年浪涌稳定，已成为中国冲浪文化的核心，是万宁日月湾国际冲浪节的举办地。'
         : 'Also in Wanning, Riyue Bay (&ldquo;Sun-Moon Bay&rdquo;) hosts consistent year-round swells and has become the undisputed heart of Chinese surf culture, home to the Wanning Riyue Bay International Surfing Festival.',
-      image: '/phoenix-sanya.jpg',
+      image: '/riyue-bay.jpg',
     },
   ];
 
@@ -246,24 +246,48 @@ export default function BeachesPage() {
           <RevealOnScroll delay={0.3}>
             <div className="max-w-4xl space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed">
               <p>
-                With 1,823 kilometres of coastline — more than any other Chinese
-                province — Hainan is a country&apos;s worth of beaches concentrated
-                into a single tropical island. Sixty-eight named bays curl around
-                the coast, each with its own character: from world-famous resort
-                strips to hidden fishing coves reachable only by boat.
+                {lang === 'zh' ? (
+                  <>
+                    海南拥有 1,823 公里的海岸线——比中国其他任何省份都长——将一个国家级别的海滩集中在一个热带岛屿上。68 个命名海湾环绕海岸，各有特色：从世界著名的度假胜地到只能乘船到达的隐秘渔村。
+                  </>
+                ) : (
+                  <>
+                    With 1,823 kilometres of coastline — more than any other Chinese
+                    province — Hainan is a country&apos;s worth of beaches concentrated
+                    into a single tropical island. Sixty-eight named bays curl around
+                    the coast, each with its own character: from world-famous resort
+                    strips to hidden fishing coves reachable only by boat.
+                  </>
+                )}
               </p>
               <p>
-                Sitting on the same latitude as Hawaii, Hainan enjoys a genuinely
-                tropical climate. Average sea temperatures never drop below 22 °C,
-                and the water clarity in the southern bays rivals the best of
-                Southeast Asia. From November to April the trade winds turn the
-                island into one of Asia&apos;s premier destinations for sailing,
-                kite surfing and offshore racing.
+                {lang === 'zh' ? (
+                  <>
+                    海南与夏威夷处于同一纬度，享有真正的热带气候。平均海水温度从不低于 22°C，南部海湾的水质清澈度可与东南亚最佳海域媲美。11 月至 4 月的信风使该岛成为亚洲帆船、风筝冲浪和离岸赛的顶级目的地之一。
+                  </>
+                ) : (
+                  <>
+                    Sitting on the same latitude as Hawaii, Hainan enjoys a genuinely
+                    tropical climate. Average sea temperatures never drop below 22 °C,
+                    and the water clarity in the southern bays rivals the best of
+                    Southeast Asia. From November to April the trade winds turn the
+                    island into one of Asia&apos;s premier destinations for sailing,
+                    kite surfing and offshore racing.
+                  </>
+                )}
               </p>
               <p>
-                Whether you seek luxury resorts, quiet coconut-lined shores or
-                world-class dive sites, Hainan&apos;s coastline offers a bay for
-                every kind of traveller.
+                {lang === 'zh' ? (
+                  <>
+                    无论您寻找豪华度假村、安静的椰林海岸还是世界级的潜水点，海南的海岸线都能为每位旅行者提供一个海湾。
+                  </>
+                ) : (
+                  <>
+                    Whether you seek luxury resorts, quiet coconut-lined shores or
+                    world-class dive sites, Hainan&apos;s coastline offers a bay for
+                    every kind of traveller.
+                  </>
+                )}
               </p>
             </div>
           </RevealOnScroll>
@@ -276,13 +300,13 @@ export default function BeachesPage() {
           <div className="text-center mb-14">
             <RevealOnScroll>
               <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-                Top Beach Destinations
-              </span>
+                  {lang === 'zh' ? '顶级海滩' : 'Top Beach Destinations'}
+                </span>
             </RevealOnScroll>
             <RevealOnScroll delay={0.1}>
               <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">
-                Six Bays to Know
-              </h2>
+                  {lang === 'zh' ? '六大必知海湾' : 'Six Bays to Know'}
+                </h2>
             </RevealOnScroll>
             <RevealOnScroll delay={0.2}>
               <div className="w-16 h-1 bg-accent-gold mx-auto" />
@@ -334,12 +358,20 @@ export default function BeachesPage() {
                 </h2>
                 <div className="w-16 h-1 bg-accent-gold mb-8" />
                 <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
-                  Hainan&apos;s combination of warm seas, steady winds and
-                  world-class marine infrastructure has made it China&apos;s
-                  undisputed capital of ocean sports. From the racing fleets
-                  of the Round Hainan Regatta to family snorkelling trips off
-                  Wuzhizhou Island, every level of water enthusiast is
-                  catered for.
+                  {lang === 'zh' ? (
+                    <>
+                      海南温暖的海域、稳定的风和世界级的海洋基础设施使其成为中国无可争议的海洋运动之都。从环海南岛国际大帆船赛的赛船队到蜈支洲岛的家庭浮潜之旅，各级水上爱好者都能找到适合自己的活动。
+                    </>
+                  ) : (
+                    <>
+                      Hainan&apos;s combination of warm seas, steady winds and
+                      world-class marine infrastructure has made it China&apos;s
+                      undisputed capital of ocean sports. From the racing fleets
+                      of the Round Hainan Regatta to family snorkelling trips off
+                      Wuzhizhou Island, every level of water enthusiast is
+                      catered for.
+                    </>
+                  )}
                 </p>
               </div>
             </RevealOnScroll>
@@ -370,7 +402,7 @@ export default function BeachesPage() {
           <RevealOnScroll>
             <div className="mt-16 relative aspect-[21/9] rounded-2xl overflow-hidden shadow-card">
               <Image
-                src="/hainan-diving.jpg"
+                src="/wuzhizhou-island.jpg"
                 alt="Wuzhizhou Island diving"
                 fill
                 className="object-cover"
@@ -378,10 +410,10 @@ export default function BeachesPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/70 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10">
                 <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">
-                  Wuzhizhou Island
+                  {lang === 'zh' ? '蜈支洲岛' : 'Wuzhizhou Island'}
                 </span>
                 <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-white mt-2 leading-tight">
-                  Hainan&apos;s Underwater Playground
+                  {lang === 'zh' ? '海南的水下乐园' : 'Hainan&apos;s Underwater Playground'}
                 </h3>
               </div>
             </div>
@@ -435,15 +467,23 @@ export default function BeachesPage() {
                   </h3>
                 </div>
                 <p className="text-sm sm:text-base text-foreground/70 leading-relaxed mb-4">
-                  Hainan&apos;s peak season. Dry, sunny weather with daytime
-                  highs of 22–28 °C and cool nights. Perfect conditions for
-                  sailing, beach days and long-distance racing. The Round Hainan
-                  Regatta takes place in this window.
+                  {lang === 'zh' ? (
+                    <>
+                      海南的旅游旺季。干燥晴朗，白天温度 22–28°C，夜晚凉爽。是帆船、海滩度假和长距离赛事的完美条件。环海南岛国际大帆船赛就在此期间举行。
+                    </>
+                  ) : (
+                    <>
+                      Hainan&apos;s peak season. Dry, sunny weather with daytime
+                      highs of 22–28 °C and cool nights. Perfect conditions for
+                      sailing, beach days and long-distance racing. The Round Hainan
+                      Regatta takes place in this window.
+                    </>
+                  )}
                 </p>
                 <div className="flex items-center gap-2 text-xs text-primary-deep/70">
                   <Thermometer className="w-4 h-4" />
                   <span className="font-medium tracking-wide">
-                    Avg. sea temp: 24–26 °C
+                    {lang === 'zh' ? '平均海水温度：24–26°C' : 'Avg. sea temp: 24–26 °C'}
                   </span>
                 </div>
               </div>
@@ -458,15 +498,23 @@ export default function BeachesPage() {
                   </h3>
                 </div>
                 <p className="text-sm sm:text-base text-foreground/70 leading-relaxed mb-4">
-                  Hot and humid with occasional typhoons. Temperatures climb to
-                  32 °C, rainfall increases and afternoon storms are common —
-                  but the surf is at its best, resort prices drop, and the
-                  landscape is at its greenest.
+                  {lang === 'zh' ? (
+                    <>
+                      炎热潮湿，偶有台风。气温升至 32°C，降雨增多，午后风暴常见——但此时冲浪条件最佳，度假村价格下降，植被最为葱郁。
+                    </>
+                  ) : (
+                    <>
+                      Hot and humid with occasional typhoons. Temperatures climb to
+                      32 °C, rainfall increases and afternoon storms are common —
+                      but the surf is at its best, resort prices drop, and the
+                      landscape is at its greenest.
+                    </>
+                  )}
                 </p>
                 <div className="flex items-center gap-2 text-xs text-primary-deep/70">
                   <Thermometer className="w-4 h-4" />
                   <span className="font-medium tracking-wide">
-                    Avg. sea temp: 28–30 °C
+                    {lang === 'zh' ? '平均海水温度：28–30°C' : 'Avg. sea temp: 28–30 °C'}
                   </span>
                 </div>
               </div>

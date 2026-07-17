@@ -299,7 +299,7 @@ export default function CulturePage() {
                                 <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">{lang === 'zh' ? '节日与庆典' : 'Festivals & Celebrations'}</span>
                             </RevealOnScroll>
                             <RevealOnScroll delay={0.1}>
-                                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">A Year of Celebration</h2>
+                                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">{lang === 'zh' ? '全年庆典' : 'A Year of Celebration'}</h2>
                             </RevealOnScroll>
                             <RevealOnScroll delay={0.2}>
                                 <div className="w-16 h-1 bg-accent-gold mx-auto" />
@@ -386,16 +386,16 @@ export default function CulturePage() {
                         <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">{lang === 'zh' ? '三千年活态文化' : 'Three Thousand Years of Living Culture'}</span>
                     </RevealOnScroll>
                     <RevealOnScroll delay={0.1}>
-                        <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">An Island of Many Peoples</h2>
+                        <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">{lang === 'zh' ? '多民族之岛' : 'An Island of Many Peoples'}</h2>
                     </RevealOnScroll>
                     <RevealOnScroll delay={0.2}>
                         <div className="w-16 h-1 bg-accent-gold mb-10" />
                     </RevealOnScroll>
                     <RevealOnScroll delay={0.3}>
                         <div className="max-w-4xl space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed">
-                            <p>Long before Hainan became a tropical resort destination, it was home to some of southern China&apos;s oldest civilisations. The Li people arrived from the mainland more than 3,000 years ago, followed centuries later by the Miao, the Hui, and finally waves of Han settlers, merchants and returning Overseas Chinese.</p>
-                            <p>The result is a cultural tapestry unlike anywhere else in China: boat-shaped Li houses beneath coconut groves; Miao silver headdresses catching the mountain sun; Southeast Asian arcaded shophouses lining Haikou&apos;s old streets; and Buddhist temples opening onto tropical seas.</p>
-                            <p>For visitors to the Round Hainan Regatta, exploring these heritage sites is a chance to see the human story behind the landscape — a story written in fabric, silver, song and stone.</p>
+                            <p>{lang === 'zh' ? '早在海南成为热带度假胜地之前，它就是华南最古老文明的家园。黎族人在3000多年前从大陆迁徙而来，几个世纪后，苗族、回族以及大批汉族移民、商人和归国华侨相继到来。' : 'Long before Hainan became a tropical resort destination, it was home to some of southern China\'s oldest civilisations. The Li people arrived from the mainland more than 3,000 years ago, followed centuries later by the Miao, the Hui, and finally waves of Han settlers, merchants and returning Overseas Chinese.'}</p>
+                            <p>{lang === 'zh' ? '这造就了中国独一无二的文化织锦：椰林下的黎族船形屋；山间阳光下的苗族银冠；海口老街的东南亚骑楼；以及面向热带大海的佛教寺庙。' : 'The result is a cultural tapestry unlike anywhere else in China: boat-shaped Li houses beneath coconut groves; Miao silver headdresses catching the mountain sun; Southeast Asian arcaded shophouses lining Haikou\'s old streets; and Buddhist temples opening onto tropical seas.'}</p>
+                            <p>{lang === 'zh' ? '对于环海南岛大帆船赛的游客来说，探索这些文化遗产是了解风景背后人文故事的机会——一个用织物、银器、歌声和石头书写的故事。' : 'For visitors to the Round Hainan Regatta, exploring these heritage sites is a chance to see the human story behind the landscape — a story written in fabric, silver, song and stone.'}</p>
                         </div>
                     </RevealOnScroll>
                 </div>
@@ -412,10 +412,10 @@ export default function CulturePage() {
                                     className="object-cover" />
                             </div>
                             <div>
-                                <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">Living Heritage</span>
-                                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-primary-deep mt-3 mb-4 leading-tight">A Textile Tradition of 3,000 Years</h3>
+                                <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">{lang === 'zh' ? '活态遗产' : 'Living Heritage'}</span>
+                                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-primary-deep mt-3 mb-4 leading-tight">{lang === 'zh' ? '三千年的纺织传统' : 'A Textile Tradition of 3,000 Years'}</h3>
                                 <div className="w-16 h-1 bg-accent-gold mb-6" />
-                                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">Woven on backstrap looms by generations of Li women, brocade is more than fabric — it is a living record of clan lineage, cosmology and myth. UNESCO recognised its urgent need for safeguarding in 2009, and today a new generation of weavers is keeping the loom alive in villages across central Hainan.</p>
+                                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{lang === 'zh' ? '黎族妇女用腰机织布，世代相传，织锦不仅是织物——它是氏族血统、宇宙观和神话的活态记录。2009年联合国教科文组织认定其急需保护，如今新一代织布人正在海南中部的村庄里保持织机的活力。' : 'Woven on backstrap looms by generations of Li women, brocade is more than fabric — it is a living record of clan lineage, cosmology and myth. UNESCO recognised its urgent need for safeguarding in 2009, and today a new generation of weavers is keeping the loom alive in villages across central Hainan.'}</p>
                             </div>
                         </div>
                     </RevealOnScroll>
@@ -423,9 +423,9 @@ export default function CulturePage() {
                         <RevealOnScroll>
                             <div className="lg:col-span-1">
                                 <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">{lang === 'zh' ? '最早的岛民' : 'The First Islanders'}</span>
-                                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">The Li People 黎族</h2>
+                                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">{lang === 'zh' ? '黎族' : 'The Li People'} 黎族</h2>
                                 <div className="w-16 h-1 bg-accent-gold mb-6" />
-                                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">With a population of approximately 1.5 million, the Li are Hainan&apos;s oldest inhabitants — believed to have crossed from the mainland during the late Neolithic. They speak a Tai-Kadai language and preserve traditions unbroken for millennia.</p>
+                                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{lang === 'zh' ? '黎族人口约150万，是海南最古老的居民——据信在新石器时代晚期从大陆渡海而来。他们说侗台语系语言，保存了数千年来未曾中断的传统。' : 'With a population of approximately 1.5 million, the Li are Hainan\'s oldest inhabitants — believed to have crossed from the mainland during the late Neolithic. They speak a Tai-Kadai language and preserve traditions unbroken for millennia.'}</p>
                             </div>
                         </RevealOnScroll>
                         <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -453,9 +453,9 @@ export default function CulturePage() {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-14">
                             <div className="order-2 lg:order-1">
                                 <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">{lang === 'zh' ? '银饰与民歌' : 'Silver & Song'}</span>
-                                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-primary-deep mt-3 mb-4 leading-tight">Wearable Family Fortunes</h3>
+                                <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-primary-deep mt-3 mb-4 leading-tight">{lang === 'zh' ? '可穿戴的家产' : 'Wearable Family Fortunes'}</h3>
                                 <div className="w-16 h-1 bg-accent-gold mb-6" />
-                                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">Miao silversmiths handcraft elaborate headdresses, collars and bracelets that can weigh several kilograms — worn on festival days as a shining record of family history. Each piece encodes ancestral stories, protective symbols and mountain motifs passed from mother to daughter.</p>
+                                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{lang === 'zh' ? '苗族银匠手工打造精美的头饰、项圈和手镯，重达数公斤——在节日佩戴，作为家族历史的闪亮记录。每件银饰都编码了祖先故事、保护符号和山峦图案，从母亲传给女儿。' : 'Miao silversmiths handcraft elaborate headdresses, collars and bracelets that can weigh several kilograms — worn on festival days as a shining record of family history. Each piece encodes ancestral stories, protective symbols and mountain motifs passed from mother to daughter.'}</p>
                             </div>
                             <div className="order-1 lg:order-2 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-card">
                                 <Image src="/hainan-miao-silver.jpg" alt="Miao silver ornaments" fill className="object-cover" />
@@ -466,9 +466,9 @@ export default function CulturePage() {
                         <RevealOnScroll>
                             <div className="lg:col-span-1">
                                 <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">{lang === 'zh' ? '山地社区' : 'Mountain Communities'}</span>
-                                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">The Miao People 苗族</h2>
+                                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">{lang === 'zh' ? '苗族' : 'The Miao People'} 苗族</h2>
                                 <div className="w-16 h-1 bg-accent-gold mb-6" />
-                                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">Hainan&apos;s Miao communities settled in the central highlands during the Ming dynasty, arriving from Guangxi as soldiers and later farmers. Today they preserve their distinct language, dress and music in villages nestled among the tropical mountains.</p>
+                                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{lang === 'zh' ? '海南的苗族社区在明朝时期定居于中部高地，从广西作为士兵后来成为农民迁徙而来。如今他们在热带山间的村庄里保存着独特的语言、服饰和音乐。' : 'Hainan\'s Miao communities settled in the central highlands during the Ming dynasty, arriving from Guangxi as soldiers and later farmers. Today they preserve their distinct language, dress and music in villages nestled among the tropical mountains.'}</p>
                             </div>
                         </RevealOnScroll>
                         <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -494,10 +494,10 @@ export default function CulturePage() {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-14">
                         <RevealOnScroll>
-                            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">Cultural Sites to Visit</span>
+                            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-accent-gold uppercase">{lang === 'zh' ? '文化遗址' : 'Cultural Sites to Visit'}</span>
                         </RevealOnScroll>
                         <RevealOnScroll delay={0.1}>
-                            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">Where Heritage Lives</h2>
+                            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-primary-deep mt-3 mb-4 leading-tight">{lang === 'zh' ? '遗产活态之地' : 'Where Heritage Lives'}</h2>
                         </RevealOnScroll>
                         <RevealOnScroll delay={0.2}>
                             <div className="w-16 h-1 bg-accent-gold mx-auto" />

@@ -13,6 +13,9 @@ import {
   FileText,
   Send,
   AlertCircle,
+  Calendar,
+  DollarSign,
+  ClipboardList,
 } from 'lucide-react';
 import RevealOnScroll from '@/components/RevealOnScroll';
 import { useLang } from '@/lib/LanguageProvider';
@@ -170,6 +173,64 @@ export default function RegisterPage() {
       {/* Form */}
       <section className="py-16 lg:py-24 bg-surface-container/30">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          {/* Registration Info */}
+          <RevealOnScroll>
+            <div className="bg-white rounded-2xl shadow-card p-6 md:p-8 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Deadline */}
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-accent-coral/10 flex items-center justify-center shrink-0">
+                    <Calendar size={20} className="text-accent-coral" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-foreground uppercase tracking-wide">
+                      {lang === 'zh' ? '报名截止' : 'Registration Deadline'}
+                    </h3>
+                    <p className="text-lg font-bold text-accent-coral mt-1">
+                      {lang === 'zh' ? '2026年10月9日 18:00' : 'October 9, 2026 · 18:00'}
+                    </p>
+                    <p className="text-xs text-foreground/60 mt-1">
+                      {lang === 'zh' ? '北京时间' : 'Beijing Time (UTC+8)'}
+                    </p>
+                  </div>
+                </div>
+                {/* Fee */}
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-accent-gold/15 flex items-center justify-center shrink-0">
+                    <Anchor size={20} className="text-accent-gold" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-foreground uppercase tracking-wide">
+                      {lang === 'zh' ? '报名费用' : 'Entry Fee'}
+                    </h3>
+                    <p className="text-lg font-bold text-accent-gold mt-1">
+                      {lang === 'zh' ? '¥5,000 / 船' : '¥5,000 / Boat'}
+                    </p>
+                    <p className="text-xs text-foreground/60 mt-1">
+                      {lang === 'zh' ? '早鸟价截止至6月30日' : 'Early bird until June 30'}
+                    </p>
+                  </div>
+                </div>
+                {/* Documents */}
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                    <FileText size={20} className="text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-foreground uppercase tracking-wide">
+                      {lang === 'zh' ? '需提交文件' : 'Required Documents'}
+                    </h3>
+                    <ul className="text-xs text-foreground/70 mt-1 space-y-0.5">
+                      <li>• {lang === 'zh' ? 'ORC 证书' : 'ORC Certificate'}</li>
+                      <li>• {lang === 'zh' ? '船员保险证明' : 'Crew Insurance'}</li>
+                      <li>• {lang === 'zh' ? '安全设备清单' : 'Safety Equipment List'}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </RevealOnScroll>
+
           {success ? (
             <RevealOnScroll>
               <div className="bg-white rounded-2xl shadow-card p-8 md:p-12 text-center">

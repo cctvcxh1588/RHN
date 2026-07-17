@@ -48,7 +48,7 @@ function AnimatedCounter(
 
         observer.observe(el);
         return () => observer.disconnect();
-    }, [hasStarted]);
+    }, []);
 
     useEffect(() => {
         if (!hasStarted)

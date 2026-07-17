@@ -21,7 +21,7 @@ type CmsPage = {
 };
 
 export default function AboutPage() {
-  const { t } = useLang();
+  const { lang, t } = useLang();
   const [page, setPage] = useState<CmsPage | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -118,7 +118,7 @@ export default function AboutPage() {
             ) : (
               <div className="max-w-4xl space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed [&_p]:mb-4">
                 <p>
-                  Since its founding in 2011, the Round Hainan Regatta has
+                  Since its founding in 2010, the Round Hainan Regatta has
                   grown into one of Asia&apos;s premier offshore sailing events,
                   attracting world-class sailors and competitive fleets from
                   across the globe.
@@ -171,6 +171,34 @@ export default function AboutPage() {
                   <span className="block mt-3 text-sm sm:text-base text-foreground/60 uppercase tracking-[0.15em] font-medium">
                     {stat.label}
                   </span>
+                </div>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ 3.5 Historical Milestones Section ============ */}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <RevealOnScroll>
+            <h3 className="font-display text-2xl sm:text-3xl text-foreground mb-8">
+              {lang === 'zh' ? '历史里程碑' : 'Historical Milestones'}
+            </h3>
+          </RevealOnScroll>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { year: '2010', en: 'First edition held with 12 boats', zh: '首届赛事，12艘船参赛' },
+              { year: '2015', en: 'Became an international event with 30+ teams', zh: '成为国际赛事，30+支队伍' },
+              { year: '2020', en: 'Introduced ORC rating system', zh: '引入ORC评级系统' },
+              { year: '2026', en: '15th edition with 4 racing classes', zh: '第15届，4个竞赛组别' },
+            ].map((milestone, index) => (
+              <RevealOnScroll key={milestone.year} delay={index * 0.1}>
+                <div className="border-l-2 border-accent-gold pl-4">
+                  <span className="font-display text-2xl text-primary">{milestone.year}</span>
+                  <p className="text-sm text-foreground/70 mt-1">
+                    {lang === 'zh' ? milestone.zh : milestone.en}
+                  </p>
                 </div>
               </RevealOnScroll>
             ))}

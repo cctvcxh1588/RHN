@@ -121,11 +121,27 @@ export default function ContactPage() {
                                         <Mail className="w-5 h-5 text-primary" />
                                     </div>
                                     <div>
-                                        <h3 className="text-sm font-semibold text-primary-deep mb-1">Email
+                                        <h3 className="text-sm font-semibold text-primary-deep mb-1">{t('contact', 'email')}
                                                                 </h3>
                                         <a
-                                            href="mailto:roundhainanregatta@foxmail.com"
-                                            className="text-sm text-muted-foreground hover:text-primary transition-colors">roundhainanregatta@foxmail.com
+                                            href={`mailto:${t('contact', 'emailValue')}`}
+                                            className="text-sm text-muted-foreground hover:text-primary transition-colors">{t('contact', 'emailValue')}
+                                                                </a>
+                                    </div>
+                                </div>
+                                {}
+                                <div
+                                    className="flex items-start gap-5 p-6 bg-surface-container rounded-2xl hover:shadow-card transition-shadow">
+                                    <div
+                                        className="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center shrink-0">
+                                        <Phone className="w-5 h-5 text-primary" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-sm font-semibold text-primary-deep mb-1">{t('contact', 'phone')}
+                                                                </h3>
+                                        <a
+                                            href={`tel:${t('contact', 'phoneValue').replace(/\s+/g, '')}`}
+                                            className="text-sm text-muted-foreground hover:text-primary transition-colors">{t('contact', 'phoneValue')}
                                                                 </a>
                                     </div>
                                 </div>
@@ -137,11 +153,11 @@ export default function ContactPage() {
                                         <MapPin className="w-5 h-5 text-primary" />
                                     </div>
                                     <div>
-                                        <h3 className="text-sm font-semibold text-primary-deep mb-1">Location
+                                        <h3 className="text-sm font-semibold text-primary-deep mb-1">{t('contact', 'location')}
                                                                 </h3>
-                                        <p className="text-sm text-muted-foreground">Sanya, Hainan, China
+                                        <p className="text-sm text-muted-foreground">{t('footer', 'location')}
                                                                 </p>
-                                        <p className="text-xs text-muted-foreground/70 mt-1">Sanya Serenity Marina — Race Village
+                                        <p className="text-xs text-muted-foreground/70 mt-1">{t('contact', 'locationSub')}
                                                                 </p>
                                     </div>
                                 </div>

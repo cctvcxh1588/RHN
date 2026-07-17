@@ -88,10 +88,10 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-white/70">
               <li>
                 <a
-                  href="mailto:roundhainanregatta@foxmail.com"
+                  href={`mailto:${t('contact', 'emailValue')}`}
                   className="hover:text-white transition-colors"
                 >
-                  roundhainanregatta@foxmail.com
+                  {t('contact', 'emailValue')}
                 </a>
               </li>
               <li>{t('footer', 'location')}</li>

@@ -13,6 +13,7 @@ import {
     Sailboat,
     ChevronRight,
     MapPin,
+    ArrowRight,
 } from "lucide-react";
 
 import HeroCarousel from "@/components/HeroCarousel";
@@ -144,6 +145,26 @@ const racingClasses = [{
     features: ["ORC rating system", "Full circumnavigation", "Mixed fleet competition"]
 }];
 
+const scheduleHighlights = [{
+    date: "Nov 1",
+    titleEn: "Sanya Inshore Race",
+    titleZh: "三亚场地赛",
+    descEn: "Opening day racing in Sanya Bay for all classes",
+    descZh: "所有组别在三亚湾的开幕场地赛"
+}, {
+    date: "Nov 2",
+    titleEn: "Offshore Race Start",
+    titleZh: "远洋赛出发",
+    descEn: "Full Round fleet departs for 680nm circumnavigation",
+    descZh: "全程组船队出发挑战680海里环海南岛"
+}, {
+    date: "Nov 7",
+    titleEn: "Closing Ceremony",
+    titleZh: "闭幕式",
+    descEn: "Prize-giving and celebration at Sanya Serenity Marina",
+    descZh: "颁奖典礼暨庆祝活动在三亚半山半岛帆船港举行"
+}];
+
 export default function Home() {
     const {
         t,
@@ -156,22 +177,6 @@ export default function Home() {
         tagline?: string;
         date?: string;
     }>({});
-
-    // Schedule data
-    const [scheduleData, setScheduleData] = useState<Array<{
-        day_label: string;
-        date_label_en: string;
-        date_label_zh: string;
-        events_json?: Array<{
-            time: string;
-            label_en: string;
-            label_zh: string;
-            class_en: string;
-            class_zh: string;
-            location_en: string;
-            location_zh: string;
-        }>;
-    }>>([]);
 
     useEffect(() => {
         fetch('/api/cms/settings')
@@ -195,17 +200,6 @@ export default function Home() {
             })
             .catch(() => { /* silent fallback */ });
     }, [lang]);
-
-    useEffect(() => {
-        fetch('/api/cms/schedule')
-            .then(res => res.json())
-            .then(data => {
-                if (data.ok) {
-                    setScheduleData(data.items);
-                }
-            })
-            .catch(err => console.error('Failed to load schedule:', err));
-    }, []);
 
     const heroBadge = heroOverride.badge ?? t("home", "heroBadge");
     const heroTagline = heroOverride.tagline ?? `${t("home", "heroTitle")} ${t("home", "heroTitle2")}`;
@@ -473,7 +467,7 @@ export default function Home() {
                 </div>
             </section>
             {}
-            {/* Schedule Section - Full Table */}
+            {/* Schedule Section - Highlights */}
             <section className="bg-white py-16 md:py-24">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <RevealOnScroll>
@@ -490,64 +484,37 @@ export default function Home() {
                         </div>
                     </RevealOnScroll>
 
-                    {/* Schedule Table */}
-                    <RevealOnScroll>
-                        <div className="bg-card rounded-2xl shadow-card overflow-hidden border border-border">
-                            {/* Table Header */}
-                            <div className="grid grid-cols-12 bg-primary text-primary-foreground px-4 md:px-6 py-4 font-semibold text-sm">
-                                <div className="col-span-2 md:col-span-2">{lang === 'zh' ? '日期' : 'Date'}</div>
-                                <div className="col-span-2 md:col-span-2">{lang === 'zh' ? '时间' : 'Time'}</div>
-                                <div className="col-span-4 md:col-span-4">{lang === 'zh' ? '活动' : 'Activity'}</div>
-                                <div className="col-span-2 md:col-span-2">{lang === 'zh' ? '组别' : 'Class'}</div>
-                                <div className="col-span-2 md:col-span-2">{lang === 'zh' ? '地点' : 'Location'}</div>
-                            </div>
-
-                            {/* Table Body */}
-                            <div className="divide-y divide-border/50">
-                                {scheduleData.map((day, dayIdx) => (
-                                    <div key={dayIdx}>
-                                        {/* Day Header */}
-                                        <div className="grid grid-cols-12 bg-muted/50 px-4 md:px-6 py-3">
-                                            <div className="col-span-2 font-bold text-primary text-sm">
-                                                {day.day_label}
-                                            </div>
-                                            <div className="col-span-10 font-semibold text-foreground text-sm">
-                                                {lang === 'zh' ? day.date_label_zh : day.date_label_en}
-                                            </div>
-                                        </div>
-
-                                        {/* Events */}
-                                        {(day.events_json || []).map((event, eventIdx) => (
-                                            <div
-                                                key={eventIdx}
-                                                className="grid grid-cols-12 px-4 md:px-6 py-3 hover:bg-muted/30 transition-colors"
-                                            >
-                                                <div className="col-span-2 text-muted-foreground text-xs md:text-sm">
-                                                    {day.day_label}
-                                                </div>
-                                                <div className="col-span-2 font-mono text-xs md:text-sm font-medium text-foreground">
-                                                    {event.time}
-                                                </div>
-                                                <div className="col-span-4 text-xs md:text-sm font-medium text-foreground">
-                                                    {lang === 'zh' ? event.label_zh : event.label_en}
-                                                </div>
-                                                <div className="col-span-2 text-xs md:text-sm text-muted-foreground">
-                                                    {lang === 'zh' ? event.class_zh : event.class_en}
-                                                </div>
-                                                <div className="col-span-2 text-xs md:text-sm text-muted-foreground flex items-center gap-1">
-                                                    <MapPin className="w-3 h-3 flex-shrink-0" />
-                                                    <span className="truncate">{lang === 'zh' ? event.location_zh : event.location_en}</span>
-                                                </div>
-                                            </div>
-                                        ))}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                        {scheduleHighlights.map((item, idx) => (
+                            <RevealOnScroll key={idx}>
+                                <div className="bg-card rounded-xl p-8 shadow-card border border-border hover:shadow-float transition-shadow">
+                                    <div className="text-accent-gold font-display text-5xl font-bold mb-4">
+                                        {item.date}
                                     </div>
-                                ))}
-                            </div>
-                        </div>
-                    </RevealOnScroll>
+                                    <div className="font-semibold text-foreground text-lg mb-3">
+                                        {lang === 'zh' ? item.titleZh : item.titleEn}
+                                    </div>
+                                    <div className="text-muted-foreground text-sm leading-relaxed">
+                                        {lang === 'zh' ? item.descZh : item.descEn}
+                                    </div>
+                                </div>
+                            </RevealOnScroll>
+                        ))}
+                    </div>
+
+                    <div className="text-center">
+                        <Link
+                            href="/schedule"
+                            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                        >
+                            {lang === 'zh' ? '查看完整赛程' : 'View Full Schedule'}
+                            <ArrowRight className="w-5 h-5" />
+                        </Link>
+                    </div>
                 </div>
             </section>
-            {}
+
+            {/* Classes Section */}
             <section className="bg-surface-container py-16 md:py-24">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <RevealOnScroll>

@@ -190,7 +190,7 @@ export default function AboutPage() {
             {[
               { year: '2010', en: 'First edition held with 12 boats', zh: '首届赛事，12艘船参赛' },
               { year: '2015', en: 'Became an international event with 30+ teams', zh: '成为国际赛事，30+支队伍' },
-              { year: '2020', en: 'Introduced ORC rating system', zh: '引入ORC评级系统' },
+              { year: '2025', en: 'Introduced ORC rating system', zh: '引入ORC评级系统' },
               { year: '2026', en: '15th edition with 4 racing classes', zh: '第15届，4个竞赛组别' },
             ].map((milestone, index) => (
               <RevealOnScroll key={milestone.year} delay={index * 0.1}>

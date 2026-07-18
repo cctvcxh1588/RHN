@@ -189,7 +189,7 @@ export default function NewsPage() {
                       <span className="text-xs text-muted-foreground mb-2">
                         {article.date}
                       </span>
-                      <h3 className="text-lg font-bold text-primary-deep mb-2 leading-snug group-hover:text-primary transition-colors">
+                      <h3 className="text-lg font-display font-bold text-primary-deep mb-2 leading-snug group-hover:text-primary transition-colors tracking-tight">
                         {article.title}
                       </h3>
                       <p className="text-sm text-muted-foreground leading-relaxed flex-1">

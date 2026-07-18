@@ -51,7 +51,6 @@ export default async function CmsNewsDetailPage({ params }: { params: Promise<{ 
 	const title = lang === "zh" && item.title_zh ? item.title_zh : item.title_en;
 	const excerpt = lang === "zh" && item.excerpt_zh ? item.excerpt_zh : item.excerpt_en || "";
 	const bodyHtml = lang === "zh" && item.body_zh ? item.body_zh : item.body_en || "";
-	const bodyZhHtml = item.body_zh || "";
 
 	return (
 		<>
@@ -79,7 +78,7 @@ export default async function CmsNewsDetailPage({ params }: { params: Promise<{ 
 								<Calendar size={14} /> {new Date(item.published_at).toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { year: "numeric", month: "long", day: "numeric" })}
 							</span>
 						</div>
-						<h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">{title}</h1>
+						<h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">{title}</h1>
 						{excerpt && <p className="mt-6 text-lg text-white/90 leading-relaxed max-w-3xl">{excerpt}</p>}
 					</div>
 				</section>
@@ -91,12 +90,6 @@ export default async function CmsNewsDetailPage({ params }: { params: Promise<{ 
 							<div dangerouslySetInnerHTML={{ __html: bodyHtml }} />
 						) : (
 							<p className="text-ink-gray italic">No content.</p>
-						)}
-						{bodyZhHtml && (
-							<div className="mt-12 pt-8 border-t border-fog">
-								<h3 className="font-display text-2xl font-bold text-foreground mb-4">中文版</h3>
-								<div dangerouslySetInnerHTML={{ __html: bodyZhHtml }} />
-							</div>
 						)}
 					</div>
 				</section>

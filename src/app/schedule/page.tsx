@@ -19,7 +19,7 @@ interface ScheduleDay {
   day_label: string;
   date_label_en: string;
   date_label_zh: string;
-  events: ScheduleEvent[];
+  events_json?: ScheduleEvent[];
 }
 
 export default function SchedulePage() {
@@ -98,7 +98,7 @@ export default function SchedulePage() {
                     </div>
 
                     {/* Event Rows */}
-                    {day.events.map((event, eventIdx) => (
+                    {(day.events_json || []).map((event, eventIdx) => (
                       <div
                         key={eventIdx}
                         className="grid grid-cols-12 px-6 py-4 border-t border-border/50 hover:bg-muted/30 transition-colors"
@@ -145,7 +145,7 @@ export default function SchedulePage() {
 
                   {/* Events */}
                   <div className="divide-y divide-border/50">
-                    {day.events.map((event, eventIdx) => (
+                    {(day.events_json || []).map((event, eventIdx) => (
                       <div key={eventIdx} className="p-5 hover:bg-muted/30 transition-colors">
                         <div className="flex items-start gap-3">
                           <div className="flex-shrink-0 w-20 text-sm font-mono font-medium text-primary">

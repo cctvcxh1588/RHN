@@ -1,471 +1,216 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { ChevronDown, MapPin, Anchor, Ship, Compass, Calendar, ArrowRight, ClipboardList, Users, Trophy } from 'lucide-react';
-import RevealOnScroll from '@/components/RevealOnScroll';
 import { useLang } from '@/lib/LanguageProvider';
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from '@/components/ui/accordion';
+import RevealOnScroll from '@/components/RevealOnScroll';
+import { Calendar, MapPin, Users, Trophy } from 'lucide-react';
 
-/* ─── Types ─── */
-type ScheduleEvent = {
+interface ScheduleEvent {
   time: string;
   label_en: string;
   label_zh: string;
+  class_en: string;
+  class_zh: string;
   location_en: string;
   location_zh: string;
-  detail_en: string;
-  detail_zh: string;
-};
+}
 
-type ScheduleItem = {
-  id: string;
+interface ScheduleDay {
   day_label: string;
   date_label_en: string;
   date_label_zh: string;
-  title_en: string;
-  title_zh: string;
-  description_en: string | null;
-  description_zh: string | null;
-  location_en: string | null;
-  location_zh: string | null;
-  category: string;
-  sort_order: number;
-  events_json: string | ScheduleEvent[];
-  is_published: boolean;
-};
-
-type DayData = {
-  date: string;
-  day: string;
-  title: string;
-  icon: React.ComponentType<{ className?: string }>;
-  events: {
-    time: string;
-    label: string;
-    location: string;
-    detail: string;
-  }[];
-};
-
-/* ─── Icon mapping ─── */
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Ceremony: Calendar,
-  Race: Ship,
-  Briefing: ClipboardList,
-  Other: Compass,
-};
-
-function getIcon(category: string, sortOrder: number): React.ComponentType<{ className?: string }> {
-  if (iconMap[category]) return iconMap[category];
-  // Fallback based on sort_order
-  const fallbacks: React.ComponentType<{ className?: string }>[] = [Calendar, Ship, Compass, Anchor, Users, Trophy, ClipboardList, Ship];
-  return fallbacks[sortOrder % fallbacks.length];
+  events: ScheduleEvent[];
 }
 
-/* ─── SVG Timeline Line ─── */
-function TimelineLine() {
-  return (
-    <svg
-      className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 hidden md:block"
-      aria-hidden="true"
-    >
-      <line
-        x1="50%"
-        y1="0"
-        x2="50%"
-        y2="100%"
-        stroke="#F6AA00"
-        strokeWidth="2"
-        strokeDasharray="6 6"
-        className="opacity-50"
-      />
-    </svg>
-  );
-}
-
-/* ─── Timeline Dot ─── */
-function TimelineDot() {
-  return (
-    <div className="absolute left-1/2 top-6 z-10 hidden md:flex -translate-x-1/2 items-center justify-center">
-      <div className="h-5 w-5 rounded-full border-4 border-accent-gold bg-primary-deep shadow-[0_0_0_4px_rgba(246,170,0,0.2)]" />
-    </div>
-  );
-}
-
-/* ─── Day Card Component ─── */
-function DayCard({
-  day,
-  index,
-}: {
-  day: DayData;
-  index: number;
-}) {
-  const isLeft = index % 2 === 0;
-  const Icon = day.icon;
-
-  return (
-    <RevealOnScroll delay={index * 0.1}>
-      <div className="relative mb-12 last:mb-0">
-        {/* Mobile — always left aligned */}
-        <div className="md:hidden">
-          <div className="flex items-start gap-4">
-            {/* Date badge column */}
-            <div className="flex flex-col items-center shrink-0">
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-accent-gold/15 px-3 py-1 text-xs font-semibold text-accent-gold whitespace-nowrap">
-                <Icon className="h-3.5 w-3.5" />
-                <span>{day.date}</span>
-              </div>
-              <div className="mt-2 h-full w-0.5 bg-accent-gold/20" />
-            </div>
-            {/* Card */}
-            <div className="min-w-0 flex-1 rounded-xl border border-primary-deep/10 bg-white p-5 shadow-card">
-              <div className="mb-1 flex items-center gap-2">
-                <span className="rounded-full bg-primary-deep/10 px-2.5 py-0.5 text-xs font-medium text-primary-deep">
-                  {day.day}
-                </span>
-              </div>
-              <h3 className="mb-3 text-lg font-bold text-primary-deep">
-                {day.title}
-              </h3>
-              <Accordion type="single" collapsible className="w-full">
-                {day.events.map((event, eIdx) => (
-                  <AccordionItem key={eIdx} value={`mobile-${index}-${eIdx}`}>
-                    <AccordionTrigger className="py-3 text-left">
-                      <div className="flex flex-col gap-0.5">
-                        <span className="text-xs font-medium text-accent-gold">
-                          {event.time}
-                        </span>
-                        <span className="text-sm font-semibold text-foreground">
-                          {event.label}
-                        </span>
-                        <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                          <MapPin className="h-3 w-3" />
-                          {event.location}
-                        </span>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        {event.detail}
-                      </p>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
-          </div>
-        </div>
-
-        {/* Desktop — alternating left/right */}
-        <div className="hidden md:block">
-          <TimelineDot />
-
-          <div className={`flex items-start ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}>
-            {/* Card side */}
-            <div className={`w-[calc(50%-2rem)] ${isLeft ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
-              <div
-                className={`rounded-xl border border-primary-deep/10 bg-white p-6 shadow-card transition-shadow hover:shadow-float ${
-                  isLeft ? 'text-right' : 'text-left'
-                }`}
-              >
-                {/* Date badge */}
-                <div
-                  className={`mb-2 flex items-center gap-1.5 ${
-                    isLeft ? 'justify-end' : 'justify-start'
-                  }`}
-                >
-                  <div className="inline-flex items-center gap-1.5 rounded-full bg-accent-gold/15 px-3 py-1 text-xs font-semibold text-accent-gold">
-                    <Icon className="h-3.5 w-3.5" />
-                    <span>{day.date}</span>
-                  </div>
-                </div>
-
-                {/* Day */}
-                <span className="mb-1 inline-block rounded-full bg-primary-deep/10 px-2.5 py-0.5 text-xs font-medium text-primary-deep">
-                  {day.day}
-                </span>
-
-                <h3 className="mb-4 text-xl font-bold text-primary-deep">
-                  {day.title}
-                </h3>
-
-                <Accordion type="single" collapsible className="w-full">
-                  {day.events.map((event, eIdx) => (
-                    <AccordionItem key={eIdx} value={`desktop-${index}-${eIdx}`}>
-                      <AccordionTrigger className="py-3">
-                        <div className={`flex flex-col gap-0.5 ${isLeft ? 'items-end' : 'items-start'}`}>
-                          <span className="text-xs font-medium text-accent-gold">
-                            {event.time}
-                          </span>
-                          <span className="text-sm font-semibold text-foreground">
-                            {event.label}
-                          </span>
-                          <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                            <MapPin className="h-3 w-3" />
-                            {event.location}
-                          </span>
-                        </div>
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <p className={`text-sm leading-relaxed text-muted-foreground ${isLeft ? 'text-right' : 'text-left'}`}>
-                          {event.detail}
-                        </p>
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
-            </div>
-
-            {/* Empty side for balance */}
-            <div className="w-[calc(50%-2rem)]" />
-          </div>
-        </div>
-      </div>
-    </RevealOnScroll>
-  );
-}
-
-/* ─── Page Component ─── */
 export default function SchedulePage() {
-  const { t } = useLang();
-  const [scheduleDays, setScheduleDays] = useState<DayData[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { lang } = useLang();
+  const [schedule, setSchedule] = useState<ScheduleDay[]>([]);
 
   useEffect(() => {
-    let cancelled = false;
-
-    const fetchSchedule = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        const res = await fetch('/api/cms/schedule');
-        const json = await res.json();
-
-        if (!json.ok) {
-          throw new Error(json.error || 'Failed to fetch schedule');
+    fetch('/api/cms/schedule')
+      .then(res => res.json())
+      .then(data => {
+        if (data.ok) {
+          setSchedule(data.items);
         }
-
-        const items: ScheduleItem[] = json.items;
-
-        // Sort by sort_order
-        const sorted = [...items].sort((a, b) => a.sort_order - b.sort_order);
-
-        const days: DayData[] = sorted.map((item) => {
-          // Parse events_json
-          let events: ScheduleEvent[] = [];
-          if (item.events_json) {
-            if (typeof item.events_json === 'string') {
-              try {
-                events = JSON.parse(item.events_json);
-              } catch {
-                events = [];
-              }
-            } else {
-              events = item.events_json;
-            }
-          }
-
-          return {
-            date: item.date_label_en,
-            day: item.day_label,
-            title: item.title_en,
-            icon: getIcon(item.category, item.sort_order),
-            events: events.map((ev) => ({
-              time: ev.time,
-              label: ev.label_en,
-              location: ev.location_en,
-              detail: ev.detail_en,
-            })),
-          };
-        });
-
-        if (!cancelled) {
-          setScheduleDays(days);
-        }
-      } catch (err: unknown) {
-        if (!cancelled) {
-          setError(err instanceof Error ? err.message : 'An unexpected error occurred');
-        }
-      } finally {
-        if (!cancelled) {
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchSchedule();
-
-    return () => {
-      cancelled = true;
-    };
+      })
+      .catch(err => console.error('Failed to load schedule:', err));
   }, []);
 
-  return (
-    <>
-      {/* ════════════════════════════════════════════════════
-          1. Hero Banner
-         ════════════════════════════════════════════════════ */}
-      <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden">
-        {/* Background */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: 'url(/hero.jpg)' }}
-        />
-        {/* Dark overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-deep/70 via-primary-deep/50 to-primary-deep/80" />
-        {/* Subtle pattern overlay */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMSIvPjwvZz48L2c+PC9zdmc+')] opacity-30" />
+  const t = (en: string, zh: string) => (lang === 'zh' ? zh : en);
 
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6">
+  return (
+    <main className="min-h-screen bg-background">
+      {/* Hero Section */}
+      <section className="relative bg-primary text-primary-foreground py-24 md:py-32">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary-deep opacity-90" />
+        <div className="relative max-w-7xl mx-auto px-6 text-center">
           <RevealOnScroll>
-            <span className="mb-4 inline-block rounded-full bg-accent-gold/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-accent-gold backdrop-blur-sm">
-              {t('schedule', 'heroBadge')}
+            <span className="inline-block px-4 py-2 bg-accent-gold/20 border border-accent-gold/30 rounded-full text-accent-gold text-sm font-medium mb-6">
+              {t('RACE SCHEDULE', '赛事日程')}
             </span>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.15}>
-            <h1 className="font-display text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
-              {t('schedule', 'heroTitle')}
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+              {t('The Schedule', '赛程安排')}
             </h1>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.3}>
-            <p className="mt-4 text-lg font-light text-white/80 sm:text-xl">
-              {t('schedule', 'heroSub')}
+            <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-3xl mx-auto">
+              {t('October 29 – November 8, 2026', '2026年10月29日 – 11月8日')}
             </p>
           </RevealOnScroll>
-          <RevealOnScroll delay={0.45}>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-white/60">
-              <span className="flex items-center gap-1.5">
-                <Calendar className="h-4 w-4 text-accent-gold" />
-                October 31 – November 7, 2026
-              </span>
-              <span className="hidden sm:inline text-white/20">|</span>
-              <span className="flex items-center gap-1.5">
-                <MapPin className="h-4 w-4 text-accent-gold" />
-                Sanya, Hainan, China
-              </span>
-            </div>
-          </RevealOnScroll>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce">
-          <ChevronDown className="h-6 w-6 text-white/40" />
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════════════
-          2. Day by Day Timeline
-         ════════════════════════════════════════════════════ */}
-      <section className="relative bg-white py-24 sm:py-32">
-        {/* Section header */}
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Schedule Table Section */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealOnScroll>
-            <div className="mb-16 text-center">
-              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold">
-                {t('schedule', 'timelineEyebrow')}
-              </span>
-              <h2 className="font-display text-4xl font-bold text-primary-deep sm:text-5xl">
-                {t('schedule', 'timelineTitle')}
+            <div className="text-center mb-12">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                {t('Official Race Schedule', '官方赛事日程')}
               </h2>
-              <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-accent-gold" />
-              <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
-                Eight days of unforgettable racing, celebration, and camaraderie
-                around the beautiful island of Hainan.
+              <p className="text-muted-foreground text-lg">
+                {t('All times are local (UTC+8)', '所有时间均为当地时间（UTC+8）')}
               </p>
             </div>
-          </RevealOnScroll>
 
-          {/* Timeline */}
-          <div className="relative mx-auto max-w-5xl">
-            {/* Desktop — central vertical line */}
-            <TimelineLine />
-
-            {loading ? (
-              <div className="flex items-center justify-center py-20">
-                <div className="flex flex-col items-center gap-3">
-                  <div className="h-8 w-8 animate-spin rounded-full border-4 border-accent-gold/30 border-t-accent-gold" />
-                  <span className="text-sm text-muted-foreground">Loading schedule...</span>
+            {/* Desktop Table */}
+            <div className="hidden lg:block">
+              <div className="bg-card rounded-2xl shadow-card overflow-hidden border border-border">
+                {/* Table Header */}
+                <div className="grid grid-cols-12 bg-primary text-primary-foreground px-6 py-4 font-semibold text-sm">
+                  <div className="col-span-2">{t('Date', '日期')}</div>
+                  <div className="col-span-2">{t('Time', '时间')}</div>
+                  <div className="col-span-4">{t('Activity', '活动')}</div>
+                  <div className="col-span-2">{t('Class', '组别')}</div>
+                  <div className="col-span-2">{t('Location', '地点')}</div>
                 </div>
-              </div>
-            ) : error ? (
-              <div className="rounded-xl border border-destructive/20 bg-destructive/5 p-8 text-center">
-                <p className="text-sm font-medium text-destructive">Failed to load schedule</p>
-                <p className="mt-1 text-xs text-muted-foreground">{error}</p>
-                <button
-                  onClick={() => window.location.reload()}
-                  className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-primary-deep px-4 py-2 text-sm font-semibold text-white hover:bg-primary-deep/90"
-                >
-                  Retry
-                </button>
-              </div>
-            ) : scheduleDays.length === 0 ? (
-              <div className="rounded-xl border border-border bg-muted/30 p-8 text-center">
-                <p className="text-sm text-muted-foreground">No schedule items available yet.</p>
-              </div>
-            ) : (
-              /* Day cards */
-              scheduleDays.map((day, index) => (
-                <DayCard key={index} day={day} index={index} />
-              ))
-            )}
-          </div>
-        </div>
-      </section>
 
-      {/* ════════════════════════════════════════════════════
-          3. CTA Section
-         ════════════════════════════════════════════════════ */}
-      <section className="relative bg-primary-deep py-24 sm:py-32 overflow-hidden">
-        {/* Decorative elements */}
-        <div className="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full bg-accent-gold/5 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-primary-bright/10 blur-3xl" />
+                {/* Table Body */}
+                {schedule.map((day, dayIdx) => (
+                  <div key={dayIdx}>
+                    {/* Day Header Row */}
+                    <div className="grid grid-cols-12 bg-muted/50 px-6 py-3 border-t border-border">
+                      <div className="col-span-2 font-bold text-primary">
+                        {t(day.day_label, day.day_label)}
+                      </div>
+                      <div className="col-span-10 font-semibold text-foreground">
+                        {t(day.date_label_en, day.date_label_zh)}
+                      </div>
+                    </div>
 
-        <div className="relative z-10 mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <RevealOnScroll>
-            <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold">
-              Join the Adventure
-            </span>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.15}>
-            <h2 className="font-display text-4xl font-bold text-white sm:text-5xl">
-              Plan Your Visit
-            </h2>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.3}>
-            <p className="mt-4 text-lg leading-relaxed text-white/70">
-              Whether you&apos;re a competitor, sponsor, or spectator — experience
-              the thrill of the Round Hainan Regatta. Get in touch with our team
-              to start planning your journey.
-            </p>
-          </RevealOnScroll>
-          <RevealOnScroll delay={0.45}>
-            <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 rounded-lg bg-accent-gold px-8 py-3.5 text-base font-semibold text-primary-deep shadow-lg transition-all hover:bg-accent-gold/90 hover:shadow-xl hover:scale-105"
-              >
-                Get in Touch
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="/classes"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-8 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20"
-              >
-                View Racing Classes
-              </Link>
+                    {/* Event Rows */}
+                    {day.events.map((event, eventIdx) => (
+                      <div
+                        key={eventIdx}
+                        className="grid grid-cols-12 px-6 py-4 border-t border-border/50 hover:bg-muted/30 transition-colors"
+                      >
+                        <div className="col-span-2 text-muted-foreground text-sm">
+                          {t(day.day_label, day.day_label)}
+                        </div>
+                        <div className="col-span-2 font-mono text-sm font-medium text-foreground">
+                          {event.time}
+                        </div>
+                        <div className="col-span-4 font-medium text-foreground">
+                          {t(event.label_en, event.label_zh)}
+                        </div>
+                        <div className="col-span-2 text-sm text-muted-foreground">
+                          {t(event.class_en, event.class_zh)}
+                        </div>
+                        <div className="col-span-2 text-sm text-muted-foreground flex items-center gap-1">
+                          <MapPin className="w-3 h-3" />
+                          {t(event.location_en, event.location_zh)}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mobile Cards */}
+            <div className="lg:hidden space-y-6">
+              {schedule.map((day, dayIdx) => (
+                <div key={dayIdx} className="bg-card rounded-xl shadow-card border border-border overflow-hidden">
+                  {/* Day Header */}
+                  <div className="bg-primary text-primary-foreground px-5 py-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="font-bold text-lg">{t(day.day_label, day.day_label)}</div>
+                        <div className="text-primary-foreground/80 text-sm">
+                          {t(day.date_label_en, day.date_label_zh)}
+                        </div>
+                      </div>
+                      <Calendar className="w-6 h-6 text-accent-gold" />
+                    </div>
+                  </div>
+
+                  {/* Events */}
+                  <div className="divide-y divide-border/50">
+                    {day.events.map((event, eventIdx) => (
+                      <div key={eventIdx} className="p-5 hover:bg-muted/30 transition-colors">
+                        <div className="flex items-start gap-3">
+                          <div className="flex-shrink-0 w-20 text-sm font-mono font-medium text-primary">
+                            {event.time}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="font-semibold text-foreground mb-1">
+                              {t(event.label_en, event.label_zh)}
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
+                              <Users className="w-3 h-3" />
+                              {t(event.class_en, event.class_zh)}
+                            </div>
+                            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                              <MapPin className="w-3 h-3" />
+                              {t(event.location_en, event.location_zh)}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </RevealOnScroll>
         </div>
       </section>
-    </>
+
+      {/* Legend Section */}
+      <section className="py-12 bg-muted/50 border-t border-border">
+        <div className="max-w-7xl mx-auto px-6">
+          <RevealOnScroll>
+            <h3 className="font-display text-2xl font-bold text-foreground mb-6 text-center">
+              {t('Race Classes', '竞赛组别')}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="bg-card rounded-lg p-4 border border-border shadow-sm">
+                <div className="font-semibold text-foreground mb-1">Dubois 50</div>
+                <div className="text-sm text-muted-foreground">
+                  {t('One Design Class', '同型船组别')}
+                </div>
+              </div>
+              <div className="bg-card rounded-lg p-4 border border-border shadow-sm">
+                <div className="font-semibold text-foreground mb-1">ORC Full Round</div>
+                <div className="text-sm text-muted-foreground">
+                  {t('Full Circumnavigation', '全程环航组别')}
+                </div>
+              </div>
+              <div className="bg-card rounded-lg p-4 border border-border shadow-sm">
+                <div className="font-semibold text-foreground mb-1">ORC Half Round</div>
+                <div className="text-sm text-muted-foreground">
+                  {t('Half Circumnavigation', '半程环航组别')}
+                </div>
+              </div>
+              <div className="bg-card rounded-lg p-4 border border-border shadow-sm">
+                <div className="font-semibold text-foreground mb-1">Fareast 28R</div>
+                <div className="text-sm text-muted-foreground">
+                  {t('Inshore Racing Class', '场地赛组别')}
+                </div>
+              </div>
+            </div>
+          </RevealOnScroll>
+        </div>
+      </section>
+    </main>
   );
 }

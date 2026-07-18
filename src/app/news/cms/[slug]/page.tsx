@@ -1,13 +1,21 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { cookies } from "next/headers";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import HeroCarousel from "@/components/HeroCarousel";
 import { getSupabaseClient } from "@/storage/database/supabase-client";
 
 export const dynamic = "force-dynamic";
+
+// Same slides as homepage hero carousel
+const heroSlides = [
+	{ src: "/hero.jpg", alt: "Round Hainan Regatta hero" },
+	{ src: "/carousel-2.jpg", alt: "Sailing boats at sunset" },
+	{ src: "/carousel-3.jpg", alt: "Racing yachts in open water" },
+	{ src: "/carousel-4.jpg", alt: "Hainan coastline sailing" },
+];
 
 interface NewsRow {
 	id: string;
@@ -56,31 +64,30 @@ export default async function CmsNewsDetailPage({ params }: { params: Promise<{ 
 		<>
 			<Navbar />
 			<main className="min-h-screen">
-				{/* Hero */}
-				<section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-primary-deep to-primary text-white">
-					<div className="absolute inset-0 opacity-30">
-						{item.image_url && (
-							<Image src={item.image_url} alt={title} fill className="object-cover" priority />
-						)}
-					</div>
-					<div className="relative max-w-4xl mx-auto px-6">
-						<Link
-							href="/news"
-							className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 text-sm"
-						>
-							<ArrowLeft size={16} /> {lang === "zh" ? "返回新闻" : "Back to News"}
-						</Link>
-						<div className="flex flex-wrap items-center gap-3 mb-4 text-sm">
-							<span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-accent-gold text-primary-deep font-semibold">
-								<Tag size={12} /> {item.category}
-							</span>
-							<span className="inline-flex items-center gap-1 text-white/80">
-								<Calendar size={14} /> {new Date(item.published_at).toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { year: "numeric", month: "long", day: "numeric" })}
-							</span>
+				{/* Hero with Carousel */}
+				<section className="relative h-[60vh] min-h-[480px]">
+					<HeroCarousel slides={heroSlides} interval={5000} className="h-full">
+						<div className="relative z-[3] flex h-full flex-col items-center justify-center px-4 text-center">
+							<div className="max-w-4xl mx-auto">
+								<Link
+									href="/news"
+									className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 text-sm"
+								>
+									<ArrowLeft size={16} /> {lang === "zh" ? "返回新闻" : "Back to News"}
+								</Link>
+								<div className="flex flex-wrap items-center justify-center gap-3 mb-4 text-sm">
+									<span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-accent-gold text-primary-deep font-semibold">
+										<Tag size={12} /> {item.category}
+									</span>
+									<span className="inline-flex items-center gap-1 text-white/80">
+										<Calendar size={14} /> {new Date(item.published_at).toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", { year: "numeric", month: "long", day: "numeric" })}
+									</span>
+								</div>
+								<h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">{title}</h1>
+								{excerpt && <p className="mt-6 text-lg text-white/90 leading-relaxed max-w-3xl mx-auto">{excerpt}</p>}
+							</div>
 						</div>
-						<h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">{title}</h1>
-						{excerpt && <p className="mt-6 text-lg text-white/90 leading-relaxed max-w-3xl">{excerpt}</p>}
-					</div>
+					</HeroCarousel>
 				</section>
 
 				{/* Body */}

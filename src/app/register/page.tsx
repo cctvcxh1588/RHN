@@ -194,23 +194,6 @@ export default function RegisterPage() {
                     </p>
                   </div>
                 </div>
-                {/* Fee */}
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-accent-gold/15 flex items-center justify-center shrink-0">
-                    <Anchor size={20} className="text-accent-gold" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-foreground uppercase tracking-wide">
-                      {lang === 'zh' ? '报名费用' : 'Entry Fee'}
-                    </h3>
-                    <p className="text-lg font-bold text-accent-gold mt-1">
-                      {lang === 'zh' ? '¥5,000 / 船' : '¥5,000 / Boat'}
-                    </p>
-                    <p className="text-xs text-foreground/60 mt-1">
-                      {lang === 'zh' ? '早鸟价截止至6月30日' : 'Early bird until June 30'}
-                    </p>
-                  </div>
-                </div>
                 {/* Documents */}
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">

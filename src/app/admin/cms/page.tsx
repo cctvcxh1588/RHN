@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FileText, Settings2, Users, Home, LogOut, ExternalLink, Calendar, Trophy, MapPin, FileStack, Image } from "lucide-react";
+import { FileText, Settings2, Users, Home, LogOut, ExternalLink, Calendar, Trophy, MapPin, FileStack, Image, Mail } from "lucide-react";
 
 export default function CmsDashboardPage() {
 	const [token, setToken] = useState("");
@@ -66,6 +66,7 @@ export default function CmsDashboardPage() {
 
 	const cards = [
 		{ href: "/admin/cms/news", icon: FileText, title: "新闻管理", subtitle: "News", desc: "发布、编辑、删除新闻文章" },
+		{ href: "/admin/cms/contact", icon: Mail, title: "联系页面", subtitle: "Contact", desc: "编辑联系方式、地址、社交链接" },
 		{ href: "/admin/cms/settings", icon: Settings2, title: "站点设置", subtitle: "Settings", desc: "首页标语、联系方式、全局配置" },
 		{ href: "/admin/cms/schedule", icon: Calendar, title: "赛程管理", subtitle: "Schedule", desc: "8 天赛程表，逐日编辑" },
 		{ href: "/admin/cms/classes", icon: Trophy, title: "组别管理", subtitle: "Classes", desc: "4 个组别卡片，增删改" },

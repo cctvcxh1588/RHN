@@ -99,7 +99,7 @@ export default function CmsContactPage() {
 
 	return (
 		<div className="min-h-screen bg-mist">
-			<header className="bg-white border-b border-fog sticky top-0 z-10">
+			<header className="bg-white border-b border-fog sticky top-0 z-50 shadow-sm">
 				<div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
 					<div className="flex items-center gap-3">
 						<Link href="/admin/cms" className="text-ink-gray hover:text-primary flex items-center gap-1">
@@ -110,7 +110,7 @@ export default function CmsContactPage() {
 					<button
 						onClick={save}
 						disabled={saving}
-						className="px-4 py-2 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary-deep transition-colors disabled:opacity-50 flex items-center gap-1"
+						className="px-6 py-2.5 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary-deep transition-colors disabled:opacity-50 flex items-center gap-2 shadow-md"
 					>
 						<Save size={16} /> {saving ? "保存中..." : "保存全部"}
 					</button>

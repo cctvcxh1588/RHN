@@ -87,6 +87,12 @@ logs/
 *.xlsx
 *.csv
 
+# 但允许 public/downloads/ 目录下的下载文件
+!public/downloads/*.pdf
+!public/downloads/*.docx
+!public/downloads/*.doc
+!public/downloads/*.xlsx
+
 # Preview files
 .preview
 

@@ -201,14 +201,24 @@ export default function NoticeOfRacePage() {
               <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
               Back to The Course
             </Link>
-            <a
-              href="/downloads/15th-Round-Hainan-Regatta-2026-Notice-of-Race.docx"
-              download
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary-deep transition-colors shadow-sm"
-            >
-              <Download className="w-4 h-4" />
-              Download DOCX
-            </a>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="/downloads/15th-Round-Hainan-Regatta-2026-Notice-of-Race.pdf"
+                download
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary-deep transition-colors shadow-sm"
+              >
+                <Download className="w-4 h-4" />
+                Download PDF
+              </a>
+              <a
+                href="/downloads/15th-Round-Hainan-Regatta-2026-Notice-of-Race.docx"
+                download
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-primary/20 text-primary text-sm font-semibold hover:bg-primary/5 transition-colors shadow-sm"
+              >
+                <FileText className="w-4 h-4" />
+                Download DOCX
+              </a>
+            </div>
           </div>
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-2">

@@ -16,7 +16,6 @@ export async function GET() {
 	const { data, error } = await supabase
 		.from("cms_contact")
 		.select("*")
-		.eq("is_published", true)
 		.order("sort_order");
 	if (error) {
 		return NextResponse.json({ ok: false, error: "DB_ERROR", detail: error.message }, { status: 500 });

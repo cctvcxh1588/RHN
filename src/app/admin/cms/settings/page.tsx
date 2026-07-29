@@ -95,7 +95,7 @@ export default function CmsSettingsPage() {
 
 	return (
 		<div className="min-h-screen bg-mist">
-			<header className="bg-white border-b border-fog sticky top-0 z-10">
+			<header className="bg-white border-b border-fog sticky top-0 z-50">
 				<div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
 					<div className="flex items-center gap-3">
 						<Link href="/admin/cms" className="text-ink-gray hover:text-primary flex items-center gap-1">

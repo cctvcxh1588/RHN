@@ -38,7 +38,8 @@ export default function CmsContactPage() {
 
 	useEffect(() => {
 		if (typeof window !== "undefined") {
-			setToken(sessionStorage.getItem("rhn_admin_token") || "");
+			const saved = sessionStorage.getItem("rhn_admin_token") || "";
+			setToken(saved);
 		}
 	}, []);
 
@@ -60,14 +61,18 @@ export default function CmsContactPage() {
 	}, []);
 
 	useEffect(() => {
-		if (token) load();
-	}, [token, load]);
+		load();
+	}, [load]);
 
 	function updItem(idx: number, patch: Partial<ContactItem>) {
 		setItems((prev) => prev.map((it, i) => (i === idx ? { ...it, ...patch } : it)));
 	}
 
 	async function save() {
+		if (!token) {
+			setError("请先登录：返回 CMS 首页输入管理员 Token");
+			return;
+		}
 		setSaving(true);
 		setError("");
 		setOk("");
@@ -90,14 +95,6 @@ export default function CmsContactPage() {
 		} finally {
 			setSaving(false);
 		}
-	}
-
-	if (!token) {
-		return (
-			<div className="min-h-screen flex items-center justify-center">
-				<Link href="/admin/cms" className="text-primary underline">请先登录</Link>
-			</div>
-		);
 	}
 
 	return (

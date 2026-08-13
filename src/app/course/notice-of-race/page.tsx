@@ -210,14 +210,6 @@ export default function NoticeOfRacePage() {
                 <Download className="w-4 h-4" />
                 Download PDF
               </a>
-              <a
-                href="/downloads/15th-Round-Hainan-Regatta-2026-Notice-of-Race.docx"
-                download
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white border border-primary/20 text-primary text-sm font-semibold hover:bg-primary/5 transition-colors shadow-sm"
-              >
-                <FileText className="w-4 h-4" />
-                Download DOCX
-              </a>
             </div>
           </div>
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
